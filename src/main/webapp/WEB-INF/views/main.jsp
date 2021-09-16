@@ -78,6 +78,6 @@
 	
 	
 </div>
-	<script src="resource/js/main.js"></script>
+	<script src="resources/js/main.js"></script>
 </body>
 </html>
