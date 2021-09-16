@@ -129,22 +129,10 @@ public class MovieAPI {
 //        String date=service.updatedate();
         
         
-    	return "movie/main";
+    	return "main";
     }
     
-    
-    @GetMapping("/movieList")
-    public String movieList(Model model) {
-    	
-    	List<MovieDTO> mvList = service.getMovieList();
-   // 	MovieDTO dto = service.getMovieList();
-    	model.addAttribute("mvList",mvList);
-    	return "movie/movieList";
-    }
-    
-    
-    
-    
+
  
 //    public static void main(String[] args) {
 //        // API 객체 생성
