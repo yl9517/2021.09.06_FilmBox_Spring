@@ -14,6 +14,15 @@
 	<h2>영화상세</h2>	
 	<img alt="영화 포스터" src="${dto.image }">
 	<input type="text" id="movieCd" value="${dto.movieCd }"> 
+	
+	<div>
+	여기다!!
+	${map.movieNm }
+	${map.nationNm }
+	${map.showTm }
+	${map.actors }
+ 	위!!
+	</div>
 	<div id="result2">
 	
 	</div>
@@ -23,8 +32,8 @@
 		console.log(movie);
 		$.ajax({
 			method : "GET",
-			url : "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=03778b8e03b2f65d0d2c724260f2df8c&movieCd="+movie,
-			
+			url : "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=${key}&movieCd=${dto.movieCd}",
+				
 		}).done(function(msg) {
 			let resultt = "";
 			let short_url = msg.movieInfoResult.movieInfo;
