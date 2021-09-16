@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosta.mapper.MovieMapper">
+
+	<insert id="movieinsert" parameterType="java.util.List">
+		insert into filmbox_movie2
+		(rank,movieCd,movieNm,openDt,image,update_date)
+		values
+		<foreach item="item" index="index" collection="list"
+			separator=" , ">
+			(#{item.rank}, #{item.movieCd}, #{item.movieNm}, 
+			#{item.openDt}, #{item.image}
+			,now())
+		</foreach>
+	</insert>
+
+	<select id="getMovieList" resultType="com.kosta.dto.MovieDTO">
+			select rank, movieCd, 
+			movieNm, openDt, image
+		from filmbox_movie
+		order by rank;
+	</select>
+
+	<select id="updatedate" resultType="string">
+		SELECT update_date FROM filmbox_movie
+		WHERE rank=1;
+	</select>
+
+	<select id="getMovie" parameterType="string"
+		resultType="com.kosta.dto.MovieDTO">
+		select rank, movieCd, movieNm, openDt, image
+		from filmbox_movie
+		where movieCd = #{movieCd}
+	</select>
+	
+	<!-- 리뷰 작성될때마다 별점평균 바뀌는 DB 추가해야함-->
+	
+
+	<update id="movieupdate" parameterType="java.util.List">
+
+		<foreach item="item" index="index" collection="list" separator=";">
+			update filmbox_movie2
+			set
+			movieCd = #{item.movieCd},
+			movieNm = #{item.movieNm},
+			openDt = #{item.openDt},
+			image = #{item.image},
+			update_date = now()
+
+			where rank = #{item.rank}
+		</foreach>
+	</update>
+</mapper>
+    
+    
