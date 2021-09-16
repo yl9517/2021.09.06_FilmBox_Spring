@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.film.mapper.UserMapper">
+
+<insert id="insertUser" parameterType="com.film.dto.UserDTO">
+
+        insert into filmbox_member ( member_id
+        						, member_name
+        						, member_pwd
+        						, member_phone
+        						, email )
+        select #{member_id}
+         		, #{member_name}
+         		, #{member_pwd}
+         		, #{member_phone}
+         		, #{email} from dual
+        where not exists ( select member_id from filmbox_member
+        					 where member_id=#{member_id} )
+           
+</insert>
+
+</mapper>

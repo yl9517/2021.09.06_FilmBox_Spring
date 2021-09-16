@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod; 
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.film.dto.UserDTO;
+import com.film.login.NaverLoginBO;
+import com.film.service.UserService;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
-import seo.ra.service.UserService;
 
 @Controller 
 public class LoginController { 
@@ -46,7 +48,7 @@ public class LoginController {
 
 		model.addAttribute("url", naverAuthUrl); 
 		
-		return "login"; 
+		return "login/login"; 
 	} 
 	
 	//네이버 로그인 성공시 callback호출 메소드 
@@ -113,7 +115,7 @@ public class LoginController {
 		
 		service.insertUser(dto);
 
-		return "login";
+		return "login/login";
 		} 
 	
 	//로그아웃 
@@ -123,9 +125,11 @@ public class LoginController {
 		session.invalidate(); 
 		return "redirect:index"; //login
    } 
+	
+	//index 페이지는 테스트용이므로 추후 수정 필요 시 수정
 	@RequestMapping(value = "/index")
 	public String index() {
-		return "index";
+		return "login/index";
 	}
 	
 }
