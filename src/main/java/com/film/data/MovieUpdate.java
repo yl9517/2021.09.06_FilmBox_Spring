@@ -29,6 +29,7 @@ import org.springframework.ui.Model;
 
 import com.film.dto.MovieDTO;
 import com.film.service.MovieService;
+
 @Component
 public class MovieUpdate {
 	
@@ -53,6 +54,7 @@ public class MovieUpdate {
  
         return sb.toString();
     }
+    
 	@Scheduled(fixedDelay = 60000)
 	public void requestAPI() {
         // 변수설정

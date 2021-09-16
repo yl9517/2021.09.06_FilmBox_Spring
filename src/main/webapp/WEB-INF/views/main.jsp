@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +33,8 @@
 					<img alt="search" src="data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E">
 				</div>
 				<ul>
-					<li>로그인</li>
-					<li>회원가입</li>
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">회원가입</a></li>
 				</ul>
 			</div>
 		</div>
@@ -75,13 +76,17 @@
 	</div>
 	<div class="gallery"> <!-- 박스오피스 -->
 	    <div class="gallery-container">
-	      <img class="gallery-item gallery-item-1" src="https://t1.daumcdn.net/movie/e1285fe4d39de150ca497edf0d91d8b4ad8d8e39" data-index="1">
+	    <c:forEach var="item" items="${mvList }" varStatus="status" begin="0" end="4">
+	    	 <a href="movieInfo/${item.movieCd }"><img class="gallery-item gallery-item-${status.count }" src="${item.image }" data-index="${status.count }"></a>
+	    </c:forEach>
+	    </div>
+	     <!--  <img class="gallery-item gallery-item-1" src="https://t1.daumcdn.net/movie/e1285fe4d39de150ca497edf0d91d8b4ad8d8e39" data-index="1">
 	      <img class="gallery-item gallery-item-2" src="https://img9.yna.co.kr/photo/cms/2021/07/03/58/PCM20210703000058005_P2.jpg" data-index="2">
 	      <img class="gallery-item gallery-item-3" src="https://miro.medium.com/max/800/1*mvnnOAuE0rPTc8E6uYAu8w.jpeg" data-index="3">
 	      <img class="gallery-item gallery-item-4" src="https://t1.daumcdn.net/movie/f39274b0acd76f7c66f0a5fb9e5b7222ed37b373" data-index="4">
 	      <img class="gallery-item gallery-item-5" src="https://ww.namu.la/s/dde23840757e1474237b5b2b5cf596a3524bb620d4870c8b9bc8fd3739e7b989192d45f836e6909e0226364a282b5611934852cd2cba6d703c213645b95e0501030844821e6637a44694cd5021df820b5025c9d879795c1c9520aa7adb2586f0" data-index="5">
-	    </div>
-	    <div class="gallery-controls"></div>
+ -->	   
+ 		 <div class="gallery-controls"></div>
   </div>
 	
 	
