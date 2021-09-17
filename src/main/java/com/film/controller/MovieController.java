@@ -117,7 +117,9 @@ public class MovieController {
             e.printStackTrace();
         }
         model.addAttribute("movieInfo",map);
-
+        
+    	MovieDTO dto = service.getMovie(movieCd);
+    	model.addAttribute("dto",dto);
         
     	return "movie/movieInfo";
     }
