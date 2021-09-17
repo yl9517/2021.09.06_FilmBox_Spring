@@ -16,12 +16,16 @@
 	<input type="text" id="movieCd" value="${dto.movieCd }"> 
 	
 	<div>
-	여기다!!
-	${map.movieNm }
-	${map.nationNm }
-	${map.showTm }
-	${map.actors }
- 	위!!
+	<p>여기다!!-------java-----</p>
+	영화명 : ${movieInfo.movieNm }
+	${movieInfo.showTm }
+	${movieInfo.openDt }
+	배우 :
+	<c:forEach var="item" items="${movieInfo.acts }" >
+			${item }
+	</c:forEach>
+	
+ 	<p>------위!-------!</p>
 	</div>
 	<div id="result2">
 	
@@ -47,13 +51,23 @@
 				resultt += "<p>장르명 : "+short_url.genreNm+"</p>"
 				resultt += "<p>감독: "+short_url.directors+"</p>"
 				resultt += "<p>감독명: "+short_url.peopleNm+"</p>"
-				resultt += "<p>배우 : "+short_url.actors+"</p>"
+				
+			let acts = short_url.actors;
+				 for(let i=0; i<acts.length; i++){
+					 resultt += "<i>dd"+acts[i]['peopleNm']+"</i>";
+				}  
+				/* acts.each(function(index, item) {
+					resultt += "<i>dd"+$(item.peopleNm)+"<i>";
+				})  */
+				
+				resultt += "<p>배우 : "+short_url.actors[0]['peopleNm']+"</p>"
 				resultt += "<p>배우명: "+short_url.peopleNm+"</p>"
+				console.log(short_url.actors[0]);
 				resultt += "<p>배역: "+short_url.cast+"</p>"
 				resultt += "<p>상영형태: "+short_url.showTypes+"</p>"
 				resultt += "<p>상영형태: "+short_url.showTypeGroupNm+"</p>"
 				resultt += "<p>관람등급: "+short_url.watchGradeNm+"</p>"
-				resultt += "<p>심의정보: "+short_url.audits+"</p>"
+				resultt += "<p>심의정보: "+short_url.audits[0]['watchGradeNm']+"</p>"
 				resultt += "<p>스텝: "+short_url.staffs+"</p>"
 				
 			$("#result2").append(resultt);

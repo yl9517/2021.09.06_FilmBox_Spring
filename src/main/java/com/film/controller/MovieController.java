@@ -43,7 +43,7 @@ public class MovieController {
     }
     
     
-    //영화 상세
+    //영화 상세 - view단에서 jsoㅜ으로 받기
     @GetMapping("/movieInfo/{movieCd}")
     public String movieInfo(@PathVariable String movieCd, Model model) {
     	
@@ -55,7 +55,7 @@ public class MovieController {
     }
     
     
-    //영화 상세2 
+    //영화 상세2 - java로 받기
     @GetMapping("/movieInfo2/{movieCd}")
     public String requestAPI(@PathVariable String movieCd, Model model) {
     	String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
@@ -86,36 +86,38 @@ public class MovieController {
                 response.append(readline);
                 System.out.println("여기"+response.toString());
             }
-        }catch (Exception e) {
-			// 내일 고치기
-		}
+
+            // JSON 객체로  변환
+            JSONObject responseBody = new JSONObject(response.toString());
  
-//            // JSON 객체로  변환
-//            JSONObject responseBody = new JSONObject(response.toString());
-// 
-//            // 데이터 추출
-//            JSONObject boxOfficeResult = responseBody.getJSONObject("movieInfoResult");         
-//          
-//            // 박스오피스 목록 출력
-//            JSONArray dailyBoxOfficeList = boxOfficeResult.getJSONArray("MovieInfo");
-//            Iterator<Object> iter = dailyBoxOfficeList.iterator();
-//            while(iter.hasNext()) {
-//                JSONObject boxOffice = (JSONObject) iter.next();
-//
-//              map.put("movieNm", (String) boxOffice.get("movieNm"));
-//              map.put("nationNm", (String) boxOffice.get("nationNm"));
-//              map.put("showTm", (String) boxOffice.get("showTm"));
-//              map.put("actors", (String) boxOffice.get("actors"));
-//               
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        model.addAttribute("map",map);
-        //영화 리스트삽입    
-//      service.movieupdate(mvList);
-//        String date=service.updatedate();
-        
+            // 데이터 추출
+            JSONObject result = responseBody.getJSONObject("movieInfoResult"); 
+            JSONObject movieInfo = result.getJSONObject("movieInfo");          
+          
+            map.put("movieNm", movieInfo.get("movieNm")); //영화명
+            map.put("showTm", movieInfo.get("showTm")); //상영시간
+            map.put("openDt", movieInfo.get("openDt")); //개봉일
+
+            //아래 코드 줄일수 있지 않을까?
+            JSONArray list1 = movieInfo.getJSONArray("genres"); //장르 -genreNm
+            JSONArray list2 = movieInfo.getJSONArray("directors"); //감독 -peopleNm
+            JSONArray list3 = movieInfo.getJSONArray("actors"); //배우 -peopleNm
+            JSONArray list4 = movieInfo.getJSONArray("audits"); //관람가 - watchGradeNm
+            
+            Iterator<Object> iter = list3.iterator(); //배우출력
+     
+            //배우 리스트
+            List<Object> actlist = new ArrayList<Object>();
+            while(iter.hasNext()) {
+                JSONObject acts = (JSONObject) iter.next();
+                actlist.add(acts.get("peopleNm"));
+            }
+            map.put("acts", actlist);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("movieInfo",map);
+
         
     	return "movie/movieInfo";
     }
