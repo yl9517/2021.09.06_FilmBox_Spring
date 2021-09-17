@@ -3,6 +3,8 @@ package com.film.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -13,12 +15,14 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException; 
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Controller; 
-import org.springframework.ui.Model; 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod; 
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.film.dto.UserDTO;
+import com.film.login.KakaoLoginAPI;
 import com.film.login.NaverLoginBO;
 import com.film.service.UserService;
 import com.github.scribejava.core.model.OAuth2AccessToken;
@@ -132,6 +136,65 @@ public class LoginController {
 		return "login/index";
 	}
 	
+	//-------------kakao-------------------
+		@GetMapping("/kakaologin")
+		public String kakaoCallback(@RequestParam String code
+										, HttpSession session) 
+		{
+			KakaoLoginAPI api = new KakaoLoginAPI();
+			//인증 코드 요청 전달해서 사용자 액세스 토큰 값 받아오기
+			String access_token = api.getAccessToken(code);
+			
+			//액세스 토큰 전달해서 사용자 정보 받아오기 hashmap으로
+			Map<String, Object> userData = api.getUserInfo(access_token);
+			
+			System.out.println("login info : "+userData.toString());
+			
+			UserDTO dto=new UserDTO();
+			
+			String id = userData.get("id").toString();
+			String pwd = UUID.randomUUID().toString();
+			String name = userData.get("nickname").toString();
+			String phone = "";
+			String email = userData.get("email").toString();
+			if(userData.get("email")==null)
+			{
+				dto.setEmail("");
+			}else {
+				dto.setEmail(email);
+			}
+			
+			dto.setMember_id(id);
+			dto.setMember_pwd(pwd);
+			dto.setMember_name(name);
+			dto.setMember_phone(phone);	
+
+			//회원가입+로그인 동시에
+			service.insertUser(dto);
+			
+			//세션에 담기 (이메일 정보 or 아이디, 액세스 토큰)
+			if(userData.get("id")!=null) {
+				session.setAttribute("member_name", userData.get("nickname"));
+				session.setAttribute("member_id", userData.get("id"));
+				session.setAttribute("access_token", access_token);
+			}
+			
+			return "login/login";
+		}
+		
+		
+		@GetMapping("/kakaologout")
+		public String klogout(HttpSession session)
+		{
+			KakaoLoginAPI api = new KakaoLoginAPI();
+			api.kakaologout((String)session.getAttribute("access_token"));
+			session.removeAttribute("access_token");
+			session.removeAttribute("member_id");
+			session.removeAttribute("member_name");
+			
+			return "redirect:index";
+		}
+
 }
 
 
