@@ -104,7 +104,7 @@ public class MovieController {
             JSONArray list3 = movieInfo.getJSONArray("actors"); //배우 -peopleNm
             JSONArray list4 = movieInfo.getJSONArray("audits"); //관람가 - watchGradeNm
             
-            Iterator<Object> iter = list3.iterator(); //배우출력
+            Iterator<Object> iter = list3.iterator(); //배우출력 ??
      
             //배우 리스트
             List<Object> actlist = new ArrayList<Object>();
