@@ -43,7 +43,7 @@
 
 <select id="idcheck" resultType="int">
 	select count(*)
-	from logintest
+	from filmbox_member
 	where member_id=#{member_id}
 </select>
 
