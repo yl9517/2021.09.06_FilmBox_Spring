@@ -64,7 +64,7 @@
 			</c:otherwise>
 		</c:choose>
 	</center>
-	<a href="userJoin">회원가입</a>
+	<a href="userjoin">회원가입</a>
 </body>
 </html>
 
