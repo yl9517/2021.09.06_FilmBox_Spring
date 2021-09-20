@@ -28,7 +28,7 @@ public class UserContoller {
 	@RequestMapping("/userjoin")
 	public String userJoin()
 	{
-		return "join";
+		return "login/join";
 	}
 	
 	//회원가입 환영 페이지
@@ -37,7 +37,7 @@ public class UserContoller {
 	{
 		service.insertFilmUser(dto);
 		model.addAttribute("member_name", dto.getMember_name());
-		return "joinresult";
+		return "login/joinresult";
 	}
 	
 	@RequestMapping(value = "/useridcheck", method = RequestMethod.POST)
