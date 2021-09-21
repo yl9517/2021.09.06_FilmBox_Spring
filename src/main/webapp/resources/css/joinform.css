@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+
+
+body { 
+	min-height: 100vh;
+  	background: -webkit-gradient(linear, left bottom, right top, from(#393c40), to(#2f2d33));
+	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #2f2d33 0%);
+	background: -moz-linear-gradient(bottom left, #92b5db 0%, #2f2d33 0%); 
+	background: -o-linear-gradient(bottom left, #92b5db 0%, #2f2d33 0%); 
+	background: linear-gradient(to top right, #92b5db 0%, #2f2d33 0%);  
+}
+
+	
+.input-form { 
+	max-width: 680px; 
+	margin-top: 80px;
+	padding: 32px; 
+	background: #fff; 
+	-webkit-border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	border-radius: 10px; 
+	/* -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); 
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); 
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); */
+	} 
+	
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+     background-color: red;
+     box-shadow:0 0 3px red; 
+}
+ .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+     box-shadow:0 0 3px red; 
+}
+ .custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+     box-shadow:0 0 3px red;
+     background:rgba(255,0,0,.3);
+}
+ .custom-checkbox .custom-control-label::before {
+     border-radius: 0.25rem;
+}
+ .custom-control-label::before {
+     background-color:#ccc;
+}
+
+
+
+input:focus, input[type]:focus, .uneditable-input:focus {
+    border-color: red;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);
+    outline: 0 none;
+}
+	
+.form-control{
+	resize:none!important;
+	background-color: whitesmoke!important;
+	border: none!important;
+	border-radius: 5px!important;
+}
+
+.form-control::-webkit-scrollbar {
+    width: 12px!important;
+    background-color: none!important;
+  }
+  
+.form-control::-webkit-scrollbar-thumb {
+    background-color: gainsboro!important;
+    border-radius: 10px!important;
+  }
+  
+.col-xs-12{
+	margin-bottom: 25px;
+}
+
+

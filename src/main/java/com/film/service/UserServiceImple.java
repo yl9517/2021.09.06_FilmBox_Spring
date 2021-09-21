@@ -19,5 +19,18 @@ public class UserServiceImple implements UserService {
 		int result=mapper.insertUser(dto);
 		
 	}
+	
+	@Override
+	public void insertFilmUser(UserDTO dto) {
+
+		int result=mapper.insertFilmUser(dto);
+		
+	}
+
+	@Override
+	public int idcheck(String member_id) {
+		
+		return mapper.idcheck(member_id);
+	}
 
 }

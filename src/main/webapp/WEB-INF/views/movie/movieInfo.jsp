@@ -23,7 +23,6 @@
 				<div class="info_left">
 					<h2> ${dto.movieNm } </h2>	
 					<h3 id="mvEn"> </h3>
-					<div id="line"></div>	
 				</div>
 				<div class="info_bottom">
 					<div class="bottom">
@@ -35,14 +34,14 @@
 						<p class="sub"> ${dto.rank } <span>위</span></p>
 					</div>
 					<div class="bottom">
-						<p class="subtitle">누적관객 수</p>
+						<p class="subtitle">누적관객수</p>
 						<p class="sub"> 64,231 <span>명</span></p>
 					</div>
 					
 				</div>
-				<div class="info_right">
-					<img alt="영화 포스터" src="${dto.image }">		
-					
+					<div class="info_right">
+						<img alt="영화 포스터" src="${dto.image }">	
+					</div>
 				</div>
 				<div class="reserve_screen-type">
 					<div class="reserve">
@@ -54,13 +53,31 @@
 				
 		</div>		
 		
-		<ul>
-			<li></li>
+		<ul class="tab_wrap">
+			<li class="act first_btn">영화정보</li>
+			<li class="second_btn">실관람평 (5,762)</li>
 		</ul>
 		 
-		<table id="content" class="table table-hover">
+		<table id="content" class="table table-hover">				
 		</table>		
-
+		
+		<div class="review_wrap">
+			<p>총 <b>1,256</b>건의 관람평이 있습니다.</p>
+			<div class="line"></div>		
+			<ul class="review">
+				<li>
+					<div class="user_info">
+						<span class="userName">이*름</span>
+						<span><img alt="star" src="../resources/img/star.png"> 8 </span>
+					</div>
+					<div class="review_info">
+						재밌었어용 ㅎㅎ
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
 	</div>
 	<script src="../resources/js/movieInfo.js"></script>
 </body>

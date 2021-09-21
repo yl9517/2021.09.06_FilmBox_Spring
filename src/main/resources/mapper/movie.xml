@@ -41,7 +41,7 @@
 	<update id="movieupdate" parameterType="java.util.List">
 
 		<foreach item="item" index="index" collection="list" separator=";">
-			update filmbox_movie2
+			update filmbox_movie
 			set
 			movieCd = #{item.movieCd},
 			movieNm = #{item.movieNm},

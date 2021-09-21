@@ -22,4 +22,29 @@
            
 </insert>
 
+<!-- 홈페이지 회원가입 user -> 3000 포인트 지급 -->
+<insert id="insertFilmUser" parameterType="com.film.dto.UserDTO">
+		insert into filmbox_member  ( member_id
+								, member_name
+								, member_pwd
+								, member_phone
+								, email
+								, point ) 
+         select  #{member_id}
+         		 , #{member_name}
+         		 , #{member_pwd}
+         		 , #{member_phone}
+         		 , #{email}
+         		 , '3000' from dual
+         where not exists ( select member_id from filmbox_member
+         					 where member_id=#{member_id} )
+        
+</insert>
+
+<select id="idcheck" resultType="int">
+	select count(*)
+	from filmbox_member
+	where member_id=#{member_id}
+</select>
+
 </mapper>
