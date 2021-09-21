@@ -38,10 +38,20 @@
 						<p class="subtitle">누적관객 수</p>
 						<p class="sub"> 64,231 <span>명</span></p>
 					</div>
+					
 				</div>
 				<div class="info_right">
 					<img alt="영화 포스터" src="${dto.image }">		
+					
 				</div>
+				<div class="reserve_screen-type">
+					<div class="reserve">
+						<input type="button" value="예매하기" 
+					onclick="location.href='/reservemovie/${dto.movieCd }/${dto.movieNm }'">
+					</div>
+				</div>
+					
+				
 		</div>		
 		
 		<ul>
