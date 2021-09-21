@@ -33,4 +33,16 @@ public class UserServiceImple implements UserService {
 		return mapper.idcheck(member_id);
 	}
 
+	@Override
+	public String finduserid(String email) {
+		return mapper.finduserid(email);
+	}
+
+	@Override
+	public void updatepwd(UserDTO dto) {
+		// TODO Auto-generated method stub
+		mapper.updatepwd(dto);
+	}
+
+
 }

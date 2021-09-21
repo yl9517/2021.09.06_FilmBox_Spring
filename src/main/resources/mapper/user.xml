@@ -47,4 +47,17 @@
 	where member_id=#{member_id}
 </select>
 
+<select id="finduserid" resultType="String">
+	select member_id
+	from filmbox_member
+	where email=#{email}
+</select>
+
+<update id="updatepwd" parameterType="com.film.dto.UserDTO">
+	update filmbox_member
+	set
+		member_pwd=#{member_pwd}
+	where member_id=#{member_id}
+</update>
+
 </mapper>

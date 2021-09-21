@@ -1,5 +1,6 @@
 package com.film.controller; 
 
+import java.beans.Encoder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller; 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod; 
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.film.data.PwdMail;
 import com.film.dto.UserDTO;
 import com.film.login.KakaoLoginAPI;
 import com.film.login.NaverLoginBO;
@@ -194,7 +197,63 @@ public class LoginController {
 			
 			return "redirect:index";
 		}
-
+		
+		//아이디 찾기
+		@GetMapping("/finduserid")
+		public String finduserid()
+		{
+			return "login/finduserid";
+		}
+		
+		//아이디 찾기 결과
+		@PostMapping("/finduseridresult")
+		public String finduseridresult(@RequestParam String email, Model model)
+		{
+			String result = service.finduserid(email);
+			System.out.println(result);
+			model.addAttribute("result", result);
+			return "login/finduseridresult";
+		}
+		
+		
+		//비밀번호 찾기
+		@GetMapping("/finduserpwd")
+		public String finduserpwd()
+		{
+			return "login/finduserpwd";
+		}		
+		
+		//비밀번호 찾기 결과
+		@PostMapping("/finduserpwdresult")
+		public String finduserpwdresult(@RequestParam String email, Model model) throws Exception
+		{
+			//이메일이 등록된 이메일인지 확인해서 member_id
+			String member_id = service.finduserid(email);
+			if(member_id!=null)
+			{
+				UserDTO dto = new UserDTO();
+				//임시비밀번호
+				String tempPwd = UUID.randomUUID().toString().replace("-", "");
+				tempPwd = tempPwd.substring(0, 10);
+				System.out.println(tempPwd);
+				
+				dto.setMember_id(member_id);
+				dto.setEmail(email);
+				
+				//메일 전송
+				PwdMail mail = new PwdMail();
+				mail.sendPwdEmail(dto);
+				
+				//DB비밀번호 변경
+				service.updatepwd(dto);
+				model.addAttribute("member_id", member_id);
+			
+			}else {
+				model.addAttribute("member_id", member_id);
+			}
+			
+			return "login/finduserpwdresult";
+		}
 }
 
 
