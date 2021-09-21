@@ -25,7 +25,7 @@ public class UserContoller {
 	private UserService service;
 	
 	//회원가입 페이지
-	@RequestMapping("/userjoin")
+	@RequestMapping("/join")
 	public String userJoin()
 	{
 		return "login/join";
