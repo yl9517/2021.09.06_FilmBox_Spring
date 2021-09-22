@@ -66,4 +66,20 @@
 	where member_id=#{member_id} and member_pwd=#{member_pwd}
 </select>
 
+<select id="userDetail" resultType="com.film.dto.UserDTO" parameterType="String">
+	select  member_id, member_name, member_pwd, member_phone, email 
+	from filmbox_member
+	where member_id=#{member_id}
+</select>
+
+<update id="updateUser" parameterType="com.film.dto.UserDTO">
+	update filmbox_member
+	set  member_id = #{member_id}
+		, member_name = #{member_name}
+		, member_pwd = #{member_pwd}
+		, member_phone = #{member_phone}
+		, email = #{email}
+	where member_id=#{member_id}
+</update>
+
 </mapper>

@@ -15,5 +15,9 @@ public interface UserService {
 	public void updatepwd(UserDTO dto);
 
 	public String getUser(UserDTO dto);
+	
+	public UserDTO userDetail(String member_id);
+
+	public boolean updateUser(UserDTO dto);
 
 }

@@ -1,11 +1,17 @@
 package com.film.controller;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -83,5 +89,31 @@ public class UserContoller {
 	{
 		return "user/myreservelist";
 	}
+	
+	//회원정보 수정
+	//회원 정보 수정
+	@GetMapping("/myinfo")
+	public String mypage(Model model, HttpSession session)
+	{
+		String member_id=(String) session.getAttribute("login");
+		//System.out.println("session 테스트------------" + member_id);
+		UserDTO dto=service.userDetail(member_id);
+		
+		model.addAttribute("dto", dto);
+		return "user/modifyform";
+	}
+	
+	@RequestMapping("/modifyresult")
+	public String updateUser(Model model, UserDTO dto)
+	{
+		boolean tf=false;
+		Map<String, Object> result=new HashMap<String, Object>();
+		if(dto!=null)
+		{
+			tf=service.updateUser(dto);
+		}
+		result.put("result", tf);
+		return "login/index";
+	}	
 	
 }

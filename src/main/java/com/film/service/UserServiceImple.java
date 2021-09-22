@@ -50,4 +50,23 @@ public class UserServiceImple implements UserService {
 		
 		return mapper.getUser(dto);
 	}
+	
+	@Override
+	public UserDTO userDetail(String member_id) {
+		
+		return mapper.userDetail(member_id);
+	}
+
+	@Override
+	public boolean updateUser(UserDTO dto) {
+
+		int r=mapper.updateUser(dto);
+		boolean result=false;
+		
+		if(r>0)
+		{
+			result=true;
+		}
+		return result;
+	}
 }
