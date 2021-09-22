@@ -282,6 +282,7 @@ public class LoginController {
 				System.out.println(tempPwd);
 				
 				dto.setMember_id(member_id);
+				dto.setMember_pwd(tempPwd);
 				dto.setEmail(email);
 				
 				//메일 전송
