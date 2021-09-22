@@ -30,8 +30,8 @@
  	font-weight: bold;
  }
  /* 회원정보수정 */
- .me a{
- 	padding-left: 55%;
+.myinfo1{
+ 	padding-left: 240px;
  	font-size: 12px;
  }
  /* my point */
@@ -122,9 +122,9 @@
 	font-weight: bold;
 	padding: 10px;
 }
- .myreserve a{
- 	padding-left: 63%;
- 	font-size: 15px;
+ .myreservelist1{
+ 	padding-left: 355px;
+ 	font-size: 14px;
  }
  /* 예매내역 */
  .reservelist{

@@ -22,14 +22,15 @@
 <section>
 	<div class="info">
 		<span class="me">ooo님
-		<a href="myinfo">회원정보 수정<div class="glyphicon glyphicon-pencil" aria-hidden="true"></div></a>
+			<span class="myinfo1">
+				<a href="myinfo">회원정보 수정<div class="glyphicon glyphicon-pencil" aria-hidden="true"></div></a>
+			</span>
 		</span>
-		<span></span>
 		<div class="point_film">
 			<div class="mypoint">
 				<p>MY POINT</p>
 				<div class="point">2500</div>
-				<button type="button" class="btn btn-default btn-xs">내 포인트 내역</button>
+				<button type="button" class="btn btn-default btn-xs" onclick="pointList()">내 포인트 내역</button>
 			</div>
 			<div class="filmstory">
 				<p>나의 필름스토리</p>
@@ -44,7 +45,9 @@
 	</div>
 	<div class="myreserve">
 		<span class="myreservelist_h">MY 예매내역
-		<a href="myreservelist">더보기</a>
+			<span class="myreservelist1">
+				<a href="myreservelist"><div class="glyphicon glyphicon-plus" aria-hidden="true"></div> 더보기</a>
+			</span>
 		</span>
 		<div class="reservelist">
 			<div class="reservelist_1">
@@ -57,7 +60,7 @@
 						<div>좌석		<p>H2, H3</p></div>
 					</div>
 					<div class="reservelist_1_movieinfo2_btn">
-					<button type="button" class="btn btn-info btn-xs">QR 보기</button><br>
+					<button type="button" class="btn btn-info btn-xs" onclick="openPopup()">QR 보기</button><br>
 					<button type="button" class="btn btn-default btn-xs">예약 취소</button>
 					</div>
 				</div>
@@ -72,7 +75,7 @@
 						<div>좌석		<p>F6</p></div>
 					</div>
 					<div class="reservelist_2_movieinfo2_btn">
-					<button type="button" class="btn btn-info btn-xs">QR 보기</button><br>
+					<button type="button" class="btn btn-info btn-xs" onclick="openPopup()">QR 보기</button><br>
 					<button type="button" class="btn btn-default btn-xs">예약 취소</button>
 					</div>
 				</div>
@@ -80,6 +83,6 @@
 		</div>
 	</div>
 	</section>
-<!-- <script src="resources\js\mypage.js"></script> -->
+<script type="text/javascript" src="resources\js\mypage.js"></script>
 </body>
 </html>
