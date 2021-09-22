@@ -122,8 +122,52 @@ public class LoginController {
 		
 		service.insertUser(dto);
 
-		return "login/login";
+		return "login/index";
 		} 
+	
+	//////////////////////////////////////loginresult
+	@PostMapping("/index")
+	public String loginresult(Model model, UserDTO dto, HttpSession session)
+	{
+		String url="";
+		
+		if(session.getAttribute("login")!=null)
+		{
+			session.removeAttribute("login");
+		}
+		
+		String getuser=service.getUser(dto);
+			
+		if(getuser!=null)
+		{
+			session.setAttribute("login", getuser);
+			url="redirect:loginresult";
+		}else
+		{
+			url="redirect:login";
+		}
+			
+		return url;
+		}
+			
+		@GetMapping("/loginresult")
+		public String success(Model model)
+		{
+			return "login/index";
+		}
+		
+		///////////////////main example(interceptor 확인=>main의 영화, 예매 탭 대신)
+		@GetMapping("/nav1")
+		public String nav1()
+		{
+			return "login/nav1";
+		}
+		
+		@GetMapping("/nav2")
+		public String nav2()
+		{
+			return "login/nav2";
+		}
 	
 	//로그아웃 
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })

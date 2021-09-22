@@ -14,5 +14,6 @@ public interface UserService {
 
 	public void updatepwd(UserDTO dto);
 
+	public String getUser(UserDTO dto);
 
 }

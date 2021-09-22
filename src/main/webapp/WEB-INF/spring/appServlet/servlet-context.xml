@@ -26,5 +26,21 @@
 
 	<!-- NaverLoginBO -->
 	 <beans:bean id="naverLoginBO" class="com.film.login.NaverLoginBO" />
+	 
+	 <!-- interceptor(session을 위한) 등록 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/nav1"/>
+
+<!-- 		<exclude-mapping path="/login"/>         exclude 할 항목들
+			<exclude-mapping path="/loginresult"/>
+			<exclude-mapping path="/nav2"/>
+			<exclude-mapping path="/index"/>
+			<exclude-mapping path="/callback/**"/>
+			<exclude-mapping path="/resources/**"/>  -->
+			<beans:bean class="com.film.login.AuthInterceptor"></beans:bean>
+			
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

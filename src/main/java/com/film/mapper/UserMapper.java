@@ -16,4 +16,6 @@ public interface UserMapper {
 	public String finduserid(String email);
 
 	public void updatepwd(UserDTO dto);
+	
+	public String getUser(UserDTO dto);
 }

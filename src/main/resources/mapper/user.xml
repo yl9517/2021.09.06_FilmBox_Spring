@@ -60,4 +60,10 @@
 	where member_id=#{member_id}
 </update>
 
+<select id="getUser" resultType="String" parameterType="com.film.dto.UserDTO">
+	select member_id
+	from filmbox_member
+	where member_id=#{member_id} and member_pwd=#{member_pwd}
+</select>
+
 </mapper>
