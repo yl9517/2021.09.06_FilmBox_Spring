@@ -36,6 +36,7 @@
  .mv_title h3{
  	overflow: hidden;
     height: 28px;
+    line-height: 30px;
  }
  #clear{
  	clear: both;

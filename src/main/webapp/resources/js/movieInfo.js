@@ -4,7 +4,18 @@ $('.tab_wrap').children().click(function() {
 	$(this).siblings().removeClass('act');
 });
 
-
+/* 줄거리 <br> 추가 */
+function replaceAll(str) {
+	let result1 = str.split(".").join(". <br>"); 
+	    result1 = result1.split("!").join("! <br>"); 
+	
+	/*  ... 같은거 있으면 붙여주기  */
+	
+	while(result1.indexOf(". <br>. <br>") !== -1){ 
+		result1 = result1.split(". <br>. <br>").join(".."); 
+	}
+	return result1;
+}
 
 /*영화 정보*/
 if($('.first_btn').hasClass('act')){
@@ -41,9 +52,11 @@ if($('.first_btn').hasClass('act')){
 	              resultt += "<th>출연진</th>"
 	              resultt += "<td colspan='3'>"+data.actors+"</td>"
 	              resultt += "</tr>";
-	               
-	              
+	               	              
 				$("#content").append(resultt);
+				
+				let replace_text = replaceAll(data.plotText,".",". <br>")
+				$(".rgyPostIt").append(replace_text);
 		}
 		,error:function(data){
 			console.log(data);

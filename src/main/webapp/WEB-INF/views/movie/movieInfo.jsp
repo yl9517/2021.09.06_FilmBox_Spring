@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+@font-face { 
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+	font-family: 'ONE-Mobile-Regular', cursive;
+}
+</style>
 <link rel="stylesheet" href="../resources/css/movieInfo.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"
@@ -71,9 +82,13 @@
 			<li class="act first_btn">영화정보</li>
 			<li class="second_btn">실관람평 (5,762)</li>
 		</ul>
-
+		
 		<table id="content" class="table table-hover">
 		</table>
+		<div class="rgyPostIt">
+		
+		</div>
+		
 
 		<div class="review_wrap">
 			<p>
