@@ -90,7 +90,7 @@ public class UserContoller {
 		return "user/myreservelist";
 	}
 	
-	//회원정보 수정
+
 	//회원 정보 수정
 	@GetMapping("/myinfo")
 	public String mypage(Model model, HttpSession session)
@@ -103,6 +103,7 @@ public class UserContoller {
 		return "user/modifyform";
 	}
 	
+	//수정 후 DB 저장(+메인페이지로 이동)
 	@RequestMapping("/modifyresult")
 	public String updateUser(Model model, UserDTO dto)
 	{
@@ -115,5 +116,18 @@ public class UserContoller {
 		result.put("result", tf);
 		return "login/index";
 	}	
+	
+	//회원 탈퇴
+	@RequestMapping("/userquit")
+	public String userquit(HttpSession session)
+	{
+		String member_id=(String) session.getAttribute("login");
+		service.deleteUser(member_id);
+		
+			session.removeAttribute("login");
+			session.invalidate();
+		
+		return "redirect:main";
+	}
 	
 }
