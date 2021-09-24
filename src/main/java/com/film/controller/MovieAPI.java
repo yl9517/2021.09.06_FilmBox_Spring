@@ -43,19 +43,6 @@ public class MovieAPI {
     private final String AUTH_KEY = "03778b8e03b2f65d0d2c724260f2df8c";
     private final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");  //날짜형식
  
-    public String makeQueryString(Map<String, String> paramMap) {
-        final StringBuilder sb = new StringBuilder();
- 
-        paramMap.entrySet().forEach(( entry )->{
-            if( sb.length() > 0 ) {
-                sb.append('&');
-            }
-            sb.append(entry.getKey()).append('=').append(entry.getValue());
-        });
- 
-        return sb.toString();
-    }
- 
     // API요청
     @GetMapping("/main")
     public String requestAPI(Model model) {
@@ -132,16 +119,6 @@ public class MovieAPI {
     	return "main";
     }
     
-
- 
-//    public static void main(String[] args) {
-//        // API 객체 생성
-//        MovieAPI api = new MovieAPI();
-//
-//        // API 요청
-//        api.requestAPI();
-//    }
-    
     //네이버 영화 검색api에서 이미지 가져오기
     public static String getImg(String title) {
         String clientId = "HYX4a9ygamLFJItnu0gY"; 
@@ -190,7 +167,19 @@ public class MovieAPI {
        
     }
 
-
+    public String makeQueryString(Map<String, String> paramMap) {
+        final StringBuilder sb = new StringBuilder();
+ 
+        paramMap.entrySet().forEach(( entry )->{
+            if( sb.length() > 0 ) {
+                sb.append('&');
+            }
+            sb.append(entry.getKey()).append('=').append(entry.getValue());
+        });
+ 
+        return sb.toString();
+    }
+ 
     private static String get(String apiUrl, Map<String, String> requestHeaders){
         HttpURLConnection con = connect(apiUrl);
         try {

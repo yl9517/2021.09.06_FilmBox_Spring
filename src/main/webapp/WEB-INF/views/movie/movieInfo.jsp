@@ -102,7 +102,7 @@
 					</div>
 					<div class="review_info">
 						${dto.movieNm } 을/를 재밌게 관람하셨나요? 관람평을 남기시면 <strong>500P</strong>가
-						적립됩니다. <a href="#">관람평 쓰기</a>
+						적립됩니다. <strong id="review_window">관람평 쓰기</strong>
 					</div>
 				</li>
 				<li>
@@ -128,7 +128,34 @@
 				</li>
 			</ul>
 		</div>
-
+		
+		<!-- 댓글 작성 창 -->
+		<form id="review_write">
+			<header class="window_top">
+				<h5>관람평 작성 </h5>
+			</header>
+			<div class="score">
+				<h2 class="tit">${dto.movieNm }</h2>
+				    <p><b class="star"> 0 </b> 점</p>
+				    <fieldset>
+				     	<input type="radio" name="rating" value="10" id="rate1"><label for="rate1">⭐</label>
+				        <input type="radio" name="rating" value="9" id="rate2"><label for="rate2">⭐</label>
+				        <input type="radio" name="rating" value="8" id="rate3"><label for="rate3">⭐</label>
+				        <input type="radio" name="rating" value="7" id="rate4"><label for="rate4">⭐</label>
+				        <input type="radio" name="rating" value="6" id="rate5"><label for="rate5">⭐</label>
+				        <input type="radio" name="rating" value="5" id="rate6"><label for="rate6">⭐</label>
+				        <input type="radio" name="rating" value="4" id="rate7"><label for="rate7">⭐</label>
+				        <input type="radio" name="rating" value="3" id="rate8"><label for="rate8">⭐</label>
+				        <input type="radio" name="rating" value="2" id="rate9"><label for="rate9">⭐</label>
+				        <input type="radio" name="rating" value="1" id="rate10"><label for="rate10">⭐</label>
+				    </fieldset>
+				    <br>
+				<textarea id="reviewContent" name="reviewContent" rows="5" cols="50" placeholder="관람평을 남겨주세요. 스포 및 비방글은 무통보 삭제조치를 받을 수 있습니다."></textarea>
+				<br>
+				<input type="reset" id="reset" value="취소">
+				<input type="submit" value="등록">
+			</div>
+		</form>
 
 	</div>
 	<script src="../resources/js/movieInfo.js"></script>

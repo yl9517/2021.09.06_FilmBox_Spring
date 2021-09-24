@@ -63,3 +63,26 @@ if($('.first_btn').hasClass('act')){
 		}
 	});
 }
+
+/* 리뷰창 */
+$('#review_write').hide();
+$('#review_window').click(function() {
+	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
+	$('#review_write').show();
+});
+$('#reset').click(function() {
+	$('#review_write').hide();
+	$('#review_write').css('box-shadow','');
+});
+
+/* 리뷰 별점 */
+$('[id^=rate]').click(function() {
+
+	$('.star').empty();
+	
+	let star =  $(this).val();
+	$('.star').append(star);
+});
+	
+	
+	
