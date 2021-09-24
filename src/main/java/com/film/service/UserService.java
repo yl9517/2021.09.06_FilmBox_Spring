@@ -20,4 +20,6 @@ public interface UserService {
 
 	public boolean updateUser(UserDTO dto);
 
+	public void deleteUser(String member_id);
+
 }

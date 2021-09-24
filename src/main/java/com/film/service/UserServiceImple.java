@@ -69,4 +69,11 @@ public class UserServiceImple implements UserService {
 		}
 		return result;
 	}
+
+	@Override
+	public void deleteUser(String member_id) {
+		
+		int result=mapper.deleteUser(member_id);
+
+	}
 }

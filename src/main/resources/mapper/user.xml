@@ -82,4 +82,9 @@
 	where member_id=#{member_id}
 </update>
 
+<delete id="deleteUser" parameterType="String">
+	delete from filmbox_member
+	where member_id=#{member_id}
+</delete>
+
 </mapper>
