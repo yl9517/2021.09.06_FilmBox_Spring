@@ -130,9 +130,10 @@
 		</div>
 		
 		<!-- 댓글 작성 창 -->
-		<form id="review_write">
+		<form id="review_write" method="post" action="reviewAction">
 			<header class="window_top">
 				<h5>관람평 작성 </h5>
+				<img alt="close" class="reset" src="../resources/img/close.png">
 			</header>
 			<div class="score">
 				<h2 class="tit">${dto.movieNm }</h2>
@@ -152,7 +153,7 @@
 				    <br>
 				<textarea id="reviewContent" name="reviewContent" rows="5" cols="50" placeholder="관람평을 남겨주세요. 스포 및 비방글은 무통보 삭제조치를 받을 수 있습니다."></textarea>
 				<br>
-				<input type="reset" id="reset" value="취소">
+				<input type="reset" class="reset" value="취소">
 				<input type="submit" value="등록">
 			</div>
 		</form>

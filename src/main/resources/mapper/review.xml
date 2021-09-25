@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.film.mapper.ReviewMapper">
+
+	<insert id="insertReview" parameterType="com.film.dto.ReviewDTO">
+		insert into filmbox_review
+		(member_id, movieCd, review_content, review_starpoint, review_date, rev_no )
+		values
+			( #{member_id} , #{movieCd} , #{review_content} , #{review_starpoint} , now(), #{rev_no} )
+	</insert>
+
+</mapper>
+    
+    
