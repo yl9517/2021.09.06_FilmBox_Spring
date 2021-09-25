@@ -114,7 +114,7 @@ public class UserContoller {
 			tf=service.updateUser(dto);
 		}
 		result.put("result", tf);
-		return "login/index";
+		return "redirect:mypage";
 	}	
 	
 	//회원 탈퇴
