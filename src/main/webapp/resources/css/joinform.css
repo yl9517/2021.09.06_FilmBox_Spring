@@ -1,25 +1,43 @@
 @charset "UTF-8";
 
+@font-face {
+	font-family: 'ONE-Mobile-Regular';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 *{
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	font-family: 'ONE-Mobile-Regular', cursive!important;
+	-ms-user-select: none;
+	-moz-user-select: -moz-none; 
+	-webkit-user-select: none; 
+	-khtml-user-select: none; 
+	user-select:none;
 }
 
 
 
 body { 
 	min-height: 100vh;
-  	background: -webkit-gradient(linear, left bottom, right top, from(#393c40), to(#2f2d33));
-	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #2f2d33 0%);
-	background: -moz-linear-gradient(bottom left, #92b5db 0%, #2f2d33 0%); 
-	background: -o-linear-gradient(bottom left, #92b5db 0%, #2f2d33 0%); 
-	background: linear-gradient(to top right, #92b5db 0%, #2f2d33 0%);  
+  	background: -webkit-gradient(linear, left bottom, right top, from(#202126), to(#202126));
+	background: -webkit-linear-gradient(bottom left, #202126 0%, #202126 0%);
+	background: -moz-linear-gradient(bottom left, #202126 0%, #202126 0%); 
+	background: -o-linear-gradient(bottom left, #202126 0%, #202126 0%); 
+	background: linear-gradient(to top right, #202126 0%, #202126 0%);  
+}
+
+.container{
+	width : 650px!important;
+	margin-top : 0px!important;
 }
 
 	
 .input-form { 
-	max-width: 680px; 
+	max-width: 500px; 
 	margin-top: 80px;
 	padding: 32px; 
 	background: #fff; 
