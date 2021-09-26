@@ -1,3 +1,5 @@
+let movieCd = $('#movieCd').val();
+let member_id = $('#member_id').val();
 /* 버튼 활성화 */
 $('.tab_wrap').children().click(function() {	
 	$(this).addClass('act');	
@@ -19,7 +21,6 @@ function replaceAll(str) {
 
 /*영화 정보*/
 if($('.first_btn').hasClass('act')){
-	let movieCd = $('#mvCd').val();
 	$.ajax({
 		url : "/content"
 		, data : {'movieCd': movieCd}
@@ -70,19 +71,63 @@ $('#review_window').click(function() {
 	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
 	$('#review_write').show();
 });
+
+/* 수정버튼 눌렀을때 리뷰 창 */
+$('#modifyBtn').click(function() {
+	$('#review_write').attr('action','../reviewModifyAction');
+	$.ajax({
+		url : "/getThisReview"
+		, data : {'movieCd': movieCd , 'member_id': member_id}
+		, method : 'get'
+		,success:function(data) {			
+			$('#review_content').append(data.review_content);
+            $('#review_starpoint').val(data.review_starpoint);
+            $("input[type=radio][value="+data.review_starpoint+"]").attr('checked','checked');
+		}
+		,error:function(data){
+			console.log(data);
+		}
+	});
+	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
+	$('#review_write').show();
+});
+
+/* 리뷰창 닫기 */
 $('.reset').click(function() {
 	$('#review_write').hide();
 	$('#review_write').css('box-shadow','');
 });
 
+
 /* 리뷰 별점 */
 $('[id^=rate]').click(function() {
 
-	$('.star').empty();
+	$('#review_starpoint').empty();
 	
 	let star =  $(this).val();
-	$('.star').append(star);
+	$('#review_starpoint').val(star);
 });
 	
+/* 전송 전 리뷰 별점 선택 확인 = 0점이면 false*/	
+function checkStar() {
+
+	let content =  $('#review_content').val();	
+	if(content.length <5){
+		$('.alarm').empty();
+		$('.alarm').append('관람평을 최소 5글자 이상 입력해주세요. ');
+		return false;
+	}
 	
-	
+	let starval =  $('#review_starpoint').val();
+	if(starval == 0 || starval ==null){
+		$('.alarm').empty();
+		$('.alarm').append('이 영화에 대한 별점을 선택해주세요. ');
+		return false;
+	}
+} 
+
+$('.etc').hide();
+$('.moreBtn').click(function() {
+	$(this).next().toggle();
+});
+  

@@ -38,7 +38,9 @@
 
 	<div id="info_wrap">
 
-		<input type="hidden" id="mvCd" value="${dto.movieCd }">
+	<!-- 로그인한 아이디 -->
+		<input type="hidden" id="member_id" name="movieCd" value="yerim9337">
+		
 		<div id="info_title">
 			<div class="bg" style="background-image: url('${dto.image}')">
 			</div>
@@ -90,12 +92,15 @@
 		</div>
 		
 
+		<input type="hidden" id="rev_no" name="rev_no" value=""> <!-- 예약번호  없으면 댓글 작성창 못뜨게-->
+	
 		<div class="review_wrap">
 			<p>
 				총 <b>1,256</b>건의 관람평이 있습니다.
 			</p>
 			<div class="line"></div>
 			<ul class="review">
+			 <!-- 내 아이디로 쓴 리뷰가 없으면 -->
 				<li>
 					<div class="user_info">
 						<span class="userName"> Film Box </span>
@@ -105,19 +110,37 @@
 						적립됩니다. <strong id="review_window">관람평 쓰기</strong>
 					</div>
 				</li>
+			<!-- 내가 쓴 리뷰가 있다면 -->
 				<li>
 					<div class="user_info">
 						<span class="userName">이*름</span> <span><img alt="star"
 							src="../resources/img/star.png"> 8 </span>
 					</div>
-					<div class="review_info">재밌었어용 ㅎㅎ</div>
+					<div class="review_info myreview">
+						<span>재밌었어용ㅎㅎ</span>
+						
+						<img class="moreBtn" alt="more" src="../resources/img/moreBtn.png">
+						<div class="edit etc">
+							<span id="modifyBtn">수정</span>
+							<span>삭제</span>
+						</div>
+					</div>
 				</li>
+				
+			<!-- 댓글목록 반복문 돌리기 -->
 				<li>
 					<div class="user_info">
 						<span class="userName">이*름</span> <span><img alt="star"
 							src="../resources/img/star.png"> 8 </span>
 					</div>
-					<div class="review_info">재밌었어용 ㅎㅎ ㄴㄴㄴ</div>
+					<div class="review_info">
+						<span>재밌었어용ㅎㅎ오예~~</span>
+						<img class="moreBtn" alt="more" src="../resources/img/moreBtn.png">
+						<div class="report etc">
+							<p> 스포일러 및 욕설/비방하는 내용이 있습니까?</p>
+							<span>신고</span>
+						</div>
+					</div>
 				</li>
 				<li>
 					<div class="user_info">
@@ -130,14 +153,19 @@
 		</div>
 		
 		<!-- 댓글 작성 창 -->
-		<form id="review_write" method="post" action="reviewAction">
+		
+		
+		<form id="review_write" method="post" action="../reviewInsertAction" onsubmit="return checkStar();">
+		
+		<input type="hidden" id="movieCd" name="movieCd" value="${dto.movieCd }">
+		<input type="hidden" id="rev_no" name="rev_no" value="123">
 			<header class="window_top">
 				<h5>관람평 작성 </h5>
 				<img alt="close" class="reset" src="../resources/img/close.png">
 			</header>
 			<div class="score">
 				<h2 class="tit">${dto.movieNm }</h2>
-				    <p><b class="star"> 0 </b> 점</p>
+				    <p><input type="text" id="review_starpoint" name="review_starpoint" value="0"> 점</p>
 				    <fieldset>
 				     	<input type="radio" name="rating" value="10" id="rate1"><label for="rate1">⭐</label>
 				        <input type="radio" name="rating" value="9" id="rate2"><label for="rate2">⭐</label>
@@ -151,8 +179,9 @@
 				        <input type="radio" name="rating" value="1" id="rate10"><label for="rate10">⭐</label>
 				    </fieldset>
 				    <br>
-				<textarea id="reviewContent" name="reviewContent" rows="5" cols="50" placeholder="관람평을 남겨주세요. 스포 및 비방글은 무통보 삭제조치를 받을 수 있습니다."></textarea>
+				<textarea id="review_content" name="review_content" rows="5" cols="50" placeholder="관람평을 남겨주세요. 스포 및 비방글은 무통보 삭제조치를 받을 수 있습니다."></textarea>
 				<br>
+				<p class="alarm"> 　</p>
 				<input type="reset" class="reset" value="취소">
 				<input type="submit" value="등록">
 			</div>
