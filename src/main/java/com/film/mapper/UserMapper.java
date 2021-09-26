@@ -24,4 +24,6 @@ public interface UserMapper {
 	public int updateUser(UserDTO dto);
 
 	public int deleteUser(String member_id);
+
+	public int pwdcheck(UserDTO dto);
 }

@@ -47,6 +47,12 @@
 	where member_id=#{member_id}
 </select>
 
+<select id="pwdcheck" resultType="int" parameterType="com.film.dto.UserDTO">
+	select count(*)
+	from filmbox_member
+	where member_id=#{member_id} and member_pwd=#{member_pwd}
+</select>
+
 <select id="finduserid" resultType="String">
 	select member_id
 	from filmbox_member

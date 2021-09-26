@@ -76,4 +76,10 @@ public class UserServiceImple implements UserService {
 		int result=mapper.deleteUser(member_id);
 
 	}
+
+	@Override
+	public int pwdcheck(UserDTO dto) {
+		
+		return mapper.pwdcheck(dto);
+	}
 }

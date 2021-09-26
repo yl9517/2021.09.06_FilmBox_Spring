@@ -22,4 +22,6 @@ public interface UserService {
 
 	public void deleteUser(String member_id);
 
+	public int pwdcheck(UserDTO dto);
+
 }

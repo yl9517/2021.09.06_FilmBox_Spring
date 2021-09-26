@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.film.dto.UserDTO;
 import com.film.service.UserService;
+import com.mysql.cj.Session;
 
 
 
@@ -75,7 +78,7 @@ public class UserContoller {
 	@RequestMapping("/myinfo")
 	public String myinfo()
 	{
-		return "user/myinfo";
+		return "user/pwdcheck";
 	}
 	//마이페이지>나의 필름스토리
 	@RequestMapping("/myfilmstory")
@@ -90,9 +93,30 @@ public class UserContoller {
 		return "user/myreservelist";
 	}
 	
+	//회원 정보 수정 전 비밀번호 체크
+	@PostMapping("/myinfo")
+	public String pwdcheck(HttpSession session, UserDTO dto)
+	{
+		String member_id=(String) session.getAttribute("login");
+		String member_pwd=dto.getMember_pwd();
+		
+		dto.setMember_id(member_id);
+		dto.setMember_pwd(member_pwd);
+		
+		int result=service.pwdcheck(dto);
+
+		if(result>0)
+		{
+			return "redirect:modify";
+		}
+		else
+		{
+			return "redirect:myinfo";
+		}
+	}
 
 	//회원 정보 수정
-	@GetMapping("/myinfo")
+	@GetMapping("/modify")
 	public String mypage(Model model, HttpSession session)
 	{
 		String member_id=(String) session.getAttribute("login");
