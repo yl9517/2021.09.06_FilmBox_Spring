@@ -51,31 +51,31 @@
 		</span>
 		<div class="reservelist">
 			<div class="reservelist_1">
-				<div>예매번호		<span class="reserve_num">215588-2585</span></div><br>
+				<div>예매번호		<span class="reserve_num" id="myreserve_num1">215588-2585</span></div><br>
 				<div class="reservelist_1_movieinfo">
-					<img src='resources\img\shang-chi.jpg' width='100px' height='120px'>
+					<img src='resources\img\shang-chi.jpg' width='100px' height='130px'>
 					<div class="reservelist_1_movieinfo2">
-						<div class="movie_title">샹치</div>
-						<div>관람일시	<p>2021.09.10(금) 18:10</p></div>
-						<div>좌석		<p>H2, H3</p></div>
+						<div class="movie_title" id="movie_title1">샹치</div>
+						<div>관람일시	<p id="myreserve_date1">2021.09.22(금) 18:10</p></div>
+						<div>좌석		<p id="myreserve_seat1">H2, H3</p></div>
 					</div>
 					<div class="reservelist_1_movieinfo2_btn">
-					<button type="button" class="btn btn-info btn-xs" onclick="openPopup()">QR 보기</button><br>
+					<button type="button" class="btn btn-info btn-xs" id="qr1">QR 보기</button><br>
 					<button type="button" class="btn btn-default btn-xs">예약 취소</button>
 					</div>
 				</div>
 			</div>
 			<div class="reservelist_2">
-				<div>예매번호		<span class="reserve_num">215588-252285</span></div><br>
+				<div>예매번호		<span class="reserve_num" id="myreserve_num2">215588-252285</span></div><br>
 				<div class="reservelist_2_movieinfo">
-					<img src='resources\img\moga.jpg' width='100px' height='120px'>
+					<img src='resources\img\moga.jpg' width='100px' height='130px'>
 					<div class="reservelist_2_movieinfo2">
-						<div class="movie_title">인질</div>
-						<div>관람일시	<p>2021.09.10(금) 18:10</p></div>
-						<div>좌석		<p>F6</p></div>
+						<div class="movie_title" id="movie_title2">인질</div>
+						<div>관람일시	<p id="myreserve_date2">2021.09.21(금) 18:10</p></div>
+						<div>좌석		<p id="myreserve_seat2">F6</p></div>
 					</div>
 					<div class="reservelist_2_movieinfo2_btn">
-					<button type="button" class="btn btn-info btn-xs" onclick="openPopup()">QR 보기</button><br>
+					<button type="button" class="btn btn-info btn-xs" id="qr2">QR 보기</button><br>
 					<button type="button" class="btn btn-default btn-xs">예약 취소</button>
 					</div>
 				</div>

@@ -1,9 +1,16 @@
 @charset "UTF-8";
- *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
- }
+@font-face { 
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'ONE-Mobile-Regular', cursive;
+}
  /* 상단 */
  .info{
  	padding : 20px;
@@ -20,6 +27,7 @@
  	animation: fadein 2s;
  	-webkit-animation: fadein 3s;
  	
+ 	box-shadow: 0 8px 8px -8px grey;
  }
  .me{
  	text-indent: 10px;
@@ -106,6 +114,7 @@
  	animation: fadein 2s;
  	-webkit-animation: fadein 3s;
  	
+ 	box-shadow: 0 8px 8px -8px grey;
 }
 /* fadein 효과 */
 @-webkit-keyframes fadein{

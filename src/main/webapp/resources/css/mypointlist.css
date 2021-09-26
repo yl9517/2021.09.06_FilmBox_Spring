@@ -1,0 +1,82 @@
+@charset "UTF-8";
+@font-face { 
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'ONE-Mobile-Regular', cursive;
+}
+.mypointlist{
+	margin: 0 auto;
+	width: 800px;
+	padding: 50px;
+}
+/* 내 포인트 내역 타이틀 */
+.mypointlist_header{
+	margin: 0 auto;
+	width: 700px;
+	padding: 20px;
+}
+/* 사용가능 포인트 */
+.mypointlist_total{
+	margin: 0 auto;
+	width: 400px;
+	text-align: center;
+	padding: 30px;
+	font-size: 20px;
+	background-color: beige;
+	border-radius: 10px;
+	border: 3px double white;
+	margin-top: 10px;
+	
+	box-shadow: 0 8px 8px -8px grey;
+}
+/* 현재 사용가능 포인트 */
+.mypointlist_total div:first-child{
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+.mypointlist_total span{
+	background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #FFD0AE 50%);
+}
+/* 내 포인트 내역 테이블 */
+.table-wrap{
+	margin: 0 auto;
+	padding: 20px;
+}
+/* 포인트 애니메이션 */
+.point_animation{
+	margin-top: 20px;
+}
+/* 큰 코인  */
+.point_img{
+	-webkit-animation: point_motion .5s linear 0s infinite alternate;
+	margin-top: 0;
+	position: absolute;
+	left: 850px;
+	top: 300px;
+	transform: translateX(-50%);
+}
+/* 작은 코인 */
+.point_img2{
+	-webkit-animation: point_motion .5s linear 0s infinite alternate;
+	margin-top: 0;
+	position: absolute;
+	left: 860px;
+	top: 290px;
+	transform: translateX(-50%);
+}
+@-webkit-keyframes point_motion{
+	0%{
+		margin-top: 0px;
+	}
+	100%{
+		margin-top: 10px;
+	}
+}
+
