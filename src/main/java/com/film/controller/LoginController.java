@@ -80,7 +80,7 @@ public class LoginController {
 		String mobile= (String)response_obj.get("mobile"); 
 
 		//4.파싱세션으로 저장 
-		session.setAttribute("login",mobile); 
+		session.setAttribute("loginId",mobile); 
 
 		String token=oauthToken.getAccessToken();
 
@@ -124,16 +124,16 @@ public class LoginController {
 	{
 		String url="";
 
-		if(session.getAttribute("login")!=null)
+		if(session.getAttribute("loginId")!=null)
 		{
-			session.removeAttribute("login");
+			session.removeAttribute("loginId");
 		}
 
 		String getuser=service.getUser(dto);
 
 		if(getuser!=null)
 		{
-			session.setAttribute("login", getuser);
+			session.setAttribute("loginId", getuser);
 			url="redirect:loginresult";
 		}else
 		{
@@ -234,7 +234,7 @@ public class LoginController {
 			session.setAttribute("member_name", userData.get("nickname"));
 			session.setAttribute("member_id", userData.get("id"));
 			session.setAttribute("access_token", access_token);
-			session.setAttribute("login", userData.get("nickname"));
+			session.setAttribute("loginId", userData.get("id"));
 		}
 
 		return "login/login";

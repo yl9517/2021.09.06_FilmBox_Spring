@@ -150,7 +150,7 @@ public class UserContoller {
 	@PostMapping("/myinfo")
 	public String pwdcheck(HttpSession session, UserDTO dto)
 	{
-		String member_id=(String) session.getAttribute("login");
+		String member_id=(String) session.getAttribute("loginId");
 		String member_pwd=dto.getMember_pwd();
 
 		dto.setMember_id(member_id);
@@ -172,7 +172,7 @@ public class UserContoller {
 	@GetMapping("/modify")
 	public String mypage(Model model, HttpSession session)
 	{
-		String member_id=(String) session.getAttribute("login");
+		String member_id=(String) session.getAttribute("loginId");
 		//System.out.println("session 테스트------------" + member_id);
 		UserDTO dto=service.userDetail(member_id);
 
@@ -199,10 +199,10 @@ public class UserContoller {
 	@RequestMapping("/userquit")
 	public String userquit(HttpSession session)
 	{
-		String member_id=(String) session.getAttribute("login");
+		String member_id=(String) session.getAttribute("loginId");
 		service.deleteUser(member_id);
 
-		session.removeAttribute("login");
+		session.removeAttribute("loginId");
 		session.invalidate();
 
 		return "redirect:main";

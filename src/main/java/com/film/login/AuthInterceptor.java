@@ -16,9 +16,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		//세션 가져오기
 		HttpSession session=request.getSession();
 		
-		if(session.getAttribute("login")==null)
+		if(session.getAttribute("loginId")==null)
 		{
-			response.sendRedirect("login");
+			response.sendRedirect("loginId");
 			return false;
 		}
 		return super.preHandle(request, response, handler);
