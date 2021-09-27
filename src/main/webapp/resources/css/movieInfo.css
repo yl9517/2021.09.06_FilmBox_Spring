@@ -262,7 +262,7 @@ div.rgyPostIt:hover::after {
     border: 2px solid #ccc;
     padding: 10px;
     border-radius: 20px;
-    margin-left: 400px;
+    margin-left: 380px;
     background-color: #f1f1f1;
  }
  #review_window:hover{

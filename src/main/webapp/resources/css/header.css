@@ -57,6 +57,14 @@
   .menu2_right li:last-child{
   	background-color: #7F9871;
   }
+ .menu2_right img{   
+    width: 40px;
+    position: relative;
+    bottom: 8.6px;
+ }
+  .menu2_right li.user{
+     border: 0px;
+  }
  /* 검색창  */
 .search__container{
    position: relative;
