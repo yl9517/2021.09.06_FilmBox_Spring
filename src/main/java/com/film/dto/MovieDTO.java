@@ -13,15 +13,17 @@ public class MovieDTO {
 	private String movieCd;
 	private String movieNm;
 	private String openDt;
+	private String audiAcc;
 	private String image;
 	private String update_date;
 	
-	public MovieDTO(String rank, String movieCd, String movieNm, String openDt, String image) {
+	public MovieDTO(String rank, String movieCd, String movieNm, String openDt, String audiAcc,String image) {
 		super();
 		this.rank = rank;
 		this.movieCd = movieCd;
 		this.movieNm = movieNm;
 		this.openDt = openDt;
+		this.audiAcc=audiAcc;
 		this.image = image;
 	}
 	

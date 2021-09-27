@@ -14,5 +14,5 @@ public interface MovieService {
 	public void movieupdate(List<MovieDTO> mvList);
 	public Map<String, Object> contentAPI(String movieCd);
 	
-	
+	public void updateList();
 }
