@@ -24,7 +24,7 @@ public class NaverLoginBO {
 	
 	private final static String CLIENT_ID = "qhJ8t3UeQ4Xtk8S2KhJo"; 
 	private final static String CLIENT_SECRET = "Dj9Z8z4uhs"; 
-	private final static String REDIRECT_URI = "http://localhost:8080/filmbox/callback"; 
+	private final static String REDIRECT_URI = "http://localhost:8080/callback"; 
 	private final static String SESSION_STATE = "oauth_state";
 	
 	/* 프로필 조회 API URL */ 
