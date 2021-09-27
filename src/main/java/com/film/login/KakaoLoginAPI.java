@@ -8,18 +8,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.core.io.ClassPathResource;
 
 public class KakaoLoginAPI {
 
 	//액세스 토큰 받아오기
-	public String getAccessToken(String code) {
+	public String getAccessToken(String code) throws Exception {
 		// TODO Auto-generated method stub
 		String access_token="";
 		String refresh_token="";
 		String requestUrl="https://kauth.kakao.com/oauth/token";
+		
+		//properties 불러오기
+		ClassPathResource resource= new ClassPathResource("login.properties");
+		Properties prop = new Properties();
+		prop.load(resource.getInputStream());
 
 		//서버에 액세스 토큰 요청하기 
 		try {
@@ -31,8 +38,8 @@ public class KakaoLoginAPI {
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 			StringBuilder sb = new StringBuilder();
 			String grant_type= "authorization_code";
-			String client_id = "3ea0a4c7321aaef0c7c905c5d4ec6413";
-			String redirect_uri = "http://localhost:8080/filmbox/kakaologin";
+			String client_id = prop.getProperty("client_id");
+			String redirect_uri = "http://localhost:8080/kakaologin";
 
 			//요청할때 보내야할 데이터 4가지
 			sb.append("grant_type="+grant_type);

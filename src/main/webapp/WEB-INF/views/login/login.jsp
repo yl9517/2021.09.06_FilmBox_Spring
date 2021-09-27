@@ -54,7 +54,7 @@
 				<!-- 카카오 로그인 창으로 이동 -->
 				<div id="kakao_id_login" style="text-align: center">
 					<a
-						href="https://kauth.kakao.com/oauth/authorize?client_id=3ea0a4c7321aaef0c7c905c5d4ec6413&redirect_uri=http://localhost:8080/filmbox/kakaologin&response_type=code">
+						href="kakaologinview">
 						<img width="223" height="48.22"
 						src="resources\img\kakao_login_medium_wide.png" alt="">
 					</a>
