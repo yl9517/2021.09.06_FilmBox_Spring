@@ -41,9 +41,10 @@ public class UserContoller {
 
 	//회원가입 페이지
 	@RequestMapping("/join")
-	public String userJoin()
+	public String userJoin(Model model)
 	{
-		return "login/join";
+		model.addAttribute("page", "login/join.jsp");
+		return "view";
 	}
 
 	//회원가입 환영 페이지
@@ -52,7 +53,8 @@ public class UserContoller {
 	{
 		service.insertFilmUser(dto);
 		model.addAttribute("member_name", dto.getMember_name());
-		return "login/joinresult";
+		model.addAttribute("page", "login/joinresult.jsp");
+		return "view";
 	}
 
 	@RequestMapping(value = "/useridcheck", method = RequestMethod.POST)
@@ -175,7 +177,8 @@ public class UserContoller {
 		UserDTO dto=service.userDetail(member_id);
 
 		model.addAttribute("dto", dto);
-		return "user/modifyform";
+		model.addAttribute("page", "user/modifyform.jsp");
+		return "view";
 	}
 
 	//수정 후 DB 저장(+메인페이지로 이동)

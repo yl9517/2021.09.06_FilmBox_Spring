@@ -10,10 +10,6 @@
 </head>
 
 <body>
-<h1>FilmBox</h1>
-<hr>
-<br>
-
 
 	<center>
 		<c:choose>

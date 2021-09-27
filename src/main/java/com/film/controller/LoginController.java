@@ -54,8 +54,9 @@ public class LoginController {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session); 
 
 		model.addAttribute("url", naverAuthUrl); 
+		model.addAttribute("page", "login/login.jsp");
 
-		return "login/login"; 
+		return "view"; 
 	} 
 
 	//네이버 로그인 성공시 callback호출 메소드 
@@ -112,8 +113,9 @@ public class LoginController {
 			dto.setEmail(email);
 
 		service.insertUser(dto);
+		model.addAttribute("page", "login/index.jsp");
 
-		return "login/index";
+		return "view";
 	} 
 
 	//loginresult
@@ -144,7 +146,8 @@ public class LoginController {
 	@GetMapping("/loginresult")
 	public String success(Model model)
 	{
-		return "login/index";
+		model.addAttribute("page", "login/index.jsp");
+		return "view";
 	}
 
 	//main example(interceptor 확인=>main의 영화, 예매 탭 대신)
@@ -164,7 +167,7 @@ public class LoginController {
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(HttpSession session)throws IOException {  
 		session.invalidate(); 
-		return "redirect:index"; //login
+		return "redirect:main";
 	} 
 
 	//index 페이지는 테스트용이므로 추후 수정 필요 시 수정

@@ -10,11 +10,6 @@
 </head>
 <body>
 
-<h1>Filmbox 메인 페이지</h1>
-<a href="nav1">영화</a>
-<a href="nav2">예매</a>
-<hr>
-
  <center> 
 	<c:choose>
 	
@@ -39,8 +34,5 @@
 	  </c:choose>
      </center>
 
-
-
-	<hr>
 </body>
 </html>
