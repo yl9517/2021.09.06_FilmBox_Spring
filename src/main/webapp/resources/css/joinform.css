@@ -49,6 +49,9 @@ body {
 	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); */
 	} 
 	
+input[type=password] { 
+	font-family:'Malgun gothic', dotum, sans-serif!important;
+}
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
      background-color: red;

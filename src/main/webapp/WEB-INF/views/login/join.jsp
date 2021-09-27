@@ -213,7 +213,7 @@
  <div class="input-form col-md-12 mx-auto"> 
  <h4 class="mb-3">회원가입</h4> 
  <br>
- <form class="validation-form" action="joinresult" novalidate> 
+ <form method="post" class="validation-form" action="joinresult" novalidate> 
 
  		<div class="mb-3"> 
  			<label for="member_id">아이디</label> 
