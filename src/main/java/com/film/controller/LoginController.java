@@ -240,7 +240,7 @@ public class LoginController {
 
 		//세션에 담기 (이메일 정보 or 아이디, 액세스 토큰)
 		if(userData.get("id")!=null) {
-			session.setAttribute("member_name", userData.get("nickname"));
+			session.setAttribute("sessionId", userData.get("nickname"));
 			session.setAttribute("member_id", userData.get("id"));
 			session.setAttribute("access_token", access_token);
 		}
@@ -248,18 +248,18 @@ public class LoginController {
 		return "login/login";
 	}
 
-
-	@GetMapping("/kakaologout")
-	public String klogout(HttpSession session)
-	{
-		KakaoLoginAPI api = new KakaoLoginAPI();
-		api.kakaologout((String)session.getAttribute("access_token"));
-		session.removeAttribute("access_token");
-		session.removeAttribute("member_id");
-		session.removeAttribute("member_name");
-
-		return "redirect:index";
-	}
+	//사용 보류
+//	@GetMapping("/kakaologout")
+//	public String klogout(HttpSession session)
+//	{
+//		KakaoLoginAPI api = new KakaoLoginAPI();
+//		api.kakaologout((String)session.getAttribute("access_token"));
+//		session.removeAttribute("access_token");
+//		session.removeAttribute("member_id");
+//		session.removeAttribute("sessionId");
+//
+//		return "redirect:index";
+//	}
 
 	//아이디 찾기
 	@GetMapping("/finduserid")
