@@ -65,6 +65,38 @@ if($('.first_btn').hasClass('act')){
 	});
 }
 
+/*리뷰목록*/
+$.ajax({
+	url : "/reveiwList"
+	, data : {'movieCd': movieCd , 'member_id': member_id}
+	, method : 'get'
+	,success:function(data) {	
+		 $.each(data, function(index, item){
+			 console.log('리뷰'+item);
+	         let reviews =  "<li>";
+		         	 reviews += "<div class='user_info'>";
+			         	 reviews += "<span class='userName'>"+item.member_id+"</span>"
+		               	 reviews += "<span><img alt='star' src='../resources/img/star.png'> 8 </span>"
+		         	 reviews += "</div>";
+		         	 
+		         	 reviews += "<div class='review_info'>";
+			         	 reviews += "<span>"+item.review_content+"</span>";
+			         	 reviews += "<img class='moreBtn' alt='more' src='../resources/img/moreBtn.png'>";
+			         	 reviews += "<div class='report etc'>";
+				         	 reviews += "<p> 스포일러 및 욕설/비방하는 내용이 있습니까?</p>";
+				         	 reviews += "<span>신고</span>";
+			         	 reviews += "</div>";
+		         	 reviews += "</div>";
+	         	 reviews += "</li>";
+			$(".review").eq(1).append(reviews);
+		 });		
+	}
+	,error:function(data){
+		console.log(data);
+	}
+});
+
+
 /* 리뷰창 */
 $('#review_write').hide();
 $('#review_window').click(function() {
@@ -90,6 +122,15 @@ $('#modifyBtn').click(function() {
 	});
 	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
 	$('#review_write').show();
+});
+/* 삭제버튼 눌렀을때 confirm창 */
+
+$('#deleteBtn').click(function() {
+	if(confirm("댓글을 삭제하시겠습니까?")){		  		  
+ 		 location.href="../reviewDeleteAction/"+movieCd;
+	}else{
+		return;	
+	}
 });
 
 /* 리뷰창 닫기 */
@@ -126,8 +167,13 @@ function checkStar() {
 	}
 } 
 
-$('.etc').hide();
-$('.moreBtn').click(function() {
+/* 댓글 - 더보기 */
+$(document).one("mouseover", "body", function() {
+
+	$('.etc').hide();
+});
+$(document).on("click", ".moreBtn", function() {
 	$(this).next().toggle();
 });
+
   
