@@ -185,7 +185,7 @@ public class LoginController {
 		return "login/index";
 	}
 
-	//-------------kakao-------------------
+	//-------------kakao---------------------
 	@RequestMapping("/kakaologinview")
 	public String kakaologinurl() throws Exception
 	{
