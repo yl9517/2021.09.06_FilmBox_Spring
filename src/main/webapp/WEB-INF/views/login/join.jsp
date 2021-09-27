@@ -31,7 +31,7 @@
 	}
 </style>
 <body>
-
+<%@ include file="../header.jsp" %>
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-8">
             <form name='nJoin' role="form" id="joinForm" method="post" autocomplete="off">
