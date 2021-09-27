@@ -16,13 +16,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<header>
-	<h2>FilmBox</h2>
-</header>
 <section>
 <div class="mypointlist">
 	<div class="mypointlist_header">
-		<h4><strong>내 포인트 내역</strong></h4>
+		<h3><strong>내 포인트 내역</strong></h3>
 	</div>
 	<div class="mypointlist_total">
 		<div>현재 사용가능 포인트</div>
@@ -33,7 +30,7 @@
 		<img src="resources\img\reward.png" width="20px" height="20px" class="point_img2">
 	</div>
 	<div class="table-wrap">
-		<table class="table table-striped" style="margin: 0 auto; width: 700px;">
+		<table class="table table-striped" style="margin: 0 auto; width: 1100px; font-size:18px;">
 			<thead>
 				<tr><th>일자</th><th>내용</th><th>포인트</th></tr>
 			</thead>

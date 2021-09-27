@@ -18,9 +18,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<header>
-		<h2>Filmbox</h2>
-	</header>
 
 	<section>
 		<div class="myfilmstory">
@@ -40,9 +37,9 @@
 						<h4 class="title">모가디슈</h4>
 						<p class="date">2021-09-10(금) 18:10</p>
 						<p class="seat">H4, H5</p>
-						<button type="button" class="btn btn-default btn-xs" id="review_window"
+						<button type="button" class="btn btn-default btn-sm" id="review_window"
 							data-toggle="tooltip" data-placement="right" title="500P 적립"
-							>관람평 쓰기</button>
+							style="font-size: 15px">관람평 쓰기</button>
 					</div>
 				</li>
 				<li class="movie_info">
@@ -56,9 +53,9 @@
 						<h4 class="title">샹치</h4>
 						<p class="date">2021-09-05(일) 18:10</p>
 						<p class="seat">G8</p>
-						<button type="button" class="btn btn-default btn-xs" id="review_window"
+						<button type="button" class="btn btn-default btn-sm" id="review_window"
 							data-toggle="tooltip" data-placement="right" title="500P 적립"
-							>관람평 쓰기</button>
+							style="font-size: 15px">관람평 쓰기</button>
 					</div>
 				</li>
 				<li class="movie_info">
@@ -73,17 +70,18 @@
 						<p class="date">2021-09-04(토) 18:10</p>
 						<p class="seat">G8</p>
 						<!-- 관람평을 썼다면 -->
-						<span class="complete_review"> <img
-							src="resources\img\star.png" alt="" width="20px" height="20px">
+						<div class="complete_review"> <img
+							src="resources\img\star.png" alt="" width="30px" height="30px">
 							<div class="rate">8</div>
-							<span class="content">재미있어요ㅎㅎ추천
+							<div class="content">
+								<p>재미있어요ㅎㅎ추천</p>
 								<div>
 									<a href="#">수정</a>
 									<p>|</p>
 									<a href="#">삭제</a>
 								</div>
-							</span>
-						</span>
+							</div>
+						</div>
 					</div>
 				</li>
 				<li class="movie_info">
@@ -98,17 +96,18 @@
 						<p class="date">2021-08-18(수) 18:10</p>
 						<p class="seat">G8</p>
 						<!-- 관람평을 썼다면 -->
-						<span class="complete_review"> <img
-							src="resources\img\star.png" alt="" width="20px" height="20px">
+						<div class="complete_review"> <img
+							src="resources\img\star.png" alt="" width="30px" height="30px">
 							<div class="rate">7</div>
-							<span class="content">노잼....ㅠ돈아까움
+							<div class="content">
+								<p>노잼....ㅠ돈아까움</p>
 								<div>
 									<a href="#">수정</a>
 									<p>|</p>
 									<a href="#">삭제</a>
 								</div>
-							</span>
-						</span>
+							</div>
+						</div>
 					</div>
 				</li>
 			</ul>

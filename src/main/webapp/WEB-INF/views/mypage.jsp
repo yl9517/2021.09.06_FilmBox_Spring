@@ -16,9 +16,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<header>
-<h2>Filmbox</h2>
-</header>
 <section>
 	<div class="info">
 		<span class="me">ooo님
@@ -30,7 +27,8 @@
 			<div class="mypoint">
 				<p>MY POINT</p>
 				<div class="point">2500</div>
-				<button type="button" class="btn btn-default btn-xs" onclick="pointList()">내 포인트 내역</button>
+				<button type="button" class="btn btn-default btn-sm" onclick="pointList()"
+				style="font-size: 15px">내 포인트 내역</button>
 			</div>
 			<div class="filmstory">
 				<p>나의 필름스토리</p>
@@ -51,32 +49,32 @@
 		</span>
 		<div class="reservelist">
 			<div class="reservelist_1">
-				<div>예매번호		<span class="reserve_num" id="myreserve_num1">215588-2585</span></div><br>
-				<div class="reservelist_1_movieinfo">
+				<div>예매번호		<span class="reserve_num" id="myreserve_num">215588-2585</span></div><br>
+				<div class="reservelist_movieinfo">
 					<img src='resources\img\shang-chi.jpg' width='100px' height='130px'>
-					<div class="reservelist_1_movieinfo2">
-						<div class="movie_title" id="movie_title1">샹치</div>
-						<div>관람일시	<p id="myreserve_date1">2021.09.22(금) 18:10</p></div>
-						<div>좌석		<p id="myreserve_seat1">H2, H3</p></div>
+					<div class="reservelist_movieinfo2">
+						<div class="movie_title" id="movie_title">샹치</div>
+						<div>관람일시	<p id="myreserve_date">2021.09.27(월) 18:10</p></div>
+						<div>좌석		<p id="myreserve_seat">H2, H3</p></div>
 					</div>
-					<div class="reservelist_1_movieinfo2_btn">
-					<button type="button" class="btn btn-info btn-xs" id="qr1">QR 보기</button><br>
-					<button type="button" class="btn btn-default btn-xs">예약 취소</button>
+					<div class="reservelist_movieinfo2_btn">
+					<span class="glyphicon glyphicon-qrcode" aria-hidden="true" id="qr1" onclick="openPop(this)"></span><br>
+					<button type="button" class="btn btn-default btn-sm" style="font-size: 15px">예약 취소</button>
 					</div>
 				</div>
 			</div>
 			<div class="reservelist_2">
 				<div>예매번호		<span class="reserve_num" id="myreserve_num2">215588-252285</span></div><br>
-				<div class="reservelist_2_movieinfo">
+				<div class="reservelist_movieinfo">
 					<img src='resources\img\moga.jpg' width='100px' height='130px'>
-					<div class="reservelist_2_movieinfo2">
-						<div class="movie_title" id="movie_title2">인질</div>
+					<div class="reservelist_movieinfo2">
+						<div class="movie_title" id="movie_title2">모가디슈</div>
 						<div>관람일시	<p id="myreserve_date2">2021.09.21(금) 18:10</p></div>
 						<div>좌석		<p id="myreserve_seat2">F6</p></div>
 					</div>
-					<div class="reservelist_2_movieinfo2_btn">
-					<button type="button" class="btn btn-info btn-xs" id="qr2">QR 보기</button><br>
-					<button type="button" class="btn btn-default btn-xs">예약 취소</button>
+					<div class="reservelist_movieinfo2_btn">
+					<span class="glyphicon glyphicon-qrcode" aria-hidden="true" id="qr2" onclick="openPop(this)"></span><br>
+					<button type="button" class="btn btn-default btn-sm" style="font-size: 15px">예약 취소</button>
 					</div>
 				</div>
 			</div>
