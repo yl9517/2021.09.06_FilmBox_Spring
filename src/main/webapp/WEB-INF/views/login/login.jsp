@@ -3,15 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 
-
 <html> 
 <head> 
 <title>LOGIN TEST</title> 
+<link rel="stylesheet" href="resources/css/login.css">
 </head>
 
 <body>
-
-	<center>
+<div class="mid">
 		<c:choose>
 			<c:when test="${login != null}">
 				<h2>로그인 성공하셨습니다!!</h2>
@@ -23,15 +22,14 @@
 
 			<c:otherwise>
 				<form action="index" method="post" name="frm" style="width:470px;"> 
-				  <h2>로그인</h2> 
-				  <input type="text" name="member_id" id="member_id" class="w3-input w3-border" placeholder="아이디" required>
+				  <h2>FilmBox</h2> 
+				  <input type="text" name="member_id" id="member_id" class="w3-input w3-border" placeholder="아이디" spellcheck="false" required>
 				   <br>
-				    <input type="password" id="member_pwd" name="member_pwd" class="w3-input w3-border" placeholder="비밀번호" required> 
+				    <input type="password" id="member_pwd" name="member_pwd" class="w3-input w3-border" placeholder="비밀번호" spellcheck="false" required> 
 				    <br>
-				     <input type="submit" value="로그인">
+				     <input type="submit" value="로그인" id="lsubmit">
 				      <br> 
 				      </form>
-				       <br>
 
 				<!-- 네이버 로그인 창으로 이동 -->
 				<div id="naver_id_login" style="text-align: center">
@@ -52,10 +50,13 @@
 
 			</c:otherwise>
 		</c:choose>
-	</center>
-	<a href="finduserid">아이디 찾기</a>
-	<a href="finduserpwd">비밀번호 찾기</a>
-	<a href="join">회원가입</a>
+
+<div class="btns">
+	<a href="finduserid" class="btn">아이디 찾기</a>
+	<a href="finduserpwd" class="btn">비밀번호 찾기</a>
+	<a href="join" class="btn">회원가입</a>
+</div>
+</div>
 </body>
 </html>
 
