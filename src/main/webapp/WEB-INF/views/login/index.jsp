@@ -12,15 +12,9 @@
 
  <center> 
 	<c:choose>
-	
- 	  <c:when test="${sessionId != null}"> 
-	 	 <h2> 네이버 아이디 로그인 성공하셨습니다!! </h2> 
-	 	 <h3>'${sessionId}' 님 환영합니다! </h3> 
-	 	 <h3><a href="logout">로그아웃</a></h3> 
-	  </c:when> 
-  
-	  <c:when test="${sessionScope.login != null }">
-	  	 <h2> '${sessionScope.login }'님 필름박스 정회원 로그인 성공하셨습니다!! </h2> 
+
+	  <c:when test="${loginId != null }">
+	  	 <h2> '${loginId }'님 필름박스 로그인 성공하셨습니다!! </h2> 
 	  	 <h3><a href="logout">로그아웃</a></h3> 
 	  	 <h3><a href="mypage">마이페이지</a></h3>
  	  </c:when>

@@ -12,12 +12,11 @@
 <body>
 <div class="mid">
 		<c:choose>
-			<c:when test="${login != null}">
+			<c:when test="${loginId != null}">
 				<h2>로그인 성공하셨습니다!!</h2>
-				<h3>'${login}' 님 환영합니다!</h3>
-				<h3>
-					<a href="logout">로그아웃</a>
-				</h3>
+				<h3>'${loginId}' 님 환영합니다!</h3>
+				<h3><a href="logout">로그아웃</a></h3>
+				<h3><a href="mypage">마이페이지</a></h3>
 			</c:when>
 
 			<c:otherwise>

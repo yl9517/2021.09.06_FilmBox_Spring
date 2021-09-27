@@ -18,7 +18,7 @@
 <body>
 <section>
 	<div class="info">
-		<span class="me">ooo님
+		<span class="me">${dto.member_name }님
 			<span class="myinfo1">
 				<a href="myinfo">회원정보 수정<div class="glyphicon glyphicon-pencil" aria-hidden="true"></div></a>
 			</span>
@@ -26,7 +26,7 @@
 		<div class="point_film">
 			<div class="mypoint">
 				<p>MY POINT</p>
-				<div class="point">2500</div>
+				<div class="point">${dto.point }</div>
 				<button type="button" class="btn btn-default btn-sm" onclick="pointList()"
 				style="font-size: 15px">내 포인트 내역</button>
 			</div>

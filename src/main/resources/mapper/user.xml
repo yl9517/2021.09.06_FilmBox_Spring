@@ -73,7 +73,7 @@
 </select>
 
 <select id="userDetail" resultType="com.film.dto.UserDTO" parameterType="String">
-	select  member_id, member_name, member_pwd, member_phone, email 
+	select  member_id, member_name, member_pwd, member_phone, email, point 
 	from filmbox_member
 	where member_id=#{member_id}
 </select>

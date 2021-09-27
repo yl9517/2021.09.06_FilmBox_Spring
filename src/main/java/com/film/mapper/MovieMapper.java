@@ -14,5 +14,6 @@ public interface MovieMapper {
 	public String updatedate();
 	public void movieupdate(List<MovieDTO> mvList);
 	public MovieDTO getMovie(String movieCd);
+	public void updateList(List<MovieDTO> mvList);
 
 }

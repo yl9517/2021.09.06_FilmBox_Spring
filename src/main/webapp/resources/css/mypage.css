@@ -185,7 +185,7 @@
 .reservelist_movieinfo2_btn{
 	display: flex;
 	flex-direction: column;
-	padding-left: 680px;
+	padding-left: 560px;
 }
 #qr1, #qr2{
 	font-size: 60px;
