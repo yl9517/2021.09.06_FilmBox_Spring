@@ -1,5 +1,7 @@
 package com.film.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,16 @@ public class ReviewServiceImple implements ReviewService{
 	@Override
 	public int modifyReview(ReviewDTO dto) {
 		return mapper.modifyReview(dto);
+	}
+
+	@Override
+	public void deleteReview(ReviewDTO dto) {
+		mapper.deleteReview(dto);
+	}
+
+	@Override
+	public List<ReviewDTO> getReviewList(ReviewDTO dto) {
+		return mapper.getReviewList(dto);
 	}
 
 }

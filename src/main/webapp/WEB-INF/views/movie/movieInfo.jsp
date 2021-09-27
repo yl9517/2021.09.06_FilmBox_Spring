@@ -105,7 +105,7 @@
 					<div class="user_info">
 						<span class="userName"> Film Box </span>
 					</div>
-					<div class="review_info">
+					<div class="review_info myreview">
 						${dto.movieNm } 을/를 재밌게 관람하셨나요? 관람평을 남기시면 <strong>500P</strong>가
 						적립됩니다. <strong id="review_window">관람평 쓰기</strong>
 					</div>
@@ -117,21 +117,22 @@
 							src="../resources/img/star.png"> 8 </span>
 					</div>
 					<div class="review_info myreview">
-						<span>재밌었어용ㅎㅎ</span>
+						<span>내댓글ㅎㅎ</span>
 						
 						<img class="moreBtn" alt="more" src="../resources/img/moreBtn.png">
 						<div class="edit etc">
 							<span id="modifyBtn">수정</span>
-							<span>삭제</span>
+							<span id="deleteBtn">삭제</span>
 						</div>
 					</div>
 				</li>
-				
+			</ul>
 			<!-- 댓글목록 반복문 돌리기 -->
-				<li>
+			<ul class="review">
+<!-- 				<li>
 					<div class="user_info">
-						<span class="userName">이*름</span> <span><img alt="star"
-							src="../resources/img/star.png"> 8 </span>
+						<span class="userName">이*름	</span>
+						<span><img alt="star" src="../resources/img/star.png"> 8 </span>
 					</div>
 					<div class="review_info">
 						<span>재밌었어용ㅎㅎ오예~~</span>
@@ -141,14 +142,8 @@
 							<span>신고</span>
 						</div>
 					</div>
-				</li>
-				<li>
-					<div class="user_info">
-						<span class="userName">이*름</span> <span><img alt="star"
-							src="../resources/img/star.png"> 8 </span>
-					</div>
-					<div class="review_info">재밌었어용</div>
-				</li>
+				</li> -->
+
 			</ul>
 		</div>
 		

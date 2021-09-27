@@ -134,18 +134,19 @@
  	margin: 10px 0;
  }
  ul.review{
- 	padding: 5px 20px;
+ 	padding: 0px 20px;
  	list-style: none;
+    margin-bottom: 0px;
  }
  .review li{
  	margin: 25px 0;
  }
  
  .review img{
- 	width: 27px;
-    margin-right: 5px; 
+	width: 23px;
+    margin-right: 5px;
     position: relative;
-    bottom: 4px;
+    bottom: 2px;
  }
  .review .userName{
    margin-right: 10px;
@@ -165,10 +166,10 @@
  	background-color: #9795A3;
  	color:white;
  }
-  .review li:first-child .review_info {
+/*   .review li:first-child .review_info {
  	background-color: white;
  	border : 1px solid #ccc;
-}
+} */
 .review_info img{
 	float:right;
     width: 22px;
@@ -256,11 +257,15 @@ div.rgyPostIt:hover::after {
 }
  /*관람평 쓰기 버튼 */
  #review_window{
- 	color: #C94F44;
- 	cursor: pointer;
+ 	color: black;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 400px;
+    background-color: #f1f1f1;
  }
  #review_window:hover{
- 	text-decoration: underline;
  	color:#9B3E36;
  }
  

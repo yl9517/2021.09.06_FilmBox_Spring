@@ -24,6 +24,16 @@
 		where movieCd = ${movieCd} and member_id = #{member_id}
 	</update>
 	
+	<delete id="deleteReview" parameterType="com.film.dto.ReviewDTO">
+		delete from filmbox_review
+		where movieCd = ${movieCd} and member_id = #{member_id}
+	</delete>
+	
+	<select id="getReviewList" parameterType="com.film.dto.ReviewDTO" resultType="com.film.dto.ReviewDTO">
+		select review_no, member_id, movieCd, review_content, review_starpoint, review_date, rev_no
+		from filmbox_review
+		 where movieCd = ${movieCd} 
+	</select>
 </mapper>
     
     
