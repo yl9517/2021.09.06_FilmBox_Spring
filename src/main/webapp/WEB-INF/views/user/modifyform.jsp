@@ -11,7 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>회원정보 수정</h1>
+	<h3>회원정보 수정</h3>
 	
 <form method="post" action="modifyresult">
 	<label for="member_id">아이디</label><br> 

@@ -304,7 +304,7 @@ $('#member_id').on("propertychange change keyup paste input", function(){
 	
 		$.ajax({
 			type : "post",
-			url : "/filmbox/useridcheck",
+			url : "/useridcheck",
 			data : data,
 			success : function (result) {
 				if(result!='fail'){

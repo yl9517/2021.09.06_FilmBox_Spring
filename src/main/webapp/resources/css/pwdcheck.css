@@ -14,7 +14,6 @@
 	font-family: 'ONE-Mobile-Regular', cursive!important;
 }
 
-
 body{
 	display : flex;
 	flex-direction : column;
@@ -27,11 +26,14 @@ body{
 	-webkit-user-select: none; 
 	-khtml-user-select: none; 
 	user-select:none;
-
 }
 
+form{
+	margin-top : 20px;
+	color : white;
+}
 
-h3{
+h2{
 	width : 100%;
 	text-align: center;
 	margin-bottom : 100px!important;
@@ -41,72 +43,54 @@ h3{
 	
 }
 
+h3{
+	color : silver;
+}
 
 label{
-	color : whitesmoke!important;
-	font-size: 20px;
-	margin-bottom: 10px!important;
+	font-size: 18px;
 }
 
-#member_id, #member_pwd, #member_name, #member_phone, #email {
-	margin-bottom : 20px!important;
-	width : 300px;
-	color : #7F9871;
-	font-weight: 700!important;
-	font-size: 16px;
-	padding-bottom : 5px;
-	
-}
-
-#member_id{
-	border : none!important;
-	background-color:transparent!important;
-}
-
-#member_pwd, #member_name, #member_phone, #email{
+#member_pwd{
 	border-left-width: 0;
 	border-right-width : 0;
 	border-top-width : 0;
 	border-bottom-width : 0.5;
 	background-color:transparent!important;
+	margin : 10px 0 15px 0;
+	font-size: 16px;
 }
 
 input[type=password] { 
 	font-family:'Malgun gothic', dotum, sans-serif!important;
-}
-
-
-input:focus {
-	outline:none;
-	spellcheck="false";
+	color : #7F9871;
 }
 
 .btns{
 	display: flex;
 	justify-content: center;
-	margin : 15px 0 15px 0;
 }
 
-#usubmit, #ureset, #quitbtn{
+#psubmit, #preset{
 	padding : 10px 18px 10px 18px;
 	font-weight: 700;
 	border-radius: 5px;
-	font-size : 18px;
+	font-size : 16px;
 	border : none;
+	margin-right : 5px;
 }
 
-#usubmit{
-	margin-right : 15px;
+#psubmit{
 	background-color: #9795A3;
-	color: whitesmoke;
+	color : whitesmoke;
 }
 
-#quitbtn{
-	background-color: #C94F44;
-	color: whitesmoke;
+#psubmit:hover, #preset:hover{
+	cursor : pointer;
 }
 
-
-
-
+input:focus {
+	outline:none;
+	spellcheck="false";
+}
 
