@@ -146,8 +146,8 @@ public class LoginController {
 	@GetMapping("/loginresult")
 	public String success(Model model)
 	{
-		model.addAttribute("page", "login/index.jsp");
-		return "view";
+		/* model.addAttribute("page", "login/index.jsp"); */
+		return "redirect:main";
 	}
 
 	//main example(interceptor 확인=>main의 영화, 예매 탭 대신)

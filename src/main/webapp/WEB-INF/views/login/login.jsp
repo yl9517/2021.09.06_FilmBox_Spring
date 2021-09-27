@@ -46,14 +46,15 @@
 					</a>
 				</div>
 
+				<div class="btns">
+					<a href="finduserid" class="btn">아이디 찾기</a>
+					<a href="finduserpwd" class="btn">비밀번호 찾기</a>
+					<a href="join" class="btn">회원가입</a>
 
 			</c:otherwise>
 		</c:choose>
 
-<div class="btns">
-	<a href="finduserid" class="btn">아이디 찾기</a>
-	<a href="finduserpwd" class="btn">비밀번호 찾기</a>
-	<a href="join" class="btn">회원가입</a>
+
 </div>
 </div>
 </body>
