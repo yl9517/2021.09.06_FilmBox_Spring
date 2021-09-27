@@ -77,6 +77,8 @@ public class UserContoller {
 		UserDTO dto=service.userDetail(member_id);
 
 		model.addAttribute("dto", dto);
+		System.out.println(session.getAttribute("type"));
+		model.addAttribute("session", session.getAttribute("type"));
 		model.addAttribute("page","mypage.jsp");
 
 		return "view";

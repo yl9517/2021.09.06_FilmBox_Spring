@@ -50,7 +50,19 @@
 //	});
 //}
 
+function accessCheck()
+{
+	let session_type=document.getElementById("session_type").innerText;
+	console.log(session_type);
+	
+	if(session_type=="social"){
+		alert("일반회원만 수정 가능합니다");
+	}else{
+		location.href="myinfo";
+	}
+}
 
-function pointList(){
+function pointList()
+{
 	location.href="mypointlist";
 }

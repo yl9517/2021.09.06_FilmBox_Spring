@@ -40,6 +40,13 @@
  	padding-left: 500px;
  	font-size: 15px;
  }
+.myinfo1 div:nth-child(2){
+	color: #1976d2;
+}
+.myinfo1 div:nth-child(2):hover{
+	color: purple;
+	text-decoration: underline;
+}
  /* my point */
  .mypoint{
  	display : flex;
