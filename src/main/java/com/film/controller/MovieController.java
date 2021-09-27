@@ -64,10 +64,9 @@ public class MovieController {
   
   //영화 상세 하단 ajax- java로 받기
     @GetMapping("/content")
-    public @ResponseBody Map<String, Object> contentAPI(@RequestParam String movieCd, Model model) {
+    public @ResponseBody Map<String, Object> contentAPI(@RequestParam String movieCd) {
     	String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
     	String AUTH_KEY = "03778b8e03b2f65d0d2c724260f2df8c";
-        System.out.println("movieCd"+movieCd);
         // 변수 설정
         //   - 요청(Request) 인터페이스 Map
         Map<String, String> paramMap = new HashMap<String, String>();
@@ -153,7 +152,6 @@ public class MovieController {
 		urlBuilder.append("&" + URLEncoder.encode("releaseDts","UTF-8")	+ "=" + URLEncoder.encode((String)openDt, "UTF-8"));
 		
 		URL url = new URL(urlBuilder.toString());
-		System.out.println(url);
 		
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
@@ -175,7 +173,6 @@ public class MovieController {
 		
 		rd.close();
 		conn.disconnect();
-		System.out.println(sb.toString());
 		
 	    // JSON 객체로  변환
 	    JSONObject responseBody = new JSONObject(sb.toString());
