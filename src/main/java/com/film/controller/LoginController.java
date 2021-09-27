@@ -79,7 +79,7 @@ public class LoginController {
 		String mobile= (String)response_obj.get("mobile"); 
 
 		//4.파싱세션으로 저장 
-		session.setAttribute("sessionId",mobile); 
+		session.setAttribute("login",mobile); 
 
 		String token=oauthToken.getAccessToken();
 
@@ -228,9 +228,10 @@ public class LoginController {
 
 		//세션에 담기 (이메일 정보 or 아이디, 액세스 토큰)
 		if(userData.get("id")!=null) {
-			session.setAttribute("sessionId", userData.get("nickname"));
+			session.setAttribute("member_name", userData.get("nickname"));
 			session.setAttribute("member_id", userData.get("id"));
 			session.setAttribute("access_token", access_token);
+			session.setAttribute("login", userData.get("nickname"));
 		}
 
 		return "login/login";

@@ -85,10 +85,11 @@ public class UserContoller {
 	}
 
 	//마이페이지>회원정보수정
-	@RequestMapping("/myinfo")
-	public String myinfo()
+	@GetMapping("/myinfo")
+	public String myinfo(Model model)
 	{
-		return "user/pwdcheck";
+		model.addAttribute("page","user/pwdcheck.jsp");
+		return "view";
 	}
 	//마이페이지>나의 필름스토리
 	@GetMapping("/myfilmstory")
@@ -102,7 +103,6 @@ public class UserContoller {
 	public String myreservelist(Model model) {
 
 		model.addAttribute("page","user/myreservelist.jsp");
-
 		return "view";
 	}
 

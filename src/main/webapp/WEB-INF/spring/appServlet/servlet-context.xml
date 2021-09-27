@@ -31,8 +31,12 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/nav1"/>
-
-<!-- 		<exclude-mapping path="/login"/>         exclude 할 항목들
+			<mapping path="/mypage"/>
+			<mapping path="/mypointlist"/>
+			<mapping path="/myinfo"/>
+			<mapping path="/myfilmstory"/>
+			<mapping path="/myreservelist"/>
+<!-- 		<exclude-mapping path="/login"/>        exclude 할 항목들
 			<exclude-mapping path="/loginresult"/>
 			<exclude-mapping path="/nav2"/>
 			<exclude-mapping path="/index"/>
