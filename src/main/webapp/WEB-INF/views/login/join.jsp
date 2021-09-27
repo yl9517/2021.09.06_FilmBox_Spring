@@ -31,7 +31,7 @@
 	}
 </style>
 <body>
-
+<%@ include file="../header.jsp" %>
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-8">
             <form name='nJoin' role="form" id="joinForm" method="post" autocomplete="off">
@@ -304,7 +304,7 @@ $('#member_id').on("propertychange change keyup paste input", function(){
 	
 		$.ajax({
 			type : "post",
-			url : "/filmbox/useridcheck",
+			url : "/useridcheck",
 			data : data,
 			success : function (result) {
 				if(result!='fail'){
