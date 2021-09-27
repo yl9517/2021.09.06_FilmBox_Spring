@@ -36,7 +36,6 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 @Controller 
 public class LoginController { 
 
-
 	/* NaverLoginBO */ 
 	private NaverLoginBO naverLoginBO; 
 	private String apiResult = null; 
@@ -48,12 +47,11 @@ public class LoginController {
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) { 
 		this.naverLoginBO = naverLoginBO; } 
 
-	//로그인 첫 화면 요청 메소드 
+	//Naver 로그인 첫 화면 요청 메소드 
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST }) 
 	public String login(Model model, HttpSession session) {
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session); 
-		System.out.println("네이버:" + naverAuthUrl); 
 
 		model.addAttribute("url", naverAuthUrl); 
 
@@ -64,11 +62,8 @@ public class LoginController {
 	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException, ParseException {
 
-		System.out.println("여기는 callback"); 
 		OAuth2AccessToken oauthToken; 
 		oauthToken = naverLoginBO.getAccessToken(session, code, state); 
-		System.out.println(oauthToken);
-		System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
 
 		//1. 로그인 사용자 정보를 읽어온다. 
 		apiResult = naverLoginBO.getUserProfile(oauthToken); //String형식의 json데이터
@@ -81,28 +76,22 @@ public class LoginController {
 		//3. 데이터 파싱 
 		//Top레벨 단계 _response 파싱 
 		JSONObject response_obj = (JSONObject)jsonObj.get("response"); 
-
 		String mobile= (String)response_obj.get("mobile"); 
 
-
-		//4.파싱 모바일 세션으로 저장 
+		//4.파싱세션으로 저장 
 		session.setAttribute("sessionId",mobile); 
 
 		String token=oauthToken.getAccessToken();
-		System.out.println(token);
-		//세션 생성
+
 		model.addAttribute("result", apiResult); 
 
-		///////
+		//DB 저장
 		String id= (String)response_obj.get("id");
-
 		String name=(String)response_obj.get("name");
-		//String birthyear=(String)response_obj.get("birthyear");
 		String email=(String)response_obj.get("email");
 
 
 		UserDTO dto=new UserDTO();
-
 		dto.setMember_id(id);
 
 		if(name==null)
@@ -127,7 +116,7 @@ public class LoginController {
 		return "login/index";
 	} 
 
-	//////////////////////////////////////loginresult
+	//loginresult
 	@PostMapping("/index")
 	public String loginresult(Model model, UserDTO dto, HttpSession session)
 	{
@@ -158,7 +147,7 @@ public class LoginController {
 		return "login/index";
 	}
 
-	///////////////////main example(interceptor 확인=>main의 영화, 예매 탭 대신)
+	//main example(interceptor 확인=>main의 영화, 예매 탭 대신)
 	@GetMapping("/nav1")
 	public String nav1()
 	{
@@ -173,8 +162,7 @@ public class LoginController {
 
 	//로그아웃 
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
-	public String logout(HttpSession session)throws IOException { 
-		System.out.println("여기는 logout"); 
+	public String logout(HttpSession session)throws IOException {  
 		session.invalidate(); 
 		return "redirect:index"; //login
 	} 
