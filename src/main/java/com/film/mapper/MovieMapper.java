@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.film.dto.KakaopayDTO;
 import com.film.dto.MovieDTO;
 
 @Mapper
@@ -16,5 +17,7 @@ public interface MovieMapper {
 	public MovieDTO getMovie(String movieCd);
 	public void updateList(List<MovieDTO> mvList);
 	public List<MovieDTO> getSearchMovieList(String movieNm);
+	public void reserveinsert(KakaopayDTO dto);
+	public void screeninsert(KakaopayDTO dto);
 
 }

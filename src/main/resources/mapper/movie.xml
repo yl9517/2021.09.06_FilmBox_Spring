@@ -74,6 +74,20 @@
 	</select>
 	
 	<!-- 리뷰 작성될때마다 별점평균 바뀌는 DB 추가해야함-->
+		
+	<insert id="reserveinsert" parameterType="com.film.dto.KakaopayDTO">
+    	<selectKey keyProperty="rev_no" resultType="int" order="AFTER">
+       		SELECT LAST_INSERT_ID() 
+    	</selectKey>
+    	insert into filmbox_rev ( movieCd, rsv_date, price, rev_condition) 
+    	values ( #{movieCd},now(), #{payMoney} ,0)
+    </insert>
+    <insert id="screeninsert" parameterType="com.film.dto.KakaopayDTO">
+    	
+    	insert into filmbox_screen (rev_no,show_date, show_time, seatno) 
+    	
+    	values (#{rev_no},#{reserveDate}, #{screenTime},#{selectedSeat})
+    </insert>
 </mapper>
     
     

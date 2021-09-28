@@ -1,24 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
-<%
-
-	String name = (String) request.getParameter("name");
-	String email = (String) request.getParameter("email");
-	String phone = (String) request.getParameter("phone");
-	String address = (String) request.getParameter("address");
-	String stotalPrice = (String) request.getParameter("totalPrice");
-	int totalPrice = Integer.parseInt(stotalPrice);
-
-	System.out.println("name: " + name);
-	System.out.println("email: " + email);
-	System.out.println("phone: " + phone);
-	System.out.println("address: " + address);
-	System.out.println("stotalPrice: " + stotalPrice);
-	System.out.println("totalPrice: " + totalPrice);
-%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -31,6 +13,7 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
+
 	<script>
     $(function(){
         var IMP = window.IMP;
@@ -42,12 +25,12 @@
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '예매 영화 결제',
-            amount : <%=totalPrice%>,
-            buyer_email : '<%=email%>',
+            amount : ${dto.payMoney}
+            <%-- buyer_email : '<%=email%>',
             buyer_name : '<%=name%>',
             buyer_tel : '<%=phone%>',
             buyer_addr : '<%=address%>',
-            buyer_postcode : '123-456',
+            buyer_postcode : '123-456' --%>
         }, function(rsp) {
             if ( rsp.success ) {
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
@@ -75,7 +58,8 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href='<%=request.getContextPath()%>/success';
+                 location.href='/success/${dto.payMoney}/${dto.movieNm}/${dto.screenTime}/${dto.reserveDate}/${dto.ticketNumber}/${dto.selectedSeat}';
+                /* location.href='/success/${dto}'; */
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;

@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.film.dto.KakaopayDTO;
 import com.film.dto.MovieDTO;
 import com.film.mapper.MovieMapper;
 
@@ -59,7 +60,17 @@ public class MovieServiceImple implements MovieService {
 	public List<MovieDTO> getSearchMovieList(String movieNm) {
 		return mvMapper.getSearchMovieList(movieNm);
 	}
-	
+	@Override
+	public void reserveinsert(KakaopayDTO dto) {
+		// TODO Auto-generated method stub
+//		return mvMapper.reserveinsert(dto);
+		mvMapper.reserveinsert(dto);
+	}
+	@Override
+	public void screeninsert(KakaopayDTO dto) {
+		// TODO Auto-generated method stub
+		mvMapper.screeninsert(dto);
+	}
 	/* 영화 주간데이터 - 영화제목, 박스오피스, 누적관객, 이미지, 개봉일 */ 
 	public void updateList() {
 		System.out.println("serviece에서 동작");

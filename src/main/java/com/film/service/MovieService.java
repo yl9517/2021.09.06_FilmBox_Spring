@@ -3,6 +3,7 @@ package com.film.service;
 import java.util.List;
 import java.util.Map;
 
+import com.film.dto.KakaopayDTO;
 import com.film.dto.MovieDTO;
 
 public interface MovieService {
@@ -16,4 +17,6 @@ public interface MovieService {
 	
 	public void updateList();
 	public List<MovieDTO> getSearchMovieList(String movieNm);
+	public void reserveinsert(KakaopayDTO dto);
+	public void screeninsert(KakaopayDTO dto);
 }
