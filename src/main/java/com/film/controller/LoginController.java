@@ -77,21 +77,19 @@ public class LoginController {
 		//3. 데이터 파싱 
 		//Top레벨 단계 _response 파싱 
 		JSONObject response_obj = (JSONObject)jsonObj.get("response"); 
-		String mobile= (String)response_obj.get("mobile"); 
+		String mobile= (String)response_obj.get("mobile");
+		String id= (String)response_obj.get("id");
+		String name=(String)response_obj.get("name");
+		String email=(String)response_obj.get("email");
 
 		//4.파싱세션으로 저장 
-		session.setAttribute("loginId",mobile);
+		session.setAttribute("loginId", id);
 
 		String token=oauthToken.getAccessToken();
 
 		model.addAttribute("result", apiResult); 
 
 		//DB 저장
-		String id= (String)response_obj.get("id");
-		String name=(String)response_obj.get("name");
-		String email=(String)response_obj.get("email");
-
-
 		UserDTO dto=new UserDTO();
 		dto.setMember_id(id);
 

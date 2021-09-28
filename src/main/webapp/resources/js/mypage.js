@@ -53,7 +53,6 @@
 function accessCheck()
 {
 	let login_type=document.getElementById("login_type").innerText;
-	console.log(login_type);
 	
 	if(login_type=="SNS"){
 		alert("일반회원만 수정 가능합니다");
