@@ -156,10 +156,11 @@
 			</ul>
 			<!-- 댓글목록 반복문 돌리기 -->
 			<ul class="review">
-<!-- 				<li>
+ 				<!-- <li>
 					<div class="user_info">
 						<span class="userName">이*름	</span>
 						<span><img alt="star" src="../resources/img/star.png"> 8 </span>
+						<span class="write_date"> 2021.09.28 </span>
 					</div>
 					<div class="review_info">
 						<span>재밌었어용ㅎㅎ오예~~</span>
@@ -169,7 +170,7 @@
 							<span>신고</span>
 						</div>
 					</div>
-				</li> -->
+				</li>  -->
 
 			</ul>
 		</div>

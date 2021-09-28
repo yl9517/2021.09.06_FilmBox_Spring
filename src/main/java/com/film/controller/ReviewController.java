@@ -1,6 +1,8 @@
 package com.film.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -73,12 +75,12 @@ public class ReviewController {
 	}
 	
 	@GetMapping("/reveiwList")
-	public @ResponseBody List<ReviewDTO> reviewList(@RequestParam String movieCd,@RequestParam String member_id) {
+	public @ResponseBody List<HashMap<String, Object>> reviewList(@RequestParam String movieCd,@RequestParam String member_id) {
 
 		ReviewDTO dto = new ReviewDTO();
 		dto.setMovieCd(movieCd);
 		dto.setMember_id(member_id);
-		List<ReviewDTO> list = service.getReviewList(dto);
+		List<HashMap<String, Object>> list = service.getReviewList(dto);
 
 		return list;
 	}

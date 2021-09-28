@@ -77,9 +77,10 @@ $.ajax({
 			 reviewCount++;
 	         let reviews =  "<li>";
 		         	 reviews += "<div class='user_info'>";
-			         	 reviews += "<span class='userName'>"+item.member_id+"</span>"
+			         	 reviews += "<span class='userName'>"+item.member_name+"</span>"
 		               	 reviews += "<span><img alt='star' src='../resources/img/star.png'>"+item.review_starpoint+"</span>"
-		         	 reviews += "</div>";
+		               	 reviews += "<span class='write_date'>"+item.review_date+"</span>"
+		             reviews += "</div>";
 		         	 
 		         	 reviews += "<div class='review_info'>";
 			         	 reviews += "<span>"+item.review_content+"</span>";

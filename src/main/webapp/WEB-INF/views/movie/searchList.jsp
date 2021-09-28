@@ -28,10 +28,6 @@
 							<span>개봉일 ${item.openDt } </span>
 							<span> 별점 ${item.starpoint} </span>
 						</div>		
-						 <div class="reservation">
-						     <div>예매하기</div>
-						     <div>예매하기</div>
-						 </div>
 					</li>
 				</c:forEach>
 			</c:otherwise>
