@@ -11,12 +11,14 @@
         						, member_name
         						, member_pwd
         						, member_phone
-        						, email )
+        						, email
+        						, login_type )
         select #{member_id}
          		, #{member_name}
          		, #{member_pwd}
          		, #{member_phone}
-         		, #{email} from dual
+         		, #{email}
+         		, 'SNS' from dual
         where not exists ( select member_id from filmbox_member
         					 where member_id=#{member_id} )
            
@@ -29,13 +31,15 @@
 								, member_pwd
 								, member_phone
 								, email
-								, point ) 
+								, point
+								, login_type ) 
          select  #{member_id}
          		 , #{member_name}
          		 , #{member_pwd}
          		 , #{member_phone}
          		 , #{email}
-         		 , '3000' from dual
+         		 , '3000'
+         		 , 'R' from dual
          where not exists ( select member_id from filmbox_member
          					 where member_id=#{member_id} )
         
