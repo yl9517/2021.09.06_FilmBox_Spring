@@ -7,6 +7,7 @@
 }
 
 
+
 *{
 	padding: 0;
 	margin: 0;
@@ -14,12 +15,22 @@
 	font-family: 'ONE-Mobile-Regular', cursive!important;
 }
 
+a:link, a:hover { 
+	color: whitesmoke!important;
+	text-decoration: none!important;
+}
+
+a:visited {
+	color: whitesmoke!important; 
+	text-decoration: none!important;
+}
+
+.menu1{
+	color : tomato;
+}
+
 
 body{
-	display : flex;
-	flex-direction : column;
-	justify-content: center;
-	align-items: center;
 	height : 100vh;
 	background-color: #202126!important;
 	-ms-user-select: none;
@@ -27,11 +38,17 @@ body{
 	-webkit-user-select: none; 
 	-khtml-user-select: none; 
 	user-select:none;
+}
 
+.mid{
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
 }
 
 
-h3{
+.mid h3{
 	width : 100%;
 	text-align: center;
 	margin-bottom : 100px!important;
@@ -78,7 +95,6 @@ input[type=password] {
 
 input:focus {
 	outline:none;
-	spellcheck="false";
 }
 
 .btns{
@@ -105,6 +121,13 @@ input:focus {
 	background-color: #C94F44;
 	color: whitesmoke;
 }
+
+/* a{
+	font-size: 23px!important;
+    margin-left: 40px!important;
+    position: relative!important;
+    top: 3px!important;
+} */
 
 
 

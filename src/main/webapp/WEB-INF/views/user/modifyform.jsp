@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/modifyform.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="resources/css/modifyform.css">
 </head>
 <body>
+<div class="mid">
 	<h3>회원정보 수정</h3>
 	
 <form method="post" action="modifyresult">
@@ -59,7 +60,7 @@
 					</div>
 				</div>
 			</div>
-			
+</div>	
 <script>
 
 		$("#deluser").on('click', function(){

@@ -18,7 +18,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		
 		if(session.getAttribute("loginId")==null)
 		{
-			response.sendRedirect("loginId");
+			response.sendRedirect("login");
 			return false;
 		}
 		return super.preHandle(request, response, handler);

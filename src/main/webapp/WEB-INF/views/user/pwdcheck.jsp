@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="resources/css/pwdcheck.css">
 </head>
 <body>
+<div class="mid">
 <h2>회원정보 수정</h2>
 <br>
 <h3>회원님의 개인정보 보호를 위해 비밀번호를 확인합니다.</h3>
@@ -24,6 +25,7 @@
 	<input type="reset" value="취소" id="preset">
 	</div>
 </form>
+</div>
 
 
 </body>

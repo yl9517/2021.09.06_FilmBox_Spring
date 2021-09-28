@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="resources/css/joinresult.css">
 </head>
 <body>
+<div class="mid">
+
 <span class="imgs">
 <img src="resources/img/wing.png" id="welcome1">
 <img src="resources/img/wing.png" id="welcome2">
@@ -18,6 +20,8 @@
 <div class="as">
 <a href="login">로그인</a>
 <a href="main">메인으로</a>
+</div>
+
 </div>
 </body>
 </html>

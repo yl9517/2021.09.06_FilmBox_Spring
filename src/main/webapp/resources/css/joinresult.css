@@ -16,10 +16,6 @@
 
 
 body{
-	display : flex;
-	flex-direction : column;
-	justify-content: center;
-	align-items: center;
 	height : 100vh;
 	background-color: #202126!important;
 	-ms-user-select: none;
@@ -28,6 +24,14 @@ body{
 	-khtml-user-select: none; 
 	user-select:none;
 	color : whitesmoke;
+}
+
+.mid{
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
+	height : 100%;
 }
 
 h2{
@@ -42,7 +46,7 @@ h3{
 	display : flex;
 	
 }
-a{
+.as a{
 	text-decoration: none;
 	font-size : 16px!important;
 	padding : 15px;
@@ -73,7 +77,7 @@ a:visited {
 .imgs{
 	display : flex;
 	position : absolute;
-	top : 300px;
+	top : 400px;
 	z-index : 1;
 }
 
