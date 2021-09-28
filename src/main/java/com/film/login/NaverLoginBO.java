@@ -5,6 +5,9 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.StringUtils;
 
 import com.github.scribejava.core.builder.ServiceBuilder;
@@ -14,6 +17,8 @@ import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
 
+@Configuration
+@PropertySource("classpath:login.properties")
 public class NaverLoginBO {
 	/* 인증 요청문을 구성하는 파라미터 */ 
 	//client_id: 애플리케이션 등록 후 발급받은 클라이언트 아이디 
@@ -22,8 +27,12 @@ public class NaverLoginBO {
 	//            애플리케이션을 등록할 때 Callback URL에 설정한 정보입니다. 
 	//state: 애플리케이션이 생성한 상태 토큰
 	
-	private final static String CLIENT_ID = "qhJ8t3UeQ4Xtk8S2KhJo"; 
-	private final static String CLIENT_SECRET = "Dj9Z8z4uhs"; 
+	@Value("${CLIENT_ID}")
+	private String CLIENT_ID; 
+	
+	@Value("${CLIENT_SECRET}")
+	private String CLIENT_SECRET; 
+	
 	private final static String REDIRECT_URI = "http://localhost:8080/callback"; 
 	private final static String SESSION_STATE = "oauth_state";
 	
