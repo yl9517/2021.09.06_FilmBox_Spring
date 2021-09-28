@@ -52,10 +52,10 @@
 
 function accessCheck()
 {
-	let session_type=document.getElementById("session_type").innerText;
-	console.log(session_type);
+	let login_type=document.getElementById("login_type").innerText;
+	console.log(login_type);
 	
-	if(session_type=="social"){
+	if(login_type=="SNS"){
 		alert("일반회원만 수정 가능합니다");
 	}else{
 		location.href="myinfo";

@@ -15,5 +15,6 @@ public class UserDTO {
 	private String member_phone;
 	private String email;
 	private int point;
+	private String login_type;
 	
 }

@@ -20,7 +20,7 @@
 	<div class="info">
 		<span class="me">${dto.member_name }님
 			<span class="myinfo1">
-				<div id="session_type" style="display: none">${session }</div>
+				<div id="login_type" style="display: none">${dto.login_type }</div>
 				<div onclick="accessCheck()" id="myinfo_link">회원정보 수정<div class="glyphicon glyphicon-pencil" aria-hidden="true"></div></div>
 			</span>
 		</span>
