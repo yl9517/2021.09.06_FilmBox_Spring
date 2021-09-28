@@ -36,6 +36,9 @@
 			<mapping path="/myinfo"/>
 			<mapping path="/myfilmstory"/>
 			<mapping path="/myreservelist"/>
+			<mapping path="/reviewInsertAction"/>
+			<mapping path="/reviewModifyAction"/>
+			<mapping path="/reviewDeleteAction"/>
 <!-- 		<exclude-mapping path="/login"/>        exclude 할 항목들
 			<exclude-mapping path="/loginresult"/>
 			<exclude-mapping path="/nav2"/>

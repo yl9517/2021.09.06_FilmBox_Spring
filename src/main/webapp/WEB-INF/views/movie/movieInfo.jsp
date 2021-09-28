@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +37,13 @@
 
 </head>
 <body>
-
+<%-- <c:set var="loginId" value="${sessionScope.loginId}"></c:set> --%>
 	<div id="info_wrap">
 
 	<!-- 로그인한 아이디 -->
-		<input type="hidden" id="member_id" name="movieCd" value="yerim9337">
-		
+		<input type="hidden" id="member_id" name="member_id" value="${loginId}">
+
+	
 		<div id="info_title">
 			<div class="bg" style="background-image: url('${dto.image}')">
 			</div>
@@ -52,7 +55,7 @@
 				<div class="bottom">
 					<p class="subtitle">FilmBox 평점</p>
 					<p class="sub">
-						8.0 <span>점</span>
+						${dto.starpoint }<span>점</span>
 					</p>
 				</div>
 				<div class="bottom">
@@ -64,7 +67,7 @@
 				<div class="bottom">
 					<p class="subtitle">누적관객수</p>
 					<p class="sub">
-						64,231 <span>명</span>
+					   <fmt:formatNumber value="${dto.audiAcc }" pattern="#,###"/><span>명</span>
 					</p>
 				</div>
 			</div>
@@ -82,7 +85,7 @@
 
 		<ul class="tab_wrap">
 			<li class="act first_btn">영화정보</li>
-			<li class="second_btn">실관람평 (5,762)</li>
+			<li class="second_btn">실관람평 (<span class="reviewCount"></span>)</li>
 		</ul>
 		
 		<table id="content" class="table table-hover">
@@ -96,35 +99,45 @@
 	
 		<div class="review_wrap">
 			<p>
-				총 <b>1,256</b>건의 관람평이 있습니다.
+				총 <b class="reviewCount"></b>건의 관람평이 있습니다.
 			</p>
 			<div class="line"></div>
 			<ul class="review">
-			 <!-- 내 아이디로 쓴 리뷰가 없으면 -->
-				<li>
-					<div class="user_info">
-						<span class="userName"> Film Box </span>
-					</div>
-					<div class="review_info myreview">
-						${dto.movieNm } 을/를 재밌게 관람하셨나요? 관람평을 남기시면 <strong>500P</strong>가
-						적립됩니다. <strong id="review_window">관람평 쓰기</strong>
-					</div>
-				</li>
-			<!-- 내가 쓴 리뷰가 있다면 -->
-				<li>
-					<div class="user_info">
-						<span class="userName">이*름</span> <span><img alt="star"
-							src="../resources/img/star.png"> 8 </span>
-					</div>
-					<div class="review_info myreview">
-						<span>내댓글ㅎㅎ</span>
-						
-						<img class="moreBtn" alt="more" src="../resources/img/moreBtn.png">
-						<div class="edit etc">
-							<span id="modifyBtn">수정</span>
-							<span id="deleteBtn">삭제</span>
+			 	<li>
+			 	<c:choose>		 	
+				 	<c:when test="${myreview.starpoint != null }">
+				 		<div class="user_info">
+							<span class="userName"> 나의 관람평  ${myreview.member_id }</span> 
+							<span><img alt="star" src="../resources/img/star.png"> ${myreview.review_starpoint } </span>
 						</div>
-					</div>
+						<div class="review_info myreview">
+							<span>${myreview.review_content }</span>
+							
+							<img class="moreBtn" alt="more" src="../resources/img/moreBtn.png">
+							<div class="edit etc">
+								<span id="modifyBtn">수정</span>
+								<span id="deleteBtn">삭제</span>
+							</div>
+						</div>
+				 	</c:when>
+				 	
+				 	<c:otherwise>
+						<div class="user_info">
+							<span class="userName"> Film Box </span>
+						</div>
+						<div class="review_info myreview">
+							${dto.movieNm } 을/를 재밌게 관람하셨나요? 관람평을 남기시면 <strong>500P</strong>가
+							적립됩니다. <strong id="review_window">관람평 쓰기</strong>
+								<!-- 댓글작성 시 로그인 필수 안내창 -->
+								<div class="loginInfo">
+									<p>로그인이 필요한 서비스 입니다. </p>
+									<a href="/login">로그인 하러가기 > </a>
+								</div>
+						</div>
+				 	</c:otherwise>
+				 	
+				 	
+			 	</c:choose>
 				</li>
 			</ul>
 			<!-- 댓글목록 반복문 돌리기 -->
@@ -146,10 +159,9 @@
 
 			</ul>
 		</div>
+
 		
 		<!-- 댓글 작성 창 -->
-		
-		
 		<form id="review_write" method="post" action="../reviewInsertAction" onsubmit="return checkStar();">
 		
 		<input type="hidden" id="movieCd" name="movieCd" value="${dto.movieCd }">

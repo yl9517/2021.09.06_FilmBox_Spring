@@ -72,7 +72,8 @@
 	font-size: 34px;
 }
 .bottom .sub span{
-	font-size: 18px;
+	font-size: 18px; 
+    padding-left: 10px;
 }
 
 .bg{
@@ -166,10 +167,23 @@
  	background-color: #9795A3;
  	color:white;
  }
-/*   .review li:first-child .review_info {
- 	background-color: white;
- 	border : 1px solid #ccc;
-} */
+
+/* 로그인안한채로 관람평 선택시 로그인 필수안내창 */
+.loginInfo{
+	 width: 250px;
+    position: absolute;
+    right: -40px;
+    bottom: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: black;
+    padding: 10px;
+}
+.loginInfo p{
+	margin-bottom: 0px;
+}
+
 .review_info img{
 	float:right;
     width: 22px;
@@ -262,8 +276,10 @@ div.rgyPostIt:hover::after {
     border: 2px solid #ccc;
     padding: 10px;
     border-radius: 20px;
-    margin-left: 380px;
     background-color: #f1f1f1;
+    float: right;
+    position: relative;
+    bottom: 12px;
  }
  #review_window:hover{
  	color:#9B3E36;
@@ -274,7 +290,6 @@ div.rgyPostIt:hover::after {
 form#review_write {
     width: 700px;
     height: 500px;
-    border: 2px solid black;
     background-color: white;   
     position: fixed;
     top: 20%;

@@ -18,7 +18,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		
 		if(session.getAttribute("loginId")==null)
 		{
-			response.sendRedirect("login");
+			response.sendRedirect("login"); //로그인값 없으면 login페이지로 넘기기
 			return false;
 		}
 		return super.preHandle(request, response, handler);

@@ -67,7 +67,7 @@ public class MovieServiceImple implements MovieService {
         //   - 일주일 전 영화데이터 가져오기 (가장 최근데이터임. 실제 이번주껀 아직 없음)
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
-        cal.add(Calendar.DATE, -30);
+        cal.add(Calendar.DATE, -7);
         
         
         // 변수 설정

@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.json.JSONArray;
@@ -32,7 +33,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.film.dto.MovieDTO;
+import com.film.dto.ReviewDTO;
 import com.film.service.MovieService;
+import com.film.service.ReviewService;
+import com.mysql.cj.Session;
 
 
 @Controller
@@ -40,6 +44,18 @@ public class MovieController {
 	@Resource(name = "movieservice")
 	private MovieService service;
 	
+	@Resource(name = "reviewservice")
+	private ReviewService reService;
+	
+    @GetMapping("/main")
+    public String requestAPI(Model model) {
+      
+    	List<MovieDTO> list =  service.getMovieList();
+    	
+    	model.addAttribute("mvList",list);
+    	return "main";
+    }
+    
 	//영화리스트
     @GetMapping("/movieList")
     public String movieList(Model model) {
@@ -54,11 +70,19 @@ public class MovieController {
     
     //영화 상세 상단 dto 
     @GetMapping("/movieInfo/{movieCd}")
-    public String movieInfo(@PathVariable String movieCd, Model model) {
+    public String movieInfo(@PathVariable String movieCd,HttpSession session, Model model) {
+    	//세션 로그인 담기
+    	String member_id= "";
+    	if((String)session.getAttribute("loginId") !=null)
+    		member_id = (String)session.getAttribute("loginId"); //세션아이디 받기
     	
+    	System.out.println(member_id);
     	MovieDTO dto = service.getMovie(movieCd);
+    	ReviewDTO myreview = reService.getThisReview(new ReviewDTO(member_id, movieCd));
     	model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
     	model.addAttribute("dto",dto);
+    	model.addAttribute("myreview",myreview);
+    	
     	model.addAttribute("page","movie/movieInfo.jsp");
     	
     	return "view";

@@ -1,5 +1,6 @@
 let movieCd = $('#movieCd').val();
 let member_id = $('#member_id').val();
+
 /* 버튼 활성화 */
 $('.tab_wrap').children().click(function() {	
 	$(this).addClass('act');	
@@ -65,18 +66,19 @@ if($('.first_btn').hasClass('act')){
 	});
 }
 
-/*리뷰목록*/
+/*리뷰목록, 리뷰 갯수*/
+let reviewCount = 0;
 $.ajax({
 	url : "/reveiwList"
 	, data : {'movieCd': movieCd , 'member_id': member_id}
 	, method : 'get'
 	,success:function(data) {	
 		 $.each(data, function(index, item){
-			 console.log('리뷰'+item);
+			 reviewCount++;
 	         let reviews =  "<li>";
 		         	 reviews += "<div class='user_info'>";
 			         	 reviews += "<span class='userName'>"+item.member_id+"</span>"
-		               	 reviews += "<span><img alt='star' src='../resources/img/star.png'> 8 </span>"
+		               	 reviews += "<span><img alt='star' src='../resources/img/star.png'>"+item.review_starpoint+"</span>"
 		         	 reviews += "</div>";
 		         	 
 		         	 reviews += "<div class='review_info'>";
@@ -84,12 +86,13 @@ $.ajax({
 			         	 reviews += "<img class='moreBtn' alt='more' src='../resources/img/moreBtn.png'>";
 			         	 reviews += "<div class='report etc'>";
 				         	 reviews += "<p> 스포일러 및 욕설/비방하는 내용이 있습니까?</p>";
-				         	 reviews += "<span>신고</span>";
+				         	 reviews += "<span id='reportBtn'>신고</span>";
 			         	 reviews += "</div>";
 		         	 reviews += "</div>";
 	         	 reviews += "</li>";
 			$(".review").eq(1).append(reviews);
-		 });		
+		 });
+		 $('.reviewCount').append(reviewCount);
 	}
 	,error:function(data){
 		console.log(data);
@@ -99,13 +102,20 @@ $.ajax({
 
 /* 리뷰창 */
 $('#review_write').hide();
+$('.loginInfo').hide();
 $('#review_window').click(function() {
-	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
-	$('#review_write').show();
+	if(member_id == null || member_id ==''){
+		$('.loginInfo').show();
+	}
+	else{
+		$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
+		$('#review_write').show();
+	}
 });
 
 /* 수정버튼 눌렀을때 리뷰 창 */
 $('#modifyBtn').click(function() {
+	
 	$('#review_write').attr('action','../reviewModifyAction');
 	$.ajax({
 		url : "/getThisReview"
@@ -169,11 +179,21 @@ function checkStar() {
 
 /* 댓글 - 더보기 */
 $(document).one("mouseover", "body", function() {
-
 	$('.etc').hide();
 });
 $(document).on("click", ".moreBtn", function() {
 	$(this).next().toggle();
 });
 
+$(document).on("click","#reportBtn",function(){
+    if(member_id == null || member_id ==''){
+    	alert('로그인이 필요한 서비스입니다.')
+	}else{
+		if(confirm("해당 댓글을 신고하시겠습니까?")){		  		  
+   		  alert('신고 되었습니다.')
+	   	}else{
+	   		return;	
+	   	}
+	}
+})
   

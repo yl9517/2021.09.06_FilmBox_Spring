@@ -3,6 +3,7 @@ package com.film.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,16 +25,17 @@ public class ReviewController {
 	
 	@Resource(name="reviewservice")
 	private ReviewService service;
+	
 
 	@PostMapping("/reviewInsertAction")
-	public String reviewInsertAction(@ModelAttribute ReviewDTO dto, Model model) {
-		dto.setMember_id("yerim9337"); //세션으로 받은 아이디 넣기
-
+	public String reviewInsertAction(@ModelAttribute ReviewDTO dto, HttpSession session) {
+		
+		String member_id=(String)session.getAttribute("loginId"); //세션아이디 받기
+		dto.setMember_id(member_id); 
 
     	int result = service.insertReview(dto);
 		
-		
-		return "movie/result";
+		return "redirect:/movieInfo/"+dto.getMovieCd();
 		
 	}
 	
@@ -48,23 +50,26 @@ public class ReviewController {
 	}
 	
 	@PostMapping("/reviewModifyAction")
-	public String reviewModifyAction(@ModelAttribute ReviewDTO dto, Model model) {
-		dto.setMember_id("yerim9337"); //세션으로 받은 아이디 넣기
-
+	public String reviewModifyAction(@ModelAttribute ReviewDTO dto, HttpSession session) {
+		String member_id=(String)session.getAttribute("loginId"); //세션아이디 받기
+		dto.setMember_id(member_id); 
+		
     	int result = service.modifyReview(dto);		
 		
 		return "movie/result";		
 	}
 	
 	@GetMapping("/reviewDeleteAction/{movieCd}")
-	public String reviewDeleteAction(@PathVariable String movieCd) {
+	public String reviewDeleteAction(@PathVariable String movieCd,  HttpSession session) {
 		ReviewDTO dto = new ReviewDTO();
-		dto.setMovieCd(movieCd);
-		dto.setMember_id("yerim9337");  //세션으로 받은 아이디 넣기
+	
+		String member_id=(String)session.getAttribute("loginId"); //세션아이디 받기
+		dto.setMember_id(member_id); 
 		
+		dto.setMovieCd(movieCd);
 		service.deleteReview(dto);
 
-		return "movie/result";		
+		return "redirect:/movieInfo/"+movieCd;	
 	}
 	
 	@GetMapping("/reveiwList")
@@ -77,17 +82,6 @@ public class ReviewController {
 
 		return list;
 	}
-	
-	@GetMapping("/reveiwList2")
-	public String reviewList2(@RequestParam String movieCd,@RequestParam String member_id, Model model) {
-		System.out.println("review"+movieCd);
-		ReviewDTO dto = new ReviewDTO();
-		dto.setMovieCd(movieCd);
-		dto.setMember_id(member_id);
-		List<ReviewDTO> list = service.getReviewList(dto);
-		
-		model.addAttribute("list",list);
-		return "movie/result";	
-	}
+
 	
 }

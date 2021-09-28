@@ -16,6 +16,7 @@ public class MovieDTO {
 	private String audiAcc;
 	private String image;
 	private String update_date;
+	private float starpoint;
 	
 	public MovieDTO(String rank, String movieCd, String movieNm, String openDt, String audiAcc,String image) {
 		super();
