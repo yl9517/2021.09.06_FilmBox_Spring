@@ -7,15 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-@font-face { 
-    font-family: 'ONE-Mobile-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-*{
-	font-family: 'ONE-Mobile-Regular', cursive;
-}
+	@font-face { 
+	    font-family: 'ONE-Mobile-Regular';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	*{
+		font-family: 'ONE-Mobile-Regular', cursive;
+	}
 </style>
 </head>
 <body>

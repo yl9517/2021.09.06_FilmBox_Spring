@@ -80,6 +80,7 @@
 		<fmt:parseNumber value="${compare.time / (1000*60*60*24)}" integerOnly="true" var="compare_date"/>
 		<fmt:parseDate value="${dto.update_date}" pattern="yyyy-MM-dd" var="update"/>	
 		<fmt:parseNumber value="${update.time / (1000*60*60*24)}" integerOnly="true" var="update_date"/>
+		
 		<div class="reserve_screen-type">
 		<c:choose>
 			<c:when test="${compare_date < update_date }">

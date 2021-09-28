@@ -79,7 +79,6 @@ public class MovieController {
     	if((String)session.getAttribute("loginId") !=null)
     		member_id = (String)session.getAttribute("loginId"); //세션아이디 받기
     	
-    	System.out.println(member_id);
     	MovieDTO dto = service.getMovie(movieCd);
     	ReviewDTO myreview = reService.getThisReview(new ReviewDTO(member_id, movieCd));
   
@@ -93,10 +92,7 @@ public class MovieController {
 	    	cal.setTime(new Date());
 	        cal.add(Calendar.DATE, -7); //오늘부터 7일 전
     	String compare_date= DATE_FMT.format(cal.getTime());
-    	model.addAttribute("compare_date",compare_date);
-    	System.out.println("비교날짜 : "+compare_date);
-    	System.out.println("업뎃 날짜 : "+dto.getUpdate_date());
-    	
+    	model.addAttribute("compare_date",compare_date);    	
     	
     	model.addAttribute("page","movie/movieInfo.jsp");
     	
