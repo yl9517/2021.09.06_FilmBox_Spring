@@ -55,28 +55,11 @@ public class ReserveContorller {
 	
 	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
 	public String reserveSuccess(KakaopayDTO dto) {
-//		int rev_no=service.reserveinsert(dto);
-//		KakaopayDTO dto2 = new KakaopayDTO();
-//		dto2.setRev_no(rev_no);
-//		dto2.setScreenTime(dto.getScreenTime());
-//		dto2.setReserveDate(dto.getReserveDate());
-//		dto2.setSelectedSeat(dto.getSelectedSeat());
 		service.reserveinsert(dto);
-//		dto.setRev_no(rev_no);
 		System.out.println(dto.getRev_no());
 		service.screeninsert(dto);
 		return "redirect:/main";		
 	}
-//	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
-//	public String reserveSuccess(@PathVariable int payMoney,@PathVariable String movieCd,@PathVariable String screenTime
-//			,@PathVariable String reserveDate,@PathVariable String ticketNumber,@PathVariable String selectedSeat) {
-//		HashMap<String, Object> hm= service.reserveinsert(ticketNumber,movieCd,payMoney);
-//		return "redirect:/main";		
-//	}
-//	@GetMapping("/success/{dto}")
-//	public String reserveSuccess(KakaopayDTO dto) {
-//		service.reserveinsert(dto);
-//		return "redirect:/main";
-//	}
+
 	
 }
