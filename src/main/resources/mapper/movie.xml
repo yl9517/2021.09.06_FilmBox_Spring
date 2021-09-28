@@ -56,11 +56,12 @@
 			movieNm, openDt, audiAcc, image, starpoint
 		from filmbox_movie
 		order by update_date desc, rank*1
+		Limit 10
 	</select>
 	
 	
 	<select id="getMovie" parameterType="string" resultType="com.film.dto.MovieDTO">
-		select rank, movieCd, movieNm, openDt, audiAcc, image, starpoint
+		select rank, movieCd, movieNm, openDt, audiAcc, image, update_date, starpoint
 		from filmbox_movie
 		where movieCd = #{movieCd}
 	</select>

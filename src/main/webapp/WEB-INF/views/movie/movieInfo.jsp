@@ -32,8 +32,7 @@
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
 <!-- bootstrap table 가져오기 -->
-<script
-	src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 
 </head>
 <body>
@@ -75,11 +74,25 @@
 				<img alt="영화 포스터" src="${dto.image }">
 			</div>
 		</div>
+		
+		<!-- update_date가 최근날짜가 아니면 예매 불가 -->
+		<fmt:parseDate value="${compare_date}" pattern="yyyy-MM-dd" var="compare"/>	
+		<fmt:parseNumber value="${compare.time / (1000*60*60*24)}" integerOnly="true" var="compare_date"/>
+		<fmt:parseDate value="${dto.update_date}" pattern="yyyy-MM-dd" var="update"/>	
+		<fmt:parseNumber value="${update.time / (1000*60*60*24)}" integerOnly="true" var="update_date"/>
 		<div class="reserve_screen-type">
-			<div class="reserve">
-				<input type="button" value="예매하기"
-					onclick="location.href='/reservemovie/${dto.movieCd }/${dto.movieNm }'">
-			</div>
+		<c:choose>
+			<c:when test="${compare_date < update_date }">
+				<div class="reserve">
+					<input type="button" value="예매하기" onclick="location.href='/reservemovie/${dto.movieCd }/${dto.movieNm }'">
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="reserve">
+					<input type="button" value="예매불가">
+				</div>
+			</c:otherwise>
+		</c:choose>
 		</div>
 
 
@@ -105,9 +118,9 @@
 			<ul class="review">
 			 	<li>
 			 	<c:choose>		 	
-				 	<c:when test="${myreview.starpoint != null }">
+				 	<c:when test="${myreview.review_starpoint != null }">
 				 		<div class="user_info">
-							<span class="userName"> 나의 관람평  ${myreview.member_id }</span> 
+							<span class="userName"> 나의 관람평 </span> 
 							<span><img alt="star" src="../resources/img/star.png"> ${myreview.review_starpoint } </span>
 						</div>
 						<div class="review_info myreview">

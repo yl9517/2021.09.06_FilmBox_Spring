@@ -55,8 +55,8 @@ public class ReviewController {
 		dto.setMember_id(member_id); 
 		
     	int result = service.modifyReview(dto);		
-		
-		return "movie/result";		
+	
+		return "redirect:/movieInfo/"+dto.getMovieCd();		
 	}
 	
 	@GetMapping("/reviewDeleteAction/{movieCd}")

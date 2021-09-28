@@ -17,10 +17,7 @@
 		from filmbox_review
 		where movieCd = ${movieCd} and member_id = #{member_id}
 	</select>
-	
-	<!-- 모든 영화의 내 리뷰목록 출력해야함 -->
-	
-	
+
 	
 	<update id="modifyReview" parameterType="com.film.dto.ReviewDTO">
 		update filmbox_review set
@@ -38,6 +35,7 @@
 		select review_no, member_id, movieCd, review_content, review_starpoint, review_date, rev_no
 		from filmbox_review
 		 where movieCd = ${movieCd} 
+		 order by review_no DESC
 	</select>
 </mapper>
     

@@ -185,11 +185,12 @@ $(document).on("click", ".moreBtn", function() {
 	$(this).next().toggle();
 });
 
+/* 신고버튼 누를 시*/
 $(document).on("click","#reportBtn",function(){
     if(member_id == null || member_id ==''){
     	alert('로그인이 필요한 서비스입니다.')
 	}else{
-		if(confirm("해당 댓글을 신고하시겠습니까?")){		  		  
+		if(confirm("해당 댓글을 신고하시겠습니까?")){	
    		  alert('신고 되었습니다.')
 	   	}else{
 	   		return;	

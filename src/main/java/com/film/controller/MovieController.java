@@ -7,10 +7,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -79,9 +82,21 @@ public class MovieController {
     	System.out.println(member_id);
     	MovieDTO dto = service.getMovie(movieCd);
     	ReviewDTO myreview = reService.getThisReview(new ReviewDTO(member_id, movieCd));
+  
     	model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
     	model.addAttribute("dto",dto);
     	model.addAttribute("myreview",myreview);
+    	
+    	//비교날짜
+	    	SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
+	    	Calendar cal = Calendar.getInstance();
+	    	cal.setTime(new Date());
+	        cal.add(Calendar.DATE, -7); //오늘부터 7일 전
+    	String compare_date= DATE_FMT.format(cal.getTime());
+    	model.addAttribute("compare_date",compare_date);
+    	System.out.println("비교날짜 : "+compare_date);
+    	System.out.println("업뎃 날짜 : "+dto.getUpdate_date());
+    	
     	
     	model.addAttribute("page","movie/movieInfo.jsp");
     	
