@@ -37,7 +37,7 @@
 				<div class="mv_title">
 					<h3>${item.movieNm } </h3>
 					<span>개봉일 ${item.openDt } </span>
-					<span> 별점 8.1 </span>
+					<span> 별점 ${item.starpoint } </span>
 				</div>		
 				 <div class="reservation">
 				     <div>예매하기</div>

@@ -52,8 +52,7 @@
 	 </insert>
 
 	<select id="getMovieList" resultType="com.film.dto.MovieDTO">
-		select rank, movieCd, 
-			movieNm, openDt, audiAcc, image, starpoint
+		select rank, movieCd, movieNm, openDt, audiAcc, image, starpoint
 		from filmbox_movie
 		order by update_date desc, rank*1
 		Limit 10
@@ -65,7 +64,16 @@
 		from filmbox_movie
 		where movieCd = #{movieCd}
 	</select>
-		<!-- 리뷰 작성될때마다 별점평균 바뀌는 DB 추가해야함-->
+	
+	<!-- 영화명 검색 -->
+	<select id="getSearchMovieList" parameterType="string" resultType="com.film.dto.MovieDTO">
+		select rank, movieCd, movieNm, openDt, audiAcc, image, update_date, starpoint
+		from filmbox_movie
+		where movieNm Like CONCAT('%',#{movieNm},'%')
+		order by update_date desc, rank*1
+	</select>
+	
+	<!-- 리뷰 작성될때마다 별점평균 바뀌는 DB 추가해야함-->
 </mapper>
     
     

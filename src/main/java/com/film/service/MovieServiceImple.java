@@ -55,6 +55,10 @@ public class MovieServiceImple implements MovieService {
 		mvMapper.movieupdate(mvList);
 		
 	}
+	@Override
+	public List<MovieDTO> getSearchMovieList(String movieNm) {
+		return mvMapper.getSearchMovieList(movieNm);
+	}
 	
 	/* 영화 주간데이터 - 영화제목, 박스오피스, 누적관객, 이미지, 개봉일 */ 
 	public void updateList() {
@@ -362,6 +366,7 @@ public class MovieServiceImple implements MovieService {
  
         return sb.toString();
     }
+
 
 	
 

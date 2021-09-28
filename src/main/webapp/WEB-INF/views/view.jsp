@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="resources/favicon.ico">
+<link rel="icon" href="resources/favicon.ico">
 <style>
 	@font-face { 
 	    font-family: 'ONE-Mobile-Regular';

@@ -48,6 +48,10 @@
     float: left;
     display: flex;
  }
+ .menu1 img{
+ 	width: 200px;
+    height: 50px;
+ }
  .menu1_left li{
     font-size: 23px;
     margin-left: 40px;
@@ -99,7 +103,7 @@
         backface-visibility: hidden;
         transform-style: preserve-3d;
  } 
- .search__container img{
+ .search__container .searchSubmit{
     position: absolute;
     top: 13px;
     right: 48px;
@@ -122,7 +126,7 @@
       border-radius: 0;
       background-position: 100% center;   
 }
-.search__input:hover +img{
+.search__input:hover +.searchSubmit{
 	right: 40px;
     transition: all 250ms ease-in-out;
 }

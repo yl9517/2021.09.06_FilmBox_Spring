@@ -109,5 +109,16 @@ public class MovieController {
         return map;
     }
  
+    //헤더에서 영화 검색
+    @GetMapping("/search")
+    public String searchMovie(@RequestParam(name = "searchtxt") String movieNm,Model model) {
+    	System.out.println(movieNm);
+    	List<MovieDTO> searchMv = service.getSearchMovieList(movieNm);
+    	
+    	model.addAttribute("searchMv",searchMv);
+    	model.addAttribute("page","movie/searchList.jsp");
+    	
+    	return "view";
+    }
     
 }
