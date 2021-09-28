@@ -211,12 +211,9 @@
 							</div> -->
 						</div>
 					</div>
-					
-
 				</div>
 			</form>	
 		</div>
-
 
 
 
@@ -229,10 +226,10 @@
 
  		<div class="mb-3"> 
  			<label for="member_id">아이디</label> 
- 			<input type="text" class="form-control" id="member_id" name="member_id" value="" required> 
+ 			<input type="text" class="form-control" id="member_id" name="member_id" value="" minlength='4' maxlength='10' placeholder="4-10자 입력" required> 
 				<span id="id_check1">사용가능한 아이디입니다.</span>
 				<span id="id_check2">아이디가 이미 존재합니다.</span>
-			<div class="invalid-feedback">아이디를 입력해주세요.</div>
+			<div class="invalid-feedback">아이디를 확인해주세요.</div>
  		</div>
  		
  		<div class="mb-3"> 
@@ -243,22 +240,22 @@
  		
  		<div class="mb-3"> 
  		<label for="member_name">이름</label> 
- 		<input type="text" class="form-control" id="member_name" name="member_name" placeholder="" required> 
- 		<div class="invalid-feedback">이름을 입력해주세요. </div> 
+ 		<input type="text" class="form-control" id="member_name" name="member_name" minlength='1' maxlength='15' placeholder="" required> 
+ 		<div class="invalid-feedback">이름을 확인해주세요.</div> 
  		</div> 
  		
  		<div class="mb-3"> 
  		<label for="member_phone">연락처</label> 
- 		<input type="text" class="form-control" id="member_phone" name="member_phone" placeholder="010-1234-5678" required> 
- 		<div class="invalid-feedback">연락처를 올바르게 입력해주세요.</div> 
+ 		<input type="text" class="form-control" id="member_phone" name="member_phone" maxlength='13' placeholder="010-1234-5678" required> 
+ 		<div class="invalid-feedback">연락처를 확인해주세요.</div> 
  		</div> 
  
 		<div class="mb-3"> 
  		<label for="email">이메일</label> 
- 		<input type="email" class="form-control" id="email" name="email" placeholder="filmbox@filmbox.com" required> 
+ 		<input type="email" class="form-control" id="email" name="email" maxlength='30' placeholder="filmbox@filmbox.com" required> 
  				<span id="email_check1">사용가능한 이메일입니다.</span>
 				<span id="email_check2">이메일이 이미 존재합니다.</span>
- 		<div class="invalid-feedback"> 이메일을 올바르게 입력해주세요. </div>
+ 		<div class="invalid-feedback">이메일을 확인해주세요.</div>
   		</div>
 
           
@@ -278,36 +275,6 @@
 </div>
 </div>
 
-
-
-<!-- <form method="post" action="joinresult">
-<ul>
-	<li>
-	<label for="member_id">아이디</label>
-	<input type="text" id="member_id" name="member_id" required>
-	<span id="id_check1">사용가능한 아이디입니다.</span>
-	<span id="id_check2">아이디가 이미 존재합니다.</span>
-	</li>
-	<li>
-	<label for="member_pwd">비밀번호</label>
-	<input type="password" id="member_pwd" name="member_pwd" minlength='8' maxlength='10' placeholder="8-10자 입력" required>
-	</li>
-	<li>
-	<label for="member_name">이름</label>
-	<input type="text" id="member_name" name="member_name" required>
-	</li>
-	<li>
-	<label for="member_phone">연락처</label>
-	<input type="text" id="member_phone" name="member_phone" required>
-	</li>
-	<li>
-	<label for="email">이메일</label>
-	<input type="text" id="email" name="email" required>
-	</li>
-</ul> 
-
-	<input type="submit" id="joinsubmit" value="가입">
-</form>-->
 
 
 <script>
@@ -362,6 +329,7 @@ $('#email').on("propertychange change keyup paste input", function(){
 		});
 });
 
+
 //부트스트랩 유효성 검사 
  (function () {
 	  'use strict'
@@ -373,7 +341,7 @@ $('#email').on("propertychange change keyup paste input", function(){
 	  Array.prototype.slice.call(forms)
 	    .forEach(function (form) {
 	      form.addEventListener('submit', function (event) {
-	        if (!form.checkValidity()) {
+	        if (!form.checkValidity()){
 	          event.preventDefault()
 	          event.stopPropagation()
 	        }
@@ -383,13 +351,12 @@ $('#email').on("propertychange change keyup paste input", function(){
 	    })
 	})()
 
-//email 형식 유효성 검사
-function email_check( email ) {
-	var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-	return (email != '' && email != 'undefined' && regex.test(email));
-}
+	
+//연락처 하이픈(-) 자동 추가
+$(document).on("keyup", "#member_phone", function() {
+	$(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
+	});
 
-//연락처 형식 유효성 검사
 
 </script> 
 
