@@ -83,5 +83,11 @@ public class UserServiceImple implements UserService {
 		return mapper.pwdcheck(dto);
 	}
 
+	@Override
+	public int emailcheck(String email) {
+		
+		return mapper.emailcheck(email);
+	}
+
 
 }

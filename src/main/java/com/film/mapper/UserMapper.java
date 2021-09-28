@@ -26,4 +26,6 @@ public interface UserMapper {
 	public int deleteUser(String member_id);
 
 	public int pwdcheck(UserDTO dto);
+
+	public int emailcheck(String email);
 }

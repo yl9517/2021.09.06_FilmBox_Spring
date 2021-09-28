@@ -97,4 +97,10 @@
 	where member_id=#{member_id}
 </delete>
 
+<select id="emailcheck" resultType="int">
+	select count(*)
+	from filmbox_member
+	where email=#{email}
+</select>
+
 </mapper>

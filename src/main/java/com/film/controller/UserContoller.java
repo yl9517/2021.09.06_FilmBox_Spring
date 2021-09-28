@@ -57,6 +57,7 @@ public class UserContoller {
 		return "view";
 	}
 
+	//id 중복 체크
 	@RequestMapping(value = "/useridcheck", method = RequestMethod.POST)
 	@ResponseBody
 	public String idcheck(String member_id)
@@ -69,6 +70,21 @@ public class UserContoller {
 			return "success";
 
 	}
+	
+	//email 중복 체크
+	@RequestMapping(value = "/emailcheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String emailcheck(String email)
+	{
+		int result=service.emailcheck(email);
+
+		if(result!=0)
+			return "fail";
+		else
+			return "success";
+
+	}
+	
 	//마이페이지
 	@GetMapping("/mypage")
 	public String mypage(Model model, HttpSession session) {

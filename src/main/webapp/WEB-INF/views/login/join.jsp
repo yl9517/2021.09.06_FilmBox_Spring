@@ -23,8 +23,21 @@
 		display : none;
 		font-size : 12px;
 	}
-	/* 중복아이디 존재 */
+	/* 중복 아이디 존재 */
 	#id_check2{
+		color : red;
+		display : none;
+		font-size : 12px;
+	}
+	
+	/* email 사용 가능 */
+	#email_check1{
+		color : blue;
+		display : none;
+		font-size : 12px;
+	}
+	/* 중복 email 존재 */
+	#email_check2{
 		color : red;
 		display : none;
 		font-size : 12px;
@@ -237,13 +250,15 @@
  		<div class="mb-3"> 
  		<label for="member_phone">연락처</label> 
  		<input type="text" class="form-control" id="member_phone" name="member_phone" placeholder="010-1234-5678" required> 
- 		<div class="invalid-feedback">연락처를 입력해주세요. </div> 
+ 		<div class="invalid-feedback">연락처를 올바르게 입력해주세요.</div> 
  		</div> 
  
 		<div class="mb-3"> 
  		<label for="email">이메일</label> 
  		<input type="email" class="form-control" id="email" name="email" placeholder="filmbox@filmbox.com" required> 
- 		<div class="invalid-feedback"> 이메일을 입력해주세요. </div>
+ 				<span id="email_check1">사용가능한 이메일입니다.</span>
+				<span id="email_check2">이메일이 이미 존재합니다.</span>
+ 		<div class="invalid-feedback"> 이메일을 올바르게 입력해주세요. </div>
   		</div>
 
           
@@ -294,9 +309,9 @@
 	<input type="submit" id="joinsubmit" value="가입">
 </form>-->
 
-<!-- id 중복 검사 -->
-<script>
 
+<script>
+<!-- id 중복 검사 -->
 $('#member_id').on("propertychange change keyup paste input", function(){
 	var member_id = $('#member_id').val();	
 	var data = {member_id : member_id}
@@ -321,9 +336,33 @@ $('#member_id').on("propertychange change keyup paste input", function(){
 			}
 		});
 });
+<!-- email 중복 검사(아이디찾기에 적용) -->
+$('#email').on("propertychange change keyup paste input", function(){
+	var email = $('#email').val();	
+	var data = {email : email}
+	
+		$.ajax({
+			type : "post",
+			url : "/emailcheck",
+			data : data,
+			success : function (result) {
+				if(result!='fail'){
+					$('#email_check1').css("display", "inline-block");
+					$('#email_check2').css("display", "none");
+					$("#joinsubmit").attr("disabled", false);
+					
+				}
+				else{
+					$('#email_check1').css("display", "none");
+					$('#email_check2').css("display", "inline-block");
+					$("#joinsubmit").attr("disabled", true);
+					
+				}
+			}
+		});
+});
 
 //부트스트랩 유효성 검사 
-
  (function () {
 	  'use strict'
 
@@ -344,7 +383,14 @@ $('#member_id').on("propertychange change keyup paste input", function(){
 	    })
 	})()
 
-	
+//email 형식 유효성 검사
+function email_check( email ) {
+	var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	return (email != '' && email != 'undefined' && regex.test(email));
+}
+
+//연락처 형식 유효성 검사
+
 </script> 
 
 </body>

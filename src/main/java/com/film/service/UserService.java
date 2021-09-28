@@ -24,4 +24,6 @@ public interface UserService {
 
 	public int pwdcheck(UserDTO dto);
 
+	public int emailcheck(String email);
+
 }
