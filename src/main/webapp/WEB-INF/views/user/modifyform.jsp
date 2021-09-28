@@ -19,7 +19,7 @@
     <input type="text" name="member_id" id="member_id" class="w3-input w3-border" value="${dto.member_id}" readonly>
     <br>
     <label for="member_pwd">비밀번호</label><br> 
-    <input type="password" id="member_pwd" name="member_pwd" class="w3-input w3-border" value="${dto.member_pwd}" spellcheck="false"> 
+    <input type="password" id="member_pwd" name="member_pwd" class="w3-input w3-border" value="${dto.member_pwd}" minlength='8' maxlength='10' spellcheck="false"> 
     <br>
     <label for="member_name">이름</label><br> 
     <input type="text" id="member_name" name="member_name" class="w3-input w3-border" value="${dto.member_name}" spellcheck="false"> 
