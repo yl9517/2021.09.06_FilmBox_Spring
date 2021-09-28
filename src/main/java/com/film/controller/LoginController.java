@@ -111,6 +111,11 @@ public class LoginController {
 			dto.setEmail(email);
 
 		service.insertUser(dto);
+		
+		//세션에 login_type 저장
+		UserDTO dto2 = service.userDetail(id);
+		session.setAttribute("logintype", dto2.getLogin_type());
+		
 		model.addAttribute("page", "login/index.jsp");
 
 		return "view";
@@ -227,12 +232,18 @@ public class LoginController {
 		//회원가입+로그인 동시에
 		service.insertUser(dto);
 
+		//세션에 login_type 저장
+		UserDTO dto2 = service.userDetail(id);
+		
 		//세션에 담기 (이메일 정보 or 아이디, 액세스 토큰)
 		if(userData.get("id")!=null) {
 			session.setAttribute("member_name", userData.get("nickname"));
 			session.setAttribute("member_id", userData.get("id"));
 			session.setAttribute("access_token", access_token);
+			
+			session.setAttribute("logintype", dto2.getLogin_type());
 			session.setAttribute("loginId", userData.get("id"));
+			System.out.println(dto2.getLogin_type());
 		}
 
 		return "login/login";

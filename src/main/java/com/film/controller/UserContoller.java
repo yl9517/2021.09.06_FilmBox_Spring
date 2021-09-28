@@ -70,7 +70,7 @@ public class UserContoller {
 			return "success";
 
 	}
-	
+
 	//email 중복 체크
 	@RequestMapping(value = "/emailcheck", method = RequestMethod.POST)
 	@ResponseBody
@@ -84,7 +84,7 @@ public class UserContoller {
 			return "success";
 
 	}
-	
+
 	//마이페이지
 	@GetMapping("/mypage")
 	public String mypage(Model model, HttpSession session) {
@@ -157,63 +157,55 @@ public class UserContoller {
 	//		return "QRview";		
 	//	}
 
-	//마이페이지>회원정보수정
+	
+	//마이페이지>회원정보수정 1.세션체크
 	@GetMapping("/myinfo")
 	public String myinfo(Model model, HttpSession session)
 	{
-		String login_type = (String)session.getAttribute("logintype");
-		if(login_type != null)
+		//세션 체크
+		if(session.getAttribute("loginId")!=null) 
 		{
-			return "redirect:mypage";
+			//소셜회원구분 session 체크
+			if(session.getAttribute("logintype") != null)
+			{
+				return "redirect:mypage";
+			}else {
+				model.addAttribute("page","user/pwdcheck.jsp");
+				return "view";
+			}
+
 		}else {
-			model.addAttribute("page","user/pwdcheck.jsp");
-			return "view";
+			return "redirect:login";	
 		}
+
 	}
 
-	//회원 정보 수정 전 비밀번호 체크
+	//2.비밀번호 체크  3.수정 페이지로 이동
 	@PostMapping("/myinfo")
-	public String pwdcheck(HttpSession session, UserDTO dto)
-	{
-		String login_type = (String)session.getAttribute("logintype");
-
-		if(login_type != null)
-		{
-			return "redirect:mypage";
-		}else {
-			String member_id=(String) session.getAttribute("loginId");
-			String member_pwd=dto.getMember_pwd();
-
-			dto.setMember_id(member_id);
-			dto.setMember_pwd(member_pwd);
-
-			int result=service.pwdcheck(dto);
-
-			if(result>0)
-			{
-				return "redirect:modify";
-			}
-			else
-			{
-				return "redirect:myinfo";
-			}
-		}
-	}
-
-	//회원 정보 수정
-	@GetMapping("/modify")
-	public String mymodifypage(Model model, HttpSession session)
+	public String pwdcheck(HttpSession session, UserDTO dto, Model model)
 	{
 		String member_id=(String) session.getAttribute("loginId");
-		//System.out.println("session 테스트------------" + member_id);
-		UserDTO dto=service.userDetail(member_id);
+		String member_pwd=dto.getMember_pwd();
 
-		model.addAttribute("dto", dto);
-		model.addAttribute("page", "user/modifyform.jsp");
-		return "view";
+		dto.setMember_id(member_id);
+		dto.setMember_pwd(member_pwd);
+
+		int result=service.pwdcheck(dto);
+
+		if(result>0)
+		{
+			UserDTO dto2=service.userDetail(member_id);
+			model.addAttribute("dto", dto2);
+			model.addAttribute("page", "user/modifyform.jsp");
+			return "view";
+		}
+		else
+		{
+			return "redirect:myinfo";
+		}
 	}
 
-	//수정 후 DB 저장(+메인페이지로 이동)
+	//4.수정 후 DB 저장  5.메인페이지로 이동
 	@RequestMapping("/modifyresult")
 	public String updateUser(Model model, UserDTO dto)
 	{
