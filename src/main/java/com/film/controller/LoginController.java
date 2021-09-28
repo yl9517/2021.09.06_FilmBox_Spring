@@ -81,7 +81,6 @@ public class LoginController {
 
 		//4.파싱세션으로 저장 
 		session.setAttribute("loginId",mobile);
-		session.setAttribute("type", "social");
 
 		String token=oauthToken.getAccessToken();
 
@@ -135,7 +134,6 @@ public class LoginController {
 		if(getuser!=null)
 		{
 			session.setAttribute("loginId", getuser);
-			session.setAttribute("type", "normal");
 			url="redirect:loginresult";
 		}else
 		{
@@ -236,7 +234,6 @@ public class LoginController {
 			session.setAttribute("member_name", userData.get("nickname"));
 			session.setAttribute("member_id", userData.get("id"));
 			session.setAttribute("access_token", access_token);
-			session.setAttribute("type", "social");
 			session.setAttribute("loginId", userData.get("id"));
 		}
 
@@ -258,27 +255,35 @@ public class LoginController {
 
 	//아이디 찾기
 	@GetMapping("/finduserid")
-	public String finduserid()
+	public String finduserid(Model model)
 	{
-		return "login/finduserid";
+		model.addAttribute("page","login/finduserid.jsp");
+		return "view";
 	}
 
 	//아이디 찾기 결과
 	@PostMapping("/finduseridresult")
 	public String finduseridresult(@RequestParam String email, Model model)
 	{
-		String result = service.finduserid(email);
-		System.out.println(result);
-		model.addAttribute("result", result);
-		return "login/finduseridresult";
+		String member_id = service.finduserid(email);
+		if(member_id!=null) 
+		{
+			UserDTO dto = service.userDetail(member_id);
+			model.addAttribute("login_type", dto.getLogin_type());
+		}
+		model.addAttribute("member_id", member_id);
+		
+		model.addAttribute("page","login/finduseridresult.jsp");
+		return "view";
 	}
 
 
 	//비밀번호 찾기
 	@GetMapping("/finduserpwd")
-	public String finduserpwd()
+	public String finduserpwd(Model model)
 	{
-		return "login/finduserpwd";
+		model.addAttribute("page","login/finduserpwd.jsp");
+		return "view";
 	}		
 
 	//비밀번호 찾기 결과
@@ -289,29 +294,36 @@ public class LoginController {
 		String member_id = service.finduserid(email);
 		if(member_id!=null)
 		{
-			UserDTO dto = new UserDTO();
-			//임시비밀번호
-			String tempPwd = UUID.randomUUID().toString().replace("-", "");
-			tempPwd = tempPwd.substring(0, 10);
-			System.out.println(tempPwd);
+			UserDTO dto = service.userDetail(member_id);
+			
+			//로그인 타입이 일반회원(R)일때 비밀번호 수정
+			System.out.println(dto.getLogin_type());
+			if(dto.getLogin_type()=="R") 
+			{
+				//임시비밀번호
+				String tempPwd = UUID.randomUUID().toString().replace("-", "");
+				tempPwd = tempPwd.substring(0, 10);
+				System.out.println(tempPwd);
 
-			dto.setMember_id(member_id);
-			dto.setMember_pwd(tempPwd);
-			dto.setEmail(email);
+				dto.setMember_id(member_id);
+				dto.setMember_pwd(tempPwd);
+				dto.setEmail(email);
 
-			//메일 전송
-			PwdMail mail = new PwdMail();
-			mail.sendPwdEmail(dto);
+				//메일 전송
+				PwdMail mail = new PwdMail();
+				mail.sendPwdEmail(dto);
 
-			//DB비밀번호 변경
-			service.updatepwd(dto);
-			model.addAttribute("member_id", member_id);
-
-		}else {
-			model.addAttribute("member_id", member_id);
+				//DB비밀번호 변경
+				service.updatepwd(dto);
+			}
+			model.addAttribute("login_type", dto.getLogin_type());
 		}
+		
+		model.addAttribute("member_id", member_id);
+		
+		model.addAttribute("page","login/finduserpwdresult.jsp");
+		return "view";
 
-		return "login/finduserpwdresult";
 	}
 }
 
