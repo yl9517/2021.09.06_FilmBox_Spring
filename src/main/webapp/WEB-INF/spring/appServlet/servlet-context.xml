@@ -33,7 +33,6 @@
 			<mapping path="/nav1"/>
 			<mapping path="/mypage"/>
 			<mapping path="/mypointlist"/>
-			<mapping path="/myinfo"/>
 			<mapping path="/myfilmstory"/>
 			<mapping path="/myreservelist"/>
 			<mapping path="/reviewInsertAction"/>

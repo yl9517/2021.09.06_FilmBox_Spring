@@ -72,7 +72,7 @@ public class UserContoller {
 	//마이페이지
 	@GetMapping("/mypage")
 	public String mypage(Model model, HttpSession session) {
-		
+
 		String member_id=(String) session.getAttribute("loginId");
 		UserDTO dto=service.userDetail(member_id);
 
@@ -90,13 +90,6 @@ public class UserContoller {
 		return "view";
 	}
 
-	//마이페이지>회원정보수정
-	@GetMapping("/myinfo")
-	public String myinfo(Model model)
-	{
-		model.addAttribute("page","user/pwdcheck.jsp");
-		return "view";
-	}
 	//마이페이지>나의 필름스토리
 	@GetMapping("/myfilmstory")
 	public String myfilmstory(Model model)
@@ -112,63 +105,82 @@ public class UserContoller {
 		return "view";
 	}
 
-//	//마이페이지>my예매내역 데이터 받아서 > jsp
-//	@RequestMapping(value = "/qrtest", method = RequestMethod.POST)
-//	//						, produces = "application/json; charset=utf-8")
-//	public String qr(@ModelAttribute("map") HashMap<String, Object> map, Model model) throws Exception
-//	{			
-//		//			JSONObject json = new JSONObject(map);
-//		//			System.out.printf("JSON : %s", json);
-//
-//		//			model.addAttribute("map", map);
-//		//			System.out.println(map);
-//		return "qrtestresult";
-//
-//	}
-//	//예매내역 모바일에서 보기
-//	@RequestMapping("/qrtestresult")
-//	public String qrresult() 
-//	{
-//		return "qrtestresult";
-//	}
-//
-//	//qr보기 -> url jsp에 넘기기
-//	@RequestMapping("/showQR")
-//	public String makeQr(Model model) throws Exception
-//	{
-//		//properties 불러오기
-//		ClassPathResource resource= new ClassPathResource("ip.properties");
-//		Properties prop = new Properties();
-//		prop.load(resource.getInputStream());
-//
-//		//google qr 코드 api
-//		String QRurl = "https://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=";
-//		String url="http://"+prop.getProperty("ip")+":8080/filmbox/qrtestresult";
-//		model.addAttribute("QRurl", QRurl+url);
-//		return "QRview";		
-//	}
+	//	//마이페이지>my예매내역 데이터 받아서 > jsp
+	//	@RequestMapping(value = "/qrtest", method = RequestMethod.POST)
+	//	//						, produces = "application/json; charset=utf-8")
+	//	public String qr(@ModelAttribute("map") HashMap<String, Object> map, Model model) throws Exception
+	//	{			
+	//		//			JSONObject json = new JSONObject(map);
+	//		//			System.out.printf("JSON : %s", json);
+	//
+	//		//			model.addAttribute("map", map);
+	//		//			System.out.println(map);
+	//		return "qrtestresult";
+	//
+	//	}
+	//	//예매내역 모바일에서 보기
+	//	@RequestMapping("/qrtestresult")
+	//	public String qrresult() 
+	//	{
+	//		return "qrtestresult";
+	//	}
+	//
+	//	//qr보기 -> url jsp에 넘기기
+	//	@RequestMapping("/showQR")
+	//	public String makeQr(Model model) throws Exception
+	//	{
+	//		//properties 불러오기
+	//		ClassPathResource resource= new ClassPathResource("ip.properties");
+	//		Properties prop = new Properties();
+	//		prop.load(resource.getInputStream());
+	//
+	//		//google qr 코드 api
+	//		String QRurl = "https://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=";
+	//		String url="http://"+prop.getProperty("ip")+":8080/filmbox/qrtestresult";
+	//		model.addAttribute("QRurl", QRurl+url);
+	//		return "QRview";		
+	//	}
 
-
+	//마이페이지>회원정보수정
+	@GetMapping("/myinfo")
+	public String myinfo(Model model, HttpSession session)
+	{
+		String login_type = (String)session.getAttribute("logintype");
+		if(login_type != null)
+		{
+			return "redirect:mypage";
+		}else {
+			model.addAttribute("page","user/pwdcheck.jsp");
+			return "view";
+		}
+	}
 
 	//회원 정보 수정 전 비밀번호 체크
 	@PostMapping("/myinfo")
 	public String pwdcheck(HttpSession session, UserDTO dto)
 	{
-		String member_id=(String) session.getAttribute("loginId");
-		String member_pwd=dto.getMember_pwd();
+		String login_type = (String)session.getAttribute("logintype");
 
-		dto.setMember_id(member_id);
-		dto.setMember_pwd(member_pwd);
-
-		int result=service.pwdcheck(dto);
-
-		if(result>0)
+		if(login_type != null)
 		{
-			return "redirect:modify";
-		}
-		else
-		{
-			return "redirect:myinfo";
+			return "redirect:mypage";
+		}else {
+			String member_id=(String) session.getAttribute("loginId");
+			String member_pwd=dto.getMember_pwd();
+
+			dto.setMember_id(member_id);
+			dto.setMember_pwd(member_pwd);
+
+			int result=service.pwdcheck(dto);
+
+			if(result>0)
+			{
+				return "redirect:modify";
+			}
+			else
+			{
+				return "redirect:myinfo";
+			}
 		}
 	}
 
