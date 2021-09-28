@@ -247,10 +247,13 @@ function inputClickEvent(input) {
 
         console.log(selectedSeatsArray.length);
         console.log(selectedSeatsArray);
+        
         //좌석번호의 innerHTML 설정
         selectedSeats.innerHTML = selectedSeatsArray;
         reserveNumber.innerHTML = selectedSeatsArray.length;
         remainSeat.innerHTML = seat.length - selectedSeatsArray.length;
+        selectedSeat.value=selectedSeatsArray;
+        console.log(selectedSeats);
         // if (selectedSeatsArray.length > 4) {
         //     return;
         // }
@@ -286,18 +289,16 @@ function mapping(input, i, j) {
 //form 제출시 hidden설정하기
 reserveButton.addEventListener('click', function() {
 	movieNm.value = selectedMovie.innerHTML;
-    /*selectedTheater.value =
-        selectedTheaterPlaceInfo[0].innerHTML +
-        ' ' +
-        selectedTheaterPlaceInfo[1].innerHTML;*/
     reserveDate.value = theaterDate.innerHTML;
     screenTime.value = theaterTime.innerHTML;
     ticketNumber.value = reserveNumber.innerHTML;
-    selectedSeat.value = selectedSeats.innerHTML;
+    /*selectedSeat.value = selectedSeats.innerHTML;*/
+    selectedSeat.value=selectedSeatsArray;
     console.log(allNumber + '임');
     console.log(ticketNumber.value);
     console.log(allNumber === ticketNumber.value);
     console.log(allNumber === Number(ticketNumber.value));
+    console.log(selectedSeats);
     if (
         Number(ticketNumber.value) === allNumber &&
         ticketNumber.value !== '0' &&

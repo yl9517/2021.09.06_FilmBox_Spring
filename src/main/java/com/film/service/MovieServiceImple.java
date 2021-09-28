@@ -63,14 +63,20 @@ public class MovieServiceImple implements MovieService {
 	@Override
 	public void reserveinsert(KakaopayDTO dto) {
 		// TODO Auto-generated method stub
-//		return mvMapper.reserveinsert(dto);
 		mvMapper.reserveinsert(dto);
 	}
+	
 	@Override
-	public void screeninsert(KakaopayDTO dto) {
+	public void screeninsert(List<KakaopayDTO> list) {
 		// TODO Auto-generated method stub
-		mvMapper.screeninsert(dto);
+		mvMapper.screeninsert(list);
 	}
+	
+//	@Override
+//	public void screeninsert(KakaopayDTO dto) {
+//		// TODO Auto-generated method stub
+//		mvMapper.screeninsert(dto);
+//	}
 	/* 영화 주간데이터 - 영화제목, 박스오피스, 누적관객, 이미지, 개봉일 */ 
 	public void updateList() {
 		System.out.println("serviece에서 동작");
@@ -377,6 +383,7 @@ public class MovieServiceImple implements MovieService {
  
         return sb.toString();
     }
+	
 
 
 	

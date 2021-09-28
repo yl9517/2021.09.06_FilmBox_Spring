@@ -1,6 +1,8 @@
 package com.film.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -56,8 +58,15 @@ public class ReserveContorller {
 	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
 	public String reserveSuccess(KakaopayDTO dto) {
 		service.reserveinsert(dto);
-		System.out.println(dto.getRev_no());
-		service.screeninsert(dto);
+//		System.out.println(dto.getSelectedSeat());
+		List<KakaopayDTO> list = new ArrayList<KakaopayDTO>();
+//		KakaopayDTO dto2= new KakaopayDTO(dto.getRev_no(),dto.getReserveDate(),dto.getScreenTime(),dto.getSelectedSeat());
+		list.add(dto);
+		for(int i=0; 1<list.size();i++) {
+			System.out.println(list.get(i).getSelectedSeat());
+		}
+//		service.screeninsert(dto);
+		service.screeninsert(list);
 		return "redirect:/main";		
 	}
 
