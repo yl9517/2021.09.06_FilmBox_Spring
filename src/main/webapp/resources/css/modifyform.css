@@ -103,7 +103,7 @@ input:focus {
 	margin : 15px 0 15px 0;
 }
 
-#usubmit, #ureset, #quitbtn{
+#usubmit, #ureset{
 	padding : 10px 18px 10px 18px;
 	font-weight: 700;
 	border-radius: 5px;
@@ -114,11 +114,6 @@ input:focus {
 #usubmit{
 	margin-right : 15px;
 	background-color: #9795A3;
-	color: whitesmoke;
-}
-
-#quitbtn{
-	background-color: #C94F44;
 	color: whitesmoke;
 }
 
