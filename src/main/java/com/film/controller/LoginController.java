@@ -47,7 +47,7 @@ public class LoginController {
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) { 
 		this.naverLoginBO = naverLoginBO; } 
 
-	//Naver 로그인 첫 화면 요청 메소드 
+	//로그인 첫 화면 요청 메소드 
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST }) 
 	public String login(Model model, HttpSession session) {
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
@@ -58,6 +58,7 @@ public class LoginController {
 
 		return "view"; 
 	} 
+
 
 	//네이버 로그인 성공시 callback호출 메소드 
 	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
@@ -116,13 +117,13 @@ public class LoginController {
 		UserDTO dto2 = service.userDetail(id);
 		session.setAttribute("logintype", dto2.getLogin_type());
 		
-		model.addAttribute("page", "login/index.jsp");
+		model.addAttribute("page", "login/login.jsp");
 
 		return "view";
 	} 
 
 	//loginresult
-	@PostMapping("/index")
+	@PostMapping("/loginresult")
 	public String loginresult(Model model, UserDTO dto, HttpSession session)
 	{
 		String url="";
@@ -137,7 +138,7 @@ public class LoginController {
 		if(getuser!=null)
 		{
 			session.setAttribute("loginId", getuser);
-			url="redirect:loginresult";
+			url="redirect:main";
 		}else
 		{
 			url="redirect:login";
@@ -146,25 +147,6 @@ public class LoginController {
 		return url;
 	}
 
-	@GetMapping("/loginresult")
-	public String success(Model model)
-	{
-		/* model.addAttribute("page", "login/index.jsp"); */
-		return "redirect:main";
-	}
-
-	//main example(interceptor 확인=>main의 영화, 예매 탭 대신)
-	@GetMapping("/nav1")
-	public String nav1()
-	{
-		return "login/nav1";
-	}
-
-	@GetMapping("/nav2")
-	public String nav2()
-	{
-		return "login/nav2";
-	}
 
 	//로그아웃 
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
@@ -172,12 +154,6 @@ public class LoginController {
 		session.invalidate(); 
 		return "redirect:main";
 	} 
-
-	//index 페이지는 테스트용이므로 추후 수정 필요 시 수정
-	@RequestMapping(value = "/index")
-	public String index() {
-		return "login/index";
-	}
 
 	//-------------kakao---------------------
 	@RequestMapping("/kakaologinview")

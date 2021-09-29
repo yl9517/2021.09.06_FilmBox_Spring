@@ -19,8 +19,8 @@
 				<h3><a href="mypage">마이페이지</a></h3>
 			</c:when>
 
-			<c:otherwise>
-				<form action="index" method="post" name="frm" style="width:470px;"> 
+			<c:otherwise> 
+				<form action="loginresult" method="post" name="frm" style="width:470px;"> 
 				  <h2>FilmBox</h2> 
 				  <input type="text" name="member_id" id="member_id" class="w3-input w3-border" placeholder="아이디" spellcheck="false" required>
 				   <br>
@@ -52,7 +52,7 @@
 					<a href="join" class="btn">회원가입</a>
 				</div>
 			</c:otherwise>
-		</c:choose>
+		</c:choose> 
 </div>
 </body>
 </html>
