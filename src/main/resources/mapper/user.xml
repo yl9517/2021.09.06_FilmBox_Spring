@@ -103,4 +103,22 @@
 	where email=#{email}
 </select>
 
+<!-- 마이페이지/필름스토리 -->
+<select id="getMyfilmData" parameterType="String" resultType="com.film.dto.MypageDTO">
+	select rev.rev_no, m.image, m.movieNm
+			, s.show_date, s.show_time, s.seatno
+			, r.review_starpoint, r.review_content
+	from filmbox_member as u
+	   left join filmbox_rev as rev
+	  on u.member_id = rev.member_id
+		inner join filmbox_screen as s
+	  on rev.rev_no =  s.rev_no
+		left join filmbox_review as r
+	  on rev.rev_no = r.rev_no
+	  	inner join filmbox_movie as m
+	  on r.movieCd = m.movieCd
+	where u.member_id = #{member_id}
+	order by rsv_date DESC
+</select>
+
 </mapper>

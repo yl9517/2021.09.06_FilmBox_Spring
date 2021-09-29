@@ -1,9 +1,12 @@
 package com.film.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.film.dto.MypageDTO;
 import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
 import com.film.mapper.PointMapper;
@@ -93,6 +96,18 @@ public class UserServiceImple implements UserService {
 	public int emailcheck(String email) {
 		
 		return mapper.emailcheck(email);
+	}
+	
+	@Override
+	public List<MypageDTO> getMyfilmData(String member_id) {
+		
+		return mapper.getMyfilmData(member_id);
+	}
+
+	@Override
+	public List<PointDTO> getMyPoints(String member_id) {
+		// TODO Auto-generated method stub
+		return pointMapper.getMyPoints(member_id);
 	}
 
 

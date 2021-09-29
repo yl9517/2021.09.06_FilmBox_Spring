@@ -9,5 +9,5 @@ import com.film.dto.PointDTO;
 @Mapper
 public interface PointMapper {
 	public void changePoint(PointDTO dto);
-	public List<PointDTO> getMyPoints(PointDTO dto);
+	public List<PointDTO> getMyPoints(String member_id);
 }

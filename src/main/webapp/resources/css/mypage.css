@@ -1,15 +1,14 @@
 @charset "UTF-8";
-@font-face { 
-    font-family: 'ONE-Mobile-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: 'ONE-Mobile-Regular', cursive;
+}
+.wrap{
+	margin: 0 auto;
+	padding: 5%;
+	min-height: 10%;
 }
  /* 상단 박스 */
  .info{
@@ -18,12 +17,14 @@
  	width: 800px;
  	height : 250px;
  	border: 4px double beige;
- 	background-color: #c7efe6;
+ 	border-radius: 5px;
+ 	background-color: #7F9871;
  	position : absolute;
  	left: 50%;
  	top: 20%;
  	transform:translateX(-50%);
- 	z-index: 2;
+
+ 	color: #f5f5f5;
 
  	box-shadow: 0 8px 8px -8px grey;
  }
@@ -51,10 +52,10 @@
  	padding: 0px 4px;
  }
 .modify, .quit {
-	color: #1976d2;
+	color: #fff2e0;
 }
 .modify:hover, .quit:hover {
-	color: purple;
+	color: #C94F44;
 	text-decoration: underline;
 }
 /* 내포인트내역, 나의 필름스토리, 나머지 */
@@ -85,7 +86,7 @@
 
  /* 나의 필름 스토리 */
  .story{
- 	background-color: #7c7c7c;
+ 	background-color: #b8ab9e;
  	text-align: center;
  	padding: 10px;
  	font-weight: bolder;
@@ -99,9 +100,13 @@
 	font-size: 30px;
 	color: white;
 }
+.story a:hover{
+	font-size: 30px;
+	color: #C94F44;
+}
 
 .etc {
-	background-color: #7c7c7c;
+	background-color: #b8ab9e;
 	text-align: center;
  	padding: 10px;
  	font-weight: bolder;

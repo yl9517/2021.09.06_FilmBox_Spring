@@ -1,25 +1,19 @@
 @charset "UTF-8";
-@font-face { 
-    font-family: 'ONE-Mobile-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: 'ONE-Mobile-Regular', cursive;
 }
 .mypointlist{
 	margin: 0 auto;
 	width: 1100px;
-	padding: 50px;
+	padding: 5%;
+	min-height: 10%;
 }
 /* 내 포인트 내역 타이틀 */
 .mypointlist_header{
 	margin: 0 auto;
-	width: 1100px;
 	padding: 20px;
 }
 /* 사용가능 포인트 */
@@ -48,7 +42,6 @@
 .table-wrap{
 	margin: 0 auto;
 	padding: 20px;
-	width: 1100px;
 }
 /* 포인트 애니메이션 */
 .point_animation{

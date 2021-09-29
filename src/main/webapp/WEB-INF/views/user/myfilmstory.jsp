@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources\css\myfilmstory.css">
-<!-- <link rel="stylesheet" href="resources\css\myfilmstory2.css"> -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- bootstrap -->
-<!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -20,109 +20,84 @@
 <body>
 
 	<section>
-		<div class="myfilmstory">
-			<div class="filmstory_header">나의 필름 스토리</div>
-			<p class="label label-default">10건</p>
+	<div class="story_wrap">
+		<div class="story">
+			<div class="story_h">나의 필름 스토리</div>
+			<p class="label label-default">${fn:length(myfilmlist)}건</p>
 		</div>
-		<div class="mymovie_list">
-			<ul id="watched_movie">
-				<li class="movie_info">
-					<div class="poster">
-						<!-- 누르면 영화 상세보기로 -->
-						<a href="#"> <img src='resources\img\moga.jpg' alt=""
-							width='110px' height="155px">
-						</a>
-					</div>
-					<div class="movie_detail">
-						<h4 class="title">모가디슈</h4>
-						<p class="date">2021-09-10(금) 18:10</p>
-						<p class="seat">H4, H5</p>
-						<button type="button" class="btn btn-default btn-sm" id="review_window"
-							data-toggle="tooltip" data-placement="right" title="500P 적립"
-							style="font-size: 15px">관람평 쓰기</button>
-					</div>
-				</li>
-				<li class="movie_info">
-					<div class="poster">
-						<!-- 누르면 영화 상세보기로 -->
-						<a href="#"> <img src='resources\img\shang-chi.jpg' alt=""
-							width='110px' height="155px">
-						</a>
-					</div>
-					<div class="movie_detail">
-						<h4 class="title">샹치</h4>
-						<p class="date">2021-09-05(일) 18:10</p>
-						<p class="seat">G8</p>
-						<button type="button" class="btn btn-default btn-sm" id="review_window"
-							data-toggle="tooltip" data-placement="right" title="500P 적립"
-							style="font-size: 15px">관람평 쓰기</button>
-					</div>
-				</li>
-				<li class="movie_info">
-					<div class="poster">
-						<!-- 누르면 영화 상세보기로 -->
-						<a href="#"> <img src='resources\img\miracle.jpg' alt=""
-							width='110px' height="155px">
-						</a>
-					</div>
-					<div class="movie_detail">
-						<h4 class="title">기적</h4>
-						<p class="date">2021-09-04(토) 18:10</p>
-						<p class="seat">G8</p>
-						<!-- 관람평을 썼다면 -->
-						<div class="complete_review"> <img
-							src="resources\img\star.png" alt="" width="30px" height="30px">
-							<div class="rate">8</div>
-							<div class="content">
-								<p>재미있어요ㅎㅎ추천</p>
-								<div>
-									<a href="#">수정</a>
-									<p>|</p>
-									<a href="#">삭제</a>
-								</div>
+		<div class="story_list_wrap">
+			<ul id="story_list">
+			<c:choose>
+				<c:when test="${!empty myfilmlist }">
+					<c:forEach var="item" items="${myfilmlist }">
+						<li class="movie_info">
+							<div class="poster">
+							<!-- 누르면 영화 상세보기로 -->
+								<a href="#"> <img src="${item.image }" alt=""
+											width="110px" height="155px">
+								</a>
 							</div>
-						</div>
-					</div>
-				</li>
-				<li class="movie_info">
-					<div class="poster">
-						<!-- 누르면 영화 상세보기로 -->
-						<a href="#"> <img src='resources\img\hostage.jpg' alt=""
-							width='110px' height="155px">
-						</a>
-					</div>
-					<div class="movie_detail">
-						<h4 class="title">인질</h4>
-						<p class="date">2021-08-18(수) 18:10</p>
-						<p class="seat">G8</p>
-						<!-- 관람평을 썼다면 -->
-						<div class="complete_review"> <img
-							src="resources\img\star.png" alt="" width="30px" height="30px">
-							<div class="rate">7</div>
-							<div class="content">
-								<p>노잼....ㅠ돈아까움</p>
-								<div>
-									<a href="#">수정</a>
-									<p>|</p>
-									<a href="#">삭제</a>
-								</div>
+							<div class="movie_detail">
+								<h4 class="title">${item.movieNm }</h4>
+								<p class="date">${item.show_date } ${item.show_time }</p>
+								<p class="seat">${item.seatno }</p>
+								<!-- 댓글이 있으면 댓글 보여주고 없으면 관람평쓰기 버튼 표시 -->
+								<c:choose>
+									<c:when test="${item.review_content!=null }">
+										<div class="complete_review"> 
+											<img src="resources\img\star.png" alt="" width="30px" height="30px">
+											<div class="rate">${item.review_starpoint }</div>
+											<div class="content">
+												<p>${item.review_content }</p>
+												<div>
+													<a href="#">수정</a>
+													<p>|</p>
+													<a href="#">삭제</a>
+												</div>
+											</div>
+										</div>
+									</c:when>
+									
+									<c:otherwise>
+										<button type="button" class="btn btn-default btn-sm" id="review_window"
+											data-toggle="tooltip" data-placement="right" title="500P 적립"
+											style="font-size: 15px">관람평 쓰기</button>
+									</c:otherwise>
+									
+								</c:choose>
+								
 							</div>
+						</li>
+					</c:forEach>
+				</c:when>
+				
+				<c:otherwise>
+					<li class="movie_info">
+						<div  class="empty_story">
+							<img src="resources\img\clapperboard.png" width="140px" height="140px">
+						 	<div>나의 필름 스토리가 없습니다</div><br>
+						 	<div><strong>지금 바로 필름 스토리를 추가해보세요!</strong></div><br>
+						 	<a href="movieList">영화 예매하러가기</a>
 						</div>
-					</div>
-				</li>
+					</li>
+				</c:otherwise>
+				
+			</c:choose>
 			</ul>
 		</div>
+		
 		<div class="more" id="more_movie">
 			<div class="more_open" onclick="showMore()" >더보기</div>
 			<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
 		</div>
+	</div>
 	</section>
 
 	<!-- modal 창 -->
 	<form id="review_write" method="post" action="reviewAction">
 			<header class="window_top">
 				<h5>관람평 작성 </h5>
-				<img alt="close" class="reset" src="resources/img/close.png">
+				<img alt="close" class="reset" src="../resources/img/close.png">
 			</header>
 			<div class="score">
 				<h2 class="tit">영화제목</h2>

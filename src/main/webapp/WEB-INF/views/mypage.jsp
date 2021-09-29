@@ -11,15 +11,14 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<section>
+	<div class="wrap">
 		<div class="info">
 			<div class="name">${dto.member_name }님</div>
 			
@@ -51,7 +50,7 @@
 
 		<div class="rsv_wrap">
 			<div class="rsv_h">MY 예매내역</div> 
-			<a href="myreservelist">더보기</a>
+			<span><a href="myreservelist">더보기</a></span>
 			
 			<div class="rsv_list_wrap">
 				<div class="rsv_list_1">
@@ -109,6 +108,9 @@
 				</div>
 			</div>
 		</div>
+		
+	</div>
+		
 		<!-- 회원 탈퇴 Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">

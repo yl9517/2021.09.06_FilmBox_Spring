@@ -12,7 +12,7 @@
 	</insert>
 	
 	<!-- 내 포인트목록 조회 -->
-	<select id="getMyPoints" parameterType="string" resultType="com.film.dto.PointDTO">
+	<select id="getMyPoints" parameterType="String" resultType="com.film.dto.PointDTO">
 		select member_id, point_date, point, point_content
 		from filmbox_point
 		where member_id = #{member_id}

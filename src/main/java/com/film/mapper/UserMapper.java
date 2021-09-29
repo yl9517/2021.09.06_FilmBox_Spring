@@ -1,7 +1,10 @@
 package com.film.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
+import com.film.dto.MypageDTO;
 import com.film.dto.UserDTO;
 
 @Mapper
@@ -28,4 +31,6 @@ public interface UserMapper {
 	public int pwdcheck(UserDTO dto);
 
 	public int emailcheck(String email);
+
+	public List<MypageDTO> getMyfilmData(String member_id);
 }

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.film.dto.MovieDTO;
+import com.film.dto.MypageDTO;
+import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
 import com.film.service.UserService;
 import com.mysql.cj.Session;
@@ -38,7 +41,7 @@ public class UserContoller {
 
 	@Autowired
 	private UserService service;
-
+	
 	//회원가입 페이지
 	@RequestMapping("/join")
 	public String userJoin(Model model)
@@ -99,8 +102,14 @@ public class UserContoller {
 	}
 	//마이페이지>내 포인트 내역
 	@GetMapping("/mypointlist")
-	public String mypointlist(Model model) {
+	public String mypointlist(HttpSession session, Model model) {
 
+		String member_id=(String)session.getAttribute("loginId");
+		List<PointDTO> pointList = service.getMyPoints(member_id);
+		UserDTO dto=service.userDetail(member_id);
+		
+		model.addAttribute("pointList", pointList);
+		model.addAttribute("dto", dto);
 		model.addAttribute("page","user/mypointlist.jsp");
 
 		return "view";
@@ -108,11 +117,19 @@ public class UserContoller {
 
 	//마이페이지>나의 필름스토리
 	@GetMapping("/myfilmstory")
-	public String myfilmstory(Model model)
+	public String myfilmstory(HttpSession session, Model model)
 	{
+		String member_id=(String)session.getAttribute("loginId");
+		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
+		System.out.println(myfilmlist);
+		if(myfilmlist.isEmpty()) {
+			System.out.println("자료 없음");
+		}
+		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("page","user/myfilmstory.jsp");
 		return "view";
 	}
+	
 	//마이페이지>my예매내역
 	@GetMapping("/myreservelist")
 	public String myreservelist(Model model) {

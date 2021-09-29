@@ -13,7 +13,7 @@ import lombok.Setter;
 public class PointDTO {
 	private int point_no;
 	private String member_id;
-	private Date point_date;
+	private String point_date;
 	private int point;
 	private String point_content;
 	public PointDTO(String member_id, int point, String point_content) {

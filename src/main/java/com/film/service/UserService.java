@@ -1,5 +1,9 @@
 package com.film.service;
 
+import java.util.List;
+
+import com.film.dto.MypageDTO;
+import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
 
 public interface UserService {
@@ -25,5 +29,9 @@ public interface UserService {
 	public int pwdcheck(UserDTO dto);
 
 	public int emailcheck(String email);
+
+	public List<MypageDTO> getMyfilmData(String member_id);
+
+	public List<PointDTO> getMyPoints(String member_id);
 
 }
