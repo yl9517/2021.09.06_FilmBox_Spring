@@ -29,9 +29,6 @@ a:visited {
 	text-decoration: none!important;
 }
 
-.menu1{
-	color : tomato;
-}
 
 
 body{
@@ -66,11 +63,12 @@ body{
 label{
 	color : whitesmoke!important;
 	font-size: 20px;
-	margin-bottom: 10px!important;
+	margin-bottom: 15px!important;
 }
 
 #member_id, #member_pwd, #member_name, #member_phone, #email {
-	margin-bottom : 20px!important;
+	margin-top : 10px!important;
+	margin-bottom : 25px!important;
 	width : 300px;
 	color : #7F9871;
 	font-weight: 700!important;
