@@ -28,7 +28,7 @@
 	<jsp:include page="${page }"></jsp:include>
 
 	
-	<%-- <%@ include file="footer.jsp" %> --%>
+ <%@ include file="footer.jsp" %> 
 	</c:if>
 </body>
 </html>

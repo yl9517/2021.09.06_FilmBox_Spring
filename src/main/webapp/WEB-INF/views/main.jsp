@@ -111,6 +111,7 @@
   </div>
 	
 	
+ <%@ include file="footer.jsp" %> 
 </div>
 	<script src="/resources/js/carousel.js"></script>
 	<script src="/resources/js/header.js"></script>
