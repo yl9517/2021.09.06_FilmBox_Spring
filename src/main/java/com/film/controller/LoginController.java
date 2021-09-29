@@ -307,7 +307,7 @@ public class LoginController {
 			
 			//로그인 타입이 일반회원(R)일때 비밀번호 수정
 			System.out.println(dto.getLogin_type());
-			if(dto.getLogin_type()=="R") 
+			if(dto.getLogin_type() != "SNS") 
 			{
 				//임시비밀번호
 				String tempPwd = UUID.randomUUID().toString().replace("-", "");
