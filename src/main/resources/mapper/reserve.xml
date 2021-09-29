@@ -12,21 +12,21 @@
     	insert into filmbox_rev ( movieCd, rsv_date, price, rev_condition) 
     	values ( #{movieCd},now(), #{payMoney} ,0)
     </insert>
-    <!-- <insert id="screeninsert" parameterType="com.film.dto.KakaopayDTO">
+    <insert id="screeninsert" parameterType="com.film.dto.KakaopayDTO">
     	
     	insert into filmbox_screen (rev_no,show_date, show_time, seatno) 
     	
     	values (#{rev_no},#{reserveDate}, #{screenTime},#{selectedSeat})
-    </insert> -->
+    </insert>
     
-    <insert id="screeninsert" parameterType="java.util.List">
+    <!-- <insert id="screeninsert" parameterType="java.util.List">
 		insert into filmbox_screen (rev_no,show_date, show_time, seatno) 
 		values
 		<foreach item="item" index="index" collection="list"
 			separator=" , ">
 			(#{rev_no},#{reserveDate}, #{screenTime},#{selectedSeat})
 		</foreach>
-	</insert>
+	</insert> -->
     
 </mapper>
     
