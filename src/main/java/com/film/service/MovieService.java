@@ -17,7 +17,4 @@ public interface MovieService {
 	
 	public void updateList();
 	public List<MovieDTO> getSearchMovieList(String movieNm);
-	public void reserveinsert(KakaopayDTO dto);
-//	public void screeninsert(KakaopayDTO dto);
-	public void screeninsert(List<KakaopayDTO> list);
 }

@@ -17,8 +17,5 @@ public interface MovieMapper {
 	public MovieDTO getMovie(String movieCd);
 	public void updateList(List<MovieDTO> mvList);
 	public List<MovieDTO> getSearchMovieList(String movieNm);
-	public void reserveinsert(KakaopayDTO dto);
-//	public void screeninsert(KakaopayDTO dto);
-	public void screeninsert(List<KakaopayDTO> list);
 
 }

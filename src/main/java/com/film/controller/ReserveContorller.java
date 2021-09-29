@@ -19,12 +19,17 @@ import com.film.dto.KakaopayDTO;
 import com.film.dto.MovieDTO;
 import com.film.dto.ReserveDTO;
 import com.film.service.MovieService;
+import com.film.service.ReserveService;
 
 @Controller
 public class ReserveContorller {
 	@Resource(name = "movieservice")
 	private MovieService service;
 
+
+	@Resource(name = "reserveservice")
+	private ReserveService reservice;
+	
 	@GetMapping("/reservemovie/{movieCd}/{movieNm}")
     public String movieInfo(@PathVariable String movieCd,@PathVariable String movieNm, Model model) {
     	
@@ -57,7 +62,7 @@ public class ReserveContorller {
 	
 	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
 	public String reserveSuccess(KakaopayDTO dto) {
-		service.reserveinsert(dto);
+		reservice.reserveinsert(dto);
 //		System.out.println(dto.getSelectedSeat());
 		List<KakaopayDTO> list = new ArrayList<KakaopayDTO>();
 //		KakaopayDTO dto2= new KakaopayDTO(dto.getRev_no(),dto.getReserveDate(),dto.getScreenTime(),dto.getSelectedSeat());
@@ -66,7 +71,7 @@ public class ReserveContorller {
 			System.out.println(list.get(i).getSelectedSeat());
 		}
 //		service.screeninsert(dto);
-		service.screeninsert(list);
+		reservice.screeninsert(list);
 		return "redirect:/main";		
 	}
 
