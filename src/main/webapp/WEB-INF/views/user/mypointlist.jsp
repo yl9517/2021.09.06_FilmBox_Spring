@@ -15,19 +15,18 @@
 </head>
 <body>
 <section>
-<div class="mypointlist">
-	<div class="mypointlist_header">
+<div class="point_list_wrap">
+	
+	<div class="point_h">
 		<h3><strong>내 포인트 내역</strong></h3>
 	</div>
-	<div class="mypointlist_total">
+	
+	<div class="total_point">
 		<div>현재 사용가능 포인트</div>
+		<img src="resources\img\reward.png" width="30px" height="30px" class="coin">
 		<span><strong>${dto.point }</strong></span>
 	</div>
-	<div class="point_animation">
-		<img src="resources\img\reward.png" width="30px" height="30px" class="point_img">
-		<img src="resources\img\reward.png" width="20px" height="20px" class="point_img2">
-	</div>
-	<div class="table-wrap">
+	<div class="ptable-wrap">
 		<table class="table table-striped" style="margin: 0 auto; width: 1100px; font-size:18px;">
 			<thead>
 				<tr><th>일자</th><th>내용</th><th>포인트</th></tr>

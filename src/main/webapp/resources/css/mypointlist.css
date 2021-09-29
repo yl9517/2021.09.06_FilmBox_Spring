@@ -5,72 +5,49 @@
 	margin: 0;
 	box-sizing: border-box;
 }
-.mypointlist{
+.point_list_wrap{
 	margin: 0 auto;
 	width: 1100px;
-	padding: 5%;
+	padding: 3%;
+	padding-bottom: 6%;
 	min-height: 10%;
 }
 /* 내 포인트 내역 타이틀 */
-.mypointlist_header{
+.point_h{
 	margin: 0 auto;
 	padding: 20px;
 }
+
 /* 사용가능 포인트 */
-.mypointlist_total{
+.total_point{
 	margin: 0 auto;
-	width: 800px;
+	width: 500px;
 	text-align: center;
 	padding: 30px;
 	font-size: 30px;
-	background-color: beige;
+	background-color: #7F9871;
 	border-radius: 10px;
 	border: 3px double white;
 	margin-top: 10px;
+	color: white;
 	
 	box-shadow: 0 8px 8px -8px grey;
 }
 /* 현재 사용가능 포인트 */
-.mypointlist_total div:first-child{
-	font-size: 20px;
+.total_point div:first-child{
+	font-size: 23px;
 	padding-bottom: 10px;
 }
-.mypointlist_total span{
-	background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #FFD0AE 50%);
-}
-/* 내 포인트 내역 테이블 */
-.table-wrap{
-	margin: 0 auto;
-	padding: 20px;
-}
-/* 포인트 애니메이션 */
-.point_animation{
-	margin-top: 20px;
-}
-/* 큰 코인  */
-.point_img{
-	-webkit-animation: point_motion .5s linear 0s infinite alternate;
-	margin-top: 0;
-	position: absolute;
-	left: 900px;
-	top: 320px;
-	transform: translateX(-50%);
-}
-/* 작은 코인 */
-.point_img2{
-	-webkit-animation: point_motion .5s linear 0s infinite alternate;
-	margin-top: 0;
-	position: absolute;
-	left: 900px;
-	top: 300px;
-	transform: translateX(-50%);
-}
-@-webkit-keyframes point_motion{
-	0%{
-		margin-top: 0px;
-	}
-	100%{
-		margin-top: 10px;
-	}
+/* 합계 */
+.total_point span{
+	background: linear-gradient(180deg,rgba(255,255,255,0) 60%, #807669 20%);
 }
 
+/* 내 포인트 내역 테이블 */
+.ptable-wrap{
+	margin: 0 auto;
+	padding: 5%;
+}
+.coin{
+	margin: 3%;
+}
