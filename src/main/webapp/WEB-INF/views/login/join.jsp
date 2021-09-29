@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/joinform.css" />
 <!-- Bootstrap CSS -->
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,7 +17,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- bootstrap Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- 4.4.0 -->
 </head>
 <style>
 	/* 아이디 사용 가능 */
@@ -233,9 +237,9 @@
  		</div>
  		
  		<div class="mb-3"> 
- 		<label for="member_pwd">비밀번호</label> 
+ 		<label for="member_pwd">비밀번호</label>&nbsp;&nbsp;<span id="icon"><i class="fa fa-eye" aria-hidden="true" id="eye"></i></span>
  		<input type="password" class="form-control" id="member_pwd" name="member_pwd" minlength='8' maxlength='10' placeholder="8-10자 입력" required> 
- 		<div class="invalid-feedback">8-10자의 비밀번호를 입력해주세요. </div> 
+ 		<div class="invalid-feedback">8-10자의 비밀번호를 입력해주세요. </div>
  		</div> 
  		
  		<div class="mb-3"> 
@@ -357,6 +361,16 @@ $(document).on("keyup", "#member_phone", function() {
 	$(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
 	});
 
+
+//비밀번호 확인
+ $("#eye").on("click", function() {
+ 	  if ($("#member_pwd").attr("type") == "password") {
+ 	    $("#member_pwd").attr("type", "text");
+
+ 	  } else {
+ 	    $("#member_pwd").attr("type", "password");
+ 	  }
+ });
 
 </script> 
 

@@ -19,7 +19,9 @@
 	user-select:none;
 }
 
-
+.fa,.fab,.fad,.fal,.far,.fas, i{
+	font-weight: 900 !important;
+}
 
 body { 
 	min-height: 100vh;
@@ -104,4 +106,9 @@ input:focus, input[type]:focus, .uneditable-input:focus {
 	margin-bottom: 25px;
 }
 
+#eye{
+	color : darksilver;
+	font-family : fontAwesome!important;
+	font-size : 20px!important;
+}
 

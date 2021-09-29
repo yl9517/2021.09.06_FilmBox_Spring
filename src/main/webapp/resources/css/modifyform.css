@@ -15,6 +15,10 @@
 	font-family: 'ONE-Mobile-Regular', cursive!important;
 }
 
+.fa,.fab,.fad,.fal,.far,.fas, i{
+	font-weight: 900 !important;
+}
+
 a:link, a:hover { 
 	color: whitesmoke!important;
 	text-decoration: none!important;
@@ -88,8 +92,14 @@ label{
 	background-color:transparent!important;
 }
 
-input[type=password] { 
+input[type=password]{ 
 	font-family:'Malgun gothic', dotum, sans-serif!important;
+}
+
+i{
+	color : silver;
+	font-family : fontAwesome!important;
+	font-size : 23px!important;
 }
 
 
@@ -109,6 +119,10 @@ input:focus {
 	border-radius: 5px;
 	font-size : 18px;
 	border : none;
+}
+
+#usubmit:hover{
+	cursor : pointer!important;
 }
 
 #usubmit{

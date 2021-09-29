@@ -6,10 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="resources/css/modifyform.css">
-<script></script>
+
 </head>
 <style>
 	/* email 사용 가능 */
@@ -33,8 +36,10 @@
 	<label for="member_id">아이디</label><br> 
     <input type="text" name="member_id" id="member_id" class="w3-input w3-border" value="${dto.member_id}" readonly>
     <br>
-    <label for="member_pwd">비밀번호</label><br> 
+    <label for="member_pwd">비밀번호</label>
+    <br> 
     <input type="password" id="member_pwd" name="member_pwd" class="w3-input w3-border" value="${dto.member_pwd}" minlength='8' maxlength='10' spellcheck="false" required> 
+        <i class="far fa-eye" id="eye"></i>
     <br>
     <label for="member_name">이름</label><br> 
     <input type="text" id="member_name" name="member_name" class="w3-input w3-border" value="${dto.member_name}" minlength='1' maxlength='15' spellcheck="false" required> 
@@ -85,7 +90,19 @@ $('#email').on("propertychange change keyup paste input", function(){
 //연락처 유효성
 $(document).on("keyup", "#member_phone", function() {
 	$(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
-	});
+});
+
+
+//비밀번호 확인
+$("#eye").on("click", function() {
+	  if ($("#member_pwd").attr("type") == "password") {
+	    $("#member_pwd").attr("type", "text");
+
+	  } else {
+	    $("#member_pwd").attr("type", "password");
+	  }
+});
+
 
 
 </script>
