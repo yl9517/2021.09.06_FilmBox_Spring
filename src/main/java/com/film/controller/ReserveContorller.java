@@ -63,12 +63,14 @@ public class ReserveContorller {
 	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
 	public String reserveSuccess(KakaopayDTO dto) {
 		reservice.reserveinsert(dto);
-		System.out.println(dto.getSelectedSeat());
-		List<KakaopayDTO> list = new ArrayList<KakaopayDTO>();
+		System.out.println("좌석"+dto.getSelectedSeat());
+		String[] seats = dto.getSelectedSeat().split(",");
+		
+//		List<KakaopayDTO> list = new ArrayList<KakaopayDTO>();
 //		KakaopayDTO dto2= new KakaopayDTO(dto.getRev_no(),dto.getReserveDate(),dto.getScreenTime(),dto.getSelectedSeat());
-		list.add(dto);
-		for(int i=0; 1<list.size();i++) {
-			System.out.println(list.get(i).getSelectedSeat());
+//		list.add(dto);
+		for(int i=0; 1<seats.length;i++) {
+			System.out.println(seats[i]);
 		}
 //		service.screeninsert(dto);
 		reservice.screeninsert(dto);

@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
+import com.film.mapper.PointMapper;
 import com.film.mapper.UserMapper;
 
 
@@ -13,6 +15,8 @@ public class UserServiceImple implements UserService {
 
 	@Autowired
 	private UserMapper mapper;
+	
+	@Autowired PointMapper pointMapper;
 	
 	@Override
 	public void insertUser(UserDTO dto) {
@@ -23,9 +27,10 @@ public class UserServiceImple implements UserService {
 	
 	@Override
 	public void insertFilmUser(UserDTO dto) {
-
 		int result=mapper.insertFilmUser(dto);
-		
+		PointDTO pointdto = new PointDTO(dto.getMember_id(), 3000, "회원가입 적립");//포인트 적립
+		 pointMapper.changePoint(pointdto); //포인트 적립
+		 
 	}
 
 	@Override

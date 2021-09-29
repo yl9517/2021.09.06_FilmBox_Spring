@@ -76,19 +76,19 @@
  }
  .menu2_right li{
  	border-radius: 5px;
- 	border: 2px solid #7F9871;
+ 	border: 2px solid #C94F44;
  	padding: 5px 12px;
  	margin-left: 10px;
     position: relative;
     top: 3px;
  }
   .menu2_right li:last-child{
-  	background-color: #7F9871;
+  	background-color: #C94F44;
   }
  .menu2_right img{   
     width: 40px;
-    position: relative;
-    bottom: 8.6px;
+    position: relative;    
+    bottom: 7px;
  }
   .menu2_right li.user{
      border: 0px;

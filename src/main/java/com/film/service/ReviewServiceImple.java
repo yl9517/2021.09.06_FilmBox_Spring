@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.film.dto.PointDTO;
 import com.film.dto.ReviewDTO;
 import com.film.mapper.MovieMapper;
+import com.film.mapper.PointMapper;
 import com.film.mapper.ReviewMapper;
 
 @Transactional(rollbackFor = {Exception.class}) //exception 발생시 롤백
@@ -19,12 +21,19 @@ public class ReviewServiceImple implements ReviewService{
 	@Autowired
 	private ReviewMapper mapper;
 	@Autowired
-	private MovieMapper mvmapper;
+	private MovieMapper mvMapper;
+	@Autowired
+	private PointMapper pointMapper;
 	
 	@Override
 	public int insertReview(ReviewDTO dto) {
 		 int reuslt = mapper.insertReview(dto); //댓글등록
-		 mvmapper.avgStarpoint(dto.getMovieCd()); //mv평점 변경
+		 mvMapper.avgStarpoint(dto.getMovieCd()); //mv평점 변경
+		 
+		 String movieNm = mvMapper.getMovie(dto.getMovieCd()).getMovieNm();
+		 PointDTO pointdto = new PointDTO(dto.getMember_id(), 500, "("+movieNm+") 관람평 작성 포인트적립");//포인트 적립
+		 pointMapper.changePoint(pointdto); //포인트 적립
+		 
 		 
 		 return reuslt;
 	}
