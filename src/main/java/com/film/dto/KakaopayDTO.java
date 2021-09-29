@@ -24,7 +24,7 @@ public class KakaopayDTO {
 	private String  screenTime;
 	private int  payMoney;
 	private String  ticketNumber;
-	private String  selectedSeat;
+	private String selectedSeat;
 	public KakaopayDTO(int rev_no, String reserveDate, String screenTime, String selectedSeat) {
 		super();
 		this.rev_no = rev_no;

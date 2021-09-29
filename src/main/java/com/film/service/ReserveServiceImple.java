@@ -19,15 +19,15 @@ public class ReserveServiceImple implements ReserveService {
 		reMapper.reserveinsert(dto);
 	}
 	
-	@Override
-	public void screeninsert(List<KakaopayDTO> list) {
-		// TODO Auto-generated method stub
-		reMapper.screeninsert(list);
-	}
-	
 //	@Override
-//	public void screeninsert(KakaopayDTO dto) {
+//	public void screeninsert(List<KakaopayDTO> list) {
 //		// TODO Auto-generated method stub
-//		mvMapper.screeninsert(dto);
+//		reMapper.screeninsert(list);
 //	}
+	
+	@Override
+	public void screeninsert(KakaopayDTO dto) {
+		// TODO Auto-generated method stub
+		reMapper.screeninsert(dto);
+	}
 }

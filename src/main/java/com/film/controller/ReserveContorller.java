@@ -44,7 +44,7 @@ public class ReserveContorller {
 	public String seatchoice(ReserveDTO dto, Model model) {
 
 		model.addAttribute("reserve", dto);
-		return "seatchoice";
+		return "movie/seatchoice";
 	}
 	
 	
@@ -56,14 +56,14 @@ public class ReserveContorller {
 	@RequestMapping("/kakaojsp")
 	public String kakaojsp(KakaopayDTO dto ,Model model) {
 		model.addAttribute("dto",dto);
-		return "kakao";
+		return "kakao/kakao";
 		
 	}
 	
 	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
 	public String reserveSuccess(KakaopayDTO dto) {
 		reservice.reserveinsert(dto);
-//		System.out.println(dto.getSelectedSeat());
+		System.out.println(dto.getSelectedSeat());
 		List<KakaopayDTO> list = new ArrayList<KakaopayDTO>();
 //		KakaopayDTO dto2= new KakaopayDTO(dto.getRev_no(),dto.getReserveDate(),dto.getScreenTime(),dto.getSelectedSeat());
 		list.add(dto);
@@ -71,7 +71,7 @@ public class ReserveContorller {
 			System.out.println(list.get(i).getSelectedSeat());
 		}
 //		service.screeninsert(dto);
-		reservice.screeninsert(list);
+		reservice.screeninsert(dto);
 		return "redirect:/main";		
 	}
 

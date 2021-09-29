@@ -47,7 +47,8 @@ const reserveDate = document.querySelector('.reserveDate');
 
 const runningTime = document.querySelector('.runningTime');
 const ticketNumber = document.querySelector('.ticketNumber');
-const selectedSeat = document.querySelector('.selectedSeat');
+var selectedSeat =[];
+selectedSeat = document.querySelector('.selectedSeat');
 
 const movieNm = document.querySelector('.movieNm');
 const movieCd = document.querySelector('.movieCd');
@@ -253,7 +254,7 @@ function inputClickEvent(input) {
         reserveNumber.innerHTML = selectedSeatsArray.length;
         remainSeat.innerHTML = seat.length - selectedSeatsArray.length;
         selectedSeat.value=selectedSeatsArray;
-        console.log(selectedSeats);
+        console.log(selectedSeat);
         // if (selectedSeatsArray.length > 4) {
         //     return;
         // }
@@ -293,12 +294,12 @@ reserveButton.addEventListener('click', function() {
     screenTime.value = theaterTime.innerHTML;
     ticketNumber.value = reserveNumber.innerHTML;
     /*selectedSeat.value = selectedSeats.innerHTML;*/
-    selectedSeat.value=selectedSeatsArray;
+    selectedSeat=selectedSeatsArray;
     console.log(allNumber + '임');
     console.log(ticketNumber.value);
     console.log(allNumber === ticketNumber.value);
     console.log(allNumber === Number(ticketNumber.value));
-    console.log(selectedSeats);
+    console.log(selectedSeat);
     if (
         Number(ticketNumber.value) === allNumber &&
         ticketNumber.value !== '0' &&
