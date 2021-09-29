@@ -106,12 +106,13 @@
         transition: transform 250ms ease-in-out;
         
         font-size: 14px;
-        line-height: 18px;    
+        line-height: 18px;
+        font-weight: bolder;   
        color: white;
        margin-right: 30px;
         background-color: transparent;
         border-radius: 50px;
-        border: 1px solid #9795A3;
+        border: 1px solid white;
         transition: all 250ms ease-in-out;
         backface-visibility: hidden;
         transform-style: preserve-3d;
@@ -125,7 +126,7 @@
         transition: all 250ms ease-in-out;
  } 
  .search__input::placeholder {
-     color: color(#575756 a(0.8));
+     color: color(white a(0.8));
      text-transform: uppercase;
      letter-spacing: 1.5px;
  }
@@ -135,7 +136,7 @@
       padding: 12px 10px;
       outline: 0;
       border: 1px solid transparent;
-      border-bottom: 1px solid #9795A3;
+      border-bottom: 1px solid white;
       border-radius: 0;
       background-position: 100% center;   
 }
