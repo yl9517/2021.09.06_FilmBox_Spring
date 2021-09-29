@@ -1,4 +1,4 @@
-package com.film.login;
+package com.film.data;
 
 import com.github.scribejava.core.builder.api.DefaultApi20;
 

@@ -25,10 +25,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod; 
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.film.data.KakaoLoginAPI;
+import com.film.data.NaverLoginBO;
 import com.film.data.PwdMail;
 import com.film.dto.UserDTO;
-import com.film.login.KakaoLoginAPI;
-import com.film.login.NaverLoginBO;
 import com.film.service.UserService;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 

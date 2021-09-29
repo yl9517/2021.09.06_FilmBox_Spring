@@ -25,7 +25,7 @@
 	
 
 	<!-- NaverLoginBO -->
-	 <beans:bean id="naverLoginBO" class="com.film.login.NaverLoginBO" />
+	 <beans:bean id="naverLoginBO" class="com.film.data.NaverLoginBO" />
 	 
 	 <!-- interceptor(session을 위한) 등록 -->
 	<interceptors>
@@ -44,7 +44,7 @@
 			<exclude-mapping path="/index"/>
 			<exclude-mapping path="/callback/**"/>
 			<exclude-mapping path="/resources/**"/>  -->
-			<beans:bean class="com.film.login.AuthInterceptor"></beans:bean>
+			<beans:bean class="com.film.data.AuthInterceptor"></beans:bean>
 			
 		</interceptor>
 	</interceptors>
