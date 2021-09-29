@@ -11,14 +11,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class KakaopayDTO {
+public class ScreenDTO {
 	private int rev_no;
-	private String  movieNm;
-	private String  movieCd;
-	private String  reserveDate;
-	private String  screenTime;
-	private int  payMoney;
-	private String  ticketNumber;
-	private String selectedSeat;
-	
+	private String reserveDate;
+	private String screenTime;
+	private String seats;
+
 }

@@ -1,6 +1,7 @@
 package com.film.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.film.dto.KakaopayDTO;
 import com.film.dto.MovieDTO;
 import com.film.dto.ReserveDTO;
+import com.film.dto.ScreenDTO;
 import com.film.service.MovieService;
 import com.film.service.ReserveService;
 
@@ -56,6 +58,8 @@ public class ReserveContorller {
 	@RequestMapping("/kakaojsp")
 	public String kakaojsp(KakaopayDTO dto ,Model model) {
 		model.addAttribute("dto",dto);
+		System.out.println();
+		
 		return "kakao/kakao";
 		
 	}
@@ -63,17 +67,23 @@ public class ReserveContorller {
 	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
 	public String reserveSuccess(KakaopayDTO dto) {
 		reservice.reserveinsert(dto);
-		System.out.println("좌석"+dto.getSelectedSeat());
-		String[] seats = dto.getSelectedSeat().split(",");
 		
-//		List<KakaopayDTO> list = new ArrayList<KakaopayDTO>();
-//		KakaopayDTO dto2= new KakaopayDTO(dto.getRev_no(),dto.getReserveDate(),dto.getScreenTime(),dto.getSelectedSeat());
-//		list.add(dto);
-		for(int i=0; 1<seats.length;i++) {
-			System.out.println(seats[i]);
+		String[] seats = dto.getSelectedSeat().split(",");
+
+
+		List<ScreenDTO> sList = new ArrayList<ScreenDTO>();
+		for(int i=0; i<seats.length; i++) {
+		        
+		    ScreenDTO sDTO = new ScreenDTO();
+
+		    sDTO.setRev_no(dto.getRev_no());
+		    sDTO.setReserveDate(dto.getReserveDate());
+		    sDTO.setScreenTime(dto.getScreenTime());
+		    sDTO.setSeats(seats[i]);
+
+		    reservice.screeninsert(sDTO);
 		}
-//		service.screeninsert(dto);
-		reservice.screeninsert(dto);
+		
 		return "redirect:/main";		
 	}
 
