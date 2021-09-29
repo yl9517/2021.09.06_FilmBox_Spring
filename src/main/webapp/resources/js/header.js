@@ -7,3 +7,8 @@ function press(f){
 $('.searchSubmit').click(function() {
 	searchBox.submit(); 
 });
+
+//로고 선택 시 
+$('.logo').click(function() {
+	location.href="/main";
+});

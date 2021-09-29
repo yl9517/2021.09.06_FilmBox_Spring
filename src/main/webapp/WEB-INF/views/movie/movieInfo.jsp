@@ -19,7 +19,7 @@
 	font-family: 'ONE-Mobile-Regular', cursive;
 }
 </style>
-<link rel="stylesheet" href="../resources/css/movieInfo.css">
+<link rel="stylesheet" href="/resources/css/movieInfo.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"
 	href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
@@ -210,6 +210,6 @@
 		</form>
 
 	</div>
-	<script src="../resources/js/movieInfo.js"></script>
+	<script src="/resources/js/movieInfo.js"></script>
 </body>
 </html>

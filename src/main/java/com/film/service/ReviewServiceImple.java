@@ -6,19 +6,27 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.film.dto.ReviewDTO;
+import com.film.mapper.MovieMapper;
 import com.film.mapper.ReviewMapper;
 
+@Transactional(rollbackFor = {Exception.class}) //exception 발생시 롤백
 @Service(value = "reviewservice")
 public class ReviewServiceImple implements ReviewService{
 
 	@Autowired
 	private ReviewMapper mapper;
+	@Autowired
+	private MovieMapper mvmapper;
 	
 	@Override
 	public int insertReview(ReviewDTO dto) {
-		return mapper.insertReview(dto);
+		 int reuslt = mapper.insertReview(dto); //댓글등록
+		 mvmapper.avgStarpoint(dto.getMovieCd()); //mv평점 변경
+		 
+		 return reuslt;
 	}
 
 	@Override

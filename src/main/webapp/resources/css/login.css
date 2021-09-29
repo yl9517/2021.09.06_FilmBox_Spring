@@ -34,11 +34,11 @@ body{
 	height : 100%;
 }
 
-h2{
+.mid h2{
 	margin-bottom : 50px;
 }
 
-form{
+.mid form{
 	width : 100%;
 	display : flex;
 	flex-direction : column;
@@ -59,11 +59,11 @@ form{
 	width : 200px;
 }
 
-input:focus {
+.mid input:focus {
 	outline:none;
 }
 
-input[type=password] { 
+.mid input[type=password] { 
 	font-family:'Malgun gothic', dotum, sans-serif!important;
 	color : #7F9871;
 }

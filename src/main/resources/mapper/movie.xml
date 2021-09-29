@@ -4,39 +4,6 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.film.mapper.MovieMapper">
 
-<!-- 	<insert id="movieinsert" parameterType="java.util.List">
-		insert into filmbox_movie
-		(rank,movieCd,movieNm,openDt,audiAcc,image,update_date,starpoint)
-		values
-		<foreach item="item" index="index" collection="list"
-			separator=" , ">
-			(#{item.rank}, #{item.movieCd}, #{item.movieNm}, 
-			#{item.openDt}, #{item.audiAcc}, #{item.image}
-			,now(), 0)
-		</foreach>
-	</insert>
-
-	<select id="updatedate" resultType="string">
-		SELECT update_date FROM filmbox_movie
-		WHERE rank=1;
-	</select>
-	
-	<update id="movieupdate" parameterType="java.util.List">
-
-		<foreach item="item" index="index" collection="list" separator=";">
-			update filmbox_movie
-			set
-			where rank = #{item.rank},
-			movieNm = #{item.movieNm},
-			openDt = #{item.openDt},
-			audiAcc = #{item.audiAcc},
-			image = #{item.image},
-			update_date = now()
-
-			movieCd = #{item.movieCd},
-		</foreach>
-	</update> -->
-	
 	
 	<insert id="updateList" parameterType="java.util.List">
 		insert into filmbox_movie
@@ -74,20 +41,18 @@
 	</select>
 	
 	<!-- 리뷰 작성될때마다 별점평균 바뀌는 DB 추가해야함-->
-		
-	<insert id="reserveinsert" parameterType="com.film.dto.KakaopayDTO">
-    	<selectKey keyProperty="rev_no" resultType="int" order="AFTER">
-       		SELECT LAST_INSERT_ID() 
-    	</selectKey>
-    	insert into filmbox_rev ( movieCd, rsv_date, price, rev_condition) 
-    	values ( #{movieCd},now(), #{payMoney} ,0)
-    </insert>
-    <insert id="screeninsert" parameterType="com.film.dto.KakaopayDTO">
-    	
-    	insert into filmbox_screen (rev_no,show_date, show_time, seatno) 
-    	
-    	values (#{rev_no},#{reserveDate}, #{screenTime},#{selectedSeat})
-    </insert>
+	<update id="avgStarpoint" parameterType="string">
+		update filmbox_movie as m inner join
+              (select movieCd, avg(review_starpoint) as revCount
+		         from filmbox_review 
+			    where movieCd = #{movieNm} )
+        	as r
+        on m.movieCd = r.movieCd
+        set m.starpoint = revCount
+        where m.movieCd = #{movieNm}
+	</update> 
+	
+	
 </mapper>
     
     

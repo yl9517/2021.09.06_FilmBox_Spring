@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 <link rel="shortcut icon" href="resources/favicon.ico">
 <link rel="icon" href="resources/favicon.ico">
-	<link rel="stylesheet" href="resources/css/main.css">
+	<link rel="stylesheet" href="/resources/css/main.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
 	
@@ -112,7 +112,7 @@
 	
 	
 </div>
-	<script src="resources/js/carousel.js"></script>
-	<script src="resources/js/main.js"></script>
+	<script src="/resources/js/carousel.js"></script>
+	<script src="/resources/js/header.js"></script>
 </body>
 </html>
