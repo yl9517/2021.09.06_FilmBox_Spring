@@ -84,7 +84,7 @@
 		<c:choose>
 			<c:when test="${compare_date < update_date }">
 				<div class="reserve">
-					<input type="button" value="예매하기" onclick="location.href='/reservemovie/${dto.movieCd }/${dto.movieNm }'">
+					<input type="button" class="reserveBtn" value="예매하기" onclick="location.href='/reservemovie/${dto.movieCd }/${dto.movieNm }'">
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -170,6 +170,11 @@
 				</li>  -->
 
 			</ul>
+					
+			<div class="more" id="more_review">
+				<div class="more_open">댓글 더보기</div>
+				<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+			</div>
 		</div>
 		
 		<!-- 댓글 작성 창 -->
@@ -205,6 +210,17 @@
 				<input type="submit" value="등록">
 			</div>
 		</form>
+		
+		
+		<div class="notice">
+			<h5>유의사항</h5>
+			<ul>
+				<li> 관람하신 영화 당 1회만 작성 가능합니다. </li>
+				<li> 수정/삭제 후  재등록 시에는 포인트 적립이 되지 않습니다. </li>
+				<li> 작성하신 관람평은 마이페이지 > MY필름스토리 에서 확인하실 수 있습니다. </li>
+				<li> 해당 평점은 FilmBox 실관람객의 평점입니다. </li>
+			</ul>
+		</div>
 
 	</div>
 	<script src="/resources/js/movieInfo.js"></script>

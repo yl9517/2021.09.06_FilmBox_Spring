@@ -76,7 +76,7 @@ $.ajax({
 	,success:function(data) {	
 		 $.each(data, function(index, item){
 			 reviewCount++;
-	         let reviews =  "<li>";
+	         let reviews =  "<li class='review_li'>";
 		         	 reviews += "<div class='user_info'>";
 			         	 reviews += "<span class='userName'>"+item.member_name+"</span>"
 		               	 reviews += "<span><img alt='star' src='../resources/img/star.png'>"+item.review_starpoint+"</span>"
@@ -182,8 +182,8 @@ function checkStar() {
 	}
 } 
 
-/* 댓글 - 더보기 */
-$(document).one("mouseover", "body", function() {
+/* 각댓글의 ...*/
+$(document).one("mousemove", "body", function() {
 	$('.etc').hide();
 });
 $(document).on("click", ".moreBtn", function() {
@@ -193,13 +193,50 @@ $(document).on("click", ".moreBtn", function() {
 /* 신고버튼 누를 시*/
 $(document).on("click","#reportBtn",function(){
     if(member_id == null || member_id ==''){
-    	alert('로그인이 필요한 서비스입니다.')
+    	alert('로그인이 필요한 서비스입니다.') ;
 	}else{
 		if(confirm("해당 댓글을 신고하시겠습니까?")){	
-   		  alert('신고 되었습니다.')
+   		  alert('신고 되었습니다.');
+   		  $('.report').hide();
 	   	}else{
 	   		return;	
 	   	}
 	}
 })
-  
+ 
+/* 댓글 더보기 */
+let showCount = 3;
+let nowShowCount = 0;
+$(document).one("mousemove", "body", function() {
+	//더보기 누르기 전 숨기기
+	let watched_review = $(".review_li");
+	for(let i=0; i<watched_review.length; i++){
+		if(i>showCount-1){
+			watched_review[i].style.display="none";
+		}
+	}
+	//스토리가 n개 이하일때 더보기 안보이게
+	if(watched_review.length<=showCount){
+		more_review.style.display="none";
+	}
+});
+
+$(document).on("click", ".more_open", function() {
+	nowShowCount += showCount;
+	
+	//더보기 보여주기
+	let more_review = $("#more_review");
+	let watched_review = $(".review_li");
+	
+	for(let i=0; i<watched_review.length; i++){	
+
+		if(i>=nowShowCount && i<nowShowCount+showCount) {
+			watched_review[i].style.display="inherit";
+
+			
+			if(i+1 == watched_review.length){ //마지막번째면 더보기 안보이게
+				more_review.hide();
+			}
+		}	
+	}		
+});

@@ -5,9 +5,8 @@
 }
 #info_wrap{
    margin: 0 auto;
-   text-align: center;  
+   text-align: center;
 }
-
 #info_title{
    position: relative; 
 	padding : 50px;
@@ -376,4 +375,53 @@ input#review_starpoint{
     padding: 0px;
     margin: 0px;
     border: 0px;
+}
+
+/* 예매하기 버튼 */
+
+.reserve input {
+  /* 생략 */
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: inline-block;
+background-color:#C94F44;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  color:white;
+     margin-top: 35px;
+    width: 250px;
+    border-radius: 30px;
+    height: 55px;
+    border: 3px solid #9A3F36;
+    font-size: 18px;
+}
+.reserve input:hover,
+.reserve input:active{
+  background-color:#9A3F36;
+    border: 3px solid #C94F44;
+    color: #DBDBDB;
+}
+.reserve input:disabled {
+  opacity: 0.5;
+}
+
+/*유의사항*/
+.notice h5{
+   margin-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+}
+.notice{
+	padding: 30px 50px 20px;
+    margin: 90px auto;
+    width: 1100px;
+    text-align: left;
+    border: 2px solid #f1f1f1;
+    border-radius: 10px;
+}
+
+/*더보기*/
+.more_open{
+	cursor: pointer;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
 }
