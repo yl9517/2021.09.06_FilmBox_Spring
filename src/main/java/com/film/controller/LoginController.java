@@ -48,7 +48,7 @@ public class LoginController {
 		this.naverLoginBO = naverLoginBO; } 
 
 	//로그인 첫 화면 요청 메소드 
-	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST }) 
+	@RequestMapping(value = "/login") 
 	public String login(Model model, HttpSession session) {
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
 
@@ -61,7 +61,6 @@ public class LoginController {
 			model.addAttribute("page", "login/login.jsp");
 			return "view";
 		}
-
 	} 
 
 
