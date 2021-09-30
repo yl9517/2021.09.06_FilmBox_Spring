@@ -45,13 +45,13 @@
 		update filmbox_movie as m inner join
               (select movieCd, avg(review_starpoint) as revCount
 		         from filmbox_review 
-			    where movieCd = #{movieNm} )
+			    where movieCd = #{movieCd} )
         	as r
         on m.movieCd = r.movieCd
         set m.starpoint = revCount
-        where m.movieCd = #{movieNm}
+        where m.movieCd = #{movieCd}
 	</update> 
-	
+
 	
 </mapper>
     

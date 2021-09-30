@@ -102,13 +102,18 @@ $.ajax({
 
 
 /* 리뷰창 */
+let isRevNo = $('#rev_no').val();
 $('#review_write').hide();
 $('.loginInfo').hide();
+/*$('.isRevNoInfo').hide();*/
 $('#review_window').click(function() {
-	if(member_id == null || member_id ==''){
+	if(member_id == null || member_id ==''){ //로그인하시오
 		$('.loginInfo').show();
 	}
-	else{
+	else if(isRevNo == null || isRevNo == 0){ //예매하시오
+		alert('관람평을 실관람 이후 작성 가능합니다.')
+	}
+	else{ //관람평 작성
 		$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
 		$('#review_write').show();
 	}

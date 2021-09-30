@@ -41,7 +41,6 @@
 
 	<!-- 로그인한 아이디 -->
 		<input type="hidden" id="member_id" name="member_id" value="${loginId}">
-
 	
 		<div id="info_title">
 			<div class="bg" style="background-image: url('${dto.image}')">
@@ -147,10 +146,8 @@
 									<p>로그인이 필요한 서비스 입니다. </p>
 									<a href="/login">로그인 하러가기 > </a>
 								</div>
-						</div>
-				 	</c:otherwise>
-				 	
-				 	
+							</div>
+				 	</c:otherwise> 	
 			 	</c:choose>
 				</li>
 			</ul>
@@ -180,7 +177,8 @@
 		<form id="review_write" method="post" action="../reviewInsertAction" onsubmit="return checkStar();">
 		
 		<input type="hidden" id="movieCd" name="movieCd" value="${dto.movieCd }">
-		<input type="hidden" id="rev_no" name="rev_no" value="123">
+		<input type="hidden" id="rev_no" name="rev_no" value="${rev_no}">
+		
 			<header class="window_top">
 				<h5>관람평 작성 </h5>
 				<img alt="close" class="reset" src="../resources/img/close.png">

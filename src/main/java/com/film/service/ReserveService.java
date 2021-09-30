@@ -3,6 +3,7 @@ package com.film.service;
 import java.util.List;
 
 import com.film.dto.KakaopayDTO;
+import com.film.dto.ReviewDTO;
 import com.film.dto.ScreenDTO;
 
 public interface ReserveService {
@@ -12,4 +13,6 @@ public interface ReserveService {
 //	public void screeninsert(List<KakaopayDTO> list);
 	public void screeninsert(ScreenDTO sDTO);
 
+	//리뷰 권한 확인쿼리
+	public Integer isRevNo(ReviewDTO rDTO);
 }

@@ -19,7 +19,6 @@
 		where movieCd = ${movieCd} and member_id = #{member_id}
 	</select>
 
-	
 	<update id="modifyReview" parameterType="com.film.dto.ReviewDTO">
 		update filmbox_review set
 		review_content = #{review_content}

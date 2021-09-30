@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.film.dto.KakaopayDTO;
+import com.film.dto.ReviewDTO;
 import com.film.dto.ScreenDTO;
 import com.film.mapper.ReserveMapper;
 @Service(value="reserveservice")
@@ -43,4 +44,14 @@ public class ReserveServiceImple implements ReserveService {
 //		// TODO Auto-generated method stub
 //		reMapper.screeninsert(dto);
 //	}
+	
+	@Override
+	public Integer isRevNo(ReviewDTO rDTO) {
+		int result = 0;
+		if( reMapper.isRevNo(rDTO) != null) {
+			result =  reMapper.isRevNo(rDTO);
+		}
+		return result;
+	}
+	
 }
