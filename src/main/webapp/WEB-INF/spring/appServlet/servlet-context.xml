@@ -38,12 +38,7 @@
 			<mapping path="/reviewInsertAction"/>
 			<mapping path="/reviewModifyAction"/>
 			<mapping path="/reviewDeleteAction"/>
-<!-- 		<exclude-mapping path="/login"/>        exclude 할 항목들
-			<exclude-mapping path="/loginresult"/>
-			<exclude-mapping path="/nav2"/>
-			<exclude-mapping path="/index"/>
-			<exclude-mapping path="/callback/**"/>
-			<exclude-mapping path="/resources/**"/>  -->
+
 			<beans:bean class="com.film.data.AuthInterceptor"></beans:bean>
 			
 		</interceptor>

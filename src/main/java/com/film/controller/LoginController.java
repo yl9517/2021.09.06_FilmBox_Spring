@@ -121,7 +121,7 @@ public class LoginController {
 		UserDTO dto2 = service.userDetail(id);
 		session.setAttribute("logintype", dto2.getLogin_type());
 
-		return "redirect:main";
+		return "redirect:login";
 	} 
 
 	//loginresult
