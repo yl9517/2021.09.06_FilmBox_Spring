@@ -10,14 +10,17 @@
 </head>
 <body>
 <div id="movie_wrap">
-	<h2> 검색 결과 </h2>
 	<div id="movieList">
-		<ul>
+	<h2> 검색 결과 </h2>
 		<c:choose>
 			<c:when test="${searchMv.size() == 0 }">
-				<p class="nosearch">검색 결과가 없습니다.</p>
+				<div  class="empty_story">
+					<img src="resources\img\clapperboard.png" width="140px" height="140px">
+				 	<div> 검색결과가 없습니다</div><br>
+				</div>
 			</c:when>
 			<c:otherwise>
+			<ul>
 				<c:forEach var="item" items="${searchMv }">
 					<li>
 						<a href="movieInfo/${item.movieCd}">
@@ -30,9 +33,9 @@
 						</div>		
 					</li>
 				</c:forEach>
+			</ul>
 			</c:otherwise>
 		</c:choose>	
-		</ul>
 		
 		<div id="clear"></div>
 	</div>

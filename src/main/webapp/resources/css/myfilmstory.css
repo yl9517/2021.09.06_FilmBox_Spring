@@ -6,8 +6,9 @@
 }
 .story_wrap {
 	margin: 0 auto;
-	padding: 5%;
-	min-height: 10%;
+	padding: 5% 0;
+	min-height: 650px;
+	width: 1100px;
 }
 
 /* 나의 필름 스토리 wrap */
@@ -20,7 +21,6 @@
 .story_h {
 	font-size: 25px;
 	font-weight: bolder;
-	padding-left : 15%;
 	padding-right : 10px;
 }
 
@@ -54,7 +54,7 @@ to {
 .empty_story{
 	font-size: 20px;
 	margin: 0 auto;
-	padding: 3%;
+	padding: 3% 0;
 	text-align: center;
 }
 .empty_story img {

@@ -28,8 +28,8 @@
 				<ul class="menu2_right">
 		<c:choose>
 			<c:when test="${loginId == null }">
-					<li><a href="login">로그인</a></li>
-					<li><a href="join">회원가입</a></li>
+					<li><a href="/login">로그인</a></li>
+					<li><a href="/join">회원가입</a></li>
 			</c:when>
 			<c:otherwise>
 					<li class="user"><a href="/mypage"><img alt="user" src="/resources/img/user.png"> </a></li>

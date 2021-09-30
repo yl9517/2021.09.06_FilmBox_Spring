@@ -10,8 +10,8 @@
 </head>
 <body>
 <div id="movie_wrap">
-	<h2>무비 차트 </h2>
 	<div id="movieList">
+	<h2>무비 차트 </h2>
 		<ul>
 <%-- 			<li>
 				<a href="movieInfo/${item.movieCd}">
