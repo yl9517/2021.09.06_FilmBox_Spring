@@ -12,6 +12,7 @@
         						, member_pwd
         						, member_phone
         						, email
+        						, point
         						, login_type )
         select #{member_id}
          		, #{member_name}
