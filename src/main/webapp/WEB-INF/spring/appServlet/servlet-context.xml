@@ -30,7 +30,6 @@
 	 <!-- interceptor(session을 위한) 등록 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/nav1"/>
 			<mapping path="/mypage"/>
 			<mapping path="/mypointlist"/>
 			<mapping path="/myfilmstory"/>
@@ -38,7 +37,6 @@
 			<mapping path="/reviewInsertAction"/>
 			<mapping path="/reviewModifyAction"/>
 			<mapping path="/reviewDeleteAction"/>
-
 			<beans:bean class="com.film.data.AuthInterceptor"></beans:bean>
 			
 		</interceptor>
