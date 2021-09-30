@@ -18,6 +18,7 @@
          		, #{member_pwd}
          		, #{member_phone}
          		, #{email}
+         		, '0'
          		, 'SNS' from dual
         where not exists ( select member_id from filmbox_member
         					 where member_id=#{member_id} )
@@ -106,19 +107,16 @@
 <!-- 마이페이지/필름스토리 -->
 <select id="getMyfilmData" parameterType="String" resultType="com.film.dto.MypageDTO">
 	select rev.rev_no, m.image, m.movieNm
-			, s.show_date, s.show_time, s.seatno
+			, s.show_date, s.show_time
 			, r.review_starpoint, r.review_content
-	from filmbox_member as u
-	   left join filmbox_rev as rev
-	  on u.member_id = rev.member_id
-		inner join filmbox_screen as s
+	from filmbox_rev as rev join filmbox_screen as s
 	  on rev.rev_no =  s.rev_no
 		left join filmbox_review as r
 	  on rev.rev_no = r.rev_no
-	  	inner join filmbox_movie as m
+	  	join filmbox_movie as m
 	  on r.movieCd = m.movieCd
-	where u.member_id = #{member_id}
-	order by rsv_date DESC
+	where rev.member_id = #{member_id}
+	order by rev_date DESC
 </select>
 
 </mapper>
