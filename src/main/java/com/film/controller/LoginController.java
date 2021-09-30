@@ -51,17 +51,22 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST }) 
 	public String login(Model model, HttpSession session) {
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */ 
-		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session); 
 
-		model.addAttribute("url", naverAuthUrl); 
-		model.addAttribute("page", "login/login.jsp");
+		if(session.getAttribute("loginId")!=null)
+		{
+			return "redirect:main";
+		}else {
+			String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session); 
+			model.addAttribute("url", naverAuthUrl); 
+			model.addAttribute("page", "login/login.jsp");
+			return "view";
+		}
 
-		return "view"; 
 	} 
 
 
 	//네이버 로그인 성공시 callback호출 메소드 
-	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/callback")
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException, ParseException {
 
 		OAuth2AccessToken oauthToken; 
@@ -116,10 +121,8 @@ public class LoginController {
 		//세션에 login_type 저장
 		UserDTO dto2 = service.userDetail(id);
 		session.setAttribute("logintype", dto2.getLogin_type());
-		
-		model.addAttribute("page", "login/login.jsp");
 
-		return "view";
+		return "redirect:main";
 	} 
 
 	//loginresult
@@ -222,7 +225,7 @@ public class LoginController {
 			System.out.println(dto2.getLogin_type());
 		}
 
-		return "login/login";
+		return "redirect:main";
 	}
 
 	//사용 보류

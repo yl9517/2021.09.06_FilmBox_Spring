@@ -11,15 +11,7 @@
 
 <body>
 <div class="mid">
-		<c:choose>
-			<c:when test="${loginId != null}">
-				<h2>로그인 성공하셨습니다!!</h2>
-				<h3>'${loginId}' 님 환영합니다!</h3>
-				<h3><a href="logout">로그아웃</a></h3>
-				<h3><a href="mypage">마이페이지</a></h3>
-			</c:when>
 
-			<c:otherwise> 
 				<form action="loginresult" method="post" name="frm" style="width:470px;"> 
 				  <h2>FilmBox</h2> 
 				  <input type="text" name="member_id" id="member_id" class="w3-input w3-border" placeholder="아이디" spellcheck="false" required>
@@ -51,8 +43,6 @@
 					<a href="finduserpwd" class="btn">비밀번호 찾기</a>
 					<a href="join" class="btn">회원가입</a>
 				</div>
-			</c:otherwise>
-		</c:choose> 
 </div>
 </body>
 </html>
