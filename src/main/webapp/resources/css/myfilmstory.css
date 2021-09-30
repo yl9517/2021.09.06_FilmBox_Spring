@@ -66,7 +66,7 @@ to {
 	margin: 0 auto;
 	width: 1100px;
 	list-style-type: none;
-	padding: 20px;
+	padding: 30px;
 	display: flex;
 	flex-direction: row;
 	border-bottom: 3px double silver;
@@ -95,7 +95,7 @@ to {
 }
 /* 내 댓글 */
 .content{
-	background-color: beige;
+	background-color: #f5f5dc;
 	padding-left: 40px;
 	padding-right: 20px;
 	padding-top: 20px;
@@ -123,44 +123,36 @@ to {
 /* 더보기 */
 .more{
 	-webkit-animation: motion .5s linear 0s infinite alternate;
-	margin-top: 0;
-
+	text-align: center;
 	font-size: 20px;
 }
 @-webkit-keyframes motion{
 	0%{
-		margin-top: 0px;
+		padding-top: 0px;
 	}
 	100%{
-		margin-top: 10px;
+		padding-top: 10px;
 	}
-}
-.more span{
-	padding-left: 15px;
 }
 
 
 /* 리뷰 창 */
-
 form#review_write {
     width: 700px;
-    height: 480px;
-    border: 2px solid black;
+    height: 500px;
     background-color: white;   
     position: fixed;
     top: 20%;
     left: 25%;
     z-index : 99;
+    text-align: center;
 }
 .window_top{
     background-color: #7F9871;	
     padding: 12px 30px 5px;
     text-align: left;
     color: white;
-   	position: relative;
-}
-.window_top h5{
-	font-size: 20px;
+   position: relative;
 }
 .window_top img{	
    position: absolute;
@@ -173,12 +165,7 @@ form#review_write {
  margin: 10px;
 }
 .score{	
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-   	align-items: center;
-
+    padding: 50px 20px 30px 20px;
 }
 
 .score fieldset{
@@ -208,12 +195,11 @@ form#review_write {
     text-shadow: 0 0 0 #AED598; /* 마우스 클릭 체크 */
     transition: all 0.2s;
 }
-.score span{
-	width: 410px;
+.score h2+p{
+	width: 560px;
     position: relative;
     top: 10px;
     text-align: right;
-    padding-bottom: 20px;
 
 }
 .score textarea{
@@ -224,6 +210,14 @@ form#review_write {
 	padding: 8px 20px;
 	margin: 20px 15px;
 }
-.btn_review{
-	display: inline-block;
+
+.score .alarm{	
+    color: #C94F44; 
+    margin-bottom: 0px;
+}
+input#review_starpoint{
+	text-align: right;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
 }

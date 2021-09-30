@@ -19,7 +19,6 @@
 </head>
 <body>
 
-	<section>
 	<div class="story_wrap">
 		<div class="story">
 			<div class="story_h">나의 필름 스토리</div>
@@ -29,18 +28,20 @@
 			<ul id="story_list">
 			<c:choose>
 				<c:when test="${!empty myfilmlist }">
+					<p style="display:none" id="j">${json }</p>
 					<c:forEach var="item" items="${myfilmlist }">
+						
 						<li class="movie_info">
 							<div class="poster">
 							<!-- 누르면 영화 상세보기로 -->
-								<a href="#"> <img src="${item.image }" alt=""
-											width="110px" height="155px">
+								<a href="movieInfo/${item.movieCd }"> <img src="${item.image }" alt=""
+											width="140px" height="180px">
 								</a>
 							</div>
 							<div class="movie_detail">
-								<h4 class="title">${item.movieNm }</h4>
+								<h4 class="title" id="title">${item.movieNm }</h4>
 								<p class="date">${item.show_date } ${item.show_time }</p>
-								<p class="seat">${item.seatno }</p>
+								<p class="seat">${item.seats }</p>
 								<!-- 댓글이 있으면 댓글 보여주고 없으면 관람평쓰기 버튼 표시 -->
 								<c:choose>
 									<c:when test="${item.review_content!=null }">
@@ -61,7 +62,7 @@
 									<c:otherwise>
 										<button type="button" class="btn btn-default btn-sm" id="review_window"
 											data-toggle="tooltip" data-placement="right" title="500P 적립"
-											style="font-size: 15px">관람평 쓰기</button>
+											style="font-size: 15px" onclick="sendTitle('${item.movieNm }')">관람평 쓰기</button>
 									</c:otherwise>
 									
 								</c:choose>
@@ -90,18 +91,21 @@
 			<div class="more_open" onclick="showMore()" >더보기</div>
 			<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
 		</div>
-	</div>
-	</section>
-
-	<!-- modal 창 -->
-	<form id="review_write" method="post" action="reviewAction">
+	
+		<input type="hidden" id="member_id" name="member_id" value="${loginId}">
+	<!-- 댓글 작성 창 -->
+		<form id="review_write" method="post" action="../reviewInsertAction" onsubmit="return checkStar();">
+		
+		<input type="hidden" id="movieCd" name="movieCd" value="${dto.movieCd }">
+		<input type="hidden" id="rev_no" class="rev_no" name="rev_no" value="${rev_no}">
+		
 			<header class="window_top">
-				<h5>관람평 작성 </h5>
+				<h4>관람평 작성 </h4>
 				<img alt="close" class="reset" src="../resources/img/close.png">
 			</header>
 			<div class="score">
-				<h2 class="tit">${item.movieNm }</h2>
-				    <span><b class="star"> 0 </b> 점</span>
+				<h2 class="tit" id="tit"></h2>
+				    <p><input type="text" id="review_starpoint" name="review_starpoint" value="0"> 점</p>
 				    <fieldset>
 				     	<input type="radio" name="rating" value="10" id="rate1"><label for="rate1">⭐</label>
 				        <input type="radio" name="rating" value="9" id="rate2"><label for="rate2">⭐</label>
@@ -115,14 +119,15 @@
 				        <input type="radio" name="rating" value="1" id="rate10"><label for="rate10">⭐</label>
 				    </fieldset>
 				    <br>
-				<textarea id="reviewContent" name="reviewContent" rows="5" cols="50" placeholder="관람평을 남겨주세요. 스포 및 비방글은 무통보 삭제조치를 받을 수 있습니다."></textarea>
+				<textarea id="review_content" name="review_content" rows="5" cols="50" placeholder="관람평을 남겨주세요. 스포 및 비방글은 무통보 삭제조치를 받을 수 있습니다."></textarea>
 				<br>
-				<div class="btn_review">
-					<input type="reset" class="reset" value="취소">
-					<input type="submit" value="등록">
-				</div>
+				<p class="alarm"> 　</p>
+				<input type="reset" class="reset" value="취소">
+				<input type="submit" value="등록">
 			</div>
 		</form>
+		
+	</div>
 
 	<script type="text/javascript" src="resources\js\myfilmstory.js"></script>
 </body>

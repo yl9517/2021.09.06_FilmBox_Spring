@@ -13,9 +13,10 @@ public class MypageDTO {
 	private String image;
 	private String show_date;
 	private String show_time;
-	private String seatno;
+	private String seats;
 	private int review_starpoint;
 	private String review_content;
 	private String movieNm;
+	private String movieCd;
 	private String member_id;
 }

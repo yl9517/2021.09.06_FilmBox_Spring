@@ -34,7 +34,7 @@
 			<div class="point_story">
 				<div class="mypoint">
 					<p>MY POINT</p>
-					<span class="point">${dto.point }</span>
+					<p class="point">${dto.point }</p>
 					<button type="button" class="btn btn-default btn-sm"
 						onclick="pointList()" style="font-size: 15px">내 포인트 내역</button>
 				</div>
@@ -58,12 +58,11 @@
 					<c:when test="${!empty myRsvList }">
 						<c:forEach var="item" items="${myRsvList }">
 							<li class="rsv_list">
-								<div>
+								<div class="rsv_no_wrap">
 									예매번호 <span class="rsv_no" id="rsv_no">${item.rev_no }</span>
 								</div>
-								<br>
 								<div class="rsv_info_wrap">
-									<img src="${item.image }" width='100px' height='130px'>
+									<img src="${item.image }" width='160px' height='180px'>
 									<div class="rsv_info">
 										<div class="title" id="title">${item.movieNm }</div>
 										<div>
@@ -72,7 +71,7 @@
 										</div>
 										<div>
 											좌석
-											<p id="seat">${item.seatno }</p>
+											<p id="seat">${item.seats }</p>
 										</div>
 									</div>
 									
@@ -81,7 +80,7 @@
 												id="qr" onclick="openPop(this)"></span>
 										<br>
 										<button type="button" class="btn btn-default btn-sm"
-												style="font-size: 15px">예약 취소</button>
+												style="font-size: 15px">예매 취소</button>
 									</div>
 								</div>
 							</li>

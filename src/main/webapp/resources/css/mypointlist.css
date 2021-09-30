@@ -8,9 +8,8 @@
 .point_list_wrap{
 	margin: 0 auto;
 	width: 1100px;
-	padding: 3%;
-	padding-bottom: 6%;
-	min-height: 10%;
+	padding: 5% 0;
+	min-height: 650px;
 }
 /* 내 포인트 내역 타이틀 */
 .point_h{
@@ -20,10 +19,8 @@
 
 /* 사용가능 포인트 */
 .total_point{
-	margin: 0 auto;
 	width: 500px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: 0 auto;
 	text-align: center;
 	padding: 30px;
 	font-size: 30px;
@@ -47,7 +44,7 @@
 /* 내 포인트 내역 테이블 */
 .ptable-wrap{
 	margin: 0 auto;
-	padding: 5%;
+	padding: 5% 0;
 }
 .coin{
 	margin: 3%;

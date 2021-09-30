@@ -9,6 +9,7 @@ import java.util.Properties;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
+import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +126,9 @@ public class UserContoller {
 		String member_id=(String)session.getAttribute("loginId");
 		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
 		
+//		net.sf.json.JSONArray jsonArray = new net.sf.json.JSONArray();
+//		model.addAttribute("json", jsonArray.fromObject(myfilmlist));
+//		System.out.println(jsonArray.fromObject(myfilmlist));
 		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("page","user/myfilmstory.jsp");
 		return "view";
