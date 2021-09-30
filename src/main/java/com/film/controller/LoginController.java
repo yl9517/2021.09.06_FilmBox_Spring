@@ -114,7 +114,8 @@ public class LoginController {
 			dto.setEmail("");
 		else
 			dto.setEmail(email);
-
+		
+		dto.setLogin_type("SNS");
 		service.insertUser(dto);
 		
 		//세션에 login_type 저장
@@ -206,6 +207,7 @@ public class LoginController {
 		dto.setMember_pwd(pwd);
 		dto.setMember_name(name);
 		dto.setMember_phone(phone);	
+		dto.setLogin_type("SNS");
 
 		//회원가입+로그인 동시에
 		service.insertUser(dto);

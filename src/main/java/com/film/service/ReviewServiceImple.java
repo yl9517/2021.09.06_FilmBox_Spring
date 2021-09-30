@@ -13,6 +13,7 @@ import com.film.dto.ReviewDTO;
 import com.film.mapper.MovieMapper;
 import com.film.mapper.PointMapper;
 import com.film.mapper.ReviewMapper;
+import com.film.mapper.UserMapper;
 
 @Transactional(rollbackFor = {Exception.class}) //exception 발생시 롤백
 @Service(value = "reviewservice")
@@ -24,6 +25,8 @@ public class ReviewServiceImple implements ReviewService{
 	private MovieMapper mvMapper;
 	@Autowired
 	private PointMapper pointMapper;
+	@Autowired
+	private UserMapper userMapper;
 	
 	@Override
 	public int insertReview(ReviewDTO dto) {
@@ -33,6 +36,7 @@ public class ReviewServiceImple implements ReviewService{
 		 String movieNm = mvMapper.getMovie(dto.getMovieCd()).getMovieNm();
 		 PointDTO pointdto = new PointDTO(dto.getMember_id(), 500, "("+movieNm+") 관람평 작성 포인트적립");//포인트 적립
 		 pointMapper.changePoint(pointdto); //포인트 적립
+		 userMapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
 		 
 		 
 		 return reuslt;

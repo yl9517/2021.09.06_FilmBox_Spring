@@ -19,32 +19,11 @@
          		, #{member_pwd}
          		, #{member_phone}
          		, #{email}
-         		, '0'
-         		, 'SNS' from dual
+         		, 0
+         		, #{login_type}
         where not exists ( select member_id from filmbox_member
         					 where member_id=#{member_id} )
            
-</insert>
-
-<!-- 홈페이지 회원가입 user -> 3000 포인트 지급 -->
-<insert id="insertFilmUser" parameterType="com.film.dto.UserDTO">
-		insert into filmbox_member  ( member_id
-								, member_name
-								, member_pwd
-								, member_phone
-								, email
-								, point
-								, login_type ) 
-         select  #{member_id}
-         		 , #{member_name}
-         		 , #{member_pwd}
-         		 , #{member_phone}
-         		 , #{email}
-         		 , '3000'
-         		 , 'R' from dual
-         where not exists ( select member_id from filmbox_member
-         					 where member_id=#{member_id} )
-        
 </insert>
 
 <select id="idcheck" resultType="int">
@@ -120,4 +99,15 @@
 	order by rev_date DESC
 </select>
 
+<!-- 내 포인트 합계 -->
+   <update id="updateMyPoint" parameterType="string">
+      update filmbox_member as m inner join
+              (select member_id, sum(point) as pointSum
+               from filmbox_point
+             where member_id = #{member_id} )
+           as p
+        on m.member_id = p.member_id
+        set m.point = pointSum
+        where m.member_id = #{member_id}
+   </update> 
 </mapper>

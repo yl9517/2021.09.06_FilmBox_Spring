@@ -54,6 +54,7 @@ public class UserContoller {
 	@RequestMapping("/joinresult")
 	public String joinresult(Model model, UserDTO dto)
 	{
+		dto.setLogin_type("R");
 		service.insertFilmUser(dto);
 		model.addAttribute("member_name", dto.getMember_name());
 		model.addAttribute("page", "login/joinresult.jsp");

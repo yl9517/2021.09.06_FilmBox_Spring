@@ -11,8 +11,6 @@ import com.film.dto.UserDTO;
 public interface UserMapper {
 
 	public int insertUser(UserDTO dto);
-
-	public int insertFilmUser(UserDTO dto);
 	
 	public int idcheck(String member_id);
 
@@ -33,4 +31,6 @@ public interface UserMapper {
 	public int emailcheck(String email);
 
 	public List<MypageDTO> getMyfilmData(String member_id);
+	
+	public void updateMyPoint(String member_id);
 }

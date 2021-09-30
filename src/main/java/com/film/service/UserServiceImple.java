@@ -30,9 +30,10 @@ public class UserServiceImple implements UserService {
 	
 	@Override
 	public void insertFilmUser(UserDTO dto) {
-		int result=mapper.insertFilmUser(dto);
+		int result=mapper.insertUser(dto);
 		PointDTO pointdto = new PointDTO(dto.getMember_id(), 3000, "회원가입 적립");//포인트 적립
-		 pointMapper.changePoint(pointdto); //포인트 적립
+		pointMapper.changePoint(pointdto); //포인트 적립
+		mapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
 		 
 	}
 
