@@ -54,6 +54,8 @@ const movieNm = document.querySelector('.movieNm');
 const movieCd = document.querySelector('.movieCd');
 const screenTime = document.querySelector('.screenTime');
 
+
+
 toastr.options = {
     positionClass: 'toast-top-right',
     progressBar: true,
@@ -174,10 +176,8 @@ for (let i = 0; i < 10; i++) {
         input.type = 'button';
         input.name = 'seats';
         input.classList = 'seat';
-        //3중포문을 사용하지 않기위해
         mapping(input, i, j);
         div.append(input);
-        //클릭시 이벤트
         inputClickEvent(input);
     }
 
@@ -202,6 +202,7 @@ seat.forEach(data => {
     ) {
         data.classList.add('top-margin');
     }
+  
 });
 
 //TODO 좌석 2개씩은 커플석으로 분리하기위해서 해당 class를 추가해줘야하는데 value가 2로끝나는얘들이랑 7로끝나는 얘들은 class를 추가해주기

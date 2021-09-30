@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -42,29 +43,48 @@ public class ReserveContorller {
     	model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
     	model.addAttribute("dto",dto);
     	
-    	
-    	return "movie/movieRes";
+    	String result = null;
+    	if(member_id==null) {
+    		result = "reserve/logincondition";
+    	}else   {
+    		result = "movie/movieRes";
+    	}
+    	return result;
+//    	return "movie/movieRes";
     }
 	
 	@PostMapping("/seatchoice")
-	public String seatchoice(ReserveDTO dto, Model model) {
-
+	public String seatchoice(KakaopayDTO dto, Model model, HttpSession session) {
+		List<ScreenDTO> slist = reservice.getseats(dto);
+		System.out.println(dto.getReserveDate() + dto.getScreenTime()+dto.getMovieCd());
+		
 		model.addAttribute("reserve", dto);
-		return "movie/seatchoice";
-	}
-	
-	
-	@GetMapping("/form")
-	public String payform() {
-		return "form";
+		model.addAttribute("slist",slist);
+
+    	String member_id=(String)session.getAttribute("loginId");
+    	String result = null;
+    	if(member_id==null) {
+    		result = "reserve/logincondition";
+    	}else   {
+    		result = "movie/seatchoice";
+    	}
+		return result;
 	}
 	
 	@RequestMapping("/kakaojsp")
-	public String kakaojsp(KakaopayDTO dto ,Model model) {
+	public String kakaojsp(KakaopayDTO dto ,Model model, HttpSession session) {
+
 		model.addAttribute("dto",dto);
-		System.out.println();
+
+    	String member_id=(String)session.getAttribute("loginId");
+    	String result = null;
+    	if(member_id==null) {
+    		result = "reserve/logincondition";
+    	}else   {
+    		result = "kakao/kakao";
+    	}
 		
-		return "kakao/kakao";
+		return result;
 		
 	}
 	

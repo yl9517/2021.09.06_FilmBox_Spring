@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.film.dto.KakaopayDTO;
+import com.film.dto.ReserveDTO;
 import com.film.dto.ReviewDTO;
 import com.film.dto.ScreenDTO;
 import com.film.mapper.ReserveMapper;
@@ -52,6 +53,12 @@ public class ReserveServiceImple implements ReserveService {
 			result =  reMapper.isRevNo(rDTO);
 		}
 		return result;
+	}
+
+	@Override
+	public List<ScreenDTO> getseats(KakaopayDTO dto) {
+		// TODO Auto-generated method stub
+		return reMapper.getseats(dto);
 	}
 	
 }

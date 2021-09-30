@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,8 +15,9 @@
 <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
 <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
 </head>
-<body>
 
+<body>
+	
 	<div class="select-container">
 		<div class="select-wrapper">
 			<div class="select-title">인원/좌석</div>
@@ -116,10 +118,11 @@
 				<div class="seat-wrapper">
 					<div class="screen-view-wrapper">
 						<div class="screen-view">SCREEN</div>
+						
 					</div>
 				</div>
 			</div>
-	
+
 <script src="../resources/js/seat.js"></script>
 </body>
 </html>
