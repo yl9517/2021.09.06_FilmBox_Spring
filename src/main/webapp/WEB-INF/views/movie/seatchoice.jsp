@@ -18,6 +18,12 @@
 
 <body>
 	
+	<%-- <c:forEach var="item" items="${slist }">
+		<c:out value="${item.seats }"></c:out>
+	</c:forEach>
+	 --%>
+	
+   
 	<div class="select-container">
 		<div class="select-wrapper">
 			<div class="select-title">인원/좌석</div>
@@ -105,7 +111,7 @@
 						<input type="hidden" class="ticketNumber" name="ticketNumber">
 						<input type="hidden" class="selectedSeat" name="selectedSeat">
 						<!-- 결제 정보 -->
-						<input type="hidden" class="payMoney" name="payMoney">
+						<input type="hidden" class="payMoney" name="payMoney" >
 						<button type="button" class="reserve-button">
 							결제하기<img src="../resources/image/payment_icon_yellow_medium.png">
 						</button>
@@ -123,6 +129,11 @@
 				</div>
 			</div>
 
+   <c:forEach var="item" items="${slist }">
+      <div class="thiss">${item.seats }</div>
+      
+   </c:forEach>
 <script src="../resources/js/seat.js"></script>
+
 </body>
 </html>

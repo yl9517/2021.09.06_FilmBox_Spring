@@ -54,7 +54,15 @@ const movieNm = document.querySelector('.movieNm');
 const movieCd = document.querySelector('.movieCd');
 const screenTime = document.querySelector('.screenTime');
 
+let arrays = [];
+$('.thiss').each(function(index,item){
+  arrays.push($(item).text());
+  console.log('출력'+$(item).text());
+});
 
+for(let i=0; i<arrays.length; i++){
+    console.log(arrays[i]+"");
+}
 
 toastr.options = {
     positionClass: 'toast-top-right',
@@ -166,6 +174,31 @@ selectSeatList(selectSeatListNormal);
 selectSeatList(selectSeatListTeen);
 selectSeatList(selectSeatListOld);
 
+function mapping(input, i, j) {
+    if (i === 0) {
+        input.value = 'A' + j;
+    } else if (i === 1) {
+        input.value = 'B' + j;
+    } else if (i === 2) {
+        input.value = 'C' + j;
+    } else if (i === 3) {
+        input.value = 'D' + j;
+    } else if (i === 4) {
+        input.value = 'E' + j;
+    } else if (i === 5) {
+        input.value = 'F' + j;
+    } else if (i === 6) {
+        input.value = 'G' + j;
+    } else if (i === 7) {
+        input.value = 'H' + j;
+    } else if (i === 8) {
+        input.value = 'I' + j;
+    } else if (i === 9) {
+        input.value = 'J' + j;
+    } else if (i === 10) {
+        input.value = 'K' + j;
+    }
+}
 for (let i = 0; i < 10; i++) {
     div = document.createElement('div');
     div.classList = 'seatButtonWrapper';
@@ -177,6 +210,7 @@ for (let i = 0; i < 10; i++) {
         input.name = 'seats';
         input.classList = 'seat';
         mapping(input, i, j);
+        input.id=input.value;
         div.append(input);
         inputClickEvent(input);
     }
@@ -187,22 +221,27 @@ for (let i = 0; i < 10; i++) {
 }
 
 seat.forEach(data => {
-    //console.log(data.value.substring(1, data.value.length));
-    // console.log(data.value.substring(0, data.value.length - 1));
-    //좌석이 2나 9로 끝나는얘들은 왼쪽이나 오른쪽으로 띄워주기위한 class추가
+    
     if (data.value.substring(1, data.value.length) === '2') {
         data.classList.add('left-margin');
     } else if (data.value.substring(1, data.value.length) === '9') {
         data.classList.add('right-margin');
     }
-    //앞자리가 E로끝나는 좌석들에 class 추가
+    
     if (
         data.value.substring(0, data.value.length - 1) === 'E' ||
         data.value.substring(0, data.value.length - 2) === 'E'
     ) {
         data.classList.add('top-margin');
     }
-  
+    for(let i=0; i<arrays.length; i++){
+        if(data.value==arrays[i]){
+        	var id=data.id;
+        	$(document).ready(function(){
+        		$("#"+id).attr("disabled",true);
+            });
+        }
+    }
 });
 
 //TODO 좌석 2개씩은 커플석으로 분리하기위해서 해당 class를 추가해줘야하는데 value가 2로끝나는얘들이랑 7로끝나는 얘들은 class를 추가해주기
@@ -262,31 +301,6 @@ function inputClickEvent(input) {
     });
 }
 
-function mapping(input, i, j) {
-    if (i === 0) {
-        input.value = 'A' + j;
-    } else if (i === 1) {
-        input.value = 'B' + j;
-    } else if (i === 2) {
-        input.value = 'C' + j;
-    } else if (i === 3) {
-        input.value = 'D' + j;
-    } else if (i === 4) {
-        input.value = 'E' + j;
-    } else if (i === 5) {
-        input.value = 'F' + j;
-    } else if (i === 6) {
-        input.value = 'G' + j;
-    } else if (i === 7) {
-        input.value = 'H' + j;
-    } else if (i === 8) {
-        input.value = 'I' + j;
-    } else if (i === 9) {
-        input.value = 'J' + j;
-    } else if (i === 10) {
-        input.value = 'K' + j;
-    }
-}
 
 //form 제출시 hidden설정하기
 reserveButton.addEventListener('click', function() {
