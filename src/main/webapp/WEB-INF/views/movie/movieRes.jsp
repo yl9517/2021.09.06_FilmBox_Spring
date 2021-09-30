@@ -51,16 +51,16 @@
 		<div class="time_table">시간</div>
 			<div class="time_wrapper">
 				<button class="reserve_button">
-					<span class="movietime">12:00</span>
+					<span class="movietime_1" onClick="time_click(this.id)">12:00</span>
 				</button>
 				<button class="reserve_button">
-					<span class="movietime">14:00</span>
+					<span class="movietime_2" onClick="time_click(this.id)">14:00</span>
 				</button>
 				<button class="reserve_button">
-					<span class="movietime">16:00</span>
+					<span class="movietime_3" onClick="time_click(this.id)">16:00</span>
 				</button>
 				<button class="reserve_button">
-					<span class="movietime">18:00</span>
+					<span class="movietime_4" onClick="time_click(this.id)">18:00</span>
 				</button>
 			</div>
 	</div>
@@ -71,7 +71,7 @@
 		<div class="choose_result_content">
 			<span class="choose_result_title">모가디슈</span>
 			<span class="choose_result_date">2021/9/30/목</span>
-			<span class="choose_result_time">14:00</span>
+			<span class="choose_result_time"></span>
 		</div>
 	<!--  -->
 	

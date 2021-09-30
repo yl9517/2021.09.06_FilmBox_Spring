@@ -90,3 +90,12 @@ moveSeatButton.addEventListener('click', function() {
     	alert("날짜와 시간을 선택하세요")
     }
 });
+
+//시간 click=>하단부 적용
+$(".movietime_1, .movietime_2, .movietime_3, .movietime_4").click(function(){
+
+	$(".choose_result_time").text("");
+	$(this).clone().appendTo(".choose_result_time");
+});
+
+
