@@ -16,6 +16,7 @@ public class PointDTO {
 	private String point_date;
 	private int point;
 	private String point_content;
+	
 	public PointDTO(String member_id, int point, String point_content) {
 		super();
 		this.member_id = member_id;

@@ -9,7 +9,7 @@
     	<selectKey keyProperty="rev_no" resultType="int" order="AFTER">
        		SELECT LAST_INSERT_ID() 
     	</selectKey>
-    	insert into filmbox_rev ( movieCd, rsv_date, price, rev_condition) 
+    	insert into filmbox_rev ( movieCd, rev_date, price, rev_condition) 
     	values ( #{movieCd},now(), #{payMoney} ,0)
     </insert>
     <insert id="screeninsert" parameterType="com.film.dto.ScreenDTO">
@@ -27,6 +27,15 @@
 			(#{rev_no},#{reserveDate}, #{screenTime},#{seats})
 		</foreach>
 	</insert> -->
+	
+		<!-- 해당멤버가 해당 movieCd의 예약번호가 존재하는지 (=영화리뷰 쓸 수 있는지) = 예약테이블에서 -->
+	<select id="isRevNo" parameterType="com.film.dto.reviewDTO" resultType="int">	 <!-- 파라미터 타입 id 생기면 kakaoDTO로 바꾸기 -->	
+		select rev_no
+		from filmbox_rev
+		where member_id = #{member_id} and movieCd = ${movieCd}
+		order by rev_no
+		Limit 1
+	</select>
     
 </mapper>
     
