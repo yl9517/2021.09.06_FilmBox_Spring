@@ -20,5 +20,6 @@ public class KakaopayDTO {
 	private int  payMoney;
 	private String  ticketNumber;
 	private String selectedSeat;
+	private String member_id;
 	
 }

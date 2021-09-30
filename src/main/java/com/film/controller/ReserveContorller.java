@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -33,11 +34,14 @@ public class ReserveContorller {
 	private ReserveService reservice;
 	
 	@GetMapping("/reservemovie/{movieCd}/{movieNm}")
-    public String movieInfo(@PathVariable String movieCd,@PathVariable String movieNm, Model model) {
+    public String movieInfo(@PathVariable String movieCd,@PathVariable String movieNm, Model model, HttpSession session) {
     	
     	MovieDTO dto = service.getMovie(movieCd);
+    	 //세션아이디 받기
+    	String member_id=(String)session.getAttribute("loginId");
     	model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
     	model.addAttribute("dto",dto);
+    	
     	
     	return "movie/movieRes";
     }
@@ -65,7 +69,9 @@ public class ReserveContorller {
 	}
 	
 	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
-	public String reserveSuccess(KakaopayDTO dto) {
+	public String reserveSuccess(KakaopayDTO dto, HttpSession session) {
+		String member_id=(String)session.getAttribute("loginId");
+		dto.setMember_id(member_id); 
 		reservice.reserveinsert(dto);
 		
 		String[] seats = dto.getSelectedSeat().split(",");
