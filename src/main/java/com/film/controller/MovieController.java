@@ -38,6 +38,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.film.dto.MovieDTO;
 import com.film.dto.ReviewDTO;
 import com.film.service.MovieService;
+import com.film.service.ReserveService;
 import com.film.service.ReviewService;
 import com.mysql.cj.Session;
 
@@ -48,7 +49,10 @@ public class MovieController {
 	private MovieService service;
 	
 	@Resource(name = "reviewservice")
-	private ReviewService reService;
+	private ReviewService reviewService;
+	
+	@Resource(name="reserveservice")
+	private ReserveService revService;
 	
     @GetMapping("/main")
     public String requestAPI(Model model) {
@@ -76,15 +80,21 @@ public class MovieController {
     public String movieInfo(@PathVariable String movieCd,HttpSession session, Model model) {
     	//세션 로그인 담기
     	String member_id= "";
+    	int rev_no = 0;
     	if((String)session.getAttribute("loginId") !=null)
     		member_id = (String)session.getAttribute("loginId"); //세션아이디 받기
+    	else {        	
+    		rev_no = revService.isRevNo(new ReviewDTO(member_id, movieCd));    	
+    	}
     	
     	MovieDTO dto = service.getMovie(movieCd);
-    	ReviewDTO myreview = reService.getThisReview(new ReviewDTO(member_id, movieCd));
+    	ReviewDTO rdto = new ReviewDTO(member_id, movieCd);
+    	ReviewDTO myreview = reviewService.getThisReview(rdto);
   
     	model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
     	model.addAttribute("dto",dto);
     	model.addAttribute("myreview",myreview);
+    	model.addAttribute("rev_no",rev_no);
     	
     	//비교날짜
 	    	SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
@@ -93,6 +103,7 @@ public class MovieController {
 	        cal.add(Calendar.DATE, -7); //오늘부터 7일 전
     	String compare_date= DATE_FMT.format(cal.getTime());
     	model.addAttribute("compare_date",compare_date);    	
+
     	
     	model.addAttribute("page","movie/movieInfo.jsp");
     	

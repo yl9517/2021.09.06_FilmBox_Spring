@@ -19,6 +19,6 @@ public interface MovieMapper {
 	public List<MovieDTO> getSearchMovieList(String movieNm);
 	
 	//별점 계산
-	public void avgStarpoint(String movieNm);
+	public void avgStarpoint(String movieCd);
 
 }

@@ -34,6 +34,7 @@ public class MovieServiceImple implements MovieService {
 
 	@Autowired
 	private MovieMapper mvMapper;
+
 	
 	@Override
 	public List<MovieDTO> getMovieList() {
