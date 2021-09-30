@@ -124,10 +124,7 @@ to {
 .more{
 	-webkit-animation: motion .5s linear 0s infinite alternate;
 	margin-top: 0;
-	position: absolute;
-	left: 50%;
-	top: 105%;
-	transform: translateX(-50%);
+
 	font-size: 20px;
 }
 @-webkit-keyframes motion{

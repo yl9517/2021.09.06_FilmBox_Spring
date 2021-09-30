@@ -84,19 +84,17 @@
 	where email=#{email}
 </select>
 
-<!-- 마이페이지/필름스토리 -->
+<!-- 마이페이지 메인 MY예매내역/ 필름스토리,  -->
 <select id="getMyfilmData" parameterType="String" resultType="com.film.dto.MypageDTO">
-	select rev.rev_no, m.image, m.movieNm
-			, s.show_date, s.show_time
-			, r.review_starpoint, r.review_content
-	from filmbox_rev as rev join filmbox_screen as s
-	  on rev.rev_no =  s.rev_no
-		left join filmbox_review as r
-	  on rev.rev_no = r.rev_no
-	  	join filmbox_movie as m
-	  on r.movieCd = m.movieCd
-	where rev.member_id = #{member_id}
-	order by rev_date DESC
+	SELECT fme.member_id, fr.rev_no, fm.movieNm, fs.show_date, fs.show_time, GROUP_CONCAT(fs.seatno) as seatno
+   			, fm.image, frv.review_starpoint, frv.review_content
+	FROM filmbox_member fme
+	INNER JOIN filmbox_rev fr ON fme.member_id = fr.member_id
+	INNER JOIN filmbox_screen fs ON fr.rev_no = fs.rev_no
+	INNER JOIN filmbox_movie fm ON fr.movieCd = fm.movieCd
+	LEFT OUTER JOIN filmbox_review frv ON fme.member_id = frv.member_id
+	WHERE fme.member_id = #{member_id}
+	GROUP BY fr.rev_no ;
 </select>
 
 <!-- 내 포인트 합계 -->

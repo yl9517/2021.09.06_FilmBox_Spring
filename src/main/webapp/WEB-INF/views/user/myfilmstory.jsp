@@ -75,7 +75,7 @@
 					<li class="movie_info">
 						<div  class="empty_story">
 							<img src="resources\img\clapperboard.png" width="140px" height="140px">
-						 	<div>나의 필름 스토리가 없습니다</div><br>
+						 	<div>나의 필름 스토리가 없습니다</div>
 						 	<div><strong>지금 바로 필름 스토리를 추가해보세요!</strong></div><br>
 						 	<a href="movieList">영화 예매하러가기</a>
 						</div>
@@ -100,7 +100,7 @@
 				<img alt="close" class="reset" src="../resources/img/close.png">
 			</header>
 			<div class="score">
-				<h2 class="tit">영화제목</h2>
+				<h2 class="tit">${item.movieNm }</h2>
 				    <span><b class="star"> 0 </b> 점</span>
 				    <fieldset>
 				     	<input type="radio" name="rating" value="10" id="rate1"><label for="rate1">⭐</label>

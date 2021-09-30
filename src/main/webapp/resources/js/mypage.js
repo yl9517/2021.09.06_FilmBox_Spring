@@ -1,6 +1,28 @@
 /**
  * 
  */
+//회원정보수정
+function accessCheck()
+{
+	let login_type=document.getElementById("login_type").innerText;
+	
+	if(login_type=="SNS") 
+		alert("일반회원만 수정 가능합니다");
+	else 
+		location.href="myinfo";
+}
+//내 포인트내역 버튼
+function pointList()
+{
+	location.href="mypointlist";
+}
+
+//회원탈퇴
+$("#deluser").on('click', function(){
+	$("#exampleModal").modal();
+});
+
+
 //let rsv_no="";
 //let title="";
 //let date="";
@@ -50,23 +72,4 @@
 //	});
 //}
 
-//회원정보수정
-function accessCheck()
-{
-	let login_type=document.getElementById("login_type").innerText;
-	
-	if(login_type=="SNS") 
-		alert("일반회원만 수정 가능합니다");
-	else 
-		location.href="myinfo";
-}
-//내 포인트내역 버튼
-function pointList()
-{
-	location.href="mypointlist";
-}
 
-//회원탈퇴
-$("#deluser").on('click', function(){
-	$("#exampleModal").modal();
-});

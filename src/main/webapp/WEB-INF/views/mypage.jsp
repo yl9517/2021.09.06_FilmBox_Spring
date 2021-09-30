@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,16 +20,16 @@
 </head>
 <body>
 	<section>
-	<div class="wrap">
+	<div class="mypage_wrap">
 		<div class="info">
-			<div class="name">${dto.member_name }님</div>
-			
 			<div class="modify_quit">
 				<div id="login_type" style="display: none">${dto.login_type }</div>
 				<div onclick="accessCheck()" class="modify">회원정보 수정</div>
 				<div class="glyphicon glyphicon-option-vertical" aria-hidden="true"></div>
 				<div class="quit" data-toggle="modal" data-target="#exampleModal">탈퇴</div>
 			</div>
+			
+			<div class="name">${dto.member_name }님</div>
 
 			<div class="point_story">
 				<div class="mypoint">
@@ -38,7 +40,7 @@
 				</div>
 				<div class="story">
 					<p>나의 필름스토리</p>
-					<a href="myfilmstory">10</a>
+					<a href="myfilmstory">${fn:length(myRsvList)}</a>
 				</div>
 				<div class="etc">
 					<p>무엇을 넣을까요</p>
@@ -46,66 +48,60 @@
 			</div>
 		</div>
 
-		<!-- <div class="back"></div> -->
-
 		<div class="rsv_wrap">
 			<div class="rsv_h">MY 예매내역</div> 
-			<span><a href="myreservelist">더보기</a></span>
+			<!-- <span><a href="myreservelist">더보기</a></span> -->
 			
 			<div class="rsv_list_wrap">
-				<div class="rsv_list_1">
-					<div>
-						예매번호 <span class="rsv_no" id="rsv_no1">215588-2585</span>
-					</div>
-					<br>
-					<div class="rsv_info_wrap">
-						<img src='resources\img\shang-chi.jpg' width='100px'
-							height='130px'>
-						<div class="rsv_info">
-							<div class="title" id="title">샹치</div>
-							<div>
-								관람일시
-								<p id="date">2021.09.27(월) 18:10</p>
+				<ul>
+				<c:choose>
+					<c:when test="${!empty myRsvList }">
+						<c:forEach var="item" items="${myRsvList }">
+							<li class="rsv_list">
+								<div>
+									예매번호 <span class="rsv_no" id="rsv_no">${item.rev_no }</span>
+								</div>
+								<br>
+								<div class="rsv_info_wrap">
+									<img src="${item.image }" width='100px' height='130px'>
+									<div class="rsv_info">
+										<div class="title" id="title">${item.movieNm }</div>
+										<div>
+											관람일시
+											<p id="date">${item.show_date } ${item.show_time }</p>
+										</div>
+										<div>
+											좌석
+											<p id="seat">${item.seatno }</p>
+										</div>
+									</div>
+									
+									<div class="rsv_btn">
+										<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
+												id="qr" onclick="openPop(this)"></span>
+										<br>
+										<button type="button" class="btn btn-default btn-sm"
+												style="font-size: 15px">예약 취소</button>
+									</div>
+								</div>
+							</li>
+						</c:forEach>
+					</c:when>
+				
+					<c:otherwise>
+						<li class="rsv_list">
+							<div class="empty_rsv">
+								<img src="resources\img\tickets.png" width="90px" height="90px">
+								<div>예매 내역이 없습니다</div>
+								<div><strong>지금 바로 영화 예매하세요!</strong></div><br>
+								<a href="movieList">영화 예매하러가기</a>
 							</div>
-							<div>
-								좌석
-								<p id="seat">H2, H3</p>
-							</div>
-						</div>
-						<div class="rsv_btn">
-							<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
-								id="qr1" onclick="openPop(this)"></span><br>
-							<button type="button" class="btn btn-default btn-sm"
-								style="font-size: 15px">예약 취소</button>
-						</div>
-					</div>
-				</div>
-				<div class="rsv_list_2">
-					<div>
-						예매번호 <span class="rsv_no" id="rsv_no2">215588-252285</span>
-					</div>
-					<br>
-					<div class="rsv_info_wrap">
-						<img src='resources\img\moga.jpg' width='100px' height='130px'>
-						<div class="rsv_info">
-							<div class="title" id="title2">모가디슈</div>
-							<div>
-								관람일시
-								<p id="date2">2021.09.21(금) 18:10</p>
-							</div>
-							<div>
-								좌석
-								<p id="seat2">F6</p>
-							</div>
-						</div>
-						<div class="rsv_btn">
-							<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
-								id="qr2" onclick="openPop(this)"></span><br>
-							<button type="button" class="btn btn-default btn-sm"
-								style="font-size: 15px">예약 취소</button>
-						</div>
-					</div>
-				</div>
+						</li>
+					</c:otherwise>
+					
+				</c:choose>
+				</ul>
+			
 			</div>
 		</div>
 		
@@ -123,7 +119,7 @@
 							<!-- <span aria-hidden="true">&times;</span> -->
 						</button>
 					</div>
-					<div class="modal-body">회원 탈퇴 하시겠습니까?</div>
+					<div class="modal-body">정말 회원 탈퇴 하시겠습니까?</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger"
 							onClick="location.href='userquit'">탈퇴하기</button>
@@ -135,6 +131,6 @@
 		</div>
 
 	</section>
-	<script type="text/javascript" src="resources\js\mypage.js"></script>
+<script type="text/javascript" src="resources\js\mypage.js"></script>
 </body>
 </html>

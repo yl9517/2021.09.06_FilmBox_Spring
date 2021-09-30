@@ -33,7 +33,7 @@
 			<mapping path="/mypage"/>
 			<mapping path="/mypointlist"/>
 			<mapping path="/myfilmstory"/>
-			<mapping path="/myreservelist"/>
+			<!-- <mapping path="/myreservelist"/> -->
 			<mapping path="/reviewInsertAction"/>
 			<mapping path="/reviewModifyAction"/>
 			<mapping path="/reviewDeleteAction"/>

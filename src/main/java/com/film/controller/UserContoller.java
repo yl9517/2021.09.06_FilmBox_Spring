@@ -95,8 +95,10 @@ public class UserContoller {
 
 		String member_id=(String) session.getAttribute("loginId");
 		UserDTO dto=service.userDetail(member_id);
-
+		List<MypageDTO> myRsvList = service.getMyfilmData(member_id);
+		
 		model.addAttribute("dto", dto);
+		model.addAttribute("myRsvList", myRsvList);
 		model.addAttribute("page","mypage.jsp");
 
 		return "view";
@@ -122,22 +124,23 @@ public class UserContoller {
 	{
 		String member_id=(String)session.getAttribute("loginId");
 		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
-		System.out.println(myfilmlist);
-		if(myfilmlist.isEmpty()) {
-			System.out.println("자료 없음");
-		}
+		
 		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("page","user/myfilmstory.jsp");
 		return "view";
 	}
 	
 	//마이페이지>my예매내역
-	@GetMapping("/myreservelist")
-	public String myreservelist(Model model) {
-
-		model.addAttribute("page","user/myreservelist.jsp");
-		return "view";
-	}
+//	@GetMapping("/myreservelist")
+//	public String myreservelist(HttpSession session, Model model) {
+//		
+//		String member_id=(String)session.getAttribute("loginId");
+//		List<MypageDTO> myRsvList = service.getMyfilmData(member_id);
+//		
+//		model.addAttribute("myRsvList", myRsvList);
+//		model.addAttribute("page","user/myreservelist.jsp");
+//		return "view";
+//	}
 
 	//	//마이페이지>my예매내역 데이터 받아서 > jsp
 	//	@RequestMapping(value = "/qrtest", method = RequestMethod.POST)
