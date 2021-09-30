@@ -83,9 +83,9 @@ public class MovieController {
     	int rev_no = 0;
     	if((String)session.getAttribute("loginId") !=null)
     		member_id = (String)session.getAttribute("loginId"); //세션아이디 받기
-    	else {        	
-    		rev_no = revService.isRevNo(new ReviewDTO(member_id, movieCd));    	
-    	}
+        
+    	rev_no = revService.isRevNo(new ReviewDTO(member_id, movieCd));    	
+    	
     	
     	MovieDTO dto = service.getMovie(movieCd);
     	ReviewDTO rdto = new ReviewDTO(member_id, movieCd);

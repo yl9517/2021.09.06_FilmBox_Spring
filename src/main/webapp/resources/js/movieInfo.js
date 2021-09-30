@@ -1,5 +1,6 @@
 let movieCd = $('#movieCd').val();
 let member_id = $('#member_id').val();
+let rev_no = $('.rev_no').val();
 
 /* 버튼 활성화 */
 $('.tab_wrap').children().click(function() {	
@@ -102,15 +103,13 @@ $.ajax({
 
 
 /* 리뷰창 */
-let isRevNo = $('#rev_no').val();
 $('#review_write').hide();
 $('.loginInfo').hide();
-/*$('.isRevNoInfo').hide();*/
 $('#review_window').click(function() {
 	if(member_id == null || member_id ==''){ //로그인하시오
 		$('.loginInfo').show();
 	}
-	else if(isRevNo == null || isRevNo == 0){ //예매하시오
+	else if(rev_no == null || rev_no == 0){ //예매하시오
 		alert('관람평을 실관람 이후 작성 가능합니다.')
 	}
 	else{ //관람평 작성

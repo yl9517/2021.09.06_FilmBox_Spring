@@ -171,13 +171,12 @@
 
 			</ul>
 		</div>
-
 		
 		<!-- 댓글 작성 창 -->
 		<form id="review_write" method="post" action="../reviewInsertAction" onsubmit="return checkStar();">
 		
 		<input type="hidden" id="movieCd" name="movieCd" value="${dto.movieCd }">
-		<input type="hidden" id="rev_no" name="rev_no" value="${rev_no}">
+		<input type="hidden" id="rev_no" class="rev_no" name="rev_no" value="${rev_no}">
 		
 			<header class="window_top">
 				<h5>관람평 작성 </h5>
