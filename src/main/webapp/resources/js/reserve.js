@@ -92,7 +92,7 @@ moveSeatButton.addEventListener('click', function() {
 });
 
 //시간 click=>하단부 적용
-$(".movietime_1, .movietime_2, .movietime_3, .movietime_4").click(function(){
+$("#movietime_1, #movietime_2, #movietime_3, #movietime_4").click(function(){
 
 	$(".choose_result_time").text("");
 	$(this).clone().appendTo(".choose_result_time");

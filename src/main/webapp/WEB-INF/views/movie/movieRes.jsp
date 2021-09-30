@@ -51,16 +51,16 @@
 		<div class="time_table">시간</div>
 			<div class="time_wrapper">
 				<button class="reserve_button">
-					<span class="movietime_1" onClick="time_click(this.id)">12:00</span>
+					<span class="movietime" id="movietime_1">12:00</span>
 				</button>
 				<button class="reserve_button">
-					<span class="movietime_2" onClick="time_click(this.id)">14:00</span>
+					<span class="movietime" id="movietime_2">14:00</span>
 				</button>
 				<button class="reserve_button">
-					<span class="movietime_3" onClick="time_click(this.id)">16:00</span>
+					<span class="movietime" id="movietime_3">16:00</span>
 				</button>
 				<button class="reserve_button">
-					<span class="movietime_4" onClick="time_click(this.id)">18:00</span>
+					<span class="movietime" id="movietime_4">18:00</span>
 				</button>
 			</div>
 	</div>
