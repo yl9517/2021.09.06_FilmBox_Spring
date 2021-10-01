@@ -63,7 +63,6 @@ public class ReserveContorller {
 	@PostMapping("/seatchoice")
 	public String seatchoice(KakaopayDTO dto, Model model, HttpSession session) {
 		List<ScreenDTO> slist = reservice.getseats(dto);
-		System.out.println(dto.getReserveDate() + dto.getScreenTime()+dto.getMovieCd());
 		
 		model.addAttribute("reserve", dto);
 		model.addAttribute("slist",slist);

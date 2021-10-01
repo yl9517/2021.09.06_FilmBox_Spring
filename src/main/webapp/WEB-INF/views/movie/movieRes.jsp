@@ -30,35 +30,10 @@ function mvclick(s) {
 		<div class="movielist_table">영화</div>
 		<div class="movielist_wrapper">
 		<c:forEach var="item" items="${mlist }">
-		
-		<input type="button" name="movielists" class="movielist" onclick="mvclick('<c:out value="${item.movieNm }"/>');"
-			value =<c:out value="${item.movieNm }"/> id="mvlist">
-			
+			<button class="movielist_button">
+				<span class="movielist" id="movielist"><c:out value="${item.movieNm }"/></span>
+			</button>
 		</c:forEach>
-		<%-- <c:set var=selectmv value="movielists"/>
-		<c:out value=selectmv></c:out> --%>
-		<!-- 
-		
-			<span>007 노 타임 투 다이</span>
-			<span>미켈란젤로</span>
-			<span>수색자</span>
-			<span>보이스</span>
-			<span>그래비티</span>
-			<span>포켓몬스터</span>
-			<span>모가디슈</span>
-			<span>기적</span>
-			<span>짱구는못말려</span>
-			<span>캔디맨</span>
-			<span>007 노 타임 투 다이</span>
-			<span>미켈란젤로</span>
-			<span>수색자</span>
-			<span>보이스</span>
-			<span>그래비티</span>
-			<span>포켓몬스터</span>
-			<span>모가디슈</span>
-			<span>기적</span>
-			<span>짱구는못말려</span>
-			<span>캔디맨</span> -->
 		</div>
 	</div>
 	<!--  -->

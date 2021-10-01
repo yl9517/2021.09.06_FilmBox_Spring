@@ -7,8 +7,11 @@ const screenTime = document.querySelector('.screenTime');
 
 const moveSeatForm = document.querySelector('.moveSeatForm');
 const moveSeatButton = document.querySelector('.moveSeatButton');
+const movieSelector= document.querySelectorAll('.movielist');
+const selectmovie = document.querySelector('.selectmovie');
 
 
+console.log(movieSelector);
 let movieListAge = '';
 let year = 0;
 let month = 0;
@@ -84,6 +87,24 @@ movietime.forEach(list => {
     });
 }); 
 
+
+movieSelector.forEach(mvlist => {
+    mvlist.addEventListener('click', function() {
+        const selMovie = document.querySelectorAll('.selMovie');
+        selMovie.forEach(li => {
+            li.classList.remove('selMovie');
+        });
+        mvlist.classList.add('selMovie');
+        console.log(mvlist.innerHTML);
+    	/*const reserveTimeActive = document.querySelectorAll('.reserve-time-active');
+        reserveTimeActive.forEach(li => {
+            li.classList.remove('reserve-time-active');
+        });
+        list.classList.add('reserve-time-active');
+        console.log(list.innerHTML);*/
+        selectmovie.value = mvlist.innerHTML;
+    });
+}); 
 moveSeatButton.addEventListener('click', function() {
     if (!!reserveDay.value && !!screenTime.value) {
         moveSeatForm.submit();
