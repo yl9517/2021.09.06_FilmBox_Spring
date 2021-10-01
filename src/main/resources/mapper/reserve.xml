@@ -14,7 +14,7 @@
     </insert>
     <insert id="screeninsert" parameterType="com.film.dto.ScreenDTO">
     	
-    	insert into filmbox_screen (rev_no,show_date, show_time, seats) 
+    	insert into filmbox_screen (rev_no,show_date, show_time, seatno) 
     	
     	values (#{rev_no},#{reserveDate}, #{screenTime},#{seats})
     </insert>
@@ -53,6 +53,27 @@
 			rev_condition = 2
 		where rev_no = #{rev_no}
 	</update>
+	
+	<!-- 날짜 지나면 rev_condition 1 -->
+	<select id="selectPast" resultType="java.util.HashMap">
+        select distinct rev_no 
+		from filmbox_screen
+		where
+		 show_date <![CDATA[<=]]> DATE(NOW()) 
+		<if test="show_date == 'date(now())'">
+			and 
+			show_time <![CDATA[<=]]> DATE_ADD(TIME(NOW()), INTERVAL 9 hour)
+		</if>
+	</select >
+	<update id="updateCondition" parameterType="java.util.List">
+			update filmbox_rev
+			set rev_condition = 1
+			where rev_no in
+		<foreach collection="list"  item="item" index="index" open="(" close=")" separator=",">
+			#{item.rev_no}
+		</foreach>
+	</update>
+	
 </mapper>
     
     

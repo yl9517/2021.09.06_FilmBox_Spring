@@ -20,9 +20,11 @@
 	</select>
 
 	<update id="modifyReview" parameterType="com.film.dto.ReviewDTO">
-		update filmbox_review set
-		review_content = #{review_content}
-		, review_starpoint = #{review_starpoint}		
+		update filmbox_review
+		 set
+			review_content = #{review_content}
+			, review_starpoint = #{review_starpoint}
+			, review_date = now()		
 		where movieCd = ${movieCd} and member_id = #{member_id}
 	</update>
 	

@@ -19,4 +19,7 @@ public interface ReserveService {
 	public List<ScreenDTO> getseats(KakaopayDTO dto);
 	//예매 취소
 	public Integer revCancel(int rev_no);
+	
+	//날짜,시간 지나면 condition 변경
+	public void updateCondition();
 }

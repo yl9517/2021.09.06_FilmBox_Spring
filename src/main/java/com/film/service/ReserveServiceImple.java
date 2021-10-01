@@ -70,5 +70,13 @@ public class ReserveServiceImple implements ReserveService {
 		}
 		return result;
 	}
+
+	@Override
+	public void updateCondition() {
+		reMapper.updateCondition(reMapper.selectPast());		
+	}
+
+
+	
 	
 }
