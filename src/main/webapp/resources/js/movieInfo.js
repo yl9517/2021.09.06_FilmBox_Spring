@@ -195,7 +195,7 @@ function checkStar() {
 } 
 
 /* 각댓글의 ...*/
-$(document).one("click", ".second_btn", function() {
+$(document).on("click", ".second_btn", function() {
 	$('.etc').hide();
 });
 $(document).on("click", ".moreBtn", function() {
@@ -219,7 +219,7 @@ $(document).on("click","#reportBtn",function(){
 /* 댓글 더보기 */
 let showCount = 3;
 let nowShowCount = 0;
-$(document).one("click", ".second_btn", function() {
+$(document).on("click", ".second_btn", function() {
 	//더보기 누르기 전 숨기기
 	let watched_review = $(".review_li");
 	for(let i=0; i<watched_review.length; i++){
