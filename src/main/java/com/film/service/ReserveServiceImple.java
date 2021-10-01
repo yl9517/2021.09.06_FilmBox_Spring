@@ -80,6 +80,12 @@ public class ReserveServiceImple implements ReserveService {
 		return reMapper.getMovieList();
 	}
 
+	@Override
+	public KakaopayDTO getmoviecd(KakaopayDTO dto) {
+		// TODO Auto-generated method stub
+		return reMapper.getmoviecd(dto);
+	}
+
 
 	
 	

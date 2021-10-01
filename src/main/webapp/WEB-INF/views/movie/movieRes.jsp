@@ -73,6 +73,7 @@ function mvclick(s) {
 				<input type="hidden" name="movieCd" value="${dto.movieCd}">
 				<input type="hidden" class="reserveDate" name="reserveDate"> 
 				<input type="hidden" class="screenTime" name="screenTime">
+				<input type="hidden" class="selectmovie" name="selectmovie">
 				<button class="moveSeatButton" type="button">좌석 선택</button>
 				<!-- <input type="submit" value="좌석선택하기"> -->
 			</form>

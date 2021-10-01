@@ -79,6 +79,13 @@
 		
 	</select>
 	
+	
+	<select id="getmoviecd" resultType="com.film.dto.KakaopayDTO" parameterType="com.film.dto.KakaopayDTO">
+		SELECT movieCd,movieNm FROM filmbox_movie
+		where movieNm=#{selectmovie};
+		
+	</select>
+	
 </mapper>
     
     

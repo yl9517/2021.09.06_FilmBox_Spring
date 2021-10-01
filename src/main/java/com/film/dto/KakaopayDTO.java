@@ -21,5 +21,5 @@ public class KakaopayDTO {
 	private String  ticketNumber;
 	private String selectedSeat;
 	private String member_id;
-	
+	private String selectmovie;
 }

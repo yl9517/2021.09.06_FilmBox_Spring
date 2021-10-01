@@ -32,14 +32,9 @@ public class resreveTest {
 	@Test
 	public void t1() {
 		KakaopayDTO dto = new KakaopayDTO();
-		dto.setReserveDate("2021.9.30(목)");
-		dto.setScreenTime("18:00");
-		dto.setMovieCd("20217742");
-
-		List<String> slist = reservice.getseats(dto);
-		for(String data: slist) {
-			System.out.println(data);
-		}
+		dto.setSelectmovie("보이스");
+		KakaopayDTO mv= reservice.getmoviecd(dto);
+		System.out.println(mv.getMovieCd());
 		
 	}
 	

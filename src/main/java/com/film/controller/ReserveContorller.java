@@ -62,19 +62,36 @@ public class ReserveContorller {
 	
 	@PostMapping("/seatchoice")
 	public String seatchoice(KakaopayDTO dto, Model model, HttpSession session) {
-		List<ScreenDTO> slist = reservice.getseats(dto);
-		
-		model.addAttribute("reserve", dto);
-		model.addAttribute("slist",slist);
+		List<ScreenDTO> slist = new ArrayList<ScreenDTO>();
 		
     	String member_id=(String)session.getAttribute("loginId");
     	String result = null;
-    	if(member_id==null) {
-    		result = "reserve/logincondition";
-    	}else   {
-			model.addAttribute("page", "movie/seatchoice.jsp");
-    		result = "view";
-    	}
+		if (dto.getSelectmovie() == null) {
+
+			if (member_id == null) {
+				result = "reserve/logincondition";
+			} else {
+				slist = reservice.getseats(dto);
+				model.addAttribute("reserve", dto);
+				model.addAttribute("slist", slist);
+				model.addAttribute("page", "movie/seatchoice.jsp");
+				result = "view";
+			}
+		}else {
+			KakaopayDTO mv = reservice.getmoviecd(dto); 
+			dto.setMovieCd(mv.getMovieCd());
+			dto.setMovieNm(mv.getMovieNm());
+			if (member_id == null) {
+				result = "reserve/logincondition";
+			} else {
+				slist = reservice.getseats(dto);
+				model.addAttribute("reserve", dto);
+				model.addAttribute("slist", slist);
+				model.addAttribute("page", "movie/seatchoice.jsp");
+				result = "view";
+			}
+			
+		}
 		return result;
 	}
 	
