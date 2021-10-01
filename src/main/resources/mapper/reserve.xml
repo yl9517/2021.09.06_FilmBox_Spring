@@ -74,6 +74,11 @@
 		</foreach>
 	</update>
 	
+	<select id="getMovieList" resultType="com.film.dto.MovieDTO">
+		SELECT movieNm FROM filmbox_movie;
+		
+	</select>
+	
 </mapper>
     
     

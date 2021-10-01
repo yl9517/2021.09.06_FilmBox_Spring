@@ -43,24 +43,6 @@ public class ReserveServiceImple implements ReserveService {
 		// TODO Auto-generated method stub
 		reMapper.screeninsert(sDTO);
 	}
-
-//	@Override
-//	public void screeninsert(List<KakaopayDTO> list) {
-//		// TODO Auto-generated method stub
-//		reMapper.screeninsert(list);
-//	}
-	
-//	@Override
-//	public void screeninsert(List<KakaopayDTO> list) {
-//		// TODO Auto-generated method stub
-//		reMapper.screeninsert(list);
-//	}
-	
-//	@Override
-//	public void screeninsert(KakaopayDTO dto) {
-//		// TODO Auto-generated method stub
-//		reMapper.screeninsert(dto);
-//	}
 	
 	@Override
 	public Integer isRevNo(ReviewDTO rDTO) {
@@ -90,6 +72,12 @@ public class ReserveServiceImple implements ReserveService {
 	@Override
 	public void updateCondition() {
 		reMapper.updateCondition(reMapper.selectPast());		
+	}
+
+	@Override
+	public List<MovieDTO> getMovieList() {
+		// TODO Auto-generated method stub
+		return reMapper.getMovieList();
 	}
 
 

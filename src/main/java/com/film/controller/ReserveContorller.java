@@ -37,7 +37,9 @@ public class ReserveContorller {
 	@GetMapping("/reservemovie/{movieCd}/{movieNm}")
     public String movieInfo(@PathVariable String movieCd,@PathVariable String movieNm, Model model, HttpSession session) {
     	
+
     	MovieDTO dto = service.getMovie(movieCd);
+    	List<MovieDTO> mlist = reservice.getMovieList();
     	 //세션아이디 받기
     	String member_id=(String)session.getAttribute("loginId");
     	
@@ -48,6 +50,7 @@ public class ReserveContorller {
     	}else   {
     		model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
         	model.addAttribute("dto",dto);
+        	model.addAttribute("mlist",mlist);
 
 			model.addAttribute("page", "movie/movieRes.jsp");
     		

@@ -8,6 +8,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/movieRes.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script >
+function mvclick(s) {
+	console.log( s + " 버튼을 누르셨습니다.");
+}
+	
+</script>
 </head>
 <body>
 <div class="first">
@@ -23,6 +29,16 @@
 	<div class="movie">
 		<div class="movielist_table">영화</div>
 		<div class="movielist_wrapper">
+		<c:forEach var="item" items="${mlist }">
+		
+		<input type="button" name="movielists" class="movielist" onclick="mvclick('<c:out value="${item.movieNm }"/>');"
+			value =<c:out value="${item.movieNm }"/> id="mvlist">
+			
+		</c:forEach>
+		<%-- <c:set var=selectmv value="movielists"/>
+		<c:out value=selectmv></c:out> --%>
+		<!-- 
+		
 			<span>007 노 타임 투 다이</span>
 			<span>미켈란젤로</span>
 			<span>수색자</span>
@@ -42,7 +58,7 @@
 			<span>모가디슈</span>
 			<span>기적</span>
 			<span>짱구는못말려</span>
-			<span>캔디맨</span>
+			<span>캔디맨</span> -->
 		</div>
 	</div>
 	<!--  -->
@@ -77,6 +93,7 @@
 	<!--  -->
 	
 			<form class="moveSeatForm" action="/seatchoice" method="post">
+				<c:if test=""></c:if>
 				<input type="hidden" name="movieNm" value="${dto.movieNm}">
 				<input type="hidden" name="movieCd" value="${dto.movieCd}">
 				<input type="hidden" class="reserveDate" name="reserveDate"> 
