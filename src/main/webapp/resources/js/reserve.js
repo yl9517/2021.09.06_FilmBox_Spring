@@ -42,6 +42,7 @@ function addDate() {
             spanDay.classList.add('sunday');
             spanWeekOfDay.classList.add('sunday');
         }
+        
         spanDay.innerHTML = i;
         button.append(spanDay);
         spanWeekOfDay.innerHTML = dayOfWeek;
