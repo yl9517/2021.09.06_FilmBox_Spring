@@ -60,7 +60,7 @@ public class ReserveContorller {
 		
 		model.addAttribute("reserve", dto);
 		model.addAttribute("slist",slist);
-
+		
     	String member_id=(String)session.getAttribute("loginId");
     	String result = null;
     	if(member_id==null) {

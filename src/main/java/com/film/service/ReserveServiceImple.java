@@ -60,5 +60,15 @@ public class ReserveServiceImple implements ReserveService {
 		// TODO Auto-generated method stub
 		return reMapper.getseats(dto);
 	}
+
+	@Override
+	public Integer revCancel(int rev_no) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		if( reMapper.reserveCancel(rev_no) != null) {
+			result =  reMapper.reserveCancel(rev_no);
+		}
+		return result;
+	}
 	
 }

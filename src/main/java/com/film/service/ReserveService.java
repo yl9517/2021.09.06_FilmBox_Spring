@@ -17,4 +17,6 @@ public interface ReserveService {
 	//리뷰 권한 확인쿼리
 	public Integer isRevNo(ReviewDTO rDTO);
 	public List<ScreenDTO> getseats(KakaopayDTO dto);
+	//예매 취소
+	public Integer revCancel(int rev_no);
 }

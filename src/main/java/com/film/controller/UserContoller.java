@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -30,6 +31,7 @@ import com.film.dto.MovieDTO;
 import com.film.dto.MypageDTO;
 import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
+import com.film.service.ReserveService;
 import com.film.service.UserService;
 import com.mysql.cj.Session;
 
@@ -42,6 +44,9 @@ public class UserContoller {
 
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private ReserveService revservice;
 	
 	//회원가입 페이지
 	@RequestMapping("/join")
@@ -90,7 +95,7 @@ public class UserContoller {
 
 	}
 
-	//마이페이지
+	//마이페이지 메인(my예매내역)
 	@GetMapping("/mypage")
 	public String mypage(Model model, HttpSession session) {
 
@@ -126,26 +131,21 @@ public class UserContoller {
 		String member_id=(String)session.getAttribute("loginId");
 		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
 		
-//		net.sf.json.JSONArray jsonArray = new net.sf.json.JSONArray();
-//		model.addAttribute("json", jsonArray.fromObject(myfilmlist));
-//		System.out.println(jsonArray.fromObject(myfilmlist));
 		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("page","user/myfilmstory.jsp");
 		return "view";
 	}
 	
-	//마이페이지>my예매내역
-//	@GetMapping("/myreservelist")
-//	public String myreservelist(HttpSession session, Model model) {
-//		
-//		String member_id=(String)session.getAttribute("loginId");
-//		List<MypageDTO> myRsvList = service.getMyfilmData(member_id);
-//		
-//		model.addAttribute("myRsvList", myRsvList);
-//		model.addAttribute("page","user/myreservelist.jsp");
-//		return "view";
-//	}
-
+	//마이페이지>예약취소
+	@RequestMapping("/rsvcancel")
+	public @ResponseBody int revcancel(@RequestParam int rev_no)
+	{
+		System.out.println(rev_no);
+		int result = 0;
+		result = revservice.revCancel(rev_no);
+		return result;
+	}
+	
 	//	//마이페이지>my예매내역 데이터 받아서 > jsp
 	//	@RequestMapping(value = "/qrtest", method = RequestMethod.POST)
 	//	//						, produces = "application/json; charset=utf-8")

@@ -19,4 +19,5 @@ public class MypageDTO {
 	private String movieNm;
 	private String movieCd;
 	private String member_id;
+	private int rev_condition;
 }

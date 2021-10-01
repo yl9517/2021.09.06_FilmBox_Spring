@@ -43,10 +43,14 @@ if(watched_movie.length<=3)
 }
 
 //관람평 쓰기 버튼 누른 영화 -> 영화 제목 모달창에 불러오기
-function sendTitle(param)
+function sendData(movieNm, rev_no, movieCd)
 {
-	console.log(param);
-	let title = param;
+	let th=$(this);
+	console.log(th);
+	console.log(movieNm);
+	console.log(rev_no);
+	console.log(movieCd);
+	let title = movieNm;
 	let titleTxt = document.createTextNode(title);
 	$('.tit').empty();
 	$('.tit').append(titleTxt);

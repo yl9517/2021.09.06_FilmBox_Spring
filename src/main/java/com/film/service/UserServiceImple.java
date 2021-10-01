@@ -10,6 +10,7 @@ import com.film.dto.MypageDTO;
 import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
 import com.film.mapper.PointMapper;
+import com.film.mapper.ReserveMapper;
 import com.film.mapper.UserMapper;
 
 
@@ -20,6 +21,8 @@ public class UserServiceImple implements UserService {
 	private UserMapper mapper;
 	
 	@Autowired PointMapper pointMapper;
+	
+	@Autowired ReserveMapper revMapper;
 	
 	@Override
 	public void insertUser(UserDTO dto) {

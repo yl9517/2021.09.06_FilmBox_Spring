@@ -22,6 +22,36 @@ $("#deluser").on('click', function(){
 	$("#exampleModal").modal();
 });
 
+//예매취소는 상영시작시간 20분전까지
+$('[data-toggle2="tooltip"]').tooltip();
+
+//예매 취소 modal
+$('#rsvCancelModal').on('show.bs.modal', function(event){
+	let button = $(event.relatedTarget);
+	let rev_no = button.data('title');
+	let modal = $(this);
+	console.log("예약번호"+rev_no);
+	$('#confirm').click( function(){
+		$.ajax({
+			url: "/rsvcancel",
+			type: 'post',
+			cache: false,
+			data: {rev_no: rev_no},
+			success: function(data)
+			{
+				location.href="mypage";
+			}
+			, error: function(request, error)
+			{
+				console.log("code"+request.status+"\n"+"msg"+request.responseText+"\n"+"error"+error);
+			}
+		
+		});
+	});
+	
+});
+
+
 
 //let rsv_no="";
 //let title="";

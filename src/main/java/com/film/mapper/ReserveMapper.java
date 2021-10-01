@@ -22,5 +22,7 @@ public interface ReserveMapper {
 	//리뷰 권한 확인쿼리
 	public Integer isRevNo(ReviewDTO rDTO);
 	public List<ScreenDTO> getseats(KakaopayDTO dto);
+	//예매취소
+	public Integer reserveCancel(int rev_no);
 
 }

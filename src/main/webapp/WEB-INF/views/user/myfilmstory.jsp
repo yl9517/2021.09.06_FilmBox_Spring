@@ -62,7 +62,7 @@
 									<c:otherwise>
 										<button type="button" class="btn btn-default btn-sm" id="review_window"
 											data-toggle="tooltip" data-placement="right" title="500P 적립"
-											style="font-size: 15px" onclick="sendTitle('${item.movieNm }')">관람평 쓰기</button>
+											style="font-size: 15px" onclick="sendData('${item.movieNm }', '${item.rev_no }', '${item.movieCd}')">관람평 쓰기</button>
 									</c:otherwise>
 									
 								</c:choose>

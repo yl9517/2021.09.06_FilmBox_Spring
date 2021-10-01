@@ -46,7 +46,13 @@
 			AND fm.movieCd=#{movieCd}
 	</select>
 	
-	
+	<!-- 예매취소 rev_condition 2 -->
+	<update id="reserveCancel" parameterType="int">
+		update filmbox_rev
+		set
+			rev_condition = 2
+		where rev_no = #{rev_no}
+	</update>
 </mapper>
     
     
