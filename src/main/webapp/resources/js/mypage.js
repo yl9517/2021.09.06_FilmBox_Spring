@@ -11,7 +11,7 @@ function accessCheck()
 	else 
 		location.href="myinfo";
 }
-//내 포인트내역 버튼
+//내 포인트내역 페이지 이동 버튼
 function pointList()
 {
 	location.href="mypointlist";
@@ -22,7 +22,7 @@ $("#deluser").on('click', function(){
 	$("#exampleModal").modal();
 });
 
-//예매취소는 상영시작시간 20분전까지
+//'예매취소는 상영시작 20분 전까지!'
 $('[data-toggle2="tooltip"]').tooltip();
 
 //예매 취소 modal

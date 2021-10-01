@@ -106,6 +106,12 @@ to {
 	
 	box-shadow: 0 8px 8px -8px grey;
 }
+/* 작성일 */
+.write_date {
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 10%;
+}
 /* 수정 , 삭제 */
 .content div{
 	font-size: 15px;

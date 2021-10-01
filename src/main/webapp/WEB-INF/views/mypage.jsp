@@ -40,7 +40,7 @@
 				</div>
 				<div class="story">
 					<p>나의 필름스토리</p>
-					<a href="myfilmstory">${fn:length(myRsvList)}</a>
+					<a href="myfilmstory">${fn:length(myfilmlist)}</a>
 				</div>
 				<div class="etc">
 					<p>무엇을 넣을까요</p>
@@ -57,12 +57,10 @@
 				<c:choose>
 					<c:when test="${!empty myRsvList }">
 						<c:forEach var="item" items="${myRsvList }">
-						
 							
-						
 							<div style="display: none" class="rev_condition">${item.rev_condition }</div>
 
-							<c:if test="${item.rev_condition eq 0 }">
+							<%-- <c:if test="${item.rev_condition eq 0 }"> --%>
 							<li class="rsv_list">
 								<div class="rsv_no_wrap">
 									예매번호 <span class="rsv_no" id="rsv_no">${item.rev_no }</span>
@@ -91,7 +89,7 @@
 									</div>
 								</div>
 							</li>
-							</c:if>
+							<%-- </c:if> --%>
 						</c:forEach>
 					</c:when>
 				

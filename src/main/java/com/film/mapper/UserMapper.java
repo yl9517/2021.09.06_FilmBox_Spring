@@ -32,5 +32,9 @@ public interface UserMapper {
 
 	public List<MypageDTO> getMyfilmData(String member_id);
 	
+	public List<MypageDTO> getRsvData(String member_id);
+	
 	public void updateMyPoint(String member_id);
+
+	
 }

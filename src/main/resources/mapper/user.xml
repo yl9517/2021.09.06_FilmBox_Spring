@@ -84,16 +84,28 @@
 	where email=#{email}
 </select>
 
-<!-- 마이페이지 메인 MY예매내역/ 필름스토리,  -->
+<!-- 마이페이지 필름스토리  -->
 <select id="getMyfilmData" parameterType="String" resultType="com.film.dto.MypageDTO">
 	SELECT fme.member_id, fr.rev_no, fr.movieCd, fr.rev_condition, fm.movieNm, fs.show_date, fs.show_time, GROUP_CONCAT(fs.seats) as seats
-   			, fm.image, frv.review_starpoint, frv.review_content
+   			, fm.image, frv.review_starpoint, frv.review_content, frv.review_date
 	FROM filmbox_member fme
 	INNER JOIN filmbox_rev fr ON fme.member_id = fr.member_id
 	INNER JOIN filmbox_screen fs ON fr.rev_no = fs.rev_no
 	INNER JOIN filmbox_movie fm ON fr.movieCd = fm.movieCd
 	LEFT OUTER JOIN filmbox_review frv ON fr.rev_no = frv.rev_no
 	WHERE fme.member_id = #{member_id} AND fr.rev_condition <![CDATA[<>]]> 2
+	GROUP BY fr.rev_no;
+</select>
+
+<!-- 마이페이지 메인 MY예매내역 -->
+<select id="getRsvData" parameterType="String" resultType="com.film.dto.MypageDTO">
+	SELECT fme.member_id, fr.rev_no, fr.movieCd, fr.rev_condition, fm.movieNm, fs.show_date, fs.show_time, GROUP_CONCAT(fs.seats) as seats
+   			, fm.image
+	FROM filmbox_member fme
+	INNER JOIN filmbox_rev fr ON fme.member_id = fr.member_id
+	INNER JOIN filmbox_screen fs ON fr.rev_no = fs.rev_no
+	INNER JOIN filmbox_movie fm ON fr.movieCd = fm.movieCd
+	WHERE fme.member_id = #{member_id} AND fr.rev_condition = 0
 	GROUP BY fr.rev_no;
 </select>
 

@@ -114,5 +114,11 @@ public class UserServiceImple implements UserService {
 		return pointMapper.getMyPoints(member_id);
 	}
 
+	@Override
+	public List<MypageDTO> getRsvData(String member_id) {
+		// TODO Auto-generated method stub
+		return mapper.getRsvData(member_id);
+	}
+
 
 }

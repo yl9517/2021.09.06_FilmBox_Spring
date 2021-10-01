@@ -32,8 +32,12 @@ public interface UserService {
 	public int emailcheck(String email);
 
 	public List<MypageDTO> getMyfilmData(String member_id);
+	
+	public List<MypageDTO> getRsvData(String member_id);
 
 	public List<PointDTO> getMyPoints(String member_id);
+
+	
 
 }
 

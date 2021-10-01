@@ -101,10 +101,12 @@ public class UserContoller {
 
 		String member_id=(String) session.getAttribute("loginId");
 		UserDTO dto=service.userDetail(member_id);
-		List<MypageDTO> myRsvList = service.getMyfilmData(member_id);
+		List<MypageDTO> myRsvList = service.getRsvData(member_id);
+		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("myRsvList", myRsvList);
+		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("page","mypage.jsp");
 
 		return "view";

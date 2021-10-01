@@ -45,6 +45,7 @@
 								<!-- 댓글이 있으면 댓글 보여주고 없으면 관람평쓰기 버튼 표시 -->
 								<c:choose>
 									<c:when test="${item.review_content!=null }">
+										<div class="write_date">${item.review_date }</div>
 										<div class="complete_review"> 
 											<img src="resources\img\star.png" alt="" width="30px" height="30px">
 											<div class="rate">${item.review_starpoint }</div>
@@ -56,6 +57,7 @@
 													<a href="#">삭제</a>
 												</div>
 											</div>
+											
 										</div>
 									</c:when>
 									
