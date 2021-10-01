@@ -70,7 +70,8 @@ public class ReserveContorller {
     	if(member_id==null) {
     		result = "reserve/logincondition";
     	}else   {
-    		result = "movie/seatchoice";
+			model.addAttribute("page", "movie/seatchoice.jsp");
+    		result = "view";
     	}
 		return result;
 	}
