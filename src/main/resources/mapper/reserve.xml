@@ -14,7 +14,7 @@
     </insert>
     <insert id="screeninsert" parameterType="com.film.dto.ScreenDTO">
     	
-    	insert into filmbox_screen (rev_no,show_date, show_time, seatno) 
+    	insert into filmbox_screen (rev_no,show_date, show_time, seats) 
     	
     	values (#{rev_no},#{reserveDate}, #{screenTime},#{seats})
     </insert>
