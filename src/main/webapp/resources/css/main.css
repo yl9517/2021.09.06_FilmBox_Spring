@@ -175,26 +175,26 @@
   z-index: 0;
 }
 
-.gallery-item-1 {
+.gallery-item-4 {
   left: 0%;
   opacity: .4;
   transform: translateX(-50%);
 }
 
-.gallery-item-2,
-.gallery-item-4 {
+.gallery-item-5,
+.gallery-item-2 {
   height: 300px;
   opacity: 1;
   width: 230px;
   z-index: 1;
 }
 
-.gallery-item-2 {
+.gallery-item-5 {
   left: 20%;
   transform: translateX(-50%);
 }
 
-.gallery-item-3 {
+.gallery-item-1 {
  /*  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 80px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1); */
   height: 400px;
   opacity: 1;
@@ -204,12 +204,12 @@
   z-index: 2;
 }
 
-.gallery-item-4 {
+.gallery-item-2 {
   left: 80%;
   transform: translateX(-50%);
 }
 
-.gallery-item-5 {
+.gallery-item-3 {
   left: 100%;
   opacity: .4;
   transform: translateX(-50%);
@@ -301,3 +301,5 @@
 .gallery-nav li.gallery-item-selected {
   background: #555;
 }
+
+/* 순위 css 추가 */

@@ -221,7 +221,6 @@
 				<li> 해당 평점은 FilmBox 실관람객의 평점입니다. </li>
 			</ul>
 		</div>
-
 	</div>
 	<script src="/resources/js/movieInfo.js"></script>
 </body>
