@@ -99,6 +99,7 @@ public class ReserveContorller {
 		dto.setMember_id(member_id); 
 		reservice.reserveinsert(dto);
 		
+		
 		String[] seats = dto.getSelectedSeat().split(",");
 
 
