@@ -29,24 +29,24 @@ function addDate() {
         const spanDay = document.createElement('span');
 
         button.classList = 'movie-date-wrapper';
-        spanWeekOfDay.classList = 'movie-week-of-day';
         spanDay.classList = 'movie-day';
+        spanWeekOfDay.classList = 'movie-week-of-day';
 
         const dayOfWeek =
             weekOfDay[new Date(year + '-' + month + '-' + i).getDay()];
 
         if (dayOfWeek === '토') {
-            spanWeekOfDay.classList.add('saturday');
             spanDay.classList.add('saturday');
+            spanWeekOfDay.classList.add('saturday');
         } else if (dayOfWeek === '일') {
-            spanWeekOfDay.classList.add('sunday');
             spanDay.classList.add('sunday');
+            spanWeekOfDay.classList.add('sunday');
         }
+        spanDay.innerHTML = i;
+        button.append(spanDay);
         spanWeekOfDay.innerHTML = dayOfWeek;
         button.append(spanWeekOfDay);
 
-        spanDay.innerHTML = i;
-        button.append(spanDay);
         reserveDate.append(button);
 
         dayClickEvent(button);
