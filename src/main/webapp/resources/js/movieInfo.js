@@ -7,6 +7,19 @@ $('.tab_wrap').children().click(function() {
 	$(this).addClass('act');	
 	$(this).siblings().removeClass('act');
 });
+$('.review_wrap').hide();
+$('.rgyPostIt').show();
+$('#content').show();
+$('.first_btn').click(function() { //영화정보
+	$('.review_wrap').hide();
+	$('.rgyPostIt').show();
+	$('#content').show();
+});
+$('.second_btn').click(function() { //실관람평
+	$('.review_wrap').show();
+	$('.rgyPostIt').hide();
+	$('#content').hide();
+});
 
 /* 줄거리 <br> 추가 */
 function replaceAll(str) {
@@ -22,7 +35,6 @@ function replaceAll(str) {
 }
 
 /*영화 정보*/
-if($('.first_btn').hasClass('act')){
 	$.ajax({
 		url : "/content"
 		, data : {'movieCd': movieCd}
@@ -65,7 +77,7 @@ if($('.first_btn').hasClass('act')){
 			console.log(data);
 		}
 	});
-}
+
 
 /*리뷰목록, 리뷰 갯수*/
 let reviewCount = 0;
@@ -183,7 +195,7 @@ function checkStar() {
 } 
 
 /* 각댓글의 ...*/
-$(document).one("mousemove", "body", function() {
+$(document).one("click", ".second_btn", function() {
 	$('.etc').hide();
 });
 $(document).on("click", ".moreBtn", function() {
@@ -207,7 +219,7 @@ $(document).on("click","#reportBtn",function(){
 /* 댓글 더보기 */
 let showCount = 3;
 let nowShowCount = 0;
-$(document).one("mousemove", "body", function() {
+$(document).one("click", ".second_btn", function() {
 	//더보기 누르기 전 숨기기
 	let watched_review = $(".review_li");
 	for(let i=0; i<watched_review.length; i++){

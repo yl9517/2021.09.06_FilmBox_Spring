@@ -70,11 +70,6 @@
 	  <div class="carousel-inner">
 	    <div class="carousel-item active">
 		      <img class="d-block w-100" src="https://caching2.lottecinema.co.kr/lotte_image/2021/Sake/0825/Sake_1920774.jpg" alt="First slide">
-		 <!--  //내용 추가 할거면 이거 쓰면 됨
-		      <div class="carousel-caption d-none d-md-block">
-			   	  <h5>인질</h5>
-			   	  <p>황정민 출연</p>
-	  		  </div> -->
 	 	</div>
 	   	<div class="carousel-item">
 	      <img class="d-block w-100" src="https://caching2.lottecinema.co.kr/lotte_image/2021/Spirit/Spirit_1920774.jpg" alt="Second slide">
@@ -98,7 +93,9 @@
 	<div class="gallery"> <!-- 박스오피스 -->
 	    <div class="gallery-container">
 	    <c:forEach var="item" items="${mvList }" varStatus="status" begin="0" end="4">
-	    	 <a href="movieInfo/${item.movieCd }"><img class="gallery-item gallery-item-${status.count }" src="${item.image }" data-index="${status.count }"></a>
+	    	 <a href="movieInfo/${item.movieCd }">
+	    	 	<img class="gallery-item gallery-item-${status.count }" src="${item.image }" data-index="${status.count }">
+	    	 </a>
 	    </c:forEach>
 	    </div>
 	     <!--  <img class="gallery-item gallery-item-1" src="https://t1.daumcdn.net/movie/e1285fe4d39de150ca497edf0d91d8b4ad8d8e39" data-index="1">
