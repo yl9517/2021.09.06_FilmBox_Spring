@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<div class="first">
 <div class="mid">
 	<div class="date">
 <!-- 		<div class="reserve_day">날짜</div> -->
@@ -86,9 +87,10 @@
 	</div>
 	</div>
 </div>
-
-	<script src="/resources/js/reserve.js"></script>
 </div>
+</div>
+	<script src="/resources/js/reserve.js"></script>
+
 
 </body>
 </html>
