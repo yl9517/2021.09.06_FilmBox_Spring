@@ -22,7 +22,23 @@ body{
 
 .reserve_date{
 	padding : 0 10px 0 10px;
+	width : 1100px;
+	white-space:nowrap;
+	overflow-x: scroll;
 }
+
+/*주간으로 받아오면 필요 없을 듯(임시)*/
+.reserve_date::-webkit-scrollbar {
+    height : 5px;
+    background-color: none;
+  }
+  
+.reserve_date::-webkit-scrollbar-thumb {
+    background-color: #9795A3;
+    border-radius: 5px;
+    width : 2px;
+  }
+/**/
 
 .mid{
 	height : 570px;
