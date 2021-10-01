@@ -40,14 +40,18 @@ public class ReserveContorller {
     	MovieDTO dto = service.getMovie(movieCd);
     	 //세션아이디 받기
     	String member_id=(String)session.getAttribute("loginId");
-    	model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
-    	model.addAttribute("dto",dto);
+    	
     	
     	String result = null;
     	if(member_id==null) {
     		result = "reserve/logincondition";
     	}else   {
-    		result = "movie/movieRes";
+    		model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
+        	model.addAttribute("dto",dto);
+
+			model.addAttribute("page", "movie/movieRes.jsp");
+    		
+    		result = "view";
     	}
     	return result;
 //    	return "movie/movieRes";
