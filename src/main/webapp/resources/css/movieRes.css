@@ -26,9 +26,12 @@ body{
 	width : 1100px;
 	white-space:nowrap;
 	overflow-x: scroll;
+	font-size : 25px;
+	font-weight : 700;
+	color : #7F9871;
 }
 
-/*주간으로 받아오면 필요 없을 듯(임시)*/
+/**/
 .reserve_date::-webkit-scrollbar {
     height : 5px;
     background-color: none;
@@ -39,10 +42,10 @@ body{
     border-radius: 5px;
     width : 2px;
   }
-/**/
+
 
 .mid{
-	height : 610px;
+	/* height : 610px; */
 	width : 1100px;
 	display : flex;
 	flex-direction : column;
@@ -55,8 +58,20 @@ body{
 	justify-content: center;
 }
 
-.movie-date-wrapper, .reserve_button{
+.movie-date-wrapper{
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	margin : 10px 0 15px 15px;
+	background-color: transparent!important;
+	font-size: 16px;
+	color : whitesmoke;
+	border : none;
+	font-size : 18px;
+}
+
+.reserve_button{
+	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 	margin : 10px 0 15px 0;
@@ -67,14 +82,35 @@ body{
 	font-size : 18px;
 }
 
-.movie-date-wrapper:hover, .reserve_button:hover{
+.movie-date-wrapper:hover, .reserve_button:hover, .movielist_button:hover, .movielist:hover{
 	cursor : pointer;
 	color : #7F9871;
 }
 
+
+/**/
+.movielist{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	margin-bottom : 15px;
+	background-color: transparent!important;
+	border : none;
+	size : 20px;
+	color : whitesmoke;
+}
+
+
+
+/**/
+.movielist{
+	font-size : 16px;
+	margin-bottom : 8px;
+}
+
 .movie{
 	height : 490px;
-	width : 300px;
+	width : 350px;
 	border : 1px solid #9795A3;
 }
 
@@ -88,7 +124,7 @@ body{
 }
 
 .movielist_wrapper{
-	margin-top : 30px;
+	margin-top : 20px;
 	padding : 10px;
 	display : flex;
 	flex-direction: column;
@@ -109,29 +145,34 @@ body{
   }
 
 .time{
-	width : 680px;
-	height : 150px;
+	width : 200px;
+	height : 490px;
  	margin-left : 50px; 
 	border : 1px solid #9795A3;
+}
 
+.movietime{
+	font-size : 16px;
 }
 
 .time_wrapper{
 	display : flex;
-	justify-content: space-around;
+	flex-direction : column;
+	justify-content: center;
 	align-items: center;
 	margin-top : 20px;
 }
 
 .last_section, .choose_result_content{
+	height : 100%;
 	display : flex;
-	flex-direction : column;
+/* 	flex-direction : column; */
 	align-items: center;
 }
 
 
 .moveSeatButton{
-	margin-left : 45px;
+ 	margin : 15px 0;
 	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -167,20 +208,39 @@ body{
 }
 
 .choose_result_section{
-	margin : 70px 0 0 50px; 
-	width : 680px;
+	width : 400px;
+	padding-left : 20px;
 	display : flex;
+ 	flex-direction : column;
 	align-items: center;
 	justify-content: center;
 }
 
+.choose_result_ticket{
+  width : 200px;
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+  align-items : center;
+  border: none;
+  border-radius: 20px;
+  background-color : darkgrey;
+  padding : 20px 0;
+}
+
+
 .choose_result_content{
-	margin : 0 80px 0 20px;
+	display : flex;
+	flex-direction : column;
 	font-size : 18px;
 }
 
+.choose_result_title{
+	margin : 20px 0;
+}
+
 .choose_result_date{
-	margin : 5px 0 5px 0;
+	margin-bottom : 20px;
 }
 
 

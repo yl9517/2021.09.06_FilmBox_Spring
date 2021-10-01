@@ -63,12 +63,14 @@ function mvclick(s) {
 	
 	<!-- 선택 결과 섹션(임시) -->
 	<div class="choose_result_section">
+	  <div class="choose_result_ticket">
 		<img src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2021/0801/IE002846586_STD.jpeg" class="example">
 		<div class="choose_result_content">
 			<span class="choose_result_title">모가디슈</span>
 			<span class="choose_result_date">2021/9/30/목</span>
 			<span class="choose_result_time"></span>
 		</div>
+	  </div>
 	<!--  -->
 	
 			<form class="moveSeatForm" action="/seatchoice" method="post">
