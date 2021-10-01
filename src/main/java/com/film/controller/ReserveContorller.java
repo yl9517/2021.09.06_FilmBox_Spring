@@ -66,9 +66,21 @@ public class ReserveContorller {
 		
     	String member_id=(String)session.getAttribute("loginId");
     	String result = null;
-		if (dto.getSelectmovie() == null) {
-
-			if (member_id == null) {
+    	System.out.println(dto.toString());
+    	KakaopayDTO mv = reservice.getmoviecd(dto);
+//    	if (member_id==null) {
+//			result = "reserve/logincondition";
+//		} else {
+//			slist = reservice.getseats(dto);
+//			model.addAttribute("reserve", dto);
+//			model.addAttribute("slist", slist);
+//			model.addAttribute("page", "movie/seatchoice.jsp");
+//			result = "view";
+//		}
+    	System.out.println(dto.getSelectmovie());
+    	String flag ="flag";
+		if(dto.getSelectmovie().equals(flag)) {
+			if (member_id==null) {
 				result = "reserve/logincondition";
 			} else {
 				slist = reservice.getseats(dto);
@@ -78,9 +90,10 @@ public class ReserveContorller {
 				result = "view";
 			}
 		}else {
-			KakaopayDTO mv = reservice.getmoviecd(dto); 
+			
 			dto.setMovieCd(mv.getMovieCd());
 			dto.setMovieNm(mv.getMovieNm());
+			System.out.println(dto.toString());
 			if (member_id == null) {
 				result = "reserve/logincondition";
 			} else {
@@ -92,6 +105,8 @@ public class ReserveContorller {
 			}
 			
 		}
+		
+		
 		return result;
 	}
 	

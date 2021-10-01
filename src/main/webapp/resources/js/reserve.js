@@ -8,10 +8,9 @@ const screenTime = document.querySelector('.screenTime');
 const moveSeatForm = document.querySelector('.moveSeatForm');
 const moveSeatButton = document.querySelector('.moveSeatButton');
 const movieSelector= document.querySelectorAll('.movielist');
-const selectmovie = document.querySelector('.selectmovie');
+let selectmovie = document.querySelector('.selectmovie');
+console.log(selectmovie);
 
-
-console.log(movieSelector);
 let movieListAge = '';
 let year = 0;
 let month = 0;
@@ -58,6 +57,7 @@ function addDate() {
 }
 
 function dayClickEvent(button) {
+	
     button.addEventListener('click', function() {
         const movieDateWrapperActive = document.querySelectorAll(
             '.movie-date-wrapper-active'
@@ -87,8 +87,8 @@ movietime.forEach(list => {
     });
 }); 
 
-
 movieSelector.forEach(mvlist => {
+	
     mvlist.addEventListener('click', function() {
         const selMovie = document.querySelectorAll('.selMovie');
         selMovie.forEach(li => {
@@ -96,13 +96,10 @@ movieSelector.forEach(mvlist => {
         });
         mvlist.classList.add('selMovie');
         console.log(mvlist.innerHTML);
-    	/*const reserveTimeActive = document.querySelectorAll('.reserve-time-active');
-        reserveTimeActive.forEach(li => {
-            li.classList.remove('reserve-time-active');
-        });
-        list.classList.add('reserve-time-active');
-        console.log(list.innerHTML);*/
-        selectmovie.value = mvlist.innerHTML;
+    	
+        selectmovie.value = mvlist.value;
+        console.log(selectmovie.value);
+        
     });
 }); 
 moveSeatButton.addEventListener('click', function() {
@@ -112,7 +109,11 @@ moveSeatButton.addEventListener('click', function() {
     	alert("날짜와 시간을 선택하세요")
     }
 });
-
+/*function mvclick(s) {
+	selectmovie=s;
+	console.log( selectmovie );
+}*/
+console.log( selectmovie );
 //시간 click=>하단부 적용
 $("#movietime_1, #movietime_2, #movietime_3, #movietime_4").click(function(){
 
