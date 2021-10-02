@@ -25,7 +25,7 @@ body{
 	padding : 20px 20px 20px 20px;
 	width : 1100px;
 	white-space:nowrap;
-	overflow-x: scroll;
+ 	overflow-x: scroll;
 	font-size : 25px;
 	font-weight : 700;
 	color : #7F9871;
@@ -45,17 +45,20 @@ body{
 
 
 .mid{
-	/* height : 610px; */
+	height : 700px;
 	width : 1100px;
 	display : flex;
 	flex-direction : column;
 	font-size : 20px;
-	border : 1px solid #9795A3;
+	border : 1px solid grey;
+	border-radius: 10px;
 }
 
 .choose_section{
 	display : flex;
 	justify-content: center;
+	align-items: center;
+	height : 100%;
 }
 
 .movie-date-wrapper{
@@ -111,16 +114,16 @@ body{
 .movie{
 	height : 490px;
 	width : 350px;
-	border : 1px solid #9795A3;
 }
 
-
 .movielist_table, .time_table{
-	padding : 5px;
+	padding : 10px;
 	display : flex;
 	align-items: center;
 	justify-content: center;
 	margin-top : 10px;
+	background-color: dimgray;
+	border-radius : 10px;
 }
 
 .movielist_wrapper{
@@ -135,20 +138,21 @@ body{
 }
 
 .movielist_wrapper::-webkit-scrollbar {
-    width: 5px;
+	width: 5px;
     background-color: none;
+    
   }
   
 .movielist_wrapper::-webkit-scrollbar-thumb {
-    background-color: #9795A3;
+    background-color: dimgray;
     border-radius: 5px;
+    
   }
 
 .time{
 	width : 200px;
 	height : 490px;
  	margin-left : 50px; 
-	border : 1px solid #9795A3;
 }
 
 .movietime{
@@ -217,30 +221,30 @@ body{
 }
 
 .choose_result_ticket{
-  width : 200px;
+  width : 300px;
   display : flex;
   flex-direction : column;
   justify-content : center;
   align-items : center;
-  border: none;
-  border-radius: 20px;
-  background-color : darkgrey;
-  padding : 20px 0;
+  border: 8px #9795A3; 
+  border-radius : 10px;
+  border-style:inset;
+  padding : 30px 0;
 }
 
 
 .choose_result_content{
 	display : flex;
 	flex-direction : column;
-	font-size : 18px;
+	font-size : 16px;
 }
 
 .choose_result_title{
-	margin : 20px 0;
+	margin : 10px 0;
 }
 
 .choose_result_date{
-	margin-bottom : 20px;
+	margin-bottom : 10px;
 }
 
 
