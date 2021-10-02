@@ -53,35 +53,6 @@ function addDate() {
 
         dayClickEvent(button);
     	
-    	
-    	
-    	/*const button = document.createElement('button');
-        const spanWeekOfDay = document.createElement('span');
-        const spanDay = document.createElement('span');
-
-        button.classList = 'movie-date-wrapper';
-        spanDay.classList = 'movie-day';
-        spanWeekOfDay.classList = 'movie-week-of-day';
-
-        const dayOfWeek =
-            weekOfDay[new Date(year + '-' + month + '-' + i).getDay()];
-
-        if (dayOfWeek === '토') {
-            spanDay.classList.add('saturday');
-            spanWeekOfDay.classList.add('saturday');
-        } else if (dayOfWeek === '일') {
-            spanDay.classList.add('sunday');
-            spanWeekOfDay.classList.add('sunday');
-        }
-        
-        spanDay.innerHTML = i;
-        button.append(spanDay);
-        spanWeekOfDay.innerHTML = dayOfWeek;
-        button.append(spanWeekOfDay);
-
-        reserveDate.append(button);
-
-        dayClickEvent(button);*/
     }
 }
 
@@ -101,6 +72,8 @@ function dayClickEvent(button) {
             button.childNodes[0].innerHTML + '(' +
             button.childNodes[1].innerHTML + ')';
         console.log(reserveDay.value);
+        
+        $(".choose_result_date").text(reserveDay.value);
     });
 }
 
@@ -128,7 +101,8 @@ movieSelector.forEach(mvlist => {
     	
         selectmovie.value = mvlist.value;
         console.log(selectmovie.value);
-        
+        $(".choose_result_title").text("");
+		$(this).clone().appendTo(".choose_result_title");
     });
 }); 
 moveSeatButton.addEventListener('click', function() {
@@ -144,10 +118,20 @@ moveSeatButton.addEventListener('click', function() {
 }*/
 console.log( selectmovie );
 //시간 click=>하단부 적용
+
+//movieSelector.forEach(data => {
+//	data.click(function(){
+//			
+//	});
+//});
+    
+
+
 $("#movietime_1, #movietime_2, #movietime_3, #movietime_4").click(function(){
 
 	$(".choose_result_time").text("");
 	$(this).clone().appendTo(".choose_result_time");
 });
+
 
 

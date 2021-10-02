@@ -8,12 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/movieRes.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- <script >
-function mvclick(s) {
-	console.log( s + " 버튼을 누르셨습니다.");
-}
-	
-</script> -->
+
+
 </head>
 <body>
 <div class="first">
@@ -34,8 +30,8 @@ function mvclick(s) {
 			<%-- <button class="movielist_button">
 				<span class="movielist" id="movielist"><c:out value="${item.movieNm }"/></span>
 			</button> --%>
-			<input type="button" maxlength="100" name="movielists" class="movielist" 
-			onclick="mvclick('<c:out value="${item.movieNm}"/>');"
+			<input type="button"  name="movielists" class="movielist" 
+			
 			value ="<c:out value="${item.movieNm}"/>" id="mvlist"  >
 		</c:forEach>
 		</div>
@@ -66,8 +62,8 @@ function mvclick(s) {
 	  <div class="choose_result_ticket">
 		<img src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2021/0801/IE002846586_STD.jpeg" class="example">
 		<div class="choose_result_content">
-			<span class="choose_result_title">모가디슈</span>
-			<span class="choose_result_date">2021/9/30/목</span>
+			<span class="choose_result_title">${dto.movieNm}</span>
+			<span class="choose_result_date"></span>
 			<span class="choose_result_time"></span>
 		</div>
 	  </div>
