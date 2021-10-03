@@ -60,13 +60,12 @@
 							
 							<div style="display: none" class="rev_condition">${item.rev_condition }</div>
 
-							<%-- <c:if test="${item.rev_condition eq 0 }"> --%>
 							<li class="rsv_list">
 								<div class="rsv_no_wrap">
 									예매번호 <span class="rsv_no" id="rsv_no">${item.rev_no }</span>
 								</div>
 								<div class="rsv_info_wrap">
-									<img src="${item.image }" width='160px' height='180px'>
+									<img src="${item.image }" width='140px' height='180px'>
 									<div class="rsv_info">
 										<div class="title" id="title">${item.movieNm }</div>
 										<div>
@@ -83,13 +82,14 @@
 										<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
 												id="qr" onclick="openPop(this)"></span>
 										<br>
-										<button type="button" class="btn btn-default btn-sm" data-toggle="modal"
+										<button type="button" class="btn btn-default btn-sm" data-toggle="modal" 
 											data-toggle2="tooltip" data-placement="bottom" title="예매취소는 상영시작 20분 전까지 가능합니다!" 
-											data-target="#rsvCancelModal" data-title ="${item.rev_no }" style="font-size: 15px">예매 취소</button>
+											onclick="checkTime('${item.show_time}', '${item.show_date }', '${item.rev_no }')"
+											style="font-size: 15px">예매 취소</button>
 									</div>
 								</div>
 							</li>
-							<%-- </c:if> --%>
+							
 						</c:forEach>
 					</c:when>
 				
@@ -129,6 +129,26 @@
 						<button type="button" class="btn btn-danger" id="confirm">확인</button>
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 예매 취소 상영시간 20분전까지임 -->
+		<div class="modal fade" id="timeCheckModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">예매 취소 불가</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<!-- <span aria-hidden="true">&times;</span> -->
+						</button>
+					</div>
+					<div class="modal-body">예매 취소는 상영시간 20분전까지입니다</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger">확인</button>
 					</div>
 				</div>
 			</div>
