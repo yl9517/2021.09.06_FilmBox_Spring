@@ -10,7 +10,7 @@ const moveSeatButton = document.querySelector('.moveSeatButton');
 const movieSelector= document.querySelectorAll('.movielist');
 let selectmovie = document.querySelector('.selectmovie');
 console.log(selectmovie);
-
+const mvlmage = document.createElement('img');
 let movieListAge = '';
 let year = 0;
 let month = 0;
@@ -76,7 +76,7 @@ function dayClickEvent(button) {
         $(".choose_result_date").text(reserveDay.value);
     });
 }
-
+//선택한 날짜(년+월+일+요일+시간)
 movietime.forEach(list => {
     list.addEventListener('click', function() {
         const reserveTimeActive = document.querySelectorAll('.reserve-time-active');
@@ -88,7 +88,7 @@ movietime.forEach(list => {
         screenTime.value = list.innerHTML;
     });
 }); 
-
+//선택한 영화제목 가져오기
 movieSelector.forEach(mvlist => {
 	
     mvlist.addEventListener('click', function() {
@@ -100,11 +100,21 @@ movieSelector.forEach(mvlist => {
         console.log(mvlist.innerHTML);
     	
         selectmovie.value = mvlist.value;
-        console.log(selectmovie.value);
+        console.log(selectmovie);
         $(".choose_result_title").text("");
 		$(this).clone().appendTo(".choose_result_title");
     });
+    
 }); 
+//선택한 영화 이미지 가져오기
+function mvclick(s) {
+	$(".choose_result_img").text("");
+    var img = document.createElement('img')
+    img.src=s;
+    $(".choose_result_img").append(img);
+    console.log(img); 
+	
+}
 moveSeatButton.addEventListener('click', function() {
     if (!!reserveDay.value && !!screenTime.value) {
         moveSeatForm.submit();
@@ -112,21 +122,6 @@ moveSeatButton.addEventListener('click', function() {
     	alert("날짜와 시간을 선택하세요")
     }
 });
-/*function mvclick(s) {
-	selectmovie=s;
-	console.log( selectmovie );
-}*/
-console.log( selectmovie );
-//시간 click=>하단부 적용
-
-//movieSelector.forEach(data => {
-//	data.click(function(){
-//			
-//	});
-//});
-    
-
-
 $("#movietime_1, #movietime_2, #movietime_3, #movietime_4").click(function(){
 
 	$(".choose_result_time").text("");

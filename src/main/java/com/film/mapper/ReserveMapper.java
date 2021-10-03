@@ -31,6 +31,5 @@ public interface ReserveMapper {
 	
 	public List<MovieDTO> getMovieList();
 	public KakaopayDTO getmoviecd(KakaopayDTO dto);
-	public KakaopayDTO getmoviecd2(KakaopayDTO dto);
 
 }

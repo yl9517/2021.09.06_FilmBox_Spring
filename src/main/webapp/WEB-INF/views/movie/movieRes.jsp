@@ -26,13 +26,9 @@
 		<div class="movielist_table">영화</div>
 		<div class="movielist_wrapper">
 		<c:forEach var="item" items="${mlist }">
-			<%-- <input type="button" name="movielist" class="movielist" value =<c:out value="${item.movieNm }"/> id="movielist"> --%>
-			<%-- <button class="movielist_button">
-				<span class="movielist" id="movielist"><c:out value="${item.movieNm }"/></span>
-			</button> --%>
-			<input type="button"  name="movielists" class="movielist" 
 			
-			value ="<c:out value="${item.movieNm}"/>" id="mvlist"  >
+			<input type="button"  name="movielists" class="movielist" 
+			 onclick="mvclick('<c:out value="${item.image}"/>');" value ="<c:out value="${item.movieNm}"/>" id="mvlist"  >
 		</c:forEach>
 		</div>
 	</div>
@@ -60,7 +56,10 @@
 	<!-- 선택 결과 섹션(임시) -->
 	<div class="choose_result_section">
 	  <div class="choose_result_ticket">
-		<img src="${dto.image}" class="example">
+	  	<div class="choose_result_img">
+	  		<img src="${dto.image}">
+	  	</div>
+		
 		<div class="choose_result_content">
 			<span class="choose_result_title">${dto.movieNm}</span>
 			<span class="choose_result_date"></span>
