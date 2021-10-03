@@ -60,7 +60,7 @@
 	<!-- 선택 결과 섹션(임시) -->
 	<div class="choose_result_section">
 	  <div class="choose_result_ticket">
-		<img src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2021/0801/IE002846586_STD.jpeg" class="example">
+		<img src="${dto.image}" class="example">
 		<div class="choose_result_content">
 			<span class="choose_result_title">${dto.movieNm}</span>
 			<span class="choose_result_date"></span>
