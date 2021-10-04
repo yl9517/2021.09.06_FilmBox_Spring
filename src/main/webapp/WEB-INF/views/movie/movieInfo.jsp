@@ -83,9 +83,12 @@
 		<div class="reserve_screen-type">
 		<c:choose>
 			<c:when test="${compare_date < update_date }">
-				<div class="reserve">
-					<input type="button" class="reserveBtn" value="예매하기" onclick="location.href='/reservemovie/${dto.movieCd }/${dto.movieNm }'">
-				</div>
+				<form class="moveForm" action="/reservemovie" method="post">
+
+					<input type="hidden" name="movieNm" value="${dto.movieNm}">
+					<input type="hidden" name="movieCd" value="${dto.movieCd}">
+					<input type="submit" value="예매하기" class="reserveBtn">
+				</form>
 			</c:when>
 			<c:otherwise>
 				<div class="reserve">
