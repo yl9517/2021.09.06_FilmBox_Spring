@@ -59,10 +59,15 @@ $('.thiss').each(function(index,item){
   arrays.push($(item).text());
   console.log('출력'+$(item).text());
 });
-
+/*
 for(let i=0; i<arrays.length; i++){
-    console.log(arrays[i]+"");
-}
+    console.log(arrays[i]+" hi ");
+}*/
+
+/* 금액 초기화*/
+let firstprice = $('.ticket-price').text();
+let usepoint = $('#usePoint').val();
+let havepoint = $(".havePoint").val();
 
 toastr.options = {
     positionClass: 'toast-top-right',
@@ -146,14 +151,31 @@ function selectListUiFunction(selectSeatListUlActive) {
 
                 selectNumberOld[0].classList.add('select-seat-ul-active');
                 ticketPrice.innerHTML = allMoney + '원';
+ 
             }
         }
 
         // allNumber = normalNumber + teenNumber + oldNumber;
         // allMoney = normalMoney + teenMoney + oldMoney;
-        console.log(allNumber + '뭥미');
-        ticketPrice.innerHTML = allMoney + '원';
+        //console.log(allNumber + '156확인');
+        ticketPrice.innerHTML = allMoney;
+        $(".last-price").text(allMoney);
+        firstprice = $('.ticket-price').text();
+        let finalprice = firstprice-usepoint;
+    	$(".last-price").text(finalprice);
 
+    	if(parseInt(finalprice) != 0){
+    		$(".reserve-button").css({
+    			"background-color":"#8A2E26",
+    				"cursor":"pointer"			
+    		});
+    	}else{
+    		$(".reserve-button").css({
+    			"background-color":"#ccc",
+    				"cursor":"auto"			
+    		});
+    	}
+    	
         if (allNumber > 16) {
             console.log(li);
             li.classList.remove('select-seat-ul-active');
@@ -165,8 +187,7 @@ function selectListUiFunction(selectSeatListUlActive) {
                 }
             );
         }
-        payMoney.value = allMoney;
-        console.log(allMoney);
+        payMoney.value = finalprice;
     });
 }
 
@@ -234,11 +255,18 @@ seat.forEach(data => {
     ) {
         data.classList.add('top-margin');
     }
+    /* 이선좌 선택 불가능 */
     for(let i=0; i<arrays.length; i++){
         if(data.value==arrays[i]){
         	var id=data.id;
         	$(document).ready(function(){
         		$("#"+id).attr("disabled",true);
+        		$("#"+id).val('×');
+        		$("#"+id).css({
+        			"background-color":"#B0B0B0",
+        			"cursor" : "auto",
+        			"font-size": "20px"
+        		});
             });
         }
     }
@@ -325,3 +353,48 @@ reserveButton.addEventListener('click', function() {
         alert('좌석을 모두선택해 주세요!');
     }
 });
+
+/*최종결제 금액*/
+$('#usePoint').keyup(function() { 
+	usepoint = $('#usePoint').val();
+
+	if( parseInt(havepoint) < parseInt(usepoint)){ //보유 포인트보다 높게 작성
+		alert('보유포인트 이상 사용은 불가능 합니다.');
+		usepoint = havepoint; //보유포인트
+		$('#usePoint').val(havepoint);			
+	}
+	if(parseInt(firstprice) < parseInt(usepoint)){// 결제금액보다 높게 작
+		alert('결제금액 이상 사용은 불가능 합니다.');
+		usepoint = firstprice; //보유포인트
+		$('#usePoint').val(firstprice);	
+	}
+	
+	
+	finalprice = firstprice-usepoint;
+    payMoney.value = finalprice;
+    
+	$(".last-price").text(finalprice);
+	if(finalprice != 0){
+		$(".reserve-button").css({
+			"background-color":"#8A2E26",
+				"cursor":"pointer"			
+		});
+	}
+	
+});
+finalprice = firstprice-usepoint;
+
+if(finalprice == 0){
+	$(".reserve-button").css({
+		"background-color":"#ccc",
+			"cursor":"auto"			
+	});
+}
+
+
+/* 이전페이지 */
+$('.before-button').click(function() {
+	history.go(-1);
+});
+
+
