@@ -147,3 +147,41 @@
 	width: 140px; height: 140px;
 	margin: 30px 0 50px;
 }
+
+.button.gblue {
+    color: #fff;
+    line-height: 36px;
+    border: 0;
+    background: #037b94;
+}
+
+a.button {
+    text-decoration: none;
+}
+
+a:link {
+    color: #444;
+    text-decoration: none;
+}
+.button {
+    display: inline-block;
+    width: 250px;
+    height: 50px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 800;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+a {
+    background-color: transparent;
+}

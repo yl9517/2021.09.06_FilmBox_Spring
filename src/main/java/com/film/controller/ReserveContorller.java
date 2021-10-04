@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.film.dto.KakaopayDTO;
@@ -34,11 +35,37 @@ public class ReserveContorller {
 	@Resource(name = "reserveservice")
 	private ReserveService reservice;
 	
-	@GetMapping("/reservemovie/{movieCd}/{movieNm}")
-    public String movieInfo(@PathVariable String movieCd,@PathVariable String movieNm, Model model, HttpSession session) {
+//	@GetMapping("/reservemovie/{movieCd}/{movieNm}")
+//    public String movieInfo(@PathVariable String movieCd,@PathVariable String movieNm, Model model, HttpSession session) {
+//    	
+//
+//    	MovieDTO dto = service.getMovie(movieCd);
+//    	List<MovieDTO> mlist = reservice.getMovieList();
+//    	 //세션아이디 받기
+//    	String member_id=(String)session.getAttribute("loginId");
+//    	
+//    	
+//    	String result = null;
+//    	if(member_id==null) {
+//    		result = "reserve/logincondition";
+//    	}else   {
+//    		model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
+//        	model.addAttribute("dto",dto);
+//        	model.addAttribute("mlist",mlist);
+//
+//			model.addAttribute("page", "movie/movieRes.jsp");
+//    		
+//    		result = "view";
+//    	}
+//    	return result;
+////    	return "movie/movieRes";
+//    }
+	
+	@RequestMapping(value="/reservemovie" , method = {RequestMethod.GET, RequestMethod.POST})
+	public String movieInfo(MovieDTO dto, Model model, HttpSession session) {
     	
 
-    	MovieDTO dto = service.getMovie(movieCd);
+    	dto = service.getMovie(dto.getMovieCd());
     	List<MovieDTO> mlist = reservice.getMovieList();
     	 //세션아이디 받기
     	String member_id=(String)session.getAttribute("loginId");
@@ -59,6 +86,8 @@ public class ReserveContorller {
     	return result;
 //    	return "movie/movieRes";
     }
+	
+	
 	
 	@PostMapping("/seatchoice")
 	public String seatchoice(KakaopayDTO dto, Model model, HttpSession session) {

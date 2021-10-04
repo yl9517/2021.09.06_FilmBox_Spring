@@ -22,4 +22,5 @@ public class KakaopayDTO {
 	private String selectedSeat;
 	private String member_id;
 	private String selectmovie;
+	private String image;
 }

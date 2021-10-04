@@ -15,9 +15,9 @@
 <br>
 <h3>회원님의 개인정보 보호를 위해 비밀번호를 확인합니다.</h3>
 <br>
-<form method="post" action="myinfo">
+<form method="post" action="myinfo" class="form">
     <label for="member_pwd">비밀번호 확인</label><br>
-    <input type="password" id="member_pwd" name="member_pwd" class="w3-input w3-border" spellcheck="false"> 
+    <input type="password" id="member_pwd" name="member_pwd" spellcheck="false"> 
 	<br>
 	
 	<div class="btns">

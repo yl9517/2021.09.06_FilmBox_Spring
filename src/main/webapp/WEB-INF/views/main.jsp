@@ -37,7 +37,7 @@
 				<img class="logo" alt="logo" src="resources/img/mainlogo.png">
 				<ul class="menu1_left">
 					<li><a href="/movieList">영화</a></li>
-					<li><a href="/movieList">예매</a></li>
+					<li><a href="/reservemovie">예매</a></li>
 				</ul>
 			</div>
 			<div class="menu2">
