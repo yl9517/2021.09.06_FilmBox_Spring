@@ -41,7 +41,7 @@
 								<h4 class="title" id="title">${item.movieNm }</h4>
 								<p class="date">${item.show_date } ${item.show_time }</p>
 								<p class="seat">${item.seats }</p>
-								<!-- 댓글이 있으면 댓글 보여주고 없으면 관람평쓰기 버튼 표시 -->
+								<!-- 댓글이 있으면 댓글 보여주고 없으면 관람평쓰기 버튼 표시 .....-->
 								<c:choose>
 									<c:when test="${item.review_content!=null }">
 										<div class="write_date">${item.review_date }</div>
