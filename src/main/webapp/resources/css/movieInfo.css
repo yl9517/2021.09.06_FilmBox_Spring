@@ -379,7 +379,7 @@ input#review_starpoint{
 
 /* 예매하기 버튼 */
 
-.reserve input {
+.moveForm input {
   /* 생략 */
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -394,13 +394,13 @@ background-color:#C94F44;
     border: 3px solid #9A3F36;
     font-size: 18px;
 }
-.reserve input:hover,
-.reserve input:active{
+.moveForm input:hover,
+.moveForm input:active{
   background-color:#9A3F36;
     border: 3px solid #C94F44;
     color: #DBDBDB;
 }
-.reserve input:disabled {
+.moveForm input:disabled {
   opacity: 0.5;
 }
 
