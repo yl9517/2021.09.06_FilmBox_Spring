@@ -1,14 +1,7 @@
 /**
  * 
  */
-
-//let json = document.getElementById('j').innerText;
-//let p = JSON.parse(json);
-//console.log(json);
-//console.log(p);
-
-
-//tooltip
+//'500P 적립' 툴팁
 $('[data-toggle="tooltip"]').tooltip();
 
 
@@ -42,97 +35,192 @@ if(watched_movie.length<=3)
 	more_movie.remove();
 }
 
-//관람평 쓰기 버튼 누른 영화 -> 영화 제목 모달창에 불러오기
-function sendData(movieNm, rev_no, movieCd)
+
+
+/* 리뷰창 */
+$('#review_write').hide();
+
+/*member_id 받아오기*/
+let member_id = $('#member_id').val();
+
+//영화 제목 모달창에 불러오기
+function sendTitle(movieNm)
 {
-	let th=$(this);
-	console.log(th);
-	console.log(movieNm);
-	console.log(rev_no);
-	console.log(movieCd);
-	let title = movieNm;
+	let title = "";
+	title = movieNm;
 	let titleTxt = document.createTextNode(title);
 	$('.tit').empty();
 	$('.tit').append(titleTxt);
 }
 
-
-/* 리뷰창 */
-$('#review_write').hide();
-$('.loginInfo').hide();
-$('#review_window').click(function() {
-	if(member_id == null || member_id ==''){ //로그인하시오
-		$('.loginInfo').show();
-	}
-	else if(rev_no == null || rev_no == 0){ //예매하시오
-		alert('관람평을 실관람 이후 작성 가능합니다.')
-	}
-	else{ //관람평 작성
+/* 관람평 쓰기 창 */
+function insertReview(movieNm, rev_condition)
+{
+	if(rev_condition == 0){
+		alert('관람평은 실관람 이후 작성 가능합니다.');
+	}else
+	{
+		//리뷰 내용, 별점 비우기, 제목 불러오기
+		$('#review_content').val("");
+		$('#review_starpoint').val(0);
+		//별 체크 초기화
+		$("input[type=radio]").removeAttr('checked');
+		//modal 창 보여주기
+		$('.confirm_modify').hide();
+		$('.confirm').show();
 		$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
 		$('#review_write').show();
+
+		sendTitle(movieNm);
 	}
-});
+}
+/*등록버튼 눌렀을 때 insert*/
+function review_insert(movieCd, rev_no)
+{
+	$('.confirm').on('click', function(){
+	
+		let review_content =  $('#review_content').val();
+		let review_starpoint =  $('#review_starpoint').val();
+		
+		let result = checkStar(review_content, review_starpoint);
+		console.log(result);
+		if(result == false)
+		{
+			alert("다시 입력해주세요");
+		}else {
+			$.ajax({
+				url: "/reviewInsertAction",
+				type: 'post',
+				cache: false,
+				data: {'rev_no': rev_no
+					, 'movieCd': movieCd
+					, 'review_content': review_content
+					, 'review_starpoint': review_starpoint }
+				, success: function(data)
+				{
+					location.href="myfilmstory";
+				}
+				, error: function(request, error)
+				{
+					console.log("code"+request.status+"\n"+"msg"+request.responseText+"\n"+"error"+error);
+				}
+	
+			});
+		}
+		
+	});
+}
 
-/* 수정버튼 눌렀을때 리뷰 창 */
-//$('#modifyBtn').click(function() {
-//	
-//	$('#review_write').attr('action','../reviewModifyAction');
-//	$.ajax({
-//		url : "/getThisReview"
-//		, data : {'movieCd': movieCd , 'member_id': member_id}
-//		, method : 'get'
-//		,success:function(data) {			
-//			$('#review_content').append(data.review_content);
-//            $('#review_starpoint').val(data.review_starpoint);
-//            $("input[type=radio][value="+data.review_starpoint+"]").attr('checked','checked');
-//		}
-//		,error:function(data){
-//			console.log(data);
-//		}
-//	});
-//	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
-//	$('#review_write').show();
-//});
+/* 수정버튼 눌렀을때 기존 댓글 내용 보여주는 창 */
+function r_modify_modal(movieCd, movieNm)
+{
+	//제목 불러오기
+	sendTitle(movieNm);
+
+	//기존 댓글 내용 불러오기
+	$.ajax({
+		url : "/getThisReview"
+		, data : {'movieCd': movieCd , 'member_id': member_id}
+		, method : 'get'
+		,success:function(data) {
+			$('#review_content').val("");
+			$('#review_content').val(data.review_content);
+			$('#review_starpoint').val("");
+			$('#review_starpoint').val(data.review_starpoint);
+            $("input[type=radio][value="+data.review_starpoint+"]").attr('checked','checked');
+		}
+		,error:function(data){
+			console.log(data);
+		}
+	});
+	$('.confirm').hide();
+	$('.confirm_modify').show();
+	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
+	$('#review_write').show();
+	
+	
+}
+
+/* 수정버튼 눌렀을때 modify */
+function review_modify(movieCd){
+	
+	$('.confirm_modify').on('click', function(){
+		
+		let review_content =  $('#review_content').val();
+		let review_starpoint =  $('#review_starpoint').val();
+		//별 체크
+		let result = checkStar(review_content, review_starpoint);
+		if(result == false)
+		{
+			alert("다시 입력해주세요");
+		}
+		else {
+
+			//수정내용 보내기
+			$.ajax({
+				url : "/reviewModifyAction"
+				, data : {'movieCd': movieCd
+						, 'member_id': member_id
+						, 'review_content': review_content
+						, 'review_starpoint': review_starpoint }
+				, method : 'post'
+				, success: function(data)
+				{
+					location.href="myfilmstory";
+				}
+				, error: function(request, error)
+				{
+					console.log("code"+request.status+"\n"+"msg"+request.responseText+"\n"+"error"+error);
+				}
+			});
+		}
+		
+		
+	});
+}
+
 /* 삭제버튼 눌렀을때 confirm창 */
-
-//$('#deleteBtn').click(function() {
-//	if(confirm("댓글을 삭제하시겠습니까?")){		  		  
-// 		 location.href="../reviewDeleteAction/"+movieCd;
-//	}else{
-//		return;	
-//	}
-//});
-
-/* 리뷰창 닫기 */
-$('.reset').click(function() {
-	$('#review_write').hide();
-	$('#review_write').css('box-shadow','');
-});
-
+function r_del_modal(p_movieCd)
+{
+	let movieCd = p_movieCd;
+	if(confirm("댓글을 삭제하시겠습니까?")){		  		  
+	 		location.href="../reviewDeleteAction2/"+movieCd;
+	}else{
+		return;	
+	}
+}
 
 /* 리뷰 별점 */
 $('[id^=rate]').click(function() {
 
 	$('#review_starpoint').empty();
-	
+		
 	let star =  $(this).val();
 	$('#review_starpoint').val(star);
 });
-	
-/* 전송 전 리뷰 별점 선택 확인 = 0점이면 false*/	
-function checkStar() {
 
-	let content =  $('#review_content').val();	
-	if(content.length <5){
+
+/* 전송 전 리뷰 별점 선택 확인 = 0점이면 false*/	
+function checkStar(review_content, review_starpoint) {
+
+	if(review_content.length <5){
 		$('.alarm').empty();
 		$('.alarm').append('관람평을 최소 5글자 이상 입력해주세요. ');
 		return false;
 	}
 	
-	let starval =  $('#review_starpoint').val();
-	if(starval == 0 || starval ==null){
+	if(review_starpoint == 0 || review_starpoint ==null){
 		$('.alarm').empty();
 		$('.alarm').append('이 영화에 대한 별점을 선택해주세요. ');
 		return false;
 	}
-} 
+}
+
+/* 리뷰창 닫기 */
+$('.reset').click(function() {
+
+	$('#review_write').hide();
+	$('#review_write').css('box-shadow','');
+	$('.confirm_modify').off('click');
+	$('.confirm').off('click');
+});

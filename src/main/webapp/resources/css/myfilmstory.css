@@ -113,15 +113,21 @@ to {
 	padding-right: 10%;
 }
 /* 수정 , 삭제 */
-.content div{
+.content div {
 	font-size: 15px;
 	text-decoration: underline;
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: flex-end;
 }
+.r_modify, .r_del {
+	color: #1976d2;
+}
+.r_modify:hover, .r_del:hover {
+	color: #C94F44;
+}
 /* | */
-.content div p{
+.bar {
 	padding: 0px 10px;
 }
 
@@ -143,7 +149,7 @@ to {
 
 
 /* 리뷰 창 */
-form#review_write {
+#review_write {
     width: 700px;
     height: 500px;
     background-color: white;   
@@ -212,7 +218,7 @@ form#review_write {
 	padding: 10px 20px;
 }
 
-.score input{
+.score button{
 	padding: 8px 20px;
 	margin: 20px 15px;
 }

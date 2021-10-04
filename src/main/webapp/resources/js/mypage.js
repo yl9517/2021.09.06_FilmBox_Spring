@@ -26,7 +26,10 @@ $("#deluser").on('click', function(){
 $('[data-toggle2="tooltip"]').tooltip();
 
 
-let today = new Date();
+
+setInterval(() => {
+	let today = new Date();
+}, 60000);
 
 //상영시간
 function checkTime(p_time, p_date, p_rev_no)

@@ -28,14 +28,13 @@
 			<ul id="story_list">
 			<c:choose>
 				<c:when test="${!empty myfilmlist }">
-					<p style="display:none" id="j">${json }</p>
 					<c:forEach var="item" items="${myfilmlist }">
 						
 						<li class="movie_info">
 							<div class="poster">
 							<!-- 누르면 영화 상세보기로 -->
-								<a href="movieInfo/${item.movieCd }"> <img src="${item.image }" alt=""
-											width="140px" height="180px">
+								<a href="movieInfo/${item.movieCd }"> 
+									<img src="${item.image }" alt="" width="140px" height="180px">
 								</a>
 							</div>
 							<div class="movie_detail">
@@ -52,9 +51,9 @@
 											<div class="content">
 												<p>${item.review_content }</p>
 												<div>
-													<a href="#">수정</a>
-													<p>|</p>
-													<a href="#">삭제</a>
+													<p class="r_modify" onclick="r_modify_modal('${item.movieCd}', '${item.movieNm }'); review_modify('${item.movieCd}');">수정</p>
+													<p class="bar">|</p>
+													<p class="r_del" onclick="r_del_modal('${item.movieCd}')">삭제</p>
 												</div>
 											</div>
 											
@@ -62,11 +61,11 @@
 									</c:when>
 									
 									<c:otherwise>
-										<button type="button" class="btn btn-default btn-sm" id="review_window"
-											data-toggle="tooltip" data-placement="right" title="500P 적립"
-											style="font-size: 15px" onclick="sendData('${item.movieNm }', '${item.rev_no }', '${item.movieCd}')">관람평 쓰기</button>
+										<button type="button" class="btn btn-default btn-sm"
+											data-toggle="tooltip" data-placement="right" title="500P 적립" style="font-size: 15px" 
+											onclick="insertReview('${item.movieNm }', '${item.rev_condition }'); review_insert('${item.movieCd}', '${item.rev_no}');"
+											>관람평 쓰기</button>
 									</c:otherwise>
-									
 								</c:choose>
 								
 							</div>
@@ -94,13 +93,12 @@
 			<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
 		</div>
 	
-		<input type="hidden" id="member_id" name="member_id" value="${loginId}">
+	
+		
 	<!-- 댓글 작성 창 -->
-		<form id="review_write" method="post" action="../reviewInsertAction" onsubmit="return checkStar();">
-		
-		<input type="hidden" id="movieCd" name="movieCd" value="${dto.movieCd }">
-		<input type="hidden" id="rev_no" class="rev_no" name="rev_no" value="${rev_no}">
-		
+		<!-- <form id="review_write" method="post" action="../reviewInsertAction" onsubmit="return checkStar();"> -->
+		<div id="review_write">
+		<input type="hidden" id="member_id" name="member_id" value="${sessionScope.loginId}">
 			<header class="window_top">
 				<h4>관람평 작성 </h4>
 				<img alt="close" class="reset" src="../resources/img/close.png">
@@ -124,10 +122,12 @@
 				<textarea id="review_content" name="review_content" rows="5" cols="50" placeholder="관람평을 남겨주세요. 스포 및 비방글은 무통보 삭제조치를 받을 수 있습니다."></textarea>
 				<br>
 				<p class="alarm"> 　</p>
-				<input type="reset" class="reset" value="취소">
-				<input type="submit" value="등록">
+				<button type="button" class="reset" >취소</button>
+				<button type="button" class="confirm">등록</button>
+				<button type="button" class="confirm_modify">수정</button>
 			</div>
-		</form>
+		</div>
+		<!-- </form> -->
 		
 	</div>
 

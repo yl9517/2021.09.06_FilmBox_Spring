@@ -74,6 +74,20 @@ public class ReviewController {
 		return "redirect:/movieInfo/"+movieCd;	
 	}
 	
+	@GetMapping("/reviewDeleteAction2/{movieCd}")
+	public String reviewDeleteAction2(@PathVariable String movieCd,  HttpSession session) {
+		ReviewDTO dto = new ReviewDTO();
+	
+		String member_id=(String)session.getAttribute("loginId"); //세션아이디 받기
+		dto.setMember_id(member_id); 
+		
+		dto.setMovieCd(movieCd);
+		service.deleteReview(dto);
+
+		return "redirect:/myfilmstory";	
+	}
+	
+	
 	@GetMapping("/reveiwList")
 	public @ResponseBody List<HashMap<String, Object>> reviewList(@RequestParam String movieCd,@RequestParam String member_id) {
 

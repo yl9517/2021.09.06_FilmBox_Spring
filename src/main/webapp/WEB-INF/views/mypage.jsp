@@ -134,28 +134,6 @@
 			</div>
 		</div>
 		
-		<!-- 예매 취소 상영시간 20분전까지임 -->
-		<div class="modal fade" id="timeCheckModal" tabindex="-1" role="dialog"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">예매 취소 불가</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<!-- <span aria-hidden="true">&times;</span> -->
-						</button>
-					</div>
-					<div class="modal-body">예매 취소는 상영시간 20분전까지입니다</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger">확인</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		
-		
 		<!-- 회원 탈퇴 Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
