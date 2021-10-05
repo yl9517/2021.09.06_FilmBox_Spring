@@ -25,6 +25,7 @@ function addDate() {
     month = date.getMonth()+1;
     console.log(month);
     reserveDate.append(year + '/' + month);
+    var j = date.getDay();
     for (i = date.getDate(); i <= lastDay.getDate(); i++) {
     	const button = document.createElement('button');
         const spanWeekOfDay = document.createElement('span');
@@ -33,7 +34,7 @@ function addDate() {
         button.classList = 'movie-date-wrapper';
         spanWeekOfDay.classList = 'movie-week-of-day';
         spanDay.classList = 'movie-day';
-
+        button.id=j;spanDay.id=j;spanWeekOfDay.id=j;
         const dayOfWeek =
             weekOfDay[new Date(year + '-' + month + '-' + i).getDay()];
 
@@ -48,11 +49,18 @@ function addDate() {
         button.append(spanDay);
         spanWeekOfDay.innerHTML = dayOfWeek;
         button.append(spanWeekOfDay);
-
+        
         reserveDate.append(button);
 
         dayClickEvent(button);
-    	
+        if(j>7){
+        	button.disabled="disabled";
+        	$("#"+j).css({
+        		"color":"#7d7d7d"
+        	});
+        }
+        
+        j++;
     }
 }
 
