@@ -86,6 +86,21 @@
 		
 	</select>
 	
+	<update id="usepointupdate" parameterType="com.film.dto.KakaopayDTO">
+		UPDATE filmbox_member SET POINT =
+			(SELECT POINT 
+  				FROM (SELECT ABS((SELECT POINT FROM filmbox_member 
+					WHERE member_id=#{member_id})-(SELECT #{usepoint} FROM DUAL)) AS POINT FROM DUAL) a)
+		WHERE member_id=#{member_id};
+	</update>
+	
+	<insert id="usepointinsert" parameterType="com.film.dto.KakaopayDTO">
+		insert into filmbox_point
+		 (member_id, point_date, point, point_content)
+		values
+		 ( #{member_id}, now(), #{usepoint}, #{point_content} )
+	</insert>
+	
 </mapper>
     
     

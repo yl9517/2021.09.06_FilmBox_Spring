@@ -144,6 +144,7 @@
 					<!-- 결제 정보 -->
 
 					<input type="hidden" class="payMoney" name="payMoney" >
+					<input type="hidden" class="ousepoint" name="ousepoint">
 					<button type="button" class="before-button finalBtn">이전</button>
 					<button type="button" class="reserve-button finalBtn">결제하기</button>
 <!-- 					<button type="button" class="reserve-button">

@@ -53,7 +53,7 @@ selectedSeat = document.querySelector('.selectedSeat');
 const movieNm = document.querySelector('.movieNm');
 const movieCd = document.querySelector('.movieCd');
 const screenTime = document.querySelector('.screenTime');
-
+const ousepoint = document.querySelector('.ousepoint');
 let arrays = [];
 $('.thiss').each(function(index,item){
   arrays.push($(item).text());
@@ -338,11 +338,13 @@ reserveButton.addEventListener('click', function() {
     ticketNumber.value = reserveNumber.innerHTML;
     /*selectedSeat.value = selectedSeats.innerHTML;*/
     selectedSeat=selectedSeatsArray;
+    ousepoint.value=usepoint;
     console.log(allNumber + '임');
     console.log(ticketNumber.value);
     console.log(allNumber === ticketNumber.value);
     console.log(allNumber === Number(ticketNumber.value));
     console.log(selectedSeat);
+    
     if (
         Number(ticketNumber.value) === allNumber &&
         ticketNumber.value !== '0' &&

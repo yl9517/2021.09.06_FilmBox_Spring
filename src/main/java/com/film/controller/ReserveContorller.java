@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -25,6 +26,7 @@ import com.film.dto.ReserveDTO;
 import com.film.dto.ScreenDTO;
 import com.film.service.MovieService;
 import com.film.service.ReserveService;
+import com.film.service.UserService;
 
 @Controller
 public class ReserveContorller {
@@ -34,6 +36,9 @@ public class ReserveContorller {
 
 	@Resource(name = "reserveservice")
 	private ReserveService reservice;
+
+	@Autowired
+	private UserService userservice;
 	
 //	@GetMapping("/reservemovie/{movieCd}/{movieNm}")
 //    public String movieInfo(@PathVariable String movieCd,@PathVariable String movieNm, Model model, HttpSession session) {
@@ -125,15 +130,17 @@ public class ReserveContorller {
 	}
 	
 	@RequestMapping("/kakaojsp")
-	public String kakaojsp(KakaopayDTO dto ,Model model, HttpSession session) {
+	public String kakaojsp(KakaopayDTO dto,@RequestParam int ousepoint,Model model, HttpSession session) {
 
-		model.addAttribute("dto",dto);
-
+		
+		System.out.println("사용포인트: "+ousepoint);
     	String member_id=(String)session.getAttribute("loginId");
     	String result = null;
     	if(member_id==null) {
     		result = "reserve/logincondition";
     	}else   {
+    		model.addAttribute("dto",dto);
+    		model.addAttribute("usepoint",ousepoint);
     		result = "kakao/kakao";
     	}
 		
@@ -141,12 +148,14 @@ public class ReserveContorller {
 		
 	}
 	
-	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}")
+	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}/{usepoint}")
 	public String reserveSuccess(KakaopayDTO dto, HttpSession session) {
 		String member_id=(String)session.getAttribute("loginId");
 		dto.setMember_id(member_id); 
 		reservice.reserveinsert(dto);
+		reservice.usepointupdate(dto);
 		
+		reservice.usepointinsert(dto);
 		
 		String[] seats = dto.getSelectedSeat().split(",");
 

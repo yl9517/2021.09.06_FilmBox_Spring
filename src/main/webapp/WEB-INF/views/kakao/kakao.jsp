@@ -60,7 +60,7 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href='/success/${dto.payMoney}/${dto.movieCd}/${dto.screenTime}/${dto.reserveDate}/${dto.ticketNumber}/${dto.selectedSeat}'; 
+                location.href='/success/${dto.payMoney}/${dto.movieCd}/${dto.screenTime}/${dto.reserveDate}/${dto.ticketNumber}/${dto.selectedSeat}/${usepoint}'; 
                 /* location.href='/success/${dto}'; */
                 
             } else {

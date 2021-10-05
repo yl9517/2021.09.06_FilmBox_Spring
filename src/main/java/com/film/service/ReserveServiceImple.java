@@ -85,6 +85,20 @@ public class ReserveServiceImple implements ReserveService {
 		// TODO Auto-generated method stub
 		return reMapper.getmoviecd(dto);
 	}
+
+	@Override
+	public void usepointupdate(KakaopayDTO dto) {
+		// TODO Auto-generated method stub
+		reMapper.usepointupdate(dto);
+	}
+
+	@Override
+	public void usepointinsert(KakaopayDTO dto) {
+		// TODO Auto-generated method stub
+		PointDTO pointdto = new PointDTO(dto.getMember_id(), dto.getUsepoint(), "영화예매 포인트사용");//포인트 적립
+		
+		pointMapper.changePoint(pointdto);
+	}
 	
 
 
