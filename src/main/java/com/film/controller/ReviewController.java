@@ -35,7 +35,7 @@ public class ReviewController {
 		String member_id=(String)session.getAttribute("loginId"); //세션아이디 받기
 		dto.setMember_id(member_id); 
 
-    	int result = service.insertReview(dto);
+    	service.insertReview(dto);
 		
 		return "redirect:/movieInfo/"+dto.getMovieCd();
 		
@@ -56,7 +56,7 @@ public class ReviewController {
 		String member_id=(String)session.getAttribute("loginId"); //세션아이디 받기
 		dto.setMember_id(member_id); 
 		
-    	int result = service.modifyReview(dto);		
+    	service.modifyReview(dto);		
 	
 		return "redirect:/movieInfo/"+dto.getMovieCd();		
 	}

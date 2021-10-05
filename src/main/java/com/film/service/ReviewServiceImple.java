@@ -29,7 +29,7 @@ public class ReviewServiceImple implements ReviewService{
 	private UserMapper userMapper;
 	
 	@Override
-	public int insertReview(ReviewDTO dto) {
+	public void insertReview(ReviewDTO dto) {
 		 int reuslt = mapper.insertReview(dto); //댓글등록
 		 mvMapper.avgStarpoint(dto.getMovieCd()); //mv평점 변경
 		 
@@ -37,9 +37,6 @@ public class ReviewServiceImple implements ReviewService{
 		 PointDTO pointdto = new PointDTO(dto.getMember_id(), 500, "("+movieNm+") 관람평 작성 포인트적립");//포인트 적립
 		 pointMapper.changePoint(pointdto); //포인트 적립
 		 userMapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
-		 
-		 
-		 return reuslt;
 	}
 
 	@Override
@@ -48,13 +45,15 @@ public class ReviewServiceImple implements ReviewService{
 	}
 
 	@Override
-	public int modifyReview(ReviewDTO dto) {
-		return mapper.modifyReview(dto);
+	public void modifyReview(ReviewDTO dto) {
+			mapper.modifyReview(dto);
+		mvMapper.avgStarpoint(dto.getMovieCd()); //mv평점 변경
 	}
 
 	@Override
 	public void deleteReview(ReviewDTO dto) {
 		mapper.deleteReview(dto);
+		mvMapper.avgStarpoint(dto.getMovieCd()); //mv평점 변경
 		
 		 String movieNm = mvMapper.getMovie(dto.getMovieCd()).getMovieNm();
 		 PointDTO pointdto = new PointDTO(dto.getMember_id(), -500, "("+movieNm+") 관람평 삭제 포인트회수");//포인트 적립

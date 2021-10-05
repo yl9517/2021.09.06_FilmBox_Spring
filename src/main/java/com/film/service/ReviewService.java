@@ -8,9 +8,9 @@ import com.film.dto.ReviewDTO;
 
 public interface ReviewService {
 
-	public int insertReview(ReviewDTO dto);
+	public void insertReview(ReviewDTO dto);
 	public ReviewDTO getThisReview(ReviewDTO dto);
-	public int modifyReview(ReviewDTO dto);
+	public void modifyReview(ReviewDTO dto);
 	public void deleteReview(ReviewDTO dto);
 	public List<HashMap<String, Object>> getReviewList(ReviewDTO dto);
 
