@@ -38,7 +38,7 @@
     <br>
     <label for="member_pwd">비밀번호</label>
     <br> 
-    <input type="password" id="member_pwd" name="member_pwd" class="w3-input w3-border" value="${dto.member_pwd}" minlength='8' maxlength='10' spellcheck="false" required> 
+    <input type="password" id="member_pwd" name="member_pwd" class="w3-input w3-border" minlength='8' maxlength='10' spellcheck="false" required> 
         <i class="far fa-eye" id="eye"></i>
     <br>
     <label for="member_name">이름</label><br> 

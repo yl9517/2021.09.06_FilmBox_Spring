@@ -17,6 +17,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller; 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -129,6 +130,7 @@ public class LoginController {
 	@PostMapping("/loginresult")
 	public String loginresult(Model model, UserDTO dto, HttpSession session)
 	{
+		BCryptPasswordEncoder bcryptPasswordEncoder=new BCryptPasswordEncoder();
 		String url="";
 
 		if(session.getAttribute("loginId")!=null)
@@ -136,11 +138,13 @@ public class LoginController {
 			session.removeAttribute("loginId");
 		}
 
-		String getuser=service.getUser(dto);
+		UserDTO getuser=service.getUser(dto);
 
-		if(getuser!=null)
+		boolean result=bcryptPasswordEncoder.matches(dto.getMember_pwd(),  getuser.getMember_pwd());
+		
+		if(getuser!=null && result)
 		{
-			session.setAttribute("loginId", getuser);
+			session.setAttribute("loginId", getuser.getMember_id());
 			url="redirect:main";
 		}else
 		{
@@ -279,6 +283,9 @@ public class LoginController {
 	@PostMapping("/finduserpwdresult")
 	public String finduserpwdresult(@RequestParam String email, Model model) throws Exception
 	{
+		//비밀번호 암호화
+		BCryptPasswordEncoder bcryptPasswordEncoder=new BCryptPasswordEncoder();
+		
 		//이메일이 등록된 이메일인지 확인해서 member_id
 		String member_id = service.finduserid(email);
 		if(member_id!=null)
@@ -293,7 +300,7 @@ public class LoginController {
 				String tempPwd = UUID.randomUUID().toString().replace("-", "");
 				tempPwd = tempPwd.substring(0, 10);
 				System.out.println(tempPwd);
-
+			
 				dto.setMember_id(member_id);
 				dto.setMember_pwd(tempPwd);
 				dto.setEmail(email);
@@ -301,7 +308,11 @@ public class LoginController {
 				//메일 전송
 				PwdMail mail = new PwdMail();
 				mail.sendPwdEmail(dto);
-
+				
+				//비밀번호 암호화
+				String secPw=bcryptPasswordEncoder.encode(dto.getMember_pwd());
+				dto.setMember_pwd(secPw);
+				
 				//DB비밀번호 변경
 				service.updatepwd(dto);
 			}

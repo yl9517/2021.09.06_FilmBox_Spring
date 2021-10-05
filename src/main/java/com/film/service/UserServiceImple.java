@@ -63,7 +63,7 @@ public class UserServiceImple implements UserService {
 
 
 	@Override
-	public String getUser(UserDTO dto) {
+	public UserDTO getUser(UserDTO dto) {
 		
 		return mapper.getUser(dto);
 	}

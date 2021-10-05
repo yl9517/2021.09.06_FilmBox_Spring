@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,12 +45,13 @@ public class UserContoller {
 	//private static final Logger logger = LoggerFactory.getLogger(UserContoller.class);
 
 	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	
+	@Autowired
 	private UserService service;
 	
 	@Autowired
 	private ReserveService revservice;
-	
-
 	
 	//회원가입 페이지
 	@RequestMapping("/join")
@@ -63,6 +66,7 @@ public class UserContoller {
 	public String joinresult(Model model, UserDTO dto)
 	{
 		dto.setLogin_type("R");
+		dto.setMember_pwd(bcryptPasswordEncoder.encode(dto.getMember_pwd()));
 		service.insertFilmUser(dto);
 		model.addAttribute("member_name", dto.getMember_name());
 		model.addAttribute("page", "login/joinresult.jsp");
@@ -99,9 +103,9 @@ public class UserContoller {
 
 	//마이페이지 메인(my예매내역)
 	@GetMapping("/mypage")
-	public String mypage(Model model, HttpSession session) {
+	public String mypage(Model model, HttpSession session){
 
-		String member_id=(String) session.getAttribute("loginId");
+		String member_id=(String)session.getAttribute("loginId");
 		UserDTO dto=service.userDetail(member_id);
 		List<MypageDTO> myRsvList = service.getRsvData(member_id);
 		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
@@ -134,7 +138,6 @@ public class UserContoller {
 	{
 		String member_id=(String)session.getAttribute("loginId");
 		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
-		
 		
 		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("page","user/myfilmstory.jsp");
@@ -213,16 +216,15 @@ public class UserContoller {
 	//2.비밀번호 체크  3.수정 페이지로 이동
 	@PostMapping("/myinfo")
 	public String pwdcheck(HttpSession session, UserDTO dto, Model model)
-	{
+	{	
 		String member_id=(String) session.getAttribute("loginId");
-		String member_pwd=dto.getMember_pwd();
-
+		
 		dto.setMember_id(member_id);
-		dto.setMember_pwd(member_pwd);
 
-		int result=service.pwdcheck(dto);
+		UserDTO getuser=service.getUser(dto);
+		boolean result=bcryptPasswordEncoder.matches(dto.getMember_pwd(),  getuser.getMember_pwd());
 
-		if(result>0)
+		if(getuser!=null && result)
 		{
 			UserDTO dto2=service.userDetail(member_id);
 			model.addAttribute("dto", dto2);
@@ -241,6 +243,8 @@ public class UserContoller {
 	{
 		boolean tf=false;
 		Map<String, Object> result=new HashMap<String, Object>();
+		
+		dto.setMember_pwd(bcryptPasswordEncoder.encode(dto.getMember_pwd()));
 		if(dto!=null)
 		{
 			tf=service.updateUser(dto);

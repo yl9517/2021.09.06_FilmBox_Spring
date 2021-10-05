@@ -18,7 +18,7 @@ public interface UserMapper {
 
 	public void updatepwd(UserDTO dto);
 	
-	public String getUser(UserDTO dto);
+	public UserDTO getUser(UserDTO dto);
 	
 	public UserDTO userDetail(String member_id);
 
