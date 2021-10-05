@@ -51,9 +51,18 @@
 											<div class="content">
 												<p>${item.review_content }</p>
 												<div>
-													<p class="r_modify" onclick="r_modify_modal('${item.movieCd}', '${item.movieNm }'); review_modify('${item.movieCd}');">수정</p>
-													<p class="bar">|</p>
-													<p class="r_del" onclick="r_del_modal('${item.movieCd}')">삭제</p>
+													<c:choose>
+														<c:when test="${item.review_content eq '신고 된 관람평입니다' }">
+															<p class="r_del" onclick="r_del_modal('${item.movieCd}')">삭제</p>
+														</c:when>
+														
+														<c:otherwise>
+															<p class="r_modify" onclick="r_modify_modal('${item.movieCd}', '${item.movieNm }'); review_modify('${item.movieCd}');">수정</p>
+															<p class="bar">|</p>
+															<p class="r_del" onclick="r_del_modal('${item.movieCd}')">삭제</p>
+														</c:otherwise>
+													
+													</c:choose>
 												</div>
 											</div>
 											
