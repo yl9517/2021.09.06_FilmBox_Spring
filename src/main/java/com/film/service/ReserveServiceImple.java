@@ -95,7 +95,7 @@ public class ReserveServiceImple implements ReserveService {
 	@Override
 	public void usepointinsert(KakaopayDTO dto) {
 		// TODO Auto-generated method stub
-		PointDTO pointdto = new PointDTO(dto.getMember_id(), dto.getUsepoint(), "영화예매 포인트사용");//포인트 적립
+		PointDTO pointdto = new PointDTO(dto.getMember_id(), -dto.getUsepoint(), "영화예매 포인트사용");//포인트 적립
 		
 		pointMapper.changePoint(pointdto);
 	}
