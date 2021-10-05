@@ -182,7 +182,7 @@ thiss {
 .seat-wrapper {
     background-color: #222222;
     width: 100%;
-    height: 470px;
+    height: 500px;
 }
 
 
@@ -213,8 +213,8 @@ thiss {
 }
 
 .seatButtonWrapper>input {
-    width: 30px;
-    height: 30px;
+    width: 33px;
+    height: 33px;
 }
 
 .left-margin {
@@ -232,11 +232,14 @@ thiss {
 
 /* 선택확인 div */
 #check_wrap{
-	border: 2px solid red;
+
 	width: 30%;
 	position: relative;
     margin-left: 30px;
     border-radius: 20px;
+    height: 587px;
+    top: 40px;
+    background-color: #D0DAF4;
 }
 #check_wrap > div{
 	padding: 40px 30px;	
@@ -271,7 +274,7 @@ thiss {
 .ticket-price-title {
 	display:inline-block;
     color: black;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
     width: 120px;
     margin: 10px 0;
@@ -289,8 +292,8 @@ input#usePoint, .ticket-price, .last-price{
 	display:inline-block;
 	width: 100px;
 	padding:5px;
-
-	font-size: 18px;
+    margin: 5px;
+	font-size: 20px;
 	text-align: right;
 }
 .ticket-price{
@@ -301,10 +304,10 @@ input#usePoint:focus{
 }
 /*보유포인트*/
 .mypoint{
-    margin: 0 0 50px 120px;
+    margin: 0 0 50px 115px;
 	color: gray;
 	font-weight: normal;
-		font-size: 16px;
+		font-size: 17px;
 }
 
 /*최종 결제금액*/
@@ -334,9 +337,12 @@ input#usePoint:focus{
 }
 .reserve-button{	
     background-color: #8A2E26;	
+    border-bottom-right-radius: 20px;
 }
-.nobtn{
-	
+.before-button{
+	    border-bottom-left-radius: 20px;
+}
+.nobtn{	
     background-color: #ccc;	
     cursor: auto;
 }
