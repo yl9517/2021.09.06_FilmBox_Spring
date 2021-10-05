@@ -8,9 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.film.dto.MypageDTO;
 import com.film.dto.PointDTO;
+import com.film.dto.ReviewDTO;
 import com.film.dto.UserDTO;
 import com.film.mapper.PointMapper;
 import com.film.mapper.ReserveMapper;
+import com.film.mapper.ReviewMapper;
 import com.film.mapper.UserMapper;
 
 
@@ -23,6 +25,8 @@ public class UserServiceImple implements UserService {
 	@Autowired PointMapper pointMapper;
 	
 	@Autowired ReserveMapper revMapper;
+	
+	@Autowired ReviewMapper reviewMapper;
 	
 	@Override
 	public void insertUser(UserDTO dto) {
@@ -104,8 +108,21 @@ public class UserServiceImple implements UserService {
 	
 	@Override
 	public List<MypageDTO> getMyfilmData(String member_id) {
+		List<MypageDTO> dtolist = mapper.getMyfilmData(member_id);
 		
-		return mapper.getMyfilmData(member_id);
+		for(int i=0; i<dtolist.size(); i++) {
+			String movieCd = dtolist.get(i).getMovieCd();
+			String member = dtolist.get(i).getMember_id();
+			
+			ReviewDTO reveiwdto = reviewMapper.getThisReview(new ReviewDTO(member, movieCd));
+			if(reveiwdto != null) {
+				dtolist.get(i).setReview_content(reveiwdto.getReview_content());
+				dtolist.get(i).setReview_starpoint(reveiwdto.getReview_starpoint());
+				dtolist.get(i).setReview_date(reveiwdto.getReview_date());
+			}
+		}
+		
+		return  dtolist;
 	}
 
 	@Override

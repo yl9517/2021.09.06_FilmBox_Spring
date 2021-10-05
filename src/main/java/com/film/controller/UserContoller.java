@@ -48,6 +48,8 @@ public class UserContoller {
 	@Autowired
 	private ReserveService revservice;
 	
+
+	
 	//회원가입 페이지
 	@RequestMapping("/join")
 	public String userJoin(Model model)
@@ -132,6 +134,7 @@ public class UserContoller {
 	{
 		String member_id=(String)session.getAttribute("loginId");
 		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
+		
 		
 		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("page","user/myfilmstory.jsp");

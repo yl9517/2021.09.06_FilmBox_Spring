@@ -55,6 +55,12 @@ public class ReviewServiceImple implements ReviewService{
 	@Override
 	public void deleteReview(ReviewDTO dto) {
 		mapper.deleteReview(dto);
+		
+		 String movieNm = mvMapper.getMovie(dto.getMovieCd()).getMovieNm();
+		 PointDTO pointdto = new PointDTO(dto.getMember_id(), -500, "("+movieNm+") 관람평 삭제 포인트회수");//포인트 적립
+		 pointMapper.changePoint(pointdto); //포인트 삭제
+		 userMapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
+
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class ReviewDTO {
 	private String movieCd;
 	private String review_content;
 	private int review_starpoint;
-	private Date review_date;
+	private String review_date;
 	private int rev_no;
 	
 	public ReviewDTO(String member_id, String movieCd) {
