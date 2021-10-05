@@ -130,9 +130,16 @@
 							<span>${myreview.review_content }</span>
 							
 							<img class="moreBtn" alt="more" src="../resources/img/moreBtn.png">
-							<div class="edit etc">
+							<div class="edit etc">			
+					<c:choose>					
+						<c:when test="${myreview.review_content eq '신고 된 관람평입니다'}">
+								<span id="deleteBtn">삭제</span>
+						</c:when>
+						<c:otherwise>
 								<span id="modifyBtn">수정</span>
 								<span id="deleteBtn">삭제</span>
+						</c:otherwise>
+					</c:choose>
 							</div>
 						</div>
 				 	</c:when>
@@ -171,7 +178,6 @@
 						</div>
 					</div>
 				</li>  -->
-
 			</ul>
 					
 			<div class="more" id="more_review">

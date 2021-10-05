@@ -30,10 +30,13 @@ public class ReserveServiceImple implements ReserveService {
 	public void reserveinsert(KakaopayDTO dto) {
 		// TODO Auto-generated method stub
 		reMapper.reserveinsert(dto);
-		
 		MovieDTO getMovie = mvMapper.getMovie(dto.getMovieCd());
+		
+		PointDTO usepoint = new PointDTO(dto.getMember_id(), -dto.getUsepoint(), "("+getMovie.getMovieNm()+") 예매 포인트사용");//포인트 적립
+		pointMapper.changePoint(usepoint);		 
 		 PointDTO pointdto = new PointDTO(dto.getMember_id(), (int) (dto.getPayMoney()*0.05), "("+getMovie.getMovieNm()+") 예매 포인트적립");//포인트 적립
 		 pointMapper.changePoint(pointdto); //포인트 적립
+		 
 		 userMapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
 		
 	}
@@ -96,8 +99,9 @@ public class ReserveServiceImple implements ReserveService {
 	public void usepointinsert(KakaopayDTO dto) {
 		// TODO Auto-generated method stub
 		PointDTO pointdto = new PointDTO(dto.getMember_id(), -dto.getUsepoint(), "영화예매 포인트사용");//포인트 적립
-		
+		System.out.println("영화예매포인트사용");
 		pointMapper.changePoint(pointdto);
+		 userMapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
 	}
 	
 

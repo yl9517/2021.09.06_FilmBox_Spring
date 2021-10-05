@@ -1,6 +1,7 @@
 package com.film.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.film.dto.PointDTO;
+import com.film.dto.ReportDTO;
 import com.film.dto.ReviewDTO;
 import com.film.mapper.MovieMapper;
 import com.film.mapper.PointMapper;
@@ -65,6 +67,29 @@ public class ReviewServiceImple implements ReviewService{
 	@Override
 	public List<HashMap<String, Object>> getReviewList(ReviewDTO dto) {
 		return mapper.getReviewList(dto);
+	}
+
+	@Override
+	public int report(ReportDTO redto) {	
+		int result = 0;
+		if(mapper.prereport(redto) != null) { //신고 전적 있으면 신고불가
+			result = 1;
+		}else { //신고전적 없으면 신고완료
+			mapper.report(redto);
+			
+			//신고횟수 확인
+			ReportDTO reportreview = mapper.checkreport(redto);
+			 
+			int checkreport =  reportreview.getRepcount();
+			int review_no =  reportreview.getReview_no();
+			
+			if(checkreport >= 3) { //3번 이상이면
+				ReviewDTO reviewDto = mapper.getReviewno(review_no);
+				reviewDto.setReview_content("신고 된 관람평입니다");
+				modifyReview(reviewDto);
+			}
+		}
+		return result;
 	}
 
 }

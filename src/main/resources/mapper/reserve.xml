@@ -85,7 +85,7 @@
 		where movieNm=#{selectmovie};
 		
 	</select>
-	
+<!-- 	
 	<update id="usepointupdate" parameterType="com.film.dto.KakaopayDTO">
 		UPDATE filmbox_member SET POINT =
 			(SELECT POINT 
@@ -100,7 +100,7 @@
 		values
 		 ( #{member_id}, now(), #{usepoint}, #{point_content} )
 	</insert>
-	
+	 -->
 </mapper>
     
     

@@ -101,6 +101,7 @@ $.ajax({
 			         	 reviews += "<div class='report etc'>";
 				         	 reviews += "<p> 스포일러 및 욕설/비방하는 내용이 있습니까?</p>";
 				         	 reviews += "<span id='reportBtn'>신고</span>";
+				         	 reviews += "<input type='hidden' class='reportNum' value='"+item.review_no+"'>";
 			         	 reviews += "</div>";
 		         	 reviews += "</div>";
 	         	 reviews += "</li>";
@@ -204,12 +205,30 @@ $(document).on("click", ".moreBtn", function() {
 
 /* 신고버튼 누를 시*/
 $(document).on("click","#reportBtn",function(){
+	let reportNum = $(this).next().val();
+	console.log('댓번호'+reportNum);
     if(member_id == null || member_id ==''){
     	alert('로그인이 필요한 서비스입니다.') ;
 	}else{
 		if(confirm("해당 댓글을 신고하시겠습니까?")){	
-   		  alert('신고 되었습니다.');
-   		  $('.report').hide();
+			
+			$.ajax({
+				url : "/report"
+				, data : {'review_no': reportNum , 'member_id': member_id}
+				, method : 'get'
+				,success:function(data) {
+					if(data == 0){
+			   		  alert('신고 되었습니다.');
+					}else{
+						alert('이미 신고하신 관람평입니다.');
+					}
+					$('.report').hide();
+				}
+				,error:function(data){
+					console.log('에러'+data);
+				}
+			});
+
 	   	}else{
 	   		return;	
 	   	}

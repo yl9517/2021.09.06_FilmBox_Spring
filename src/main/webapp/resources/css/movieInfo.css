@@ -200,7 +200,6 @@
 	background-color: white;
 	border: 1.5px solid #7F9871;	
     width: 75px;
-    height: 75px;
     padding: 10px 20px;
     border-radius: 10px;
     border-top-right-radius: 0px;
@@ -210,9 +209,11 @@
 }
 .etc>span{
     float: left;
-    margin-bottom: 5px;
     cursor: pointer;
     color: #007BFF;
+}
+#modifyBtn{
+	margin-bottom: 5px;
 }
 .etc>span:hover{
 	text-decoration: underline;

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.film.dto.ReportDTO;
 import com.film.dto.ReviewDTO;
 import com.film.service.ReviewService;
 
@@ -97,6 +98,16 @@ public class ReviewController {
 		List<HashMap<String, Object>> list = service.getReviewList(dto);
 
 		return list;
+	}
+	
+
+	
+	//신고
+	@GetMapping("/report")
+	public @ResponseBody int report(@RequestParam int review_no,@RequestParam String member_id) {
+
+		ReportDTO redto = new ReportDTO(review_no, member_id);
+		return service.report(redto);
 	}
 
 	
