@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +33,14 @@
 					</tr>
 					<tr>
 						<th> 수량 / 금액 </th>
-						<td> 				
-							<input type="number" value="1">
-							<div> <strong id="sumMoney">12,000</strong>원</div>
+						<td> 
+							<div class="count">
+								<button type="button" onclick='count("minus")'> - </button>
+								<input type="text" id="proCount" value="1" min="1" readonly="readonly">
+								<button type="button" onclick='count("plus")'> + </button>
+							</div>
+	
+							<div class="sum"> <strong id="sumMoney">12000</strong>원</div>
 						</td>
 					</tr>
 				</table>
@@ -47,5 +53,6 @@
 		</div>
 	
 	</div>
+	<script src="/resources/js/storeDetail.js"></script>
 </body>
 </html>
