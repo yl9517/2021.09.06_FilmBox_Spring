@@ -37,6 +37,8 @@ public interface UserService {
 
 	public List<PointDTO> getMyPoints(String member_id);
 
+	public String getPoster(String movieNm);
+
 	
 
 }

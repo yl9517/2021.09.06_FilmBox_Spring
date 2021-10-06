@@ -36,5 +36,7 @@ public interface UserMapper {
 	
 	public void updateMyPoint(String member_id);
 
+	public String getPoster(String movieNm);
+
 	
 }

@@ -137,5 +137,11 @@ public class UserServiceImple implements UserService {
 		return mapper.getRsvData(member_id);
 	}
 
+	@Override
+	public String getPoster(String movieNm) {
+		// TODO Auto-generated method stub
+		return mapper.getPoster(movieNm);
+	}
+
 
 }

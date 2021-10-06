@@ -50,8 +50,6 @@
 
 		<div class="rsv_wrap">
 			<div class="rsv_h">MY 예매내역</div> 
-			<!-- <span><a href="myreservelist">더보기</a></span> -->
-			
 			<div class="rsv_list_wrap">
 				<ul>
 				<c:choose>
@@ -79,10 +77,7 @@
 									</div>
 									
 									<div class="rsv_btn">		
-<%-- 										<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
-												id="qr" onclick="openPop('${item.rev_no }','${item.image }', '${item.movieNm }', '${item.show_date }'
-                                    , '${item.show_time }', '${item.seats }' )"></span> --%>
-									<form action="" method="post" name="reserveInfo">
+									<form action="" method="post" name="revInfo">
 										<input type="hidden" name="rev_no" value="${item.rev_no }"> 
 										<input type="hidden" name="image" value="${item.image }"> 
 										<input type="hidden" name="movieNm" value="${item.movieNm }"> 

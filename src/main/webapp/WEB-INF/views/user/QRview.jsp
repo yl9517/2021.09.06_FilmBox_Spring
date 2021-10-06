@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form action="" method="post" name="reserveInfo">
+<form action="" method="post" name="revInfo">
 	<img src="${QRurl }" alt="">
 	<input type="hidden" name="rev_no" value="${dto.rev_no }"> 
 	<input type="hidden" name="image" value="${dto.image }"> 

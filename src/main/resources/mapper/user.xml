@@ -89,7 +89,7 @@
 	LEFT OUTER JOIN filmbox_review frv ON fr.rev_no = frv.rev_no
 	WHERE fme.member_id = #{member_id} AND fr.rev_condition <![CDATA[<>]]> 2
 	GROUP BY fr.rev_no
-	order by fr.rev_no desc;
+	order by fr.rev_no desc
 </select>
 
 <!-- 마이페이지 메인 MY예매내역 -->
@@ -102,7 +102,7 @@
 	INNER JOIN filmbox_movie fm ON fr.movieCd = fm.movieCd
 	WHERE fme.member_id = #{member_id} AND fr.rev_condition = 0
 	GROUP BY fr.rev_no
-	order by fr.rev_no desc;
+	order by fr.rev_no desc
 </select>
 
 <!-- 내 포인트 합계 -->
@@ -116,4 +116,12 @@
         set m.point = pointSum
         where m.member_id = #{member_id}
    </update> 
+   
+<!-- 영화 포스터 불러오기 -->
+<select id="getPoster" parameterType="String" resultType="String">
+	select image
+	from filmbox_movie
+	where movieNm = #{movieNm}
+</select>
+
 </mapper>

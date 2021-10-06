@@ -23,4 +23,15 @@ public class MypageDTO {
 	private String member_id;
 	private int rev_condition;
 	private String review_date;
+	public MypageDTO(int rev_no, String image, String show_date, String show_time, String seats, String movieNm) {
+		super();
+		this.rev_no = rev_no;
+		this.image = image;
+		this.show_date = show_date;
+		this.show_time = show_time;
+		this.seats = seats;
+		this.movieNm = movieNm;
+	}
+	
+	
 }
