@@ -81,19 +81,10 @@
 									</div>
 									
 									<div class="rsv_btn">
-									<form action="" method="post">
-										<input type="hidden" name="rev_no" value="${item.rev_no }"> 
-										<input type="hidden" name="image" value="${item.image }"> 
-										<input type="hidden" name="movieNm" value="${item.movieNm }"> 
-										<input type="hidden" name="show_date" value="${item.show_date }"> 
-										<input type="hidden" name="show_time" value="${item.show_time }"> 
-										<input type="hidden" name="seats" value="${item.seats }"> 
-										
-										<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
-											data-toggle3="tooltip" data-placement="left" 
-											title="Click!"
-												id="qr" onclick="goData()"></span>
-									</form> 
+									<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
+										data-toggle3="tooltip" data-placement="left" title="Click!" id="qr"
+										onclick="openPop('${item.rev_no }','${item.image }', '${item.movieNm }', '${item.show_date }'
+                                    							, '${item.show_time }', '${item.seats }' )"></span>
 										<br>
 										<button type="button" class="btn btn-default btn-sm" data-toggle="modal" 
 											data-toggle2="tooltip" data-placement="bottom" title="예매취소는 상영시작 20분 전까지 가능합니다!" 

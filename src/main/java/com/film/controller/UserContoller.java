@@ -228,23 +228,32 @@ public class UserContoller {
 
 		return "redirect:main";
 	}
-
-		
-	/* My예매내역 영화 예약정보 QR */
 	
-	@RequestMapping(value = "/showQR")
-	public String makeQR(@ModelAttribute("dto") MypageDTO dto, Model model) throws Exception
+	
+	/*-------------------------------------------------------	*/	
+	/* My예매내역 영화 예약정보 QR */
+	@RequestMapping(value = "/showQR/{rev_no}/{movieNm}/{show_date}/{show_time}/{seats}")
+	public String makeQR(@PathVariable int rev_no
+						, @PathVariable String movieNm
+						, @PathVariable String show_date
+						, @PathVariable String show_time
+						, @PathVariable String seats
+						, Model model)  throws Exception
 	{       
 	      //properties 불러오기
 	      ClassPathResource resource= new ClassPathResource("ip.properties");
 	      Properties prop = new Properties();
 	      prop.load(resource.getInputStream());
-	      model.addAttribute("dto", dto);
+	      model.addAttribute("rev_no",rev_no);
+		  model.addAttribute("movieNm",movieNm);
+		  model.addAttribute("show_date",show_date);
+		  model.addAttribute("show_time",show_time);
+		  model.addAttribute("seats",seats);
 	                     
 	      //google qr 코드 api 로 qr 생성
 	      String url1 = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=";
-	      String url2 = "http://"+prop.getProperty("ip")+"/revInfo/"+dto.getRev_no()
-	      +"/"+dto.getMovieNm()+"/"+dto.getShow_date()+"/"+dto.getShow_time()+"/"+dto.getSeats();
+	      String url2 = "http://"+prop.getProperty("ip")+"/revInfo/"+rev_no
+	      +"/"+movieNm+"/"+show_date+"/"+show_time+"/"+seats;
 	      String url = url1+url2;
 	      model.addAttribute("QRurl", url);
 	               

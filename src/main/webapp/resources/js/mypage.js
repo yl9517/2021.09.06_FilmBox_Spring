@@ -94,21 +94,23 @@ function cancelModal(rev_no)
 		});
 }
 
-//let formm = document.forms;
-//console.log(formm[1]);
-//console.log(formm[2]);
-//for(let i=1; i<formm.length; i++)
-//{
-//	formm[i].name += 'revInfo' + i
-//}
 
-//예약정보 보내기
-function goData() {
-	let target =  'pop';
-	window.open('' , target,'width=340px, height=340px');
-	
-	let form = document.rev_test;
-	form.action = '/showQR';
-	form.target = target;
-	form.submit();
+//qr 관련 
+function openPop(p_rev_no, p_image, p_movieNm, p_show_date, p_show_time, p_seats){
+
+   let rev_no = p_rev_no;
+   let image = p_image;
+   let title = p_movieNm;
+   let date = p_show_date;
+   let time = p_show_time;
+   let seats = p_seats;
+
+
+ //팝업
+   let popup 
+      = window.open('/showQR'+'/'+rev_no+'/'+title+'/'+date+'/'+time+'/'+seats
+               , '팝업'
+               ,'width=340px, height=340px');
+   
 }
+

@@ -11,12 +11,12 @@
 
 <form action="" method="post" name="revInfo">
 	<img src="${QRurl }" alt="">
-	<input type="hidden" name="rev_no" value="${dto.rev_no }"> 
-	<input type="hidden" name="image" value="${dto.image }"> 
-	<input type="hidden" name="movieNm" value="${dto.movieNm }"> 
-	<input type="hidden" name="show_date" value="${dto.show_date }"> 
-	<input type="hidden" name="show_time" value="${dto.show_time }"> 
-	<input type="hidden" name="seats" value="${dto.seats }"> 
+	<input type="hidden" name="rev_no" value="${rev_no }"> 
+	<input type="hidden" name="image" value="${image }"> 
+	<input type="hidden" name="movieNm" value="${movieNm }"> 
+	<input type="hidden" name="show_date" value="${show_date }"> 
+	<input type="hidden" name="show_time" value="${show_time }"> 
+	<input type="hidden" name="seats" value="${seats }"> 
 </form> 
 </body>
 </html>
