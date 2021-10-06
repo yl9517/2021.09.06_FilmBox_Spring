@@ -266,4 +266,91 @@ public class UserContoller {
 		return "redirect:main";
 	}
 
+	
+	//-----------------------------------
+
+	@GetMapping("/reserveInfo/{rev_no}/{seats}")
+	public String reserveInfo(@PathVariable int rev_no
+			, @PathVariable String seats
+            , Model model) {
+	      System.out.println("sum예약번호"+rev_no);
+	      System.out.println("sum좌석"+seats);
+	         model.addAttribute("rev",rev_no);
+	         model.addAttribute("seats",seats);
+	         
+		return "qrtestresult";
+	}
+	
+//	//예매내역 모바일에서 보기
+//	   @RequestMapping("/sendData")
+//	   public @ResponseBody MypageDTO qrresult(@ModelAttribute MypageDTO dto, Model model) 
+//	   {
+//	      System.out.println("예약번호"+dto.getRev_no());
+//	      System.out.println("영화제목"+dto.getMovieNm());
+//	      System.out.println("포스터"+dto.getImage());
+//	      System.out.println("상영날짜"+dto.getShow_date());
+//	      System.out.println("상영시간"+dto.getShow_time());
+//	      System.out.println("좌석"+dto.getSeats());
+//	         
+//	      return dto;
+//	   }
+	//   
+	//   
+	//   @RequestMapping("/qrtestresult/{rev_no}/{image}/{title}/{date}/{time}/{seats}") 
+	//   public String qrresult2(@PathVariable int rev_no
+//	                     , @PathVariable String image
+//	                     , @PathVariable String title
+//	                     , @PathVariable String date
+//	                     , @PathVariable String time
+//	                     , @PathVariable String seats
+//	                     , Model model) 
+	//   { 
+//	      MypageDTO dto =new MypageDTO(rev_no, image, date, time, seats, title);
+//	      model.addAttribute("dto", dto);
+//	      System.out.println(dto.getRev_no());
+//	      return "qrtestresult"; 
+	//   }
+	   
+	//   @RequestMapping("/sendRevData")
+	//   public String revData(@ModelAttribute MypageDTO dto)
+	//   {
+//	      System.out.println("예약번호"+dto.getRev_no());
+//	      System.out.println("영화제목"+dto.getMovieNm());
+//	      System.out.println("포스터"+dto.getImage());
+//	      System.out.println("상영날짜"+dto.getShow_date());
+//	      System.out.println("상영시간"+dto.getShow_time());
+//	      System.out.println("좌석"+dto.getSeats());
+	//   }
+	   
+	   @RequestMapping("/qrtestresult/{dto}")
+	   public String qrtestresult(@ModelAttribute MypageDTO dto, Model model)
+	   {
+	      model.addAttribute("dto", dto);
+	      return "qrtestresult";
+	   }
+	   
+	   @RequestMapping(value = "/showQR")
+	   public String makeQR(@ModelAttribute("dto") MypageDTO dto, Model model) throws Exception
+	   {   
+	      System.out.println("예약번호"+dto.getRev_no());
+	      System.out.println("영화제목"+dto.getMovieNm());
+	      System.out.println("포스터"+dto.getImage());
+	      System.out.println("상영날짜"+dto.getShow_date());
+	      System.out.println("상영시간"+dto.getShow_time());
+	      System.out.println("좌석"+dto.getSeats());
+	      
+	      //properties 불러오기
+	      ClassPathResource resource= new ClassPathResource("ip.properties");
+	      Properties prop = new Properties();
+	      prop.load(resource.getInputStream());
+	      model.addAttribute("dto", dto);
+	                     
+	      //google qr 코드 api 로 qr 생성
+	      String url1 = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=";
+	      String url2 = "http://"+prop.getProperty("ip")+"/reserveInfo/"+dto.getRev_no()+"/"+dto.getSeats();
+	      String url = url1+url2;
+	      model.addAttribute("QRurl", url);
+	               
+	      return "QRview";
+	   }
 }

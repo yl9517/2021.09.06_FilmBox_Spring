@@ -144,3 +144,15 @@ function cancelModal(rev_no)
 //}
 
 
+//-------------------------------------
+
+function goData() {
+	let target =  'pop';
+	window.open('' , target,'width=340px, height=340px');
+	
+	let form = document.reserveInfo;
+	form.action = '/showQR';
+	form.target = target;
+	form.submit();
+	
+}
