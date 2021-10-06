@@ -20,7 +20,7 @@
 					<li><a href="/movieList">예매</a></li>
 					<li><a href="/">스토어</a></li>
 					<li><a href="/">커뮤</a></li>
-					<li><a href="/">공지사항</a></li>
+					<li><a href="/notice">공지사항</a></li>
 				</ul>
 			</div>
 			<div class="menu2">
