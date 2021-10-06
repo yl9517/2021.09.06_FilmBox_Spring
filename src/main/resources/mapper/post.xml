@@ -6,10 +6,15 @@
 
 	
 	<select id="getPostList" resultType="com.film.dto.MovieDTO">
-		SELECT * FROM filmbox_post;
-
+		SELECT post_no, member_id, rev_content, movieNm, post_date
+		FROM filmbox_post
 	</select>
-	
+	<select id="getMyMovie" parameterType="string" resultType="com.film.dto.MovieDTO">
+		SELECT DISTINCT(movieNm), image FROM filmbox_member fm
+		INNER JOIN filmbox_rev fr ON fm.member_id = fr.member_id
+		INNER JOIN filmbox_movie fv ON fr.movieCd= fv.movieCd
+		WHERE fm.member_id =#{member_id};
+	</select>
 </mapper>
     
     

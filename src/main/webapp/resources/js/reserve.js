@@ -11,6 +11,8 @@ const movieSelector= document.querySelectorAll('.movielist');
 let selectmovie = document.querySelector('.selectmovie');
 console.log(selectmovie);
 const mvlmage = document.createElement('img');
+
+let clickdate=document.querySelector('.clickdate');
 let movieListAge = '';
 let year = 0;
 let month = 0;
@@ -80,6 +82,9 @@ function dayClickEvent(button) {
             button.childNodes[0].innerHTML + '(' +
             button.childNodes[1].innerHTML + ')';
         console.log(reserveDay.value);
+        clickdate = button.childNodes[0].innerHTML;
+        console.log(clickdate);
+        
         
         $(".choose_result_date").text(reserveDay.value);
     });

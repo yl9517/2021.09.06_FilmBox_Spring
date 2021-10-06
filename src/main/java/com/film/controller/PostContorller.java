@@ -59,5 +59,36 @@ public class PostContorller {
 
 		return "view";
 	}
+	@PostMapping("/mypost")
+	public String mypost(MovieDTO dto, Model model, HttpSession session) {
 
+		String member_id = (String) session.getAttribute("loginId");
+
+	    List<MovieDTO> list = postservice.getMyMovie(member_id);
+		String result = null;
+		if (member_id == null) {
+			result = "reserve/logincondition";
+		} else {
+			model.addAttribute("list", list);
+
+			model.addAttribute("page", "post/mypost.jsp");
+
+			result = "view";
+		}
+		return result;
+	}
+	@PostMapping("/postadd")
+	public String mypostadd(PostDTO dto, Model model, HttpSession session) {
+
+		List<PostDTO> list = postservice.getPostList();
+		// 세션아이디 받기
+		String member_id = (String) session.getAttribute("loginId");
+
+		model.addAttribute("member_id", member_id);
+		model.addAttribute("list", list);
+
+		model.addAttribute("page", "post/postmovie.jsp");
+
+		return "view";
+	}
 }
