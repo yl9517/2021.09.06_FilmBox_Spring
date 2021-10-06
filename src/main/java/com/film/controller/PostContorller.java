@@ -45,8 +45,8 @@ public class PostContorller {
 	@Autowired
 	private PostService postservice;
 
-	@RequestMapping(value = "/reservemovie", method = { RequestMethod.GET, RequestMethod.POST })
-	public String movieInfo(MovieDTO dto, Model model, HttpSession session) {
+	@RequestMapping(value = "/post", method = { RequestMethod.GET, RequestMethod.POST })
+	public String postMovie(MovieDTO dto, Model model, HttpSession session) {
 
 		List<PostDTO> list = postservice.getPostList();
 		// 세션아이디 받기
