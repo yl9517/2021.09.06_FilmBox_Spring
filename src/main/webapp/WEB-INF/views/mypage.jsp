@@ -49,7 +49,11 @@
 		</div>
 
 		<div class="rsv_wrap">
-			<div class="rsv_h">MY 예매내역</div> 
+			<div class="rsv_h">MY 예매내역
+			<div class="glyphicon glyphicon-question-sign"	aria-hidden="true" role="button"
+				data-toggle="popover" data-trigger="click" title="유의사항" id="alarm"
+				data-content="QR 인식은 휴대폰 기종에 따라 오류가 날 수 있습니다. 네이버 QR을 사용해주세요" ></div> 
+			</div>
 			<div class="rsv_list_wrap">
 				<ul>
 				<c:choose>
@@ -76,8 +80,8 @@
 										</div>
 									</div>
 									
-									<div class="rsv_btn">		
-									<form action="" method="post" name="revInfo">
+									<div class="rsv_btn">
+									<form action="" method="post">
 										<input type="hidden" name="rev_no" value="${item.rev_no }"> 
 										<input type="hidden" name="image" value="${item.image }"> 
 										<input type="hidden" name="movieNm" value="${item.movieNm }"> 
@@ -86,6 +90,8 @@
 										<input type="hidden" name="seats" value="${item.seats }"> 
 										
 										<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
+											data-toggle3="tooltip" data-placement="left" 
+											title="Click!"
 												id="qr" onclick="goData()"></span>
 									</form> 
 										<br>

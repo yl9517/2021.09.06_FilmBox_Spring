@@ -127,7 +127,7 @@
 .rsv_h{
 	font-size: 25px;
 	font-weight: bold;
-	padding: 30px 20px 20px 20px;
+	padding: 50px 20px 20px 20px;
 }
  
  /* 예매내역 */
@@ -197,5 +197,6 @@
 	font-size: 60px;
 	padding-left: 10px;
 }
+
 
 

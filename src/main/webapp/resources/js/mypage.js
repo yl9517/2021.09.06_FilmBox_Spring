@@ -25,8 +25,11 @@ $("#deluser").on('click', function(){
 //'예매취소는 상영시작 20분 전까지!' 툴팁
 $('[data-toggle2="tooltip"]').tooltip();
 
+//QR click 툴팁
+$('[data-toggle3="tooltip"]').tooltip();
 
-
+//유의사항 팝오버
+$('#alarm').popover();
 
 //상영시간
 function checkTime(p_time, p_date, p_rev_no)
@@ -90,13 +93,21 @@ function cancelModal(rev_no)
 			});
 		});
 }
-	
+
+//let formm = document.forms;
+//console.log(formm[1]);
+//console.log(formm[2]);
+//for(let i=1; i<formm.length; i++)
+//{
+//	formm[i].name += 'revInfo' + i
+//}
+
 //예약정보 보내기
 function goData() {
 	let target =  'pop';
 	window.open('' , target,'width=340px, height=340px');
 	
-	let form = document.revInfo;
+	let form = document.rev_test;
 	form.action = '/showQR';
 	form.target = target;
 	form.submit();
