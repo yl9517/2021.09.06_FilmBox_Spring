@@ -1,0 +1,71 @@
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+ #detail_wrap{
+ 	text-align: center;
+ 	width: 1100px;
+ 	margin: 50px auto;
+ 	min-height: 650px;
+ }
+ 
+#box_product_view .product_img{
+	width:500px;
+	padding: 15px; 
+	margin: 20px 25px 20px 0; 
+	float: left;
+ }
+ .product_img img{
+ 	width: 90%;
+ }
+ .product_info table{
+     width: 52%;
+    text-align: left;
+    border-collapse: collapse;
+ }
+.product_info table tr{
+  border-bottom: 1px solid #f1f1f1;
+}
+.product_info table th{
+ 	height: 70px;
+    font-size: 20px;
+    padding: 25px;
+}
+.product_info table tr:first-child th{
+	font-size: 30px;
+	padding-top: 30px;
+}
+
+.product_info table td{
+    font-size: 18px;
+}
+
+/*수량*/
+.product_info table input{
+	padding: 10px;
+    font-size: 18px;
+    width: 100px;
+    text-align: right;
+}
+.product_info table input + div{
+	float: right;
+    top: 10px;
+    position: relative;    
+    padding-right: 10px;
+}
+#sumMoney{
+	font-size: 28px;
+    color: #C94F44;
+    padding-right: 10px;
+}
+/*버튼*/
+.total_box .pay-button{
+	display: block;
+    width: 52%;
+    height: 60px;
+    font-size: 20px;
+    background-color: #C94F44; /* 7F9871 */
+    color: white;
+    margin-top: 20px;
+}

@@ -38,7 +38,7 @@
 				<ul class="menu1_left">
 					<li><a href="/movieList">영화</a></li>
 					<li><a href="/reservemovie">예매</a></li>
-					<li><a href="/">스토어</a></li>
+					<li><a href="/store">스토어</a></li>
 					<li><a href="/">커뮤</a></li>
 					<li><a href="/notice">공지사항</a></li>
 				</ul>
