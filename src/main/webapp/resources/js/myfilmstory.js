@@ -56,23 +56,18 @@ function sendTitle(movieNm)
 /* 관람평 쓰기 창 */
 function insertReview(movieNm, rev_condition)
 {
-	if(rev_condition == 0){
-		alert('관람평은 실관람 이후 작성 가능합니다.');
-	}else
-	{
-		//리뷰 내용, 별점 비우기, 제목 불러오기
-		$('#review_content').val("");
-		$('#review_starpoint').val(0);
-		//별 체크 초기화
-		$("input[type=radio]").removeAttr('checked');
-		//modal 창 보여주기
-		$('.confirm_modify').hide();
-		$('.confirm').show();
-		$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
-		$('#review_write').show();
+	//리뷰 내용, 별점 비우기, 제목 불러오기
+	$('#review_content').val("");
+	$('#review_starpoint').val(0);
+	//별 체크 초기화
+	$("input[type=radio]").removeAttr('checked');
+	//modal 창 보여주기
+	$('.confirm_modify').hide();
+	$('.confirm').show();
+	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
+	$('#review_write').show();
 
-		sendTitle(movieNm);
-	}
+	sendTitle(movieNm);
 }
 /*등록버튼 눌렀을 때 insert*/
 function review_insert(movieCd, rev_no)

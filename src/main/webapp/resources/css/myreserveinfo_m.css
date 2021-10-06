@@ -1,26 +1,62 @@
 @charset "UTF-8";
 
-@media only screen and (min-device-width:320px) and (max-device-width :
-	480px) {
-	@font-face {
-		font-family: 'ONE-Mobile-Regular';
-		src:
-			url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff')
-			format('woff');
-		font-weight: normal;
-		font-style: normal;
-	}
-	* {
-		padding: 0;
-		margin: 0;
-		box-sizing: border-box;
-		font-family: 'ONE-Mobile-Regular', cursive;
-	}
-	.reserve_num {
-		font-size: 20px;
-		color: orange;
-	}
-	.movie_title {
-		font-weight: bolder;
-	}
+@media all and (max-width: 767px) {
+  @font-face {
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'ONE-Mobile-Regular', cursive;
+  }
+/*   body {
+    background-image: url('${pageContext.request.contextPath}\resources\img\harry.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  } */
+  .rev_no {
+    color: #c94f44;
+    font-size: 20px;
+  }
+  .title {
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    word-break: keep-all;
+  }
+  .modal-body {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .info {
+    text-align: center;
+    border-left: 2px dotted silver;
+    margin-left: 30px;
+    padding-left: 40px;
+    font-size: 18px;
+  }
+  .time {
+    font-size: 23px;
+  }
+  .seat {
+    background-color: #7f9871;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+  }
+  .alarm {
+    word-break: keep-all;
+    text-align: start;
+    padding: 10px;
+  }
+  .logo {
+    text-align: center;
+  }
 }

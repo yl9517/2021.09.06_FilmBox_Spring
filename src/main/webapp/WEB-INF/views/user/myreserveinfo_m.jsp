@@ -5,17 +5,60 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources\css\myreserveinfo_m.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}\resources\css\myreserveinfo_m.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- bootstrap -->
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#movie-modal').modal();
+    });
+
+</script>
 </head>
 <body>
-	<h3>Filmbox 예매내역</h3>
-	예약번호 : ${rev_no}<br>
-	영화제목 : ${movieNm }<br>
-	포스터 :<img alt="img" src=" ${image}"><br>
- 	상영날짜 : ${show_date }<br>
-	상영시간 : ${show_time }<br>
-	영화좌석 : ${seats}
+<div id="movie-modal" class="modal fade">
+    <div class="modal-dialog modal-lg" role="document" style="width:auto;display:table">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title"><strong>예약번호</strong>
+                    <span class="rev_no"><strong>${rev_no}</strong></span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <span class="poster">
+                    <img src="${image}" alt="img" class="img-thumbnail">
+                </span>
+                <div class="info">
+                    <div class="title"><strong>${movieNm }</strong></div>
+                    <div>${show_date } </div>
+                    <div class="time"><strong>${show_time } ~ </strong></div>
+                    <div class="seat">${seats}</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <ul class="alarm">
+                    <li>
+                        <p>영화 상영시작시간 20분 전까지 예매 취소가 가능하며 캡쳐화면은 입장이 제한될 수 있습니다.
+                             </p>   
+                    </li>
+                    <li>입장 지연에 따른 관람 불편을 최소화하기 위해 영화는 10분 후 상영이 시작됩니다.
+                    </li>
+                </ul>
+                <div class="logo">
+                    <img src="${pageContext.request.contextPath}\resources\img\footerlogo.png" alt="" width="150px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

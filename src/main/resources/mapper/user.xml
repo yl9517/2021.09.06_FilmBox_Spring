@@ -87,7 +87,7 @@
 	INNER JOIN filmbox_screen fs ON fr.rev_no = fs.rev_no
 	INNER JOIN filmbox_movie fm ON fr.movieCd = fm.movieCd
 	LEFT OUTER JOIN filmbox_review frv ON fr.rev_no = frv.rev_no
-	WHERE fme.member_id = #{member_id} AND fr.rev_condition <![CDATA[<>]]> 2
+	WHERE fme.member_id = #{member_id} AND fr.rev_condition = 1
 	GROUP BY fr.rev_no
 	order by fr.rev_no desc
 </select>
