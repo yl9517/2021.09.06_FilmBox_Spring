@@ -27,9 +27,6 @@ $('[data-toggle2="tooltip"]').tooltip();
 
 
 
-setInterval(() => {
-	let today = new Date();
-}, 60000);
 
 //상영시간
 function checkTime(p_time, p_date, p_rev_no)
@@ -53,6 +50,7 @@ function checkTime(p_time, p_date, p_rev_no)
 	//상영시간  Date로 만들기
 	let movie_date = new Date(show_date_year, show_date_month, show_date_day, show_time_hours, show_time_minutes, show_time_seconds);
 	
+	let today = new Date();
 	let gap = movie_date.getTime()-today.getTime();
 	let min_gap = gap/1000/60;
 	console.log(min_gap);
