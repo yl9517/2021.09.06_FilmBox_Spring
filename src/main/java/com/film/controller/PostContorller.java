@@ -55,7 +55,7 @@ public class PostContorller {
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("list", list);
 
-		model.addAttribute("page", "movie/movieRes.jsp");
+		model.addAttribute("page", "post/postmovie.jsp");
 
 		return "view";
 	}
