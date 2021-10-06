@@ -25,13 +25,12 @@ public interface ReserveMapper {
 	public Integer reserveCancel(int rev_no);
 	
 	//날짜,시간 지나면 condition 변경
-	public List<HashMap<String, Integer>> selectPast();
-	public void updateCondition(List<HashMap<String, Integer>> list);
+	public List<HashMap<String, Object>> selectPast();
+	public void updateCondition(List<HashMap<String, Object>> list);
 	
 	
 	public List<MovieDTO> getMovieList();
 	public KakaopayDTO getmoviecd(KakaopayDTO dto);
-	public void usepointupdate(KakaopayDTO dto);
-	public void usepointinsert(KakaopayDTO dto);
+
 
 }

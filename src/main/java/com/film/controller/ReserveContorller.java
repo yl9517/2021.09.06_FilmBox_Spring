@@ -150,8 +150,6 @@ public class ReserveContorller {
       String member_id=(String)session.getAttribute("loginId");
       dto.setMember_id(member_id); 
       reservice.reserveinsert(dto);
-//      reservice.usepointupdate(dto);  
-//      reservice.usepointinsert(dto);
       
       String[] seats = dto.getSelectedSeat().split(",");
 

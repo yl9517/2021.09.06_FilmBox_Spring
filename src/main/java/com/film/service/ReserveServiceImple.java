@@ -1,5 +1,6 @@
 package com.film.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +75,11 @@ public class ReserveServiceImple implements ReserveService {
 
 	@Override
 	public void updateCondition() {
-		reMapper.updateCondition(reMapper.selectPast());		
+		reMapper.updateCondition(reMapper.selectPast());	
+//		List<HashMap<String, Object>> map = reMapper.selectPast();
+//		System.out.println(map.get(0).get("rev_no"));
+//		System.out.println(map.get(1).get("rev_no"));
+//		System.out.println(map.get(2).get("rev_no"));
 	}
 
 	@Override
@@ -88,22 +93,6 @@ public class ReserveServiceImple implements ReserveService {
 		// TODO Auto-generated method stub
 		return reMapper.getmoviecd(dto);
 	}
-
-	@Override
-	public void usepointupdate(KakaopayDTO dto) {
-		// TODO Auto-generated method stub
-		reMapper.usepointupdate(dto);
-	}
-
-	@Override
-	public void usepointinsert(KakaopayDTO dto) {
-		// TODO Auto-generated method stub
-		PointDTO pointdto = new PointDTO(dto.getMember_id(), -dto.getUsepoint(), "영화예매 포인트사용");//포인트 적립
-		System.out.println("영화예매포인트사용");
-		pointMapper.changePoint(pointdto);
-		 userMapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
-	}
-	
 
 
 	

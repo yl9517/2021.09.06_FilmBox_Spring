@@ -24,6 +24,5 @@ public interface ReserveService {
 	//영화 리스트 
 	public List<MovieDTO> getMovieList();
 	public KakaopayDTO getmoviecd(KakaopayDTO dto);
-	public void usepointupdate(KakaopayDTO dto);
-	public void usepointinsert(KakaopayDTO dto);
+
 }
