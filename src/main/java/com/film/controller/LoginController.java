@@ -139,13 +139,12 @@ public class LoginController {
 		}
 
 		UserDTO getuser=service.getUser(dto);
-
-		boolean result=bcryptPasswordEncoder.matches(dto.getMember_pwd(),  getuser.getMember_pwd());
 		
-		if(getuser!=null && result)
-		{
-			session.setAttribute("loginId", getuser.getMember_id());
-			url="redirect:main";
+         if(getuser!=null && bcryptPasswordEncoder.matches(dto.getMember_pwd(),  getuser.getMember_pwd()))
+        {
+
+			 session.setAttribute("loginId", getuser.getMember_id());
+			 url="redirect:main";
 		}else
 		{
 			url="redirect:login";
