@@ -1,0 +1,95 @@
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+ #pay_wrap{
+ 	text-align: center;
+ 	width: 1100px;
+ 	margin: 50px auto;
+ 	padding: 50px 0;
+ 	min-height: 650px;
+ }
+#pay_wrap h2{
+	text-align: left; 
+ }
+ #pay_wrap h3{
+	text-align: left;
+	margin-left: 10px;
+	color: #5B754D;
+	margin-top: 30px; 
+}
+
+
+#box_product table{
+	    margin: 30px 0 80px;
+	border-collapse: collapse;
+}
+#box_product table img{
+	width: 100px;
+}
+
+#box_product thead tr{
+	background-color: #f1f1f1;
+}
+#box_product tbody td{
+	border: none;
+	font-size: 18px;
+	line-height: 6;
+}
+#box_product table .store_name{
+	text-align: left;
+	line-height :3;
+}
+.store_name p{
+	height: 30px;
+}
+.store_name p:first-child {
+	font-size: 24px;
+}
+
+
+/*가격박스*/
+#box_price{
+	margin: 30px 0;
+	padding: 35px 100px;
+	background-color: #202126;
+	border-radius: 30px;
+	color:white;
+}
+#box_price ul{
+	list-style: none;
+	display: flex;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+#box_price ul li{
+	margin: 0 40px;
+}
+.price_title{
+	font-size: 18px;
+}
+.price_content, .price_final{
+	font-size: 26px;
+}
+.price_final{
+	color: #DF5D51;
+}
+.sign{
+	font-size: 60px;
+}
+
+/* 결제버튼 */
+.box_pay button{
+	width: 20%;
+    height: 60px;
+    margin: 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    color: white;
+    background-color: #53565b;
+    cursor: pointer;
+}
+.box_pay button:last-child{
+	background-color: #8A2E26;
+}

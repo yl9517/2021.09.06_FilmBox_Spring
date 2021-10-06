@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="detail_wrap">
-	
+		<input type="hidden" id="product_no" value="1">
 		<div id="box_product_view">
 			<div class="product_img">
 				<img alt="상품이미지" src="https://cdn.pixabay.com/photo/2019/06/12/07/12/popcorn-4268489_960_720.jpg">
