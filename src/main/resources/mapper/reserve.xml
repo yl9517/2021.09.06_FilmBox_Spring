@@ -56,14 +56,15 @@
 	
 	<!-- 날짜 지나면 rev_condition 1 -->
 	<select id="selectPast" resultType="java.util.HashMap">
-        select distinct rev_no 
-		from filmbox_screen
-		where
-		 show_date <![CDATA[<=]]> DATE(NOW()) 
-		<if test="show_date == 'date(now())'">
-			and 
-			show_time <![CDATA[<=]]> DATE_ADD(TIME(NOW()), INTERVAL 9 hour)
-		</if>
+	  select e.revno
+		from (   
+		        select distinct rev_no as revno, show_time
+				from filmbox_screen
+				where
+				 show_date <![CDATA[<=]]> DATE(NOW())
+		 )e
+		where e.show_time <![CDATA[<=]]> DATE_ADD(TIME(NOW()), INTERVAL 9 hour)
+		
 	</select >
 	<update id="updateCondition" parameterType="java.util.List">
 			update filmbox_rev
