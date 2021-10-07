@@ -43,7 +43,7 @@
  						<label>상품 분류</label>
  					</td>
  					<td>
- 						<select name="product_category" id="product_category">
+ 						<select name="product_category" id="product_category" required="required">
  							<option value="">------</option>
  							<option value="coupon">쿠폰</option>
  							<option value="popcorn">팝콘</option>
@@ -56,7 +56,7 @@
  						<label>상품명</label>
  					</td>
  					<td>
- 						<input type="text" id="product_name" name="product_name">
+ 						<input type="text" id="product_name" name="product_name" required="required">
  					</td>
  				</tr>
  				<tr>
@@ -64,7 +64,7 @@
  						<label>상품 가격</label>
  					</td>
  					<td>
- 						<input type="text" id="product_price" name="product_price">
+ 						<input type="text" id="product_price" name="product_price" required="required">
  					</td>
  				</tr>
  				<tr>

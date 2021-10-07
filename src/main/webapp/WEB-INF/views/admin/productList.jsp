@@ -49,8 +49,10 @@
 							<td><a href="productDetail">버블버블팝 팝콘</a></td>
 							<td>
 								<div class="btns">
-									<button type="reset" class="btn btn-default btn-sm" id="update">수정</button>
-									<button type="submit" class="btn btn-danger btn-sm" id="delete">삭제</button>
+									<button type="reset" class="btn btn-default btn-sm" id="update"
+											onclick="location.href='productUpdate/'">수정</button>
+									<button type="submit" class="btn btn-danger btn-sm" id="delete"
+											onclick="location.href='productDelete/'">삭제</button>
 								</div>
 							</td>
 						</tr>

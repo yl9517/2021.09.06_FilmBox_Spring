@@ -15,13 +15,14 @@ public class AdminController {
 	@Autowired
 	private ProductService service;
 
-	//관리자 상품등록
+	//관리자 상품등록페이지
 	@GetMapping("/productInsert")
 	public String productInsert(Model model) 
 	{
-		model.addAttribute("page", "store/productInsert.jsp");
+		model.addAttribute("page", "admin/productInsert.jsp");
 		return "view";
 	}
+	//관리자 상품등록
 	@RequestMapping("/productInsertAction")
 	public String productInsertAction(ProductDTO dto)
 	{
@@ -34,7 +35,7 @@ public class AdminController {
 	@GetMapping("/productList")
 	public String productList(Model model) 
 	{
-		model.addAttribute("page", "store/productList.jsp");
+		model.addAttribute("page", "admin/productList.jsp");
 		return "view";
 	}
 
@@ -42,7 +43,7 @@ public class AdminController {
 	@GetMapping("/productDetail")
 	public String productDetail(Model model) 
 	{
-		model.addAttribute("page", "store/productDetail.jsp");
+		model.addAttribute("page", "admin/productDetail.jsp");
 		return "view";
 	}
 
@@ -50,7 +51,7 @@ public class AdminController {
 	@GetMapping("/productUpdate")
 	public String productUpdate(Model model) 
 	{
-		model.addAttribute("page", "store/productUpdate.jsp");
+		model.addAttribute("page", "admin/productUpdate.jsp");
 		return "view";
 	}
 
@@ -58,7 +59,7 @@ public class AdminController {
 	@GetMapping("/productDelete")
 	public String productDelete(Model model) 
 	{
-		model.addAttribute("page", "store/productDelete.jsp");
+		model.addAttribute("page", "admin/productDelete.jsp");
 		return "view";
 	}
 

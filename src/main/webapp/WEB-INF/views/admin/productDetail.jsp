@@ -44,6 +44,14 @@
  					<tbody>
  						<tr>
  							<td>
+ 								<label>상품번호</label>
+ 							</td>
+ 							<td>
+ 								<p id="product_no">2</p>
+ 							</td>
+ 						</tr>
+ 						<tr>
+ 							<td>
  								<label>상품 분류</label>
  							</td>
  							<td>
@@ -60,7 +68,7 @@
  								<label>상품명</label>
  							</td>
  							<td>
- 								<input type="text" id="product_name" name="product_name">
+ 								<p>코카 콜라</p>
  							</td>
  						</tr>
  						<tr>
@@ -68,7 +76,7 @@
  								<label>상품 가격</label>
  							</td>
  							<td>
- 								<input type="text" id="product_price" name="product_price">
+ 								<p>1500</p>
  							</td>
  						</tr>
  						<tr>
@@ -76,7 +84,7 @@
  								<label>상품 설명</label>
  							</td>
  							<td>
- 								<p>팝콘(R)</p>
+ 								<p>코카콜라</p>
  							</td>
  						</tr>
  					</tbody>
@@ -89,5 +97,6 @@
 			</div>
 		</div>
 	</div>
+<script type="text/javascript" src="resources\js\productDetail.js"></script>
 </body>
 </html>
