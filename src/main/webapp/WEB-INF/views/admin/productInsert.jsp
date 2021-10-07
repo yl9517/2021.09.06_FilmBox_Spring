@@ -46,8 +46,7 @@
  						<select name="product_category" id="product_category" required="required">
  							<option value="">------</option>
  							<option value="coupon">쿠폰</option>
- 							<option value="popcorn">팝콘</option>
- 							<option value="drink">음료</option>
+ 							<option value="food">팝콘</option>
  						</select>
  					</td>
  				</tr>
