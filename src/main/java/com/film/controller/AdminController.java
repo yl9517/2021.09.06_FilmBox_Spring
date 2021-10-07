@@ -58,7 +58,7 @@ public class AdminController {
 		return "view";
 	}
 
-	//관리자 상품수정페이지
+	//관리자 상품수정페이지요
 	@GetMapping("/productUpdate/{product_no}")
 	public String productUpdate(@PathVariable int product_no, Model model) 
 	{
