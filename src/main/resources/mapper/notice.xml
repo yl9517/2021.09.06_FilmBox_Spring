@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.film.mapper.NoticeMapper">
+<parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
+
+
+<insert id="noticeInsert" parameterType="com.film.dto.NoticeDTO">
+	insert into filmbox_notice ( notice_title
+							, notice_content
+							, notice_readno )
+	       values ( #{notice_title}
+		        , #{notice_content}
+		        , #{notice_readno} )
+</insert>
+
+
+<select id="noticeList" parameterMap="hashmap" resultType="com.film.dto.NoticeDTO">
+	select *
+	from (
+			select e.*, @rownum:=@rownum+1 rnum
+			from (
+				   select notice_no
+				 	    , notice_title
+				   		, notice_content
+				   		, notice_readno
+				   from filmbox_notice fn
+				   , (select @rownum := 0) N
+				   where 1=1
+				 ) e
+				   order by notice_no DESC )as A
+	WHERE rnum BETWEEN #{startrow} AND #{endrow}
+</select>
+
+
+<select id="totalCount" resultType="int">
+	SELECT COUNT(*) FROM filmbox_notice
+</select>
+
+<update id="updateReadno" parameterType="int">
+	update filmbox_notice
+	set
+		notice_readno = notice_readno + 1
+	where notice_no=#{notice_no}
+</update>
+
+
+<select id="noticeDetail" resultType="com.film.dto.NoticeDTO" parameterType="int">
+	select notice_no
+		 , notice_title
+		 , notice_content
+	from filmbox_notice
+	where notice_no=#{notice_no}
+</select>
+
+
+<update id="noticeModify" parameterType="com.film.dto.NoticeDTO">
+	update filmbox_notice
+	set
+		notice_title=#{notice_title}
+	   ,notice_content=#{notice_content}
+	where notice_no=#{notice_no}
+</update>
+
+
+<delete id="noticeDelete" parameterType="com.film.dto.NoticeDTO">
+	delete from filmbox_notice
+	where notice_no=#{notice_no}
+</delete>
+
+</mapper>

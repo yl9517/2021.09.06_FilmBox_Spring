@@ -1,0 +1,93 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body{
+	background-color: #202126!important;
+	-ms-user-select: none;
+	-moz-user-select: -moz-none; 
+	-webkit-user-select: none; 
+	-khtml-user-select: none; 
+	user-select:none;
+	color : whitesmoke;
+}
+
+.form{
+	margin: 0 auto;
+	padding: 10%;
+	min-height: 10%;
+	background-color: #202126!important;
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
+	width : 100%;
+}
+
+.table{
+	color : whitesmoke!important;
+}
+
+.btndiv{
+	width : 1100px;
+	display : flex;
+	justify-content: flex-end;
+}
+
+th, td{
+	text-align: center!important;
+}
+
+th{
+	color : #9795A3;
+}
+
+.paging{
+	color : whitesmoke;
+}
+
+.notice_title1{
+	color : whitesmoke;
+	text-align: center;
+}
+
+.notice_title:link, .notice_title:visited, .btnwrite:link, .btnwrite:visited
+, .num:link, .num:visited{
+	text-decoration: none!important;
+	color : whitesmoke;
+}
+
+.notice_title:hover, .prev:hover, .next:hover{
+	color : #7F9871;
+}
+
+.btnwrite:hover, .num:hover{
+	color : #C94F44;
+}
+
+.curr{
+	color : #9795A3;
+	margin-left : 10px;
+}
+
+.num{
+	margin-left : 10px;
+}
+
+.btnwrite{
+	padding : 10px;
+	background-color : #9795A3;
+	border-radius: 10px;
+}
+
+.prev{
+	margin-right : 10px;
+	color : #C94F44;
+}
+
+.next{
+	margin-left : 10px;
+	color : #C94F44;
+}
