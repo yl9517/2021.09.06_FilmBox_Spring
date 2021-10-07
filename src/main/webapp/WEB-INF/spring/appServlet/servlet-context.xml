@@ -37,6 +37,8 @@
 			<mapping path="/reviewInsertAction"/>
 			<mapping path="/reviewModifyAction"/>
 			<mapping path="/reviewDeleteAction"/>
+			
+			<mapping path="/storepay"/>
 			<beans:bean class="com.film.data.AuthInterceptor"></beans:bean>
 			
 		</interceptor>

@@ -71,11 +71,17 @@
     position: relative;    
     padding-right: 10px;
 }
-#sumMoney{
+#product_price{
 	font-size: 28px;
     color: #C94F44;
     padding-right: 10px;
+    border: none;
+    width: 130px;
+    text-align: right;
+    font-weight: bolder;
+    pointer-events: none;
 }
+
 /*버튼*/
 .total_box .pay-button{
 	display: block;
@@ -86,4 +92,15 @@
     color: white;
     margin-top: 20px;
     cursor: pointer;
+}
+#product_name, #product_content{
+    font-size: 30px;
+    border: none;
+    font-weight: bolder;
+    pointer-events: none;
+}
+#product_content{
+	font-size: 18px;
+	font-weight: normal;
+	
 }

@@ -1,13 +1,13 @@
 let store_no = $('#product_no').val();
 
-let initPrice = $('#sumMoney').text(); //원가
-//initPrice.replace(",","");
+let initPrice = $('#product_price').val(); //원가
+//.replace(",",""); 
 
 // 수량,가격변동
 function count(type)  {
 
-  let number = $('#proCount').val();
-  let price = $('#sumMoney').text(); //변동값
+  let number = $('#product_count').val();
+  let price = $('#product_price').val(); //변동값
 
   if(type === 'plus') {
     number = parseInt(number) + 1;
@@ -19,13 +19,14 @@ function count(type)  {
 		 price = parseInt(price)-parseInt(initPrice);
 	 }
   }
-  
+
   // 결과 출력
-  $('#proCount').val(number);
-  $('#sumMoney').text(price);
+  $('#product_count').val(number);
+  $('#product_price').val(price);
+ 
 }
 
 //결제
 $('.pay-button').click(function() {
-	location.href="/storepay/"+store_no
+	document.receipt.submit();
 });
