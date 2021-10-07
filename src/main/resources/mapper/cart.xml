@@ -6,9 +6,9 @@
 <mapper namespace="com.film.mapper.CartMapper">
 
 <insert id="insertCart" parameterType="com.film.dto.ProductDTO">
-        insert into filmbox_store (
-        						, member_id,
-        						, product_no,
+        insert into filmbox_cart (
+        						 member_id
+        						, product_no
         						, cart_count
         						, cart_price
         						, cart_date)
