@@ -78,7 +78,7 @@ public class AdminController {
 	
 
 	//관리자 상품삭제
-	@GetMapping("/productDelete/{product_no}")
+	@RequestMapping("/productDelete/{product_no}")
 	public String productDelete(@PathVariable int product_no) 
 	{
 		int result = service.deleteProduct(product_no);

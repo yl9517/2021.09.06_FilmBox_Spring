@@ -54,7 +54,8 @@
 									<button type="reset" class="btn btn-default btn-sm" id="update"
 											onclick="location.href='productUpdate/${item.product_no}'">수정</button>
 									<button type="submit" class="btn btn-danger btn-sm" id="delete"
-											onclick="location.href='productDelete/${item.product_no}'">삭제</button>
+											data-toggle="modal"
+											onclick="delModal('${item.product_no}')">삭제</button>
 								</div>
 							</td>
 						</tr>
@@ -67,5 +68,28 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- 상품 삭제 modal -->
+		<div class="modal fade" id="productDelModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">스토어 상품 삭제</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<!-- <span aria-hidden="true">&times;</span> -->
+						</button>
+					</div>
+					<div class="modal-body">상품을 삭제 하시겠습니까?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" id="confirm">확인</button>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">취소</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="resources\js\productList.js"></script>
 </body>
 </html>
