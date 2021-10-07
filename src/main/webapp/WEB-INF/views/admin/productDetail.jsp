@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources\css\productDetail.css">
+<link rel="stylesheet" href="..\resources\css\productDetail.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- bootstrap -->
 <link rel="stylesheet"
@@ -25,8 +26,8 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">스토어 관리</div>
 						<ul class="list-group">
-							<li class="list-group-item"><a href="productInsert">상품 등록</a></li>
-							<li class="list-group-item"><a href="productList">상품 목록</a></li>
+							<li class="list-group-item"><a href="/productInsert">상품 등록</a></li>
+							<li class="list-group-item"><a href="/productList">상품 목록</a></li>
 						</ul>
 					</div>
 				</div>
@@ -35,7 +36,7 @@
 				<div class="product_info_wrap">
 				<!-- 이미지 center-->
 				<div class="col-xs-2">
-					<img src="resources\img\clapperboard.png" alt="img" class="img-thumbnail" width="300px" height="300px">
+					<img src="${dto.product_img }" alt="img" class="img-thumbnail" width="300px" height="300px">
 				</div>
 				<table class="table table-striped" class="col-xs-2" id="product_info">
  					<thead>
@@ -47,7 +48,7 @@
  								<label>상품번호</label>
  							</td>
  							<td>
- 								<p id="product_no">2</p>
+ 								<p id="product_no">${dto.product_no }</p>
  							</td>
  						</tr>
  						<tr>
@@ -55,12 +56,7 @@
  								<label>상품 분류</label>
  							</td>
  							<td>
- 								<select name="product_category" id="product_category">
- 									<option value="">------</option>
- 									<option value="coupon">쿠폰</option>
- 									<option value="popcon">팝콘</option>
- 									<option value="drink">음료</option>
- 								</select>
+ 								<p>${dto.product_category }</p>
  							</td>
  						</tr>
  						<tr>
@@ -68,7 +64,7 @@
  								<label>상품명</label>
  							</td>
  							<td>
- 								<p>코카 콜라</p>
+ 								<p>${dto.product_name }</p>
  							</td>
  						</tr>
  						<tr>
@@ -76,7 +72,7 @@
  								<label>상품 가격</label>
  							</td>
  							<td>
- 								<p>1500</p>
+ 								<p>${dto.product_price }</p>
  							</td>
  						</tr>
  						<tr>
@@ -84,19 +80,16 @@
  								<label>상품 설명</label>
  							</td>
  							<td>
- 								<p>코카콜라</p>
+ 								<p>${dto.product_content }</p>
  							</td>
  						</tr>
  					</tbody>
- 			</table>
- 			<div class="btns">
-					<button type="reset" class="btn btn-default btn-sm" id="update">수정</button>
-					<button type="submit" class="btn btn-danger btn-sm" id="delete">삭제</button>
-			</div>
+ 					</table>
+ 			
 				</div>
 			</div>
 		</div>
 	</div>
-<script type="text/javascript" src="resources\js\productDetail.js"></script>
+<script type="text/javascript" src="..\resources\js\productDetail.js"></script>
 </body>
 </html>

@@ -18,4 +18,35 @@
            
 </insert>
 
+<select id="getProductList" resultType="com.film.dto.ProductDTO">
+	select product_no, product_name
+			, product_content, product_price
+			, product_img, product_category
+	from filmbox_store
+</select>
+
+<select id="detailProduct" parameterType="int" resultType="com.film.dto.ProductDTO">
+	select product_no, product_name
+			, product_content, product_price
+			, product_img, product_category
+	from filmbox_store
+	where product_no = #{product_no}
+
+</select>
+
+<update id="updateProduct" parameterType="com.film.dto.ProductDTO">
+	update filmbox_store
+	set
+		product_name = #{product_name}
+		, product_content = #{product_content}
+		, product_price = #{product_price}
+		, product_img = #{product_img}
+		, product_category = #{product_category}
+	where product_no = #{product_no}
+</update>
+
+<delete id="deleteProduct" parameterType="int">
+	delete from filmbox_store
+	where product_no = #{product_no}
+</delete>
 </mapper>

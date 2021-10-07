@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +26,8 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">스토어 관리</div>
 						<ul class="list-group">
-							<li class="list-group-item"><a href="productInsert">상품 등록</a></li>
-							<li class="list-group-item"><a href="productList">상품 목록</a></li>
+							<li class="list-group-item"><a href="/productInsert">상품 등록</a></li>
+							<li class="list-group-item"><a href="/productList">상품 목록</a></li>
 						</ul>
 					</div>
 				</div>
@@ -44,18 +45,21 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="item" items="${productList }">
 						<tr>
-							<td><label>1</label></td>
-							<td><a href="productDetail">버블버블팝 팝콘</a></td>
+							<td><label>${item.product_no }</label></td>
+							<td><a href="productDetail/${item.product_no }">${item.product_name }</a></td>
 							<td>
 								<div class="btns">
 									<button type="reset" class="btn btn-default btn-sm" id="update"
-											onclick="location.href='productUpdate/'">수정</button>
+											onclick="location.href='productUpdate/${item.product_no}'">수정</button>
 									<button type="submit" class="btn btn-danger btn-sm" id="delete"
-											onclick="location.href='productDelete/'">삭제</button>
+											onclick="location.href='productDelete/${item.product_no}'">삭제</button>
 								</div>
 							</td>
 						</tr>
+						</c:forEach>
+						
 
 					</tbody>
 				</table>

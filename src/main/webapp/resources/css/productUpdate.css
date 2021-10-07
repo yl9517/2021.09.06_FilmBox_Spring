@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 * {
 	padding: 0;
 	margin: 0;
@@ -14,16 +15,32 @@
 #panel-wrap{
 	padding: 20px;
 }
-
-/* 테이블 */
+/* 테이블 form */
 #product_info{
-	width: 500px;
+	width: 900px;
 	padding: 20px;
 }
 /* 테이블 제목 */
 #t_header{
 	color: #C94F44;
 	font-size: 20px;
-	text-align: center;
-	font-weight: bolder;
+}
+
+/* 상품 등록/취소 버튼 */
+.btns{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+#update, #cancel{
+	margin: 10px;
+	font-size: 18px;
+}
+/* input */
+input {
+	padding: 5px;
+}
+/* 상품 설명 */
+#product_detail{
+	padding: 5px;
 }

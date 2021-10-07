@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources\css\productInsert.css">
+<link rel="stylesheet" href="..\resources\css\productUpdate.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- bootstrap -->
 <link rel="stylesheet"
@@ -16,7 +16,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div class="pInsert_wrap">
 <!-- content -->
  <div class="container pt-3">
@@ -32,12 +31,21 @@
  		</div>
  	</div>
  	<!-- right -->
- 		<form method="post" action="productInsertAction" class="col-xs-8" id="product_info">
+ 		<form method="post" action="productUpdateAction" class="col-xs-8" id="product_info">
  			<table class="table table-striped">
  			<thead>
- 				<tr><th colspan="2" class="text-center" id="t_header">상품 등록</th></tr>
+ 				<tr><th colspan="2" class="text-center" id="t_header">상품 수정</th></tr>
  			</thead>
  			<tbody>
+ 				<tr>
+ 					<td>
+ 						<label>상품번호</label>
+ 					</td>
+ 					<td>
+ 						<input type="text" id="product_no" name="product_no" 
+ 							value="${dto.product_no }" readonly="readonly">
+ 					</td>
+ 				</tr>
  				<tr>
  					<td>
  						<label>상품 분류</label>
@@ -55,7 +63,8 @@
  						<label>상품명</label>
  					</td>
  					<td>
- 						<input type="text" id="product_name" name="product_name" required="required">
+ 						<input type="text" id="product_name" name="product_name" 
+ 							value="${dto.product_name }" required="required">
  					</td>
  				</tr>
  				<tr>
@@ -63,7 +72,8 @@
  						<label>상품 가격</label>
  					</td>
  					<td>
- 						<input type="text" id="product_price" name="product_price" required="required">
+ 						<input type="text" id="product_price" name="product_price" 
+ 							value="${dto.product_price }" required="required">
  					</td>
  				</tr>
  				<tr>
@@ -71,7 +81,8 @@
  						<label>상품 설명</label>
  					</td>
  					<td>
- 						<textarea rows="3" cols="40" id="product_content" name="product_content"></textarea>
+ 						<textarea rows="3" cols="40" 
+ 							id="product_content" name="product_content">${dto.product_content }</textarea>
  					</td>
  				</tr>
  				<tr>
@@ -79,7 +90,9 @@
  						<label>상품 이미지</label>
  					</td>
  					<td>
- 						<input type="file" id="product_img" name="product_img">
+ 						<img src="" alt="img">
+ 						<input type="file" id="product_img" name="product_img"
+ 							value="${dto.product_img }">
  					</td>
  				</tr>
 
@@ -87,7 +100,7 @@
  			</table>
  			<div class="btns">
  				<button type="reset" class="btn btn-default btn-sm" id="cancel">취소</button>
-				<button type="submit" class="btn btn-danger btn-sm" id="insert">등록</button>
+				<button type="submit" class="btn btn-danger btn-sm" id="update">확인</button>
 			</div>
  		</form>
 	</div>
