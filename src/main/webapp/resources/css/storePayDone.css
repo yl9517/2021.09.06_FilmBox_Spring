@@ -1,0 +1,46 @@
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+ #done_wrap{
+ 	text-align: center;
+ 	width: 1100px;
+ 	margin: 50px auto;
+ 	padding: 50px 0;
+ 	min-height: 650px;
+ }
+ #done_wrap h2{
+	text-align: left; 
+ }
+ .message{
+ margin: 50px;
+ }
+.message h1{
+     padding: 30px;
+}
+ 
+.point_add img{
+	width: 50px;
+}
+.point_add span{
+	    font-size: 18px;
+    position: relative;
+    bottom: 15px;
+    padding: 15px;
+}
+.point_add span strong{
+	color:#C94F44;
+}
+#done_wrap a{
+	display:inline-block;
+	text-decoration:none;
+	width: 230px;
+	height: 60px;
+	line-height: 3.5;
+	margin: 60px 20px 20px;
+	font-size: 18px;
+    background-color: #C94F44;
+    color: white;
+    border: 1px solid black;
+}

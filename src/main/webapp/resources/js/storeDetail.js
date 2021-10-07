@@ -1,6 +1,7 @@
 let store_no = $('#product_no').val();
 
 let initPrice = $('#sumMoney').text(); //원가
+//initPrice.replace(",","");
 
 // 수량,가격변동
 function count(type)  {

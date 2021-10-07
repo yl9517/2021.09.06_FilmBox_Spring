@@ -27,10 +27,19 @@ public class StoreController {
 	}
 	
 	//상품결제
-	@GetMapping("storepay/{product_no}")
+	@GetMapping("/storepay/{product_no}")
 	public String storepay(@PathVariable int product_no, Model model) {
 
 		model.addAttribute("page","store/storePay.jsp");
+		
+		return "view";
+	}
+	
+	//상품결제끝
+	@GetMapping("/storepaydone")
+	public String storepaydone( Model model) {
+
+		model.addAttribute("page","store/storePayDone.jsp");
 		
 		return "view";
 	}

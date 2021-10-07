@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <link rel="stylesheet" href="/resources/css/storePay.css">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -26,7 +28,7 @@
 				<tbody>
 					<tr>
 						<td width="150px"><img alt="상품이미지" src="https://cdn.pixabay.com/photo/2019/06/12/07/12/popcorn-4268489_960_720.jpg"></td>
-						<td class="store_name"><p>버블버블버블팝 콤보</p><p>팝콘(R) 2 + 콜라 1</p></td>
+						<td class="store_name"><p class="product_name">버블버블버블팝 콤보</p><p>팝콘(R) 2 + 콜라 1</p></td>
 						<td width="150px">2</td>
 						<td width="200px">24,000</td>
 					</tr>
@@ -54,7 +56,7 @@
 				<li>
 					<div>
 						<p class="price_title">최종 결제 금액</p>
-						<b class="price_final"> 21,000 </b>원
+						<b class="price_final">21000</b>원
 					</div>				
 				</li>
 			</ul>
@@ -64,5 +66,6 @@
 			<button type="button" class="pay-button">구매</button>
 		</div>		
 	</div>
+	<script src="/resources/js/storePay.js"></script>
 </body>
 </html>
