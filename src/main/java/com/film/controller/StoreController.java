@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.film.dto.CartDTO;
+import com.film.dto.CouponDTO;
 import com.film.dto.ProductDTO;
-import com.film.service.CartService;
+import com.film.service.CouponService;
 import com.film.service.ProductService;
 
 @Controller
@@ -24,7 +24,7 @@ public class StoreController {
 	@Autowired
 	private ProductService proService;
 	@Autowired
-	private CartService cartService;
+	private CouponService couponService;
 	
 	//상품목록
 	@GetMapping("/store")
@@ -61,11 +61,11 @@ public class StoreController {
 	
 	//상품결제끝
 	@PostMapping("/storepaydone")
-	public String storepaydone(@ModelAttribute CartDTO dto,HttpSession session, Model model) {
+	public String storepaydone(@ModelAttribute CouponDTO dto,HttpSession session, Model model) {
 		String member_id = (String) session.getAttribute("loginId");
 		dto.setMember_id(member_id);
 		
-		cartService.insertCart(dto);
+		couponService.insertCoupon(dto);
 		
 		model.addAttribute("page","store/storePayDone.jsp");
 		

@@ -63,8 +63,8 @@
 		</div>
 		<form action="/storepaydone" method="post" name="final">
 			<input type="hidden" name="product_no" value="${dto.product_no }">
-			<input type="hidden" name="cart_count" value="${count }">
-			<input type="hidden" name="cart_price" value="${dto.product_price }">
+			<input type="hidden" name="coupon_count" value="${count }">
+			<input type="hidden" name="coupon_price" value="${dto.product_price }">
 		</form>
 		<div class="box_pay">
 			<button type="button" class="reset-button">취소</button>

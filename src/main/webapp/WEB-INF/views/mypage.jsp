@@ -47,7 +47,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="rsv_wrap">
 			<div class="rsv_h">MY 예매내역
 			<div class="glyphicon glyphicon-question-sign"	aria-hidden="true" role="button"
@@ -111,7 +111,46 @@
 				</c:choose>
 				</ul>
 			
-			</div>
+			</div>	
+		</div>
+		
+		<div class="coupon_wrap">
+			<div class="coupon_h">MY 쿠폰</div>
+			<div class="coupon_list_wrap">
+				<ul class="coupon_list">
+				<c:choose>
+					<c:when test="${!empty myCouponList }">
+						<c:forEach var="item" items="${myCouponList }">
+
+							<li class="coupon front">
+								<p class="category">${item.product_category}</p>
+								<div class="coupon_title">${item.product_name }</div>
+								<p>${item.coupon_lastdate } 까지 사용 가능</p>								
+							</li>
+<!-- 							<li class="coupon back">
+								<p> 유의사항</p>
+								<p> 사용방법 : 스토어 결제 전 쿠폰선택 </p>
+								<p> 유효기간 : 하단표기일까지 </p>								
+								<p> 타 쿠폰과 중복 적용 불가 </p>								
+							</li>  -->
+							
+						</c:forEach>
+
+							<div class="clear"></div>
+					</c:when>
+				
+					<c:otherwise>
+							<div class="empty_coupon">
+								<img src="resources\img\popcorn.png" width="90px" height="90px">
+								<h4> 구매한 쿠폰이 없습니다</h4>
+								<a href="/store"> 스토어 구경하러가기</a>
+							</div>
+						<div class="clear"></div>
+					</c:otherwise>
+					
+				</c:choose>
+				</ul>
+			</div>	
 		</div>
 		
 	</div>

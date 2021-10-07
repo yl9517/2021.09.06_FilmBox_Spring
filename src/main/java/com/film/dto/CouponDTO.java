@@ -8,11 +8,12 @@ import lombok.Setter;
 @Setter @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartDTO {
-	private int cart_no;
+public class CouponDTO {
+	private int coupon_no;
 	private String member_id;
 	private int product_no;
-	private int cart_count;
-	private int cart_price;
-	private String cart_date;
+	private int coupon_count;
+	private int coupon_price;
+	private String coupon_lastdate;
+	private int coupon_condition;
 }
