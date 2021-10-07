@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.film.dto.ProductDTO;
@@ -68,11 +69,11 @@ public class AdminController {
 		return "view";
 	}
 	//관리자 상품수정
-	@GetMapping("/productUpdateAction")
+	@PostMapping("/productUpdateAction")
 	public String productUpdateAction(@ModelAttribute ProductDTO dto)
 	{
 		int result = service.updateProduct(dto);
-		return "redirect:/productDetail";
+		return "redirect:/productList";
 	}
 	
 

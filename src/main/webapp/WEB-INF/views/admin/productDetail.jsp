@@ -56,7 +56,14 @@
  								<label>상품 분류</label>
  							</td>
  							<td>
- 								<p>${dto.product_category }</p>
+ 								<c:choose>
+ 									<c:when test="${dto.product_category eq 'coupon' }">
+ 										<p>쿠폰</p>
+ 									</c:when>
+ 									<c:when test="${dto.product_category eq 'food' }">
+ 										<p>팝콘/음료</p>
+ 									</c:when>
+ 								</c:choose>
  							</td>
  						</tr>
  						<tr>

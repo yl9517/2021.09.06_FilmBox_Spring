@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,7 @@
  		</div>
  	</div>
  	<!-- right -->
- 		<form method="post" action="productUpdateAction" class="col-xs-8" id="product_info">
+ 		<form method="post" action="/productUpdateAction" class="col-xs-8" id="product_info">
  			<table class="table table-striped">
  			<thead>
  				<tr><th colspan="2" class="text-center" id="t_header">상품 수정</th></tr>
@@ -53,8 +54,10 @@
  					<td>
  						<select name="product_category" id="product_category" required="required">
  							<option value="">------</option>
- 							<option value="coupon">쿠폰</option>
- 							<option value="food">팝콘/음료</option>
+ 							<option value="coupon" 
+ 								${dto.product_category eq "coupon"? 'selected':''}>쿠폰</option>
+ 							<option value="food"
+ 								${dto.product_category eq "food"? 'selected':''}>팝콘/음료</option>
  						</select>
  					</td>
  				</tr>
