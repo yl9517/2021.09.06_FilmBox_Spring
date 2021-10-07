@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.pInsert_wrap{
+	margin: 0 auto;
+	padding: 5%;
+	min-height: 10%;
+	font-size: 18px;
+}
+/* 사이드바 */
+#panel-wrap{
+	padding: 20px;
+}
+/* 테이블 */
+#product_info{
+	width: 900px;
+	padding: 20px;
+}
+/* 테이블 제목 */
+#t_header{
+	color: #C94F44;
+	font-size: 20px;
+	text-align: center;
+	font-weight: bolder;
+}
+/* 테이블 */
+#p_table{
+	text-align: center;
+}
