@@ -35,6 +35,10 @@
 	<!-- NaverLoginBO -->
 	 <beans:bean id="naverLoginBO" class="com.film.data.NaverLoginBO" />
 	 
+	 <!-- 파일 -->
+	 <beans:bean id="multipartResolver" 
+	 class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
 	 <!-- interceptor(session을 위한) 등록 -->
 	<interceptors>
 		<interceptor>
@@ -45,6 +49,8 @@
 			<mapping path="/reviewInsertAction"/>
 			<mapping path="/reviewModifyAction"/>
 			<mapping path="/reviewDeleteAction"/>
+			
+			<mapping path="/storepay"/>
 			<beans:bean class="com.film.data.AuthInterceptor"></beans:bean>
 			
 		</interceptor>

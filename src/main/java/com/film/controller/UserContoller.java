@@ -29,10 +29,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.film.dto.CouponDTO;
 import com.film.dto.MovieDTO;
 import com.film.dto.MypageDTO;
 import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
+import com.film.service.CouponService;
 import com.film.service.ReserveService;
 import com.film.service.UserService;
 import com.mysql.cj.Session;
@@ -52,6 +54,9 @@ public class UserContoller {
 	
 	@Autowired
 	private ReserveService revservice;
+	
+	@Autowired
+	private CouponService couponservice;
 	
 	//회원가입 페이지
 	@RequestMapping("/join")
@@ -109,10 +114,12 @@ public class UserContoller {
 		UserDTO dto=service.userDetail(member_id);
 		List<MypageDTO> myRsvList = service.getRsvData(member_id);
 		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
+		List<HashMap<String, Object>> myCouponList = couponservice.getMyCoupon(member_id);
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("myRsvList", myRsvList);
 		model.addAttribute("myfilmlist", myfilmlist);
+		model.addAttribute("myCouponList", myCouponList);
 		model.addAttribute("page","mypage.jsp");
 
 		return "view";

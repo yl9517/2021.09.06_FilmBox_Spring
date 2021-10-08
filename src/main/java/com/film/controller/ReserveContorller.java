@@ -130,7 +130,7 @@ public class ReserveContorller {
    public String kakaojsp(KakaopayDTO dto,@RequestParam int ousepoint,Model model, HttpSession session) {
 
       
-      System.out.println("사용포인트: "+ousepoint);
+  //    System.out.println("사용포인트: "+ousepoint);
        String member_id=(String)session.getAttribute("loginId");
        String result = null;
        if(member_id==null) {

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.film.mapper.ProductMapper">
+
+<insert id="insertProduct" parameterType="com.film.dto.ProductDTO">
+
+        insert into filmbox_store ( product_no
+        						, product_name
+        						, product_content
+        						, product_price
+        						, product_img
+        						, product_category)
+        	values(#{product_no}, #{product_name}, #{product_content}, #{product_price},
+        			#{product_img}, #{product_category})
+           
+</insert>
+
+<select id="getProductList" resultType="com.film.dto.ProductDTO">
+	select product_no, product_name
+			, product_content, product_price
+			, product_img, product_category
+	from filmbox_store
+</select>
+
+<select id="detailProduct" parameterType="int" resultType="com.film.dto.ProductDTO">
+	select product_no, product_name
+			, product_content, product_price
+			, product_img, product_category
+	from filmbox_store
+	where product_no = #{product_no}
+
+</select>
+
+<update id="updateProduct" parameterType="com.film.dto.ProductDTO">
+	update filmbox_store
+	set
+		product_name = #{product_name}
+		, product_content = #{product_content}
+		, product_price = #{product_price}
+		, product_img = #{product_img}
+		, product_category = #{product_category}
+	where product_no = #{product_no}
+</update>
+
+<delete id="deleteProduct" parameterType="int">
+	delete from filmbox_store
+	where product_no = #{product_no}
+</delete>
+</mapper>

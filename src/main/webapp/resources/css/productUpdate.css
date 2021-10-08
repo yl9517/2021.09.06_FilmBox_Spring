@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.pInsert_wrap{
+	margin: 0 auto;
+	padding: 5%;
+	min-height: 10%;
+	font-size: 18px;
+}
+/* 사이드바 */
+#panel-wrap{
+	padding: 20px;
+}
+/* 테이블 form */
+#product_info{
+	width: 900px;
+	padding: 20px;
+}
+/* 테이블 제목 */
+#t_header{
+	color: #C94F44;
+	font-size: 20px;
+}
+
+/* 상품 등록/취소 버튼 */
+.btns{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+#update, #cancel{
+	margin: 10px;
+	font-size: 18px;
+}
+/* input */
+input {
+	padding: 5px;
+}
+/* 상품 설명 */
+#product_detail{
+	padding: 5px;
+}
