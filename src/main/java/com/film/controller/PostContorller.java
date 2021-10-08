@@ -1,11 +1,14 @@
 package com.film.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.film.dto.KakaopayDTO;
 import com.film.dto.MovieDTO;
@@ -85,10 +89,20 @@ public class PostContorller {
 		String member_id = (String) session.getAttribute("loginId");
 
 		model.addAttribute("member_id", member_id);
+		model.addAttribute("dto",dto);
 		model.addAttribute("list", list);
 
-		model.addAttribute("page", "post/postmovie.jsp");
+		model.addAttribute("page", "post/postadd.jsp");
 
+		return "view";
+	}
+	
+	private String path="WEB-INF/temp";
+	
+	
+	@PostMapping("/postinsert")
+	public String result (PostDTO dto,HttpServletRequest request, Model model) {
+		System.out.println(dto.toString());
 		return "view";
 	}
 }

@@ -105,7 +105,8 @@
 				</div>
 	
 	   <c:forEach var="item" items="${slist }">
-	      <div class="thiss">${item.seats }</div>
+	      
+	      <div class="thiss" style="display:none">${item.seats }</div>
 	      
 	   </c:forEach>
 	   </div>

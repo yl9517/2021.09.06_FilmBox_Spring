@@ -237,7 +237,7 @@ for (let i = 0; i < 10; i++) {
     }
 
     seat = document.querySelectorAll('.seat');
-    remainSeat.innerHTML = seat.length;
+    remainSeat.innerHTML = seat.length-arrays.length;
     allSeat.innerHTML = seat.length;
 }
 

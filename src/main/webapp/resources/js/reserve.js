@@ -1,7 +1,8 @@
 const date = new Date();
 const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 const reserveDate = document.querySelector('.reserve_date');
-const movietime = document.querySelectorAll('.movietime');
+const timewrapper = document.querySelector('.time_wrapper');
+let movietime = document.querySelectorAll('.movietime');
 const reserveDay = document.querySelector('.reserveDate');
 const screenTime = document.querySelector('.screenTime');
 
@@ -20,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addDate();
 });
 
-
+let days = date.getDate();
+console.log(days);
 function addDate() {
     const weekOfDay = ['일', '월', '화', '수', '목', '금', '토'];
     year = date.getFullYear();
@@ -61,10 +63,11 @@ function addDate() {
         		"color":"#7d7d7d"
         	});
         }
-        
         j++;
     }
+   
 }
+
 
 function dayClickEvent(button) {
 	
@@ -78,17 +81,42 @@ function dayClickEvent(button) {
         button.classList.add('movie-date-wrapper-active');
         console.log(button.childNodes[1].innerHTML);
         reserveDay.value =
-            year +'.' + month + '.' + 
-            button.childNodes[0].innerHTML + '(' +
-            button.childNodes[1].innerHTML + ')';
+	            year +'.' + month + '.' + 
+	       button.childNodes[0].innerHTML + '(' +
+	       button.childNodes[1].innerHTML + ')';
         console.log(reserveDay.value);
         clickdate = button.childNodes[0].innerHTML;
         console.log(clickdate);
         
-        
         $(".choose_result_date").text(reserveDay.value);
+        
+
     });
+   
 }
+/*$(".reserve_button").remove();
+var k=12;
+for(i=1; i<=4; i++){
+	const button2 = document.createElement('button');
+		const spantime = document.createElement('span');
+	button2.classList = 'reserve_button';
+	spantime.classList = 'movietime';
+	    
+		spantime.id='movietime_'+i;
+	   	spantime.innerHTML=k+':00';
+		button2.append(spantime);
+		timewrapper.append(button2);
+		k+=2;
+		timeClickEvent(button2);
+};
+movietime=document.querySelectorAll('.movietime');
+function timeClickEvent(button2) {
+	
+	button2.addEventListener('click', function() {
+		$(".choose_result_time").text(button2.innerHTML);
+	});
+}*/
+
 //선택한 날짜(년+월+일+요일+시간)
 movietime.forEach(list => {
     list.addEventListener('click', function() {
@@ -101,6 +129,8 @@ movietime.forEach(list => {
         screenTime.value = list.innerHTML;
     });
 }); 
+console.log(screenTime.value);
+
 //선택한 영화제목 가져오기
 movieSelector.forEach(mvlist => {
 	
@@ -119,6 +149,7 @@ movieSelector.forEach(mvlist => {
     });
     
 }); 
+
 //선택한 영화 이미지 가져오기
 function mvclick(s) {
 	$(".choose_result_img").text("");
@@ -128,7 +159,7 @@ function mvclick(s) {
     console.log(img); 
 	
 }
-moveSeatButton.addEventListener('click', function() {
+moveSeatButton.addEventListener('click', function() {console.log(reserveDay.value);
     if (!!reserveDay.value && !!screenTime.value) {
         moveSeatForm.submit();
     } else {
@@ -140,6 +171,4 @@ $("#movietime_1, #movietime_2, #movietime_3, #movietime_4").click(function(){
 	$(".choose_result_time").text("");
 	$(this).clone().appendTo(".choose_result_time");
 });
-
-
 

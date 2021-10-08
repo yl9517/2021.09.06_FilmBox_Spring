@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <link rel="stylesheet" href="/resources/css/storePay.css">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -26,9 +28,9 @@
 				<tbody>
 					<tr>
 						<td width="150px"><img alt="상품이미지" src="https://cdn.pixabay.com/photo/2019/06/12/07/12/popcorn-4268489_960_720.jpg"></td>
-						<td class="store_name"><p>버블버블버블팝 콤보</p><p>팝콘(R) 2 + 콜라 1</p></td>
-						<td width="150px">2</td>
-						<td width="200px">24,000</td>
+						<td class="store_name"><p class="product_name">${dto.product_name }</p><p>${dto.product_content }</p></td>
+						<td width="150px">${count }</td>
+						<td width="200px">${dto.product_price }</td>
 					</tr>
 				</tbody>
 			</table>
@@ -40,29 +42,35 @@
 				<li>
 					<div>
 						<p class="price_title">총 상품금액</p>
-						<b class="price_content"> 24,000 </b>
+						<b class="price_content">${dto.product_price } </b>
 					</div>				
 				</li>
 				<li class="sign">-</li>
 				<li>
 					<div>
 						<p class="price_title">할인 금액</p>
-						<b class="price_content"> 3,000 </b>
+						<b class="price_content"> 0 </b>
 					</div>				
 				</li>
 				<li class="sign">=</li>
 				<li>
 					<div>
 						<p class="price_title">최종 결제 금액</p>
-						<b class="price_final"> 21,000 </b>원
+						<b class="price_final">${dto.product_price }</b> 원
 					</div>				
 				</li>
 			</ul>
 		</div>
+		<form action="/storepaydone" method="post" name="final">
+			<input type="hidden" name="product_no" value="${dto.product_no }">
+			<input type="hidden" name="coupon_count" value="${count }">
+			<input type="hidden" name="coupon_price" value="${dto.product_price }">
+		</form>
 		<div class="box_pay">
 			<button type="button" class="reset-button">취소</button>
 			<button type="button" class="pay-button">구매</button>
 		</div>		
 	</div>
+	<script src="/resources/js/storePay.js"></script>
 </body>
 </html>

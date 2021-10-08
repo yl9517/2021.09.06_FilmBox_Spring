@@ -17,4 +17,5 @@ public class PostDTO {
 	private String rev_content;
 	private String movieNm;
 	private String post_date;
+	private String image;
 }
