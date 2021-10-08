@@ -6,7 +6,7 @@
 
 	
 	<select id="getPostList" resultType="com.film.dto.MovieDTO">
-		SELECT post_no, member_id, rev_content, movieNm, post_date
+		SELECT post_no, member_id, post_content, movieNm, post_date
 		FROM filmbox_post
 	</select>
 	<select id="getMyMovie" parameterType="string" resultType="com.film.dto.MovieDTO">

@@ -12,25 +12,30 @@
 <body>
 	
 <h2>Movie Post 작성</h2>
-<form method="post" action="/postinsert" > 
+<form method="post" action="postinsert" enctype="multipart/form-data" > 
 <ul>
 	
 	<li>
-	<label for="rev_content">작성자</label>
+	<label >작성자</label>
 	<input type="text" id="member_id" name="member_id" value="${member_id }" readonly>
 	</li>
 	<li>
-	<label for="rev_content">영화</label>
+	<label>영화</label>
 	<input type="text" id="movieNm" name="movieNm" value="${dto.movieNm }" readonly>
 	</li>
 	
 	
-	<li id="con">
-	<label for="rev_content">내용</label>
-	<textarea id="rev_contents" name="rev_content" rows="15" cols="100" required></textarea>
+	<li>
+	<label>내용</label>
+	<textarea id="post_contents" name="post_content" rows="15" cols="100" required></textarea>
 	</li>
 	
-	<li id="rput">
+	<li>
+	<label></label>
+	<input type="file" id="image" name="image">
+	</li>
+	
+	<li>
 	<input type="submit" id="submit" value="등록">
 	<input type="reset" id="reset" value="취소">
 	</li>

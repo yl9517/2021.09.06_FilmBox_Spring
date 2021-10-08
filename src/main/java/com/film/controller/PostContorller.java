@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.film.dto.KakaopayDTO;
 import com.film.dto.MovieDTO;
 import com.film.dto.PostDTO;
+import com.film.dto.ProductDTO;
 import com.film.dto.ReserveDTO;
 import com.film.dto.ScreenDTO;
 import com.film.dto.UserDTO;
@@ -34,6 +35,7 @@ import com.film.service.MovieService;
 import com.film.service.PostService;
 import com.film.service.ReserveService;
 import com.film.service.UserService;
+import com.film.vo.PostVO;
 
 @Controller
 public class PostContorller {
@@ -97,12 +99,35 @@ public class PostContorller {
 		return "view";
 	}
 	
-	private String path="WEB-INF/temp";
 	
-	
-	@PostMapping("/postinsert")
-	public String result (PostDTO dto,HttpServletRequest request, Model model) {
-		System.out.println(dto.toString());
+	@RequestMapping(value = "/postinsert", method = {  RequestMethod.POST })
+	public String result (@RequestParam(value="member_id",required = false) String member_id
+			  ,@RequestParam(value="post_content",required = false) String post_content
+			  ,@RequestParam(value="movieNm",required = false) String movieNm
+			  ,@RequestParam(value="image",required = false) MultipartFile file
+			  , HttpServletRequest request, Model model) throws  IOException {
+
+		System.out.println(member_id);
+		System.out.println(post_content);
+		System.out.println(movieNm);
+		System.out.println(file);
+		String uploadDir = request.getRealPath("");
+		
+		
+		String filename = "resources/upload/"+file.getOriginalFilename();	
+		
+		String filePath = uploadDir+"\\"+filename;
+		
+		file.transferTo(new File(filePath));
+		
+		System.out.println(uploadDir);
+		System.out.println(filename);
+		System.out.println(filePath);
+		PostDTO dto = new PostDTO(member_id,movieNm,filename,post_content);
+		
+//		int result = service.insertProduct(dto);
+//   	return "testfile";
+		model.addAttribute("page", "post/postadd.jsp");
 		return "view";
 	}
 }

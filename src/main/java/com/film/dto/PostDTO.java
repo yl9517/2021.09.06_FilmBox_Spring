@@ -14,8 +14,17 @@ import lombok.ToString;
 public class PostDTO {
 	private int post_no;
 	private String member_id;
-	private String rev_content;
+	private String post_content;
 	private String movieNm;
 	private String post_date;
+	
 	private String image;
+	
+	public PostDTO(String member_id, String post_content, String movieNm, String image) {
+		super();
+		this.member_id = member_id;
+		this.post_content = post_content;
+		this.movieNm = movieNm;
+		this.image = image;
+	}
 }

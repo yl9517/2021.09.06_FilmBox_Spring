@@ -23,20 +23,20 @@
 
 	<context:component-scan base-package="com.film.controller" />
 	
-	<beans:bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+<!-- 	<beans:bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
 		<beans:property name="maxUploadSize" value="100000000"></beans:property>
 		<beans:property name="maxInMemorySize" value="100000000"></beans:property>
 		<beans:property name="uploadTempDir" value="temp"></beans:property>
 	</beans:bean>
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" >
 		<beans:property name="order" value="0"></beans:property>
-	</beans:bean>
+	</beans:bean> -->
 	
 	<!-- NaverLoginBO -->
 	 <beans:bean id="naverLoginBO" class="com.film.data.NaverLoginBO" />
 	 
 	 <!-- 파일 -->
-	 <beans:bean id="multipartResolver" 
+	 <beans:bean id="" 
 	 class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
 	 <!-- interceptor(session을 위한) 등록 -->
