@@ -18,7 +18,7 @@
 				<li>
 					<a href="/store/${item.product_no }">
 						<div class="productimg">
-							<img alt="상품이미지" src="https://cdn.pixabay.com/photo/2019/06/12/07/12/popcorn-4268489_960_720.jpg">
+							<img alt="상품이미지" src="${item.product_img }">
 						</div>
 						<div class="productinfo">
 							<h3>${item.product_name}</h3>

@@ -32,7 +32,7 @@
  		</div>
  	</div>
  	<!-- right -->
- 		<form method="post" action="productInsertAction" class="col-xs-8" id="product_info">
+ 		<form method="post" action="productInsertAction" class="col-xs-8" id="product_info" enctype="multipart/form-data">
  			<table class="table table-striped">
  			<thead>
  				<tr><th colspan="2" class="text-center" id="t_header">상품 등록</th></tr>
@@ -79,7 +79,7 @@
  						<label>상품 이미지</label>
  					</td>
  					<td>
- 						<input type="file" id="product_img" name="product_img">
+ 						<input type="file" id="productfile" name="productfile">
  					</td>
  				</tr>
 
@@ -87,7 +87,7 @@
  			</table>
  			<div class="btns">
  				<button type="reset" class="btn btn-default btn-sm" id="cancel">취소</button>
-				<button type="submit" class="btn btn-danger btn-sm" id="insert">등록</button>
+				<input type="submit" class="btn btn-danger btn-sm" id="insert" value="등록">
 			</div>
  		</form>
 	</div>

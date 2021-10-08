@@ -33,8 +33,10 @@ public class ReserveServiceImple implements ReserveService {
 		reMapper.reserveinsert(dto);
 		MovieDTO getMovie = mvMapper.getMovie(dto.getMovieCd());
 		
-		PointDTO usepoint = new PointDTO(dto.getMember_id(), -dto.getUsepoint(), "("+getMovie.getMovieNm()+") 예매 포인트사용");//포인트 적립
-		pointMapper.changePoint(usepoint);		 
+		if(dto.getUsepoint() > 0) {
+			PointDTO usepoint = new PointDTO(dto.getMember_id(), -dto.getUsepoint(), "("+getMovie.getMovieNm()+") 예매 포인트사용");
+			pointMapper.changePoint(usepoint);	//포인트사용
+		}
 		 PointDTO pointdto = new PointDTO(dto.getMember_id(), (int) (dto.getPayMoney()*0.05), "("+getMovie.getMovieNm()+") 예매 포인트적립");//포인트 적립
 		 pointMapper.changePoint(pointdto); //포인트 적립
 		 
