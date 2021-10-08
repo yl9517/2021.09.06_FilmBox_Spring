@@ -39,7 +39,8 @@
 
  /*상품 이미지*/
 #productList .productimg{
-	padding: 5%;
+	padding: 20px 10px;
+    height: 300px;
 	border-bottom: 3px dotted #ccc;
  }
  .productimg img{

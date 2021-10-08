@@ -15,7 +15,7 @@
         						, coupon_lastdate
         						, coupon_condition)
         	values( #{member_id}, #{product_no}, #{coupon_count},
-        			#{coupon_price}, DATE_ADD(NOW(), INTERVAL 2 year), 0 )          
+        			#{coupon_price}, DATE_ADD(NOW(), INTERVAL 7 DAY), 0 )          
 </insert>
 
 <!-- 내가 구매한 (사용 안한) 스토어 상품  -->

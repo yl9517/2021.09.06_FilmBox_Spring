@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <input type="text" value="/resources/upload/${filename}">  --%>
+ <%-- <input type="text" value="/resources/upload/${filename}">  --%>
 <input type="text" value="${filename}"> 
 <img alt="img" src="${filename}">
 </body>
