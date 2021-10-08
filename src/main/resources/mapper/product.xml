@@ -25,11 +25,6 @@
 	from filmbox_store
 </select>
 
-<select id="getImg" parameterType="int" resultType="string">
-	select  product_img
-	from filmbox_store
-	where product_no = #{product_no}
-</select>
 
 <select id="detailProduct" parameterType="int" resultType="com.film.dto.ProductDTO">
 	select product_no, product_name

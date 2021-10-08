@@ -23,9 +23,15 @@
 		$('#movie-modal').modal();
 		
 		let coupon_no = $('#coupon_no').val();
+		let condition = $('#coupon_condition').val();
 		
 		$("#useCoupon").on('click', function(){
-			alert('쿠폰을 사용하였습니다.');
+			if(condition == 0){
+				alert('쿠폰을 사용하였습니다.');
+				location.reload();
+			}else{
+				alert('이미 사용한 쿠폰입니다.');
+			}
 			location.href="/useCoupon/"+coupon_no;
 		}); 
 	});
@@ -33,13 +39,14 @@
 </head>
 <body>
 	<div id="movie-modal" class="modal fade">
+	<input type="hidden" id="coupon_condition" name="coupon_condition" value="${map.coupon_condition }"> 
 	<input type="hidden" id="coupon_no" name="coupon_no" value="${coupon_no }"> 
 		<div class="modal-dialog modal-lg" role="document"
 			style="width: -webkit-fill-available; display: table">
 			<div class="modal-content">
 
 				<div class="modal-body">
-					<span class="productimg"> <img src="${product_img}" alt="img"
+					<span class="productimg"> <img src="${map.product_img}" alt="img"
 						class="img-thumbnail">
 					</span>
 					<div class="info">
@@ -51,7 +58,14 @@
 					</div>
 				</div>
 				<div class="modaal-footer">
-					<button type="button" id="useCoupon">사용하기</button>
+				<c:choose>
+					<c:when test="${map.coupon_condition == 0 }">
+						<button type="button" id="useCoupon">사용하기</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" id="usedCoupon" disabled="disabled">사용완료</button>
+					</c:otherwise>
+				</c:choose>
 					<div class="logo">
 						<img src="${pageContext.request.contextPath}\resources\img\footerlogo.png"
 							alt="logo" width="150px">

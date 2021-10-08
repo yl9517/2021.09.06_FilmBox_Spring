@@ -18,4 +18,6 @@ public interface CouponMapper {
 	//날짜 지남
 	public List<HashMap<String, Object>> selectPastCoupon();
 	public void updateCouponCon(List<HashMap<String, Object>> map);
+	
+	public HashMap<String, Object> getInfo(int coupon_no);
 }

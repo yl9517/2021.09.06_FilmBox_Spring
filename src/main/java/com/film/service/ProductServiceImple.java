@@ -44,10 +44,6 @@ public class ProductServiceImple implements ProductService {
 		return productmapper.deleteProduct(product_no);
 	}
 
-	@Override
-	public String getImg(int product_no) {
-		return productmapper.getImg(product_no);
-	}
 	
 	
 }

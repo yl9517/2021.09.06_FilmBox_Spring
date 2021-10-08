@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-@media all and (max-width: 767px) {
   @font-face {
     font-family: 'ONE-Mobile-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff')
@@ -49,7 +48,7 @@
     text-align: center;
     border-top: 1px solid #e5e5e5;
 }
-  .modaal-footer button{
+  #useCoupon,#usedCoupon{
  	 margin: 15px 12px 20px;
     height: 60px;
     background-color: #C94F44;
@@ -58,10 +57,12 @@
     font-weight: bolder;
         font-size: 20px;
     }
-     .modaal-footer button:hover,.modaal-footer button:active{
+    #useCoupon:active{
      	background-color: #954038;
      }
+    #usedCoupon{
+     	background-color: #ccc;
+    }
   .logo {
     text-align: center;
   }
-}

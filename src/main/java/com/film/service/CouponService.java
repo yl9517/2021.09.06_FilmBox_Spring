@@ -14,4 +14,6 @@ public interface CouponService {
 	
 	//날짜 지남
 	public void updateCouponCon();
+	
+	public HashMap<String, Object> getInfo(int coupon_no);
 }

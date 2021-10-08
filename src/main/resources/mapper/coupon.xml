@@ -57,4 +57,12 @@
 	</foreach>
 </update>
 
+<!-- 모바일qr -->
+<select id="getInfo" parameterType="int" resultType="java.util.HashMap">
+	select product_img, coupon_condition
+	from filmbox_store as s inner join filmbox_coupon as c
+	on s.product_no = c.product_no
+	where coupon_no = #{coupon_no}
+</select>
+
 </mapper>

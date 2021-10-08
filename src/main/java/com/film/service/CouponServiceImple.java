@@ -39,4 +39,9 @@ public class CouponServiceImple implements CouponService{
 		
 	}
 
+	@Override
+	public HashMap<String, Object> getInfo(int coupon_no) {
+		return mapper.getInfo(coupon_no);
+	}
+
 }

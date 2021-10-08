@@ -59,9 +59,6 @@ public class UserContoller {
 	@Autowired
 	private CouponService couponservice;
 	
-	@Autowired
-	private ProductService productservice;
-	
 	//회원가입 페이지
 	@RequestMapping("/join")
 	public String userJoin(Model model)
@@ -330,7 +327,7 @@ public class UserContoller {
 							, Model model) 
 	{
 
-		String product_img = productservice.getImg(product_no);
+		HashMap<String, Object> map= couponservice.getInfo(coupon_no);
 	  
 		
 		model.addAttribute("coupon_no",coupon_no);
@@ -338,13 +335,14 @@ public class UserContoller {
 	    model.addAttribute("product_name",product_name);
 	    model.addAttribute("product_content",product_content);
 	    model.addAttribute("coupon_lastdate",coupon_lastdate);
-	    model.addAttribute("product_img",product_img);
-         
-		return "user/myCouponInfo_m";
+	    model.addAttribute("map",map);
+   
+	    return "user/myCouponInfo_m";
 	}
 	
 	@GetMapping("/useCoupon/{coupon_no}")
 	public String useCoupon(@PathVariable int coupon_no) {
+		
 		couponservice.oneUseCoupon(coupon_no);
 		
 		return "redirect:/mypage";
