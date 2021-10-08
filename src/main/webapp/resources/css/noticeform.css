@@ -11,7 +11,7 @@ body{
 	-webkit-user-select: none; 
 	-khtml-user-select: none; 
 	user-select:none;
-	color : whitesmoke;
+	color : whitesmoke!important;
 }
 
 .form{
@@ -33,7 +33,7 @@ textarea{
 	height:300px; 
     resize:none;
     margin-top : 10px;
-    font-size : 16px;
+    font-size : 16px!important;
     border-radius: 5px;
     background-color : gainsboro;
 }
