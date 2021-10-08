@@ -48,7 +48,7 @@ public class AdminController {
 		String uploadDir = request.getRealPath(""); //실제경로
 //		String uploadDir = request.getRealPath("resources/upload"); //실제경로
 		
-		String filename = "resources/upload/"+file.getOriginalFilename();	//파일 이름
+		String filename = "/resources/upload/"+file.getOriginalFilename();	//파일 이름
 //		String filename = file.getOriginalFilename();	//파일 이름
 		
 		String filePath = uploadDir+"\\"+filename;

@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@media all and (max-width: 767px) {
+  @font-face {
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'ONE-Mobile-Regular', cursive;
+  }
+
+
+  .title {
+      font-size: 30px;
+    margin-top:20px;
+    text-align: center;
+    word-break: keep-all;
+  }
+  .modal-body {
+	text-align: center;
+  }
+ .productimg img{
+    width: 280px;
+    height: 330px;    border: none;
+    margin-top: 20px;
+ }
+  .info {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .content{
+  	font-size: 16px;
+  }
+  .time {
+    font-size: 14px;
+    color: #ccc;
+    margin: 20px 0 0;
+  }
+
+.modaal-footer{
+	padding: 15px;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+}
+  .modaal-footer button{
+ 	 margin: 15px 12px 20px;
+    height: 60px;
+    background-color: #C94F44;
+    width: 90%;
+    color: white;
+    font-weight: bolder;
+        font-size: 20px;
+    }
+     .modaal-footer button:hover,.modaal-footer button:active{
+     	background-color: #954038;
+     }
+  .logo {
+    text-align: center;
+  }
+}

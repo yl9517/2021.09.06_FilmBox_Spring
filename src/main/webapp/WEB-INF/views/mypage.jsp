@@ -127,12 +127,18 @@
 								<div class="coupon_title">${item.product_name }</div>
 								<p>${item.coupon_lastdate } 까지 사용 가능</p>								
 							</li>
-<!-- 							<li class="coupon back">
+							
+							<li class="coupon back">
+						
+							<span class="glyphicon glyphicon-qrcode"
+								onclick="openCouponPop('${item.coupon_no }','${item.product_no }','${item.product_category }', 
+													'${item.product_name }', '${item.product_content }'
+                                    							, '${item.coupon_lastdate }' )"></span>
 								<p> 유의사항</p>
 								<p> 사용방법 : 스토어 결제 전 쿠폰선택 </p>
 								<p> 유효기간 : 하단표기일까지 </p>								
 								<p> 타 쿠폰과 중복 적용 불가 </p>								
-							</li>  -->
+							</li>  
 							
 						</c:forEach>
 

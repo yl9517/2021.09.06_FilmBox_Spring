@@ -110,7 +110,16 @@ function openPop(p_rev_no, p_image, p_movieNm, p_show_date, p_show_time, p_seats
    let popup 
       = window.open('/showQR'+'/'+rev_no+'/'+title+'/'+date+'/'+time+'/'+seats
                , '팝업'
-               ,'width=340px, height=340px');
-   
+               ,'width=340px, height=340px'); 
+}
+
+//쿠폰qr 
+function openCouponPop(coupon_no,product_no, product_category, product_name, product_content, coupon_lastdate){
+console.log('z'+coupon_no);
+ //팝업
+   let couponPopup 
+      = window.open('/showCouponQR/'+product_no+'/'+coupon_no+'/'+product_category+'/'+product_name+'/'+product_content+'/'+coupon_lastdate
+               , '팝업'
+               ,'width=330px, height=330px'); 
 }
 

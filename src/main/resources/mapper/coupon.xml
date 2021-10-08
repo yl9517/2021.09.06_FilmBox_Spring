@@ -24,6 +24,7 @@
 		, member_id
 		, c.product_no
 		, product_name
+		, product_content
 		, product_category
 		, coupon_count
 		, coupon_price
@@ -34,12 +35,26 @@
 	where member_id = #{member_id} and coupon_condition = 0
 </select> 
 
-<!-- 스토어상품 사용했으면 삭제 -->
-<delete id="deleteCoupon" parameterType="int">
-	delete from filmbox_coupon
+<!-- 스토어상품 사용했으면 condition 변경 -->
+<update id="oneUseCoupon" parameterType="int">
+	update filmbox_coupon
+	set coupon_condition = 1
 	where coupon_no = #{coupon_no}
-</delete>
+</update>
 
-<!-- coupon_lastdate 지났으면 삭제 -->
+<!-- coupon_lastdate 지났으면 condition 변경 -->
+<select id="selectPastCoupon" resultType="java.util.HashMap">
+	select coupon_no
+	from filmbox_coupon
+	where coupon_lastdate <![CDATA[<]]> date(now())
+</select>
+<update id="updateCouponCon" parameterType="java.util.List">
+	update filmbox_coupon
+	set coupon_condition = 1
+	where coupon_no in
+	<foreach collection="list"  item="item" index="index" open="(" close=")" separator=",">
+			#{item.coupon_no}
+	</foreach>
+</update>
 
 </mapper>

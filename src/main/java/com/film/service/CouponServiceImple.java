@@ -25,4 +25,18 @@ public class CouponServiceImple implements CouponService{
 		return mapper.getMyCoupon(member_id);
 	}
 
+	@Override
+	public void oneUseCoupon(int coupon_no) {
+		mapper.oneUseCoupon(coupon_no);
+		
+	}
+
+
+
+	@Override
+	public void updateCouponCon() {
+		mapper.updateCouponCon(mapper.selectPastCoupon());
+		
+	}
+
 }

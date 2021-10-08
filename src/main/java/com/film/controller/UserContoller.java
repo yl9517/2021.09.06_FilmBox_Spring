@@ -35,6 +35,7 @@ import com.film.dto.MypageDTO;
 import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
 import com.film.service.CouponService;
+import com.film.service.ProductService;
 import com.film.service.ReserveService;
 import com.film.service.UserService;
 import com.mysql.cj.Session;
@@ -57,6 +58,9 @@ public class UserContoller {
 	
 	@Autowired
 	private CouponService couponservice;
+	
+	@Autowired
+	private ProductService productservice;
 	
 	//회원가입 페이지
 	@RequestMapping("/join")
@@ -288,4 +292,62 @@ public class UserContoller {
 	         
 		return "user/myreserveinfo_m";
 	}
+	
+	
+	/* my쿠폰 QR */
+	@RequestMapping(value = "/showCouponQR/{product_no}/{coupon_no}/{product_category}/{product_name}/{product_content}/{coupon_lastdate}")
+	public String makeCouponQR( @PathVariable int product_no
+						, @PathVariable int coupon_no
+						, @PathVariable String product_category
+						, @PathVariable String product_name
+						, @PathVariable String product_content
+						, @PathVariable String coupon_lastdate
+						, Model model)  throws Exception
+	{       
+	      //properties 불러오기
+	      ClassPathResource resource= new ClassPathResource("ip.properties");
+	      Properties prop = new Properties();
+	      prop.load(resource.getInputStream());
+
+	                     
+	      //google qr 코드 api 로 qr 생성
+	      String url1 = "https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=";
+	      String url2 = "http://"+prop.getProperty("ip")+"/couponInfo/"+product_no+"/"+coupon_no
+	      +"/"+product_category+"/"+product_name+"/"+product_content+"/"+coupon_lastdate;
+	      String url = url1+url2;
+	      model.addAttribute("QRurl", url);
+	               
+	      return "user/QRview";
+	 }
+	
+	@GetMapping("/couponInfo/{product_no}/{coupon_no}/{product_category}/{product_name}/{product_content}/{coupon_lastdate}")
+	public String couponInfo( @PathVariable int product_no
+							, @PathVariable int coupon_no
+							, @PathVariable String product_category
+							, @PathVariable String product_name
+							, @PathVariable String product_content
+							, @PathVariable String coupon_lastdate
+							, Model model) 
+	{
+
+		String product_img = productservice.getImg(product_no);
+	  
+		
+		model.addAttribute("coupon_no",coupon_no);
+	    model.addAttribute("product_category",product_category);
+	    model.addAttribute("product_name",product_name);
+	    model.addAttribute("product_content",product_content);
+	    model.addAttribute("coupon_lastdate",coupon_lastdate);
+	    model.addAttribute("product_img",product_img);
+         
+		return "user/myCouponInfo_m";
+	}
+	
+	@GetMapping("/useCoupon/{coupon_no}")
+	public String useCoupon(@PathVariable int coupon_no) {
+		couponservice.oneUseCoupon(coupon_no);
+		
+		return "redirect:/mypage";
+	}
+	
 }

@@ -11,4 +11,11 @@ import com.film.dto.CouponDTO;
 public interface CouponMapper {
 	public void insertCoupon(CouponDTO dto);
 	public List<HashMap<String, Object>> getMyCoupon(String member_id);
+	
+	//사용함
+	public void oneUseCoupon(int coupon_no);
+	
+	//날짜 지남
+	public List<HashMap<String, Object>> selectPastCoupon();
+	public void updateCouponCon(List<HashMap<String, Object>> map);
 }

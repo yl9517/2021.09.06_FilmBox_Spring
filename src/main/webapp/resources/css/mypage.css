@@ -219,7 +219,8 @@
 }
 .category{
 	background-color: #A34941;
-    width: 45px;
+   display: inline-block;
+   padding: 0 5px;
     color: white;
     text-align: center;
     border-radius: 5px;
