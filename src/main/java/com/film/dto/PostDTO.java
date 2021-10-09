@@ -19,6 +19,7 @@ public class PostDTO {
 	private String post_date;
 	
 	private String image;
+	private int post_count;
 	
 	public PostDTO(String member_id, String post_content, String movieNm, String image) {
 		super();

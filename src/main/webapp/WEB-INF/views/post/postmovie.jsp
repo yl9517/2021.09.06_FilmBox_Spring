@@ -18,34 +18,48 @@
 			<div class="inner-wrap">
 				<h2 class="tit">MoviePost</h2>
 				<ol class="post-lank">
-					<li></li>
+				<c:forEach var="item" items="${postlist }">
+					<li>
+						<a href="#" class="top5Btn" title="${item.movieNm } 무비포스트보기">
+							<p class="lank">1</p>
+							<div class="post-count">
+								<p class="tit">POST</p>
+								<p class="count">${item.post_count }</p>
+							</div>
+							<p class="img">
+								<img src="${item.image}">
+							</p>
+						</a>
+					</li>
+				</c:forEach>
 				</ol>
-				
 				<div class="add-post">
-				<a href="#" onClick="mypostadd('/mypost','${member_id}')" class="button purple">작성하기</a>
+				<a href="#" onClick="mypostadd('/mypost','${id}')" class="button purple">작성하기</a>
 				</div>
 			</div>
 		</div>
 	
 		<div class="movie-post-list">
 			<div class="grid-item">
+			<c:forEach var="item" items="${list }">
 				<div class="wrap">
 					<div class="img">
 						<a href="" title="무비포스트 상세보기" class="post-detailPopup btn-modal-open2" >
-						<img src="https://img.megabox.co.kr/SharedImg/2021/08/20/RXpJHrGvZZDIKAD5rqJWL4kSzlI2Fy54_230.jpg"></a>
+						<img src="${item.image}"></a>
 						
 					</div>
 					<div class="cont">
-						<div class="wrtter">test</div>
+						<div class="wrtter">${item.member_id}</div>
 						<a href="">
-							<p class="tit">모가디슈</p>
+							<p class="tit">${item.movieNm }</p>
 						</a>
 						<a href="" class="link btn-modal-open2 post-detailPopup">
-							<p class="txt">saadasd</p>
+							<p class="txt">${item.post_content }</p>
 							<p class="time">ssssssssssss</p>
 						</a>
-					</div>
+						</div>
 				</div>
+			</c:forEach>
 			</div>
 		</div>
 	</div>

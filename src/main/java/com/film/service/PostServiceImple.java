@@ -26,4 +26,16 @@ public class PostServiceImple implements PostService {
 		return postMapper.getMyMovie(member_id);
 	}
 
+	@Override
+	public void insertPost(PostDTO dto) {
+		// TODO Auto-generated method stub
+		postMapper.insertPost(dto);
+	}
+
+	@Override
+	public List<PostDTO> getMoviePostList() {
+		// TODO Auto-generated method stub
+		return postMapper.getMoviePostList();
+	}
+
 }
