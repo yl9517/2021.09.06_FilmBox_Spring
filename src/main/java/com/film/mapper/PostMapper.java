@@ -17,4 +17,6 @@ public interface PostMapper {
 
 	public List<PostDTO> getMoviePostList();
 
+	public PostDTO postdetail(int post_no);
+
 }

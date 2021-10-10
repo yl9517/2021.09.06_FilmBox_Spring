@@ -14,5 +14,7 @@ public interface PostService {
 	public void insertPost(PostDTO dto);
 
 	public List<PostDTO> getMoviePostList();
+
+	public PostDTO postdetail(int post_no);
 	
 }

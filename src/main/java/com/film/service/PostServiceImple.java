@@ -38,4 +38,10 @@ public class PostServiceImple implements PostService {
 		return postMapper.getMoviePostList();
 	}
 
+	@Override
+	public PostDTO postdetail(int post_no) {
+		// TODO Auto-generated method stub
+		return postMapper.postdetail(post_no);
+	}
+
 }

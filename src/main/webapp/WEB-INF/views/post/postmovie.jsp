@@ -21,7 +21,7 @@
 				<c:forEach var="item" items="${postlist }">
 					<li>
 						<a href="#" class="top5Btn" title="${item.movieNm } 무비포스트보기">
-							<p class="lank">1</p>
+							<p class="lank">${item.post_no }</p>
 							<div class="post-count">
 								<p class="tit">POST</p>
 								<p class="count">${item.post_count }</p>
@@ -38,30 +38,32 @@
 				</div>
 			</div>
 		</div>
-	
-		<div class="movie-post-list">
-			<div class="grid-item">
+		<div class="inner-wrap mt30">
+			<div class="movie-post-list">
 			<c:forEach var="item" items="${list }">
+			<div class="grid-item">
 				<div class="wrap">
 					<div class="img">
-						<a href="" title="무비포스트 상세보기" class="post-detailPopup btn-modal-open2" >
+						<a href="/postdetail/${item.post_no}" title="무비포스트 상세보기" class="post-detailPopup btn-modal-open2" >
 						<img src="${item.image}"></a>
 						
 					</div>
 					<div class="cont">
 						<div class="wrtter">${item.member_id}</div>
-						<a href="">
+						<a href="/postdetail/${item.post_no}">
 							<p class="tit">${item.movieNm }</p>
 						</a>
-						<a href="" class="link btn-modal-open2 post-detailPopup">
+						<a href="/postdetail/${item.post_no}" class="link btn-modal-open2 post-detailPopup">
 							<p class="txt">${item.post_content }</p>
-							<p class="time">ssssssssssss</p>
+							<p class="time">${item.post_date }</p>
 						</a>
 						</div>
 				</div>
-			</c:forEach>
 			</div>
+			</c:forEach>
 		</div>
+		</div>
+		
 	</div>
 	<script>
 		function mypostadd(link, flag) {

@@ -109,10 +109,6 @@ public class PostContorller {
 			  ,@RequestParam(value="image",required = false) MultipartFile file
 			  , HttpServletRequest request, Model model) throws  IOException {
 
-		System.out.println(member_id);
-		System.out.println(post_content);
-		System.out.println(movieNm);
-		System.out.println(file);
 		String uploadDir = request.getRealPath("");
 		
 		
@@ -122,14 +118,21 @@ public class PostContorller {
 		
 		file.transferTo(new File(filePath));
 		
-		System.out.println(uploadDir);
-		System.out.println(filename);
-		System.out.println(filePath);
 		PostDTO dto = new PostDTO(member_id,post_content,movieNm,filename);
 		
 		postservice.insertPost(dto);
 //   	return "testfile";
-		model.addAttribute("page", "post/mypost.jsp");
+		model.addAttribute("page", "post/post.jsp");
 		return "view";
 	}
+	@GetMapping("/postdetail/{post_no}")
+	public String postdetail(@PathVariable int post_no, Model model) {
+		PostDTO dto = postservice.postdetail(post_no);
+		
+		model.addAttribute("dto",dto);
+		model.addAttribute("page","post/postDetail.jsp");
+		
+		return "view";
+	}
+	
 }
