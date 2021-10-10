@@ -13,4 +13,10 @@ public interface PostMapper {
 
 	public List<MovieDTO> getMyMovie(String member_id);
 
+	public void insertPost(PostDTO dto);
+
+	public List<PostDTO> getMoviePostList();
+
+	public PostDTO postdetail(int post_no);
+
 }

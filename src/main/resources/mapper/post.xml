@@ -5,8 +5,8 @@
 <mapper namespace="com.film.mapper.PostMapper">
 
 	
-	<select id="getPostList" resultType="com.film.dto.MovieDTO">
-		SELECT post_no, member_id, post_content, movieNm, post_date
+	<select id="getPostList" resultType="com.film.dto.PostDTO">
+		SELECT post_no, member_id, post_content, movieNm,image, post_date
 		FROM filmbox_post
 	</select>
 	<select id="getMyMovie" parameterType="string" resultType="com.film.dto.MovieDTO">
@@ -14,6 +14,33 @@
 		INNER JOIN filmbox_rev fr ON fm.member_id = fr.member_id
 		INNER JOIN filmbox_movie fv ON fr.movieCd= fv.movieCd
 		WHERE fm.member_id =#{member_id};
+	</select>
+	
+	<insert id="insertPost" parameterType="com.film.dto.PostDTO">
+
+        insert into filmbox_post ( member_id
+        						, post_content
+        						, movieNm
+        						, image
+        						, post_date)
+        	values(#{member_id}, #{post_content}, #{movieNm}, #{image}, now())
+           
+	</insert>
+	
+	<select id="getMoviePostList" resultType="com.film.dto.PostDTO">
+		SELECT @rownum:=@rownum+1 AS post_no, post.*
+		FROM (SELECT  fm.movieNm, COUNT(fm.movieNm) AS post_count,fm.image AS image
+		FROM filmbox_post fp 
+		INNER JOIN filmbox_movie fm ON fp.movieNm = fm.movieNm
+		GROUP BY 1 ORDER BY 2 DESC 
+		LIMIT 5) post
+		WHERE (@rownum:=0)=0
+	</select>
+	
+	<select id="postdetail" parameterType="com.film.dto.PostDTO" resultType="com.film.dto.PostDTO">
+		SELECT post_no, member_id, post_content, movieNm,image, post_date
+		FROM filmbox_post
+		where post_no=#{post_no}
 	</select>
 </mapper>
     
