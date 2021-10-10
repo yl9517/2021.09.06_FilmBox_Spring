@@ -237,6 +237,7 @@ for (let i = 0; i < 10; i++) {
     }
 
     seat = document.querySelectorAll('.seat');
+    console.log(arrays.length);
     remainSeat.innerHTML = seat.length-arrays.length;
     allSeat.innerHTML = seat.length;
 }
@@ -320,7 +321,8 @@ function inputClickEvent(input) {
         //좌석번호의 innerHTML 설정
         selectedSeats.innerHTML = selectedSeatsArray;
         reserveNumber.innerHTML = selectedSeatsArray.length;
-        remainSeat.innerHTML = seat.length - selectedSeatsArray.length;
+        remainSeat.innerHTML = seat.length - selectedSeatsArray.length
+        -arrays.length;
         selectedSeat.value=selectedSeatsArray;
         console.log(selectedSeat);
         // if (selectedSeatsArray.length > 4) {
