@@ -23,12 +23,12 @@
 		$('#movie-modal').modal();
 		
 		let coupon_no = $('#coupon_no').val();
-		let condition = $('#coupon_condition').val();
+		let count = $('#coupon_count').val();
 		
 		$("#useCoupon").on('click', function(){
-			if(condition == 0){
-				alert('쿠폰을 사용하였습니다.');
+			if(count > 0){
 				location.reload();
+				alert('쿠폰을 사용하였습니다.');
 			}else{
 				alert('이미 사용한 쿠폰입니다.');
 			}
@@ -39,7 +39,7 @@
 </head>
 <body>
 	<div id="movie-modal" class="modal fade">
-	<input type="hidden" id="coupon_condition" name="coupon_condition" value="${map.coupon_condition }"> 
+	<input type="hidden" id="coupon_count" name="coupon_count" value="${map.coupon_count }"> 
 	<input type="hidden" id="coupon_no" name="coupon_no" value="${coupon_no }"> 
 		<div class="modal-dialog modal-lg" role="document"
 			style="width: -webkit-fill-available; display: table">
@@ -59,7 +59,7 @@
 				</div>
 				<div class="modaal-footer">
 				<c:choose>
-					<c:when test="${map.coupon_condition == 0 }">
+					<c:when test="${map.coupon_count > 0}">
 						<button type="button" id="useCoupon">사용하기</button>
 					</c:when>
 					<c:otherwise>

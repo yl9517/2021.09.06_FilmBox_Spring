@@ -1,5 +1,6 @@
 package com.film.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -51,7 +52,13 @@ public class StoreController {
 	
 	//상품결제
 	@PostMapping("/storepay")
-	public String storepay(@ModelAttribute ProductDTO dto,@RequestParam int product_count, Model model) {
+	public String storepay(@ModelAttribute ProductDTO dto,@RequestParam int product_count,HttpSession session, Model model) {
+		String member_id= "";
+    	if((String)session.getAttribute("loginId") !=null)
+    		member_id = (String)session.getAttribute("loginId"); //세션아이디
+	
+    	List<HashMap<String, Object>> map = couponService.getRealCoupon(member_id);
+		
 		model.addAttribute("dto",dto);
 		model.addAttribute("count",product_count);
 		model.addAttribute("page","store/storePay.jsp");

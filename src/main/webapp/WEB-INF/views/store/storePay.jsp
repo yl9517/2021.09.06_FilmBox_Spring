@@ -36,20 +36,44 @@
 			</table>
 		</div>
 		
+		<h3>쿠폰 </h3>	
+		<div id="box_coupon">
+			<label>쿠폰 <span> (사용 가능한 쿠폰 <b>3장</b>) </span></label>
+				<select id="coupons" name="coupons" class="coupons">
+					<option value="" selected>-- 쿠폰을 선택하세요 --</option>
+					<c:forEach var="item" items="${map }">
+						<option value="${item.product_price }">${item.product_name }</option>
+					</c:forEach>
+<!-- 					<option value="1000">1000원 할인권</option>
+					<option value="4000">4000원 할인권</option>
+					<option value="2000">2000원 할인권</option>
+					<option value="3000">3000원 할인권</option> -->
+				</select>
+				<ul>
+					<li> 1개의 결제건 당 1개의 쿠폰만 사용 가능합니다 </li>
+					<li> 상품금액보다 큰 금액의 쿠폰은 사용 불가능합니다. </li>
+					<li> 본 쿠폰과 상이한 제품변경 및 사이즈업 불가합니다. </li>
+				</ul>
+		</div>
+		
+		
+		
+		
+		
 		<h3> 최종 결제 </h3>	
 		<div id="box_price">
 			<ul>
 				<li>
 					<div>
 						<p class="price_title">총 상품금액</p>
-						<b class="price_content">${dto.product_price } </b>
+						<b class="price_content before_price">${dto.product_price } </b>
 					</div>				
 				</li>
 				<li class="sign">-</li>
 				<li>
 					<div>
 						<p class="price_title">할인 금액</p>
-						<b class="price_content"> 0 </b>
+						<b class="price_content sale"> 0 </b>
 					</div>				
 				</li>
 				<li class="sign">=</li>
