@@ -20,4 +20,7 @@ public interface CouponMapper {
 	public void updateCouponCon(List<HashMap<String, Object>> map);
 	
 	public HashMap<String, Object> getInfo(int coupon_no);
+	
+	//푸드쿠폰 구매에 적용할 찐쿠폰
+	public List<HashMap<String, Object>> getRealCoupon(String member_id);
 }

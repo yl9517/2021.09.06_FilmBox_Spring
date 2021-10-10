@@ -44,4 +44,9 @@ public class CouponServiceImple implements CouponService{
 		return mapper.getInfo(coupon_no);
 	}
 
+	@Override
+	public List<HashMap<String, Object>> getRealCoupon(String member_id) {
+		return mapper.getRealCoupon(member_id);
+	}
+
 }

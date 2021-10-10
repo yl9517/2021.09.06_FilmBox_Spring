@@ -16,4 +16,5 @@ public interface CouponService {
 	public void updateCouponCon();
 	
 	public HashMap<String, Object> getInfo(int coupon_no);
+	public List<HashMap<String, Object>> getRealCoupon(String member_id);
 }

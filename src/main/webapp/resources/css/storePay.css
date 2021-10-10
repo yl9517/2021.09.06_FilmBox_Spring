@@ -14,10 +14,13 @@
 	text-align: left; 
  }
  #pay_wrap h3{
-	text-align: left;
-	margin-left: 10px;
-	color: #5B754D;
-	margin-top: 30px; 
+text-align: left;
+    background-color: beige;
+    color: #5B754D;
+    margin-top: 30px;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 20px;
 }
 
 
@@ -29,7 +32,7 @@
 	width: 100px;
 }
 
-#box_product thead tr{
+#box_product thead tr, #box_coupon2 thead tr{
 	background-color: #f1f1f1;
 }
 #box_product tbody td{
@@ -46,6 +49,47 @@
 }
 .store_name p:first-child {
 	font-size: 24px;
+}
+
+
+/*쿠폰 박스*/
+#box_coupon{
+	text-align: left;
+}
+#box_coupon label{
+	width: 300px;
+    font-size: 18px;
+}
+#box_coupon span{
+	color:#999;
+}
+#box_coupon b{
+	color : #C94F44;
+}
+
+
+
+
+
+
+
+.coupons{
+	font-size: 17px;
+    padding: 5px 10px;
+    width: 500px;
+	height: 40px;
+}
+option:first-child{
+	text-align: center;
+}
+#box_coupon ul{
+	 width: 500px;
+    margin: 30px 0 30px 320px;
+    color: #999;
+    font-size: 14px;
+}
+#box_coupon li{
+	margin: 10px 0; 
 }
 
 

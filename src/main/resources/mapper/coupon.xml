@@ -32,13 +32,13 @@
 		, coupon_condition
 	from filmbox_coupon as c inner join filmbox_store as s
 	  on c.product_no = s.product_no
-	where member_id = #{member_id} and coupon_condition = 0
+	where member_id = #{member_id} and coupon_count <![CDATA[>]]> 0
 </select> 
 
 <!-- 스토어상품 사용했으면 condition 변경 -->
 <update id="oneUseCoupon" parameterType="int">
 	update filmbox_coupon
-	set coupon_condition = 1
+	set coupon_count = coupon_count - 1
 	where coupon_no = #{coupon_no}
 </update>
 
@@ -50,7 +50,7 @@
 </select>
 <update id="updateCouponCon" parameterType="java.util.List">
 	update filmbox_coupon
-	set coupon_condition = 1
+	set coupon_count = 0
 	where coupon_no in
 	<foreach collection="list"  item="item" index="index" open="(" close=")" separator=",">
 			#{item.coupon_no}
@@ -59,10 +59,21 @@
 
 <!-- 모바일qr -->
 <select id="getInfo" parameterType="int" resultType="java.util.HashMap">
-	select product_img, coupon_condition
+	select product_img, coupon_count
 	from filmbox_store as s inner join filmbox_coupon as c
 	on s.product_no = c.product_no
 	where coupon_no = #{coupon_no}
+</select>
+
+<!-- 결제-쿠폰창에서 보여줄 쿠폰 -->
+<select id="getRealCoupon"  parameterType="string" resultType="java.util.HashMap">
+	select coupon_no
+		, product_name
+		, coupon_count
+		, product_price
+	from filmbox_coupon as c inner join filmbox_store as s
+	  on c.product_no = s.product_no
+	where member_id = #{member_id} and coupon_count <![CDATA[>]]> 0 and product_category = 'coupon'
 </select>
 
 </mapper>
