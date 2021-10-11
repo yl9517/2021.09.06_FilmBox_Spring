@@ -70,7 +70,14 @@ public class ReserveServiceImple implements ReserveService {
 		// TODO Auto-generated method stub
 		int result = 0;
 		if( reMapper.reserveCancel(rev_no) != null) {
-			result =  reMapper.reserveCancel(rev_no);
+			result =  reMapper.reserveCancel(rev_no);	//update rev_condition 2
+			KakaopayDTO dto = reMapper.getRevData(rev_no);
+			
+			MovieDTO getMovie = mvMapper.getMovie(dto.getMovieCd());
+			PointDTO usepoint = new PointDTO(dto.getMember_id(), (int) -(dto.getPayMoney()*0.05), "("+getMovie.getMovieNm()+") 예매 취소 포인트회수");//예매포인트 회수
+			 pointMapper.changePoint(usepoint); //포인트 회수
+			
+			userMapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
 		}
 		return result;
 	}

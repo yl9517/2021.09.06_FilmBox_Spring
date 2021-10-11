@@ -86,6 +86,12 @@
 		where movieNm=#{selectmovie};
 		
 	</select>
+	
+	<select id="getRevData" resultType="com.film.dto.KakaopayDTO" parameterType="int">
+		select member_id, movieCd, price as payMoney
+		from filmbox_rev
+		where rev_no = #{rev_no}
+	</select>
 
 </mapper>
     
