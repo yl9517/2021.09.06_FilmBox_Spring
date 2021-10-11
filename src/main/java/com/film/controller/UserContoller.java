@@ -341,11 +341,10 @@ public class UserContoller {
 	}
 	
 	@GetMapping("/useCoupon/{coupon_no}")
-	public String useCoupon(@PathVariable int coupon_no) {
+	public @ResponseBody void useCoupon(@PathVariable int coupon_no) {
 		
 		couponservice.oneUseCoupon(coupon_no);
-		
-		return "redirect:/mypage";
+
 	}
 	
 }

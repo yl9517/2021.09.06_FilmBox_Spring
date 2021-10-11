@@ -27,12 +27,12 @@
 		
 		$("#useCoupon").on('click', function(){
 			if(count > 0){
-				location.reload();
 				alert('쿠폰을 사용하였습니다.');
 			}else{
 				alert('이미 사용한 쿠폰입니다.');
 			}
 			location.href="/useCoupon/"+coupon_no;
+			location.reload();
 		}); 
 	});
 </script>
