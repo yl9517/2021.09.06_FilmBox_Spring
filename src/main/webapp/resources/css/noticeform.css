@@ -70,3 +70,12 @@ textarea{
      margin-top : 15px;
 }
 
+.addfile{
+	margin : 12px 0;
+	font-size : 16px;
+	color : whitesmoke;
+}
+
+#upload{
+	border : none;
+}

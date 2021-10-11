@@ -13,4 +13,5 @@ public interface NoticeService {
 	public void noticeModify(NoticeDTO dto);
 	public void noticeDelete(NoticeDTO dto);
 	public int updateReadno(int notice_no);
+	public void noticeModify2(NoticeDTO dto);
 }

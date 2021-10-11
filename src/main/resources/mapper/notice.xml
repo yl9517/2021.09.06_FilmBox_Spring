@@ -9,10 +9,12 @@
 <insert id="noticeInsert" parameterType="com.film.dto.NoticeDTO">
 	insert into filmbox_notice ( notice_title
 							, notice_content
-							, notice_readno )
+							, notice_readno
+							, notice_img )
 	       values ( #{notice_title}
 		        , #{notice_content}
-		        , #{notice_readno} )
+		        , #{notice_readno}
+		        , #{notice_img} )
 </insert>
 
 
@@ -50,12 +52,22 @@
 	select notice_no
 		 , notice_title
 		 , notice_content
+		 , notice_img
 	from filmbox_notice
 	where notice_no=#{notice_no}
 </select>
 
 
 <update id="noticeModify" parameterType="com.film.dto.NoticeDTO">
+	update filmbox_notice
+	set
+		notice_title=#{notice_title}
+	   ,notice_content=#{notice_content}
+	   ,notice_img=#{notice_img}
+	where notice_no=#{notice_no}
+</update>
+
+<update id="noticeModify2" parameterType="com.film.dto.NoticeDTO">
 	update filmbox_notice
 	set
 		notice_title=#{notice_title}

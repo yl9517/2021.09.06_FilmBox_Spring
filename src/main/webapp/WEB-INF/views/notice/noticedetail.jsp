@@ -28,6 +28,13 @@
 		<div class="bottom_content">
 			<div class="notice_content_title">> 내용</div>
 			<textarea class="notice_content" id="notice_content" name="notice_content" readonly><c:out value="${detail.notice_content }"/></textarea>
+			
+			<div>
+			<c:if test="${detail.notice_img!=null }">
+				<div class="addfile">> 첨부 파일</div>
+				<img alt="첨부" src="${detail.notice_img }" class="addimg">
+			</c:if>
+			</div>
 		</div>
 		
 <c:if test="${member_id=='admin' }">
@@ -43,7 +50,7 @@
 	
 </form>
 
-		<!-- 회원 탈퇴 Modal -->
+		<!-- 게시글 삭제 Modal -->
 		<div class="modal fade" id="noticedelModal" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">

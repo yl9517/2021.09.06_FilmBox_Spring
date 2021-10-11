@@ -60,6 +60,12 @@ public class NoticeServiceImple implements NoticeService {
 		
 		return mapper.updateReadno(notice_no);
 	}
+
+	@Override
+	public void noticeModify2(NoticeDTO dto) {
+		
+		mapper.noticeModify2(dto);
+	}
 	
 	
 

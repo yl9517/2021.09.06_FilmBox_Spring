@@ -83,3 +83,18 @@ textarea{
  	text-decoration: none!important;
  	color : whitesmoke;
  }
+ 
+.addfile{
+	color : whitesmoke;
+	margin : 15px 0;
+}
+
+.addimg{
+ 	width: 100px;
+ 	height: 100px;
+ }
+ 
+#upload{
+	color : whitesmoke;
+
+ }

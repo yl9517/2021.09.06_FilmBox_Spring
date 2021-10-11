@@ -17,5 +17,6 @@ public interface NoticeMapper {
 	public void noticeDelete(NoticeDTO dto);
 	public int totalCount();
 	public int updateReadno(int notice_no);
+	public void noticeModify2(NoticeDTO dto);
 
 }

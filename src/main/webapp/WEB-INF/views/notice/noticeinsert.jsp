@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form method="post" action="/noticeinsertresult" class="form">
+<form method="post" action="/noticeinsertresult" class="form" enctype="multipart/form-data">
 		<div class="top_content">
 			<div class="notice_title_title">> 제목</div>
 			<input type="text" id="notice_title" class="notice_title" name="notice_title" spellcheck="false" required/>
@@ -18,7 +18,12 @@
 		<div class="bottom_content">
 			<div class="notice_content_title">> 내용</div>
 			<textarea class="notice_content" id="notice_content" name="notice_content" spellcheck="false" required></textarea>
+			<div>
+			<div class="addfile">> 파일 첨부</div>
+ 			<input type="file" id="upload" name="upload">
+ 			</div>
 		</div>
+
 	
 	<div class="write_btns">
 	<input type="submit" class="write_btn" value="확인">
