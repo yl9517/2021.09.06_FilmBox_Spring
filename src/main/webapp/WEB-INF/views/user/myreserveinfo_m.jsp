@@ -34,7 +34,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></scri
                 </div>
             </div>
             <div class="modal-body">
-                <span class="poster">
+                <span class="poster" style="text-align: center;">
                     <img src="${image}" alt="img" class="img-thumbnail">
                 </span>
                 <div class="info">
@@ -47,10 +47,11 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></scri
             <div class="modal-footer">
                 <ul class="alarm">
                     <li>
-                        <p>영화 상영시작시간 20분 전까지 예매 취소가 가능하며 캡쳐화면은 입장이 제한될 수 있습니다.
-                             </p>   
+                       	 영화 상영시작시간 20분 전까지 예매 취소가 가능하며 캡쳐화면은 입장이 제한될 수 있습니다.  
                     </li>
-                    <li>입장 지연에 따른 관람 불편을 최소화하기 위해 영화는 10분 후 상영이 시작됩니다.
+                    <br>
+                    <li>
+                    	입장 지연에 따른 관람 불편을 최소화하기 위해 영화는 10분 후 상영이 시작됩니다.
                     </li>
                 </ul>
                 <div class="logo">

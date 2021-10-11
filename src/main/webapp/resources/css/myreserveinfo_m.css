@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@media all and (max-width: 767px) {
+@media (max-width: 767px) {
   @font-face {
     font-family: 'ONE-Mobile-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff')
@@ -14,11 +14,11 @@
     box-sizing: border-box;
     font-family: 'ONE-Mobile-Regular', cursive;
   }
-/*   body {
-    background-image: url('${pageContext.request.contextPath}\resources\img\harry.jpg');
+  body {
+    background-image: url('../img/candyman.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-  } */
+  }
   .rev_no {
     color: #c94f44;
     font-size: 20px;
@@ -32,15 +32,19 @@
   }
   .modal-body {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
   }
-
+  .poster img {
+    width: 250px;
+    height: 300px;
+    padding: 10px;
+    text-align: center;
+  }
   .info {
     text-align: center;
-    border-left: 2px dotted silver;
-    margin-left: 30px;
-    padding-left: 40px;
+    border-top: 2px dotted silver;
     font-size: 18px;
+    margin-top: 20px;
   }
   .time {
     font-size: 23px;
@@ -50,13 +54,18 @@
     border-radius: 5px;
     color: white;
     font-size: 20px;
+    width: 150px;
+    margin: 0 auto;
   }
   .alarm {
     word-break: keep-all;
     text-align: start;
-    padding: 10px;
+    list-style: square;
+    list-style-position: inside;
+    line-height: 170%;
   }
   .logo {
     text-align: center;
+    padding: 10px;
   }
 }
