@@ -47,7 +47,7 @@ $('.pay-button').click(function() {
         pay_method : 'card',
 		merchant_uid : 'merchant_' + new Date().getTime(),
 		name : product_name,
-		amount : last_price
+		amount : before_price
 	}, function(rsp) {
 		if ( rsp.success ) {
 			var msg = '결제가 완료되었습니다.';
