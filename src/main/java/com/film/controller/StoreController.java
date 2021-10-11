@@ -29,10 +29,12 @@ public class StoreController {
 	
 	//상품목록
 	@GetMapping("/store")
-	public String store(Model model) {
+	public String store(HttpSession session, Model model) {
 		
 		List<ProductDTO> list = proService.getProductList();
-	
+		String member_id=(String)session.getAttribute("loginId");
+		
+		model.addAttribute("member_id", member_id);
 		model.addAttribute("list",list);
 		model.addAttribute("page","store/storeList.jsp");
 		
