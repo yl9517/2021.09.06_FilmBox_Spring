@@ -93,9 +93,8 @@
  						<label>상품 이미지</label>
  					</td>
  					<td>
- 						<img src="" alt="img">
- 						<input type="file" id="product_img" name="product_img"
- 							value="${dto.product_img }">
+ 						<img src="${dto.product_img }" alt="img" width="150px" height="150px" class="img-thumbnail">
+ 						<input type="file" id="product_img" name="product_img">
  					</td>
  				</tr>
 

@@ -11,6 +11,13 @@
 	min-height: 10%;
 	font-size: 18px;
 }
+/* 관리자 상품관리 토글 스위치 */
+.t-switch-h, .t-switch{
+	display: flex;
+	justify-content: flex-end;
+}
+
+
 /* 사이드바 */
 #panel-wrap{
 	padding: 20px;

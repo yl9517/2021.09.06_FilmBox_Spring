@@ -7,12 +7,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/storeList.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="//unpkg.com/bootstrap@4/dist/css/bootstrap.min.css">
+<script src='//unpkg.com/jquery@3/dist/jquery.min.js'></script>
+<script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
+<script src='//unpkg.com/bootstrap@4/dist/js/bootstrap.min.js'></script>
+
+<link href="//cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css" rel="stylesheet">  
+<script src="//cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"></script>
 </head>
 <body>
-	<div id="store_wrap">
 
-			<h1>스토어</h1>
+	<div id="store_wrap">
 			
+			<div id="console-event"></div>
+			<h1>스토어</h1>
+			<c:if test="${member_id == 'admin' }">
+				<p class="t-switch-h">상품 관리</p>
+				<div class="t-switch">
+					<input id="toggle-event" type="checkbox" data-toggle="toggle" data-onstyle="danger" data-size="sm">
+				</div>
+			</c:if>
 			<ul id="productList">
 			<c:forEach var="item" items="${list }">
 				<li>
@@ -43,8 +58,8 @@
 				</li> -->
 
 			</ul>
-
+			
 		</div>
-
+<script type="text/javascript" src="resources\js\storeList.js"></script>
 </body>
 </html>

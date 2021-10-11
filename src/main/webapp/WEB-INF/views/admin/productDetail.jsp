@@ -35,8 +35,8 @@
 				<!-- right -->
 				<div class="product_info_wrap">
 				<!-- 이미지 center-->
-				<div class="col-xs-2">
-					<img src="${dto.product_img }" alt="img" class="img-thumbnail" width="300px" height="300px">
+				<div class="col-xs-4">
+					<img src="${dto.product_img }" alt="img" class="img-thumbnail" width="500px" height="500px">
 				</div>
 				<table class="table table-striped" class="col-xs-2" id="product_info">
  					<thead>
@@ -97,6 +97,6 @@
 			</div>
 		</div>
 	</div>
-<script type="text/javascript" src="..\resources\js\productDetail.js"></script>
+
 </body>
 </html>
