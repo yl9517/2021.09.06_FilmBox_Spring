@@ -11,7 +11,7 @@
 </head>
 <body>
 <form name="mypost" method="POST">
-<input type="hidden" name="member_id">
+<input type="hidden" name="movieNm">
 </form>
 	<div id="movie_wrap">
 		<div id="movieList">
@@ -42,7 +42,7 @@
 	function mypostaddd(link, flag) {
 
 		document.mypost.action = link;
-		document.mypost.member_id.value = flag;
+		document.mypost.movieNm.value = flag;
 		document.mypost.submit()
 
 	}

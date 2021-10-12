@@ -26,11 +26,6 @@
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '예매 영화 결제',
             amount : ${dto.payMoney}
-            <%-- buyer_email : '<%=email%>',
-            buyer_name : '<%=name%>',
-            buyer_tel : '<%=phone%>',
-            buyer_addr : '<%=address%>',
-            buyer_postcode : '123-456' --%>
         }, function(rsp) {
             if ( rsp.success ) {
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
@@ -61,13 +56,13 @@
                 });
                 //성공시 이동할 페이지
                 location.href='/success/${dto.payMoney}/${dto.movieCd}/${dto.screenTime}/${dto.reserveDate}/${dto.ticketNumber}/${dto.selectedSeat}/${usepoint}'; 
-                /* location.href='/success/${dto}'; */
+                
                 
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="<%=request.getContextPath()%>/order/payFail";
+                location.href='/main';
                 alert(msg);
             }
         });

@@ -280,12 +280,19 @@ a:-webkit-any-link {
 }
 
 .movie-post-list .grid-item .wrap .cont {
+    overflow: scroll;
+    height: 171px;
     position: relative;
     padding: 20px;
     border: 1px solid #ebebeb;
     border-top: 0;
     border-radius: 0 0 10px 10px;
 }
+.movie-post-list .grid-item .wrap .cont::-webkit-scrollbar {
+	display: none;
+	
+}
+
 .movie-post-list .grid-item .wrap .cont .tit {
     padding: 0 0 15px 0;
     line-height: 1.3;

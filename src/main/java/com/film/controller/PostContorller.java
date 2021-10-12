@@ -122,8 +122,7 @@ public class PostContorller {
 		
 		postservice.insertPost(dto);
 //   	return "testfile";
-		model.addAttribute("page", "post/post.jsp");
-		return "view";
+		return "redirect:/post";
 	}
 	@GetMapping("/postdetail/{post_no}")
 	public String postdetail(@PathVariable int post_no, Model model) {

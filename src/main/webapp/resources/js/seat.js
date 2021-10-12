@@ -57,7 +57,6 @@ const ousepoint = document.querySelector('.ousepoint');
 let arrays = [];
 $('.thiss').each(function(index,item){
   arrays.push($(item).text());
-  console.log('출력'+$(item).text());
 });
 /*
 for(let i=0; i<arrays.length; i++){
@@ -95,14 +94,7 @@ function initList(list, li) {
         selectSeatListUlActive = document.querySelectorAll(
             '.select-seat-ul-active'
         );
-        console.log(selectSeatListUlActive);
         selectListUiFunction(selectSeatListUlActive);
-        console.log('머니머니' + allMoney);
-
-        console.log(normalNumber);
-        console.log(teenNumber);
-        console.log(oldNumber);
-        console.log(allNumber);
     });
 }
 
@@ -179,7 +171,6 @@ function selectListUiFunction(selectSeatListUlActive) {
         if (allNumber > 16) {
             console.log(li);
             li.classList.remove('select-seat-ul-active');
-            // normalNumber = teenNumber = oldNumber = 0;
             toastr.error(
                 '<div style="color:white">지정한 인원수를 넘었습니다(최대 8명)</div>',
                 '<div style="color:white">인원수 확인</div>', {
@@ -237,7 +228,6 @@ for (let i = 0; i < 10; i++) {
     }
 
     seat = document.querySelectorAll('.seat');
-    console.log(arrays.length);
     remainSeat.innerHTML = seat.length-arrays.length;
     allSeat.innerHTML = seat.length;
 }
@@ -277,7 +267,6 @@ seat.forEach(data => {
 
 function inputClickEvent(input) {
     input.addEventListener('click', function(e) {
-        console.log(e.target.value);
         //중복방지 함수
         selectedSeatsArray = selectedSeatsArray.filter(
             (element, index) => selectedSeatsArray.indexOf(element) != index
@@ -298,7 +287,6 @@ function inputClickEvent(input) {
             input.classList.add('clicked');
             clicked = document.querySelectorAll('.clicked');
             //선택한 번호의 갯수를 넘기면 동작 못하게 하는 코드
-            console.log(allNumber);
             if (clicked.length > allNumber) {
                 input.classList.remove('clicked');
                 toastr.error(
@@ -315,8 +303,6 @@ function inputClickEvent(input) {
             });
         }
 
-        console.log(selectedSeatsArray.length);
-        console.log(selectedSeatsArray);
         
         //좌석번호의 innerHTML 설정
         selectedSeats.innerHTML = selectedSeatsArray;
@@ -324,7 +310,6 @@ function inputClickEvent(input) {
         remainSeat.innerHTML = seat.length - selectedSeatsArray.length
         -arrays.length;
         selectedSeat.value=selectedSeatsArray;
-        console.log(selectedSeat);
         // if (selectedSeatsArray.length > 4) {
         //     return;
         // }
@@ -341,11 +326,6 @@ reserveButton.addEventListener('click', function() {
     /*selectedSeat.value = selectedSeats.innerHTML;*/
     selectedSeat=selectedSeatsArray;
     ousepoint.value=usepoint;
-    console.log(allNumber + '임');
-    console.log(ticketNumber.value);
-    console.log(allNumber === ticketNumber.value);
-    console.log(allNumber === Number(ticketNumber.value));
-    console.log(selectedSeat);
     
     if (
         Number(ticketNumber.value) === allNumber &&
