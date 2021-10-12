@@ -26,7 +26,7 @@ function count(type)  {
  
 }
 
-//결제
+//쿠폰 사용 및 결제
 $('.pay-button').click(function() {
 	document.receipt.submit();
 });

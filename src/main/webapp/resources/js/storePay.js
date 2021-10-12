@@ -36,10 +36,16 @@ $('#coupons').on('change',function() {
 });
 
 
+/*쿠폰번호*/
+
 
 
 /* 결제 */
 $('.pay-button').click(function() {
+	let coupon_no = $('#coupons option:selected').attr('value2');
+	console.log('쿠폰번호1:'+coupon_no);
+		
+	/*카카오페이*/
 	let IMP = window.IMP;
 	IMP.init('imp06185701');
 	IMP.request_pay({
@@ -56,6 +62,19 @@ $('.pay-button').click(function() {
 			msg += '결제 금액 : ' + rsp.paid_amount;
 			msg += '카드 승인번호 : ' + rsp.apply_num;
 			
+			/*쿠폰*/
+			$.ajax({
+				url : "/useCoupon"
+				, data : {'coupon_no': coupon_no}
+				, method : 'get'
+				,success:function(data) {
+					console.log('쿠폰번호 :'+coupon_no);
+				}
+				,error:function(data){
+					console.log(data);
+				}
+			});
+			
 			document.final.submit();
 			//location.href="/storepaydone"
 		} else {
@@ -64,4 +83,6 @@ $('.pay-button').click(function() {
 			alert(msg);
 		}
 	});
+	
+	
 });

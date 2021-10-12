@@ -38,6 +38,7 @@
 						<th> 수량 / 금액 </th>
 						<td> 
 						<input type="hidden" id="product_no" name="product_no" value="${dto.product_no }"> 
+						<input type="hidden" id="product_category" name="product_category" value="${dto.product_category }"> 
 							<div class="count">
 								<button type="button" onclick='count("minus")'> - </button>
 								<input type="text" id="product_count" name="product_count" value="1" min="1" readonly="readonly">
@@ -55,6 +56,18 @@
 			</div>
 		
 			</form>
+		</div>
+		<div class="clear"></div>
+		<div>
+			<h2>유의사항</h2>
+			<c:choose>
+				<c:when test="${dto.product_category eq 'food' }">
+					
+				</c:when>
+				<c:otherwise>
+				
+				</c:otherwise>
+			</c:choose>
 		</div>
 	
 	</div>

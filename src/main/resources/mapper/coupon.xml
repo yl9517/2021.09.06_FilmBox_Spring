@@ -35,7 +35,7 @@
 	where member_id = #{member_id} and coupon_count <![CDATA[>]]> 0
 </select> 
 
-<!-- 스토어상품 사용했으면 condition 변경 -->
+<!-- 스토어상품 사용했으면 갯수 변경 -->
 <update id="oneUseCoupon" parameterType="int">
 	update filmbox_coupon
 	set coupon_count = coupon_count - 1

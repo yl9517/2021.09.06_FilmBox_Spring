@@ -61,6 +61,7 @@ public class StoreController {
 	
     	List<HashMap<String, Object>> map = couponService.getRealCoupon(member_id);
 		
+    	model.addAttribute("map",map);
 		model.addAttribute("dto",dto);
 		model.addAttribute("count",product_count);
 		model.addAttribute("page","store/storePay.jsp");

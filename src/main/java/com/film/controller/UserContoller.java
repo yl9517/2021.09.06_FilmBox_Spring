@@ -340,11 +340,10 @@ public class UserContoller {
 	    return "user/myCouponInfo_m";
 	}
 	
-	@GetMapping("/useCoupon/{coupon_no}")
-	public @ResponseBody void useCoupon(@PathVariable int coupon_no) {
+
+	@GetMapping("/useCoupon")
+	public @ResponseBody void useCoupon(@RequestParam int coupon_no) {
 		
 		couponservice.oneUseCoupon(coupon_no);
-
 	}
-	
 }
