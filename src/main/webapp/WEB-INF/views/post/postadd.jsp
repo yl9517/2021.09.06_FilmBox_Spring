@@ -25,7 +25,7 @@
 	
 	
 	<div class="bottom_content">
-		<div class="post_content">> 내용</div>
+		<div class="post_content"> 내용</div>
 		<textarea class="post_content" id="post_content" name="post_content" spellcheck="false" required></textarea>
 		<div>
 		<div class="addfile">이미지 추가</div>
