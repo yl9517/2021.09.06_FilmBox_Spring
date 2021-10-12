@@ -63,6 +63,8 @@ public class StoreController {
 		
     	model.addAttribute("map",map);
 		model.addAttribute("dto",dto);
+		System.out.println("ㅇㅁㅈ"+dto.getProduct_img());
+		System.out.println("name"+dto.getProduct_name());
 		model.addAttribute("count",product_count);
 		model.addAttribute("page","store/storePay.jsp");
 		

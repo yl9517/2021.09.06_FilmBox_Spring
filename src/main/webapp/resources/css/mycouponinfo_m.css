@@ -24,9 +24,15 @@
   .modal-body {
 	text-align: center;
   }
+  .productimg{
+  height: 340px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+ }
  .productimg img{
     width: 280px;
-    height: 330px;    border: none;
+     border: none;
     margin-top: 20px;
  }
   .info {

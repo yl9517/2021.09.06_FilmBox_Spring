@@ -27,7 +27,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td width="150px"><img alt="상품이미지" src="https://cdn.pixabay.com/photo/2019/06/12/07/12/popcorn-4268489_960_720.jpg"></td>
+						<td width="150px"><img alt="상품이미지" src="${dto.product_img }"></td>
 						<td class="store_name"><p class="product_name">${dto.product_name }</p><p>${dto.product_content }</p></td>
 						<td width="150px">${count }</td>
 						<td width="200px">${dto.product_price }</td>
@@ -39,7 +39,8 @@
 		
 		<h3>쿠폰 </h3>	
 		<div id="box_coupon">
-			<label>쿠폰 <span> (사용 가능한 쿠폰 <b>${map.size() }장</b>) </span></label>
+		<input type="hidden" id="couponsize" value="${map.size() }">
+			<label>쿠폰 <span> (사용 가능한 쿠폰 <b class="possibleCount"></b>) </span></label>
 				<select id="coupons" name="coupons" class="coupons">
 					<option value="" selected>-- 쿠폰을 선택하세요 --</option>
 					<c:forEach var="item" items="${map }">

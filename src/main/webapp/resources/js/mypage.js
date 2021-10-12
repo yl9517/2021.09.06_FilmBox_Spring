@@ -28,6 +28,9 @@ $('[data-toggle2="tooltip"]').tooltip();
 //QR click 툴팁
 $('[data-toggle3="tooltip"]').tooltip();
 
+//QR click 툴팁
+$('[data-toggle4="tooltip"]').tooltip();
+
 //유의사항 팝오버
 $('#alarm').popover();
 

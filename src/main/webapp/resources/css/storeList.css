@@ -48,11 +48,14 @@
 #productList .productimg{
 	padding: 20px 10px;
     height: 300px;
-	border-bottom: 3px dotted #ccc;
+	display: flex;
+    align-items: center;
+    border-bottom: 3px dotted #ccc;
+    justify-content: center;
  }
  .productimg img{
  	max-width: 90%;
-    height: 250px;
+    max-height: 250px;
  }
  
  /* 상품 정보 */

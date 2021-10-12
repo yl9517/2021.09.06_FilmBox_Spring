@@ -9,17 +9,21 @@ console.log(product_name);
 $('.reset-button').click(function() {
 	location.href="/store"
 });
-/* 쿠폰 금액 크면 disable*/
 
+/*disable 갯수*/
+let discount = 0;
+/* 쿠폰 금액 크면 disable*/
 let arr = [];
 $.each($('#coupons').find("option"), function(index,item){ 
   arr.push(item.value);
   if(before_price < item.value){
 	  $(this).attr("disabled",true);
 	  $(this).css("color","#D7D7D7");
+	  discount++;
   }
 });
-
+let size = $('#couponsize').val();
+$('.possibleCount').text((parseInt(size)-parseInt(discount))+'장');
 
 /*쿠폰*/
 $('#coupons').on('change',function() {
@@ -34,10 +38,6 @@ $('#coupons').on('change',function() {
 		after_price = $('.price_final').text(before_price);
 	}
 });
-
-
-/*쿠폰번호*/
-
 
 
 /* 결제 */

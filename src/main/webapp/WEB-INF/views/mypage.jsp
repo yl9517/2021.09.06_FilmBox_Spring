@@ -121,27 +121,38 @@
 				<c:choose>
 					<c:when test="${!empty myCouponList }">
 						<c:forEach var="item" items="${myCouponList }">
-
-							<li class="coupon front">
-								<p class="category">${item.product_category}</p>
-								<div class="coupon_title">${item.product_name }</div>
-								<p>${item.coupon_lastdate } 까지 사용 가능</p>								
-							</li>
+							<div class="oneCoupon">
+								<li class="coupon front">
+									<p class="category">${item.product_category}</p>
+									<span class="have_count">${item.coupon_count }장 보유</span>
+									<div class="coupon_title">${item.product_name }</div>
+									<p>${item.coupon_lastdate } 까지 사용 가능</p>
+									
+								</li>
+								
+	   							<li class="coupon back">
+									<c:choose>
+										<c:when test="${item.product_category eq 'food' }">
+											<span class="glyphicon glyphicon-qrcode" data-toggle4="tooltip" data-placement="right" title="Click!" 
+											onclick="openCouponPop('${item.coupon_no }','${item.product_no }','${item.product_category }', 
+																'${item.product_name }', '${item.product_content }' , '${item.coupon_lastdate }' )"></span>
+			                                    							
+											<p> 사용방법 : QR코드 인식 </p>
+											<p> 유효기간 : 앞면표기일 </p>	
+											<p> 　</p>
+										</c:when>
+										<c:otherwise>
+											<p> 사용방법 : 스토어 결제 전 쿠폰 선택 </p>
+											<p> 유효기간 : 앞면표기일 </p>								
+											<p> 타 쿠폰과 중복 적용 불가합니다</p>								
+										</c:otherwise>
+									</c:choose>
+									<p>본 쿠폰은 타 계정으로 양도 불가합니다</p>								
+								</li>   
+							</div>
 							
-							<li class="coupon back">
+						</c:forEach>	
 						
-							<span class="glyphicon glyphicon-qrcode"
-								onclick="openCouponPop('${item.coupon_no }','${item.product_no }','${item.product_category }', 
-													'${item.product_name }', '${item.product_content }'
-                                    							, '${item.coupon_lastdate }' )"></span>
-								<p> 유의사항</p>
-								<p> 사용방법 : 스토어 결제 전 쿠폰선택 </p>
-								<p> 유효기간 : 하단표기일까지 </p>								
-								<p> 타 쿠폰과 중복 적용 불가 </p>								
-							</li>  
-							
-						</c:forEach>
-
 							<div class="clear"></div>
 					</c:when>
 				
@@ -156,6 +167,7 @@
 					
 				</c:choose>
 				</ul>
+				
 			</div>	
 		</div>
 		

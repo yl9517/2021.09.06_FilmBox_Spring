@@ -16,7 +16,8 @@
 			<form action="/storepay" method="post" name="receipt">
 			
 			<div class="product_img">
-				<img alt="상품이미지" src="https://cdn.pixabay.com/photo/2019/06/12/07/12/popcorn-4268489_960_720.jpg" id="product_img" name="product_img">
+			<input type="hidden" value="${dto.product_img }" id="product_img" name="product_img">
+				<img alt="상품이미지" src="${dto.product_img }">
 			</div>
 			<div class="product_info">
 				<table>
@@ -58,16 +59,22 @@
 			</form>
 		</div>
 		<div class="clear"></div>
-		<div>
-			<h2>유의사항</h2>
+		<div id="precautions">
+			<h3>유의사항</h3>
+			<ul>
+				<li> 쿠폰 구매 후 취소는 불가합니다.</li>
+				<li> 구매하신 쿠폰은 일주일 뒤 자정까지 사용가능하며, 유효기간 만료로 소멸된 쿠폰은 사용이 불가합니다.</li>
+				<li> 구매하신 쿠폰은 포인트 혹은 현금으로 교환 불가합니다. </li>
 			<c:choose>
 				<c:when test="${dto.product_category eq 'food' }">
-					
+					<li> 마이페이지 > MY쿠폰에서 QR코드로 사용하실 수 있습니다.</li>
 				</c:when>
 				<c:otherwise>
-				
+					<li> 마이페이지 > MY쿠폰에서 확인하실 수 있습니다. </li>
+					<li> 본 쿠폰은 food쿠폰 구매 시 결제창에서 사용하실 수 있습니다. </li>
 				</c:otherwise>
 			</c:choose>
+			</ul>
 		</div>
 	
 	</div>

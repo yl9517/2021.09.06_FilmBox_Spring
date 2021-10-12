@@ -31,6 +31,7 @@
 				, data : {'coupon_no': coupon_no}
 				, method : 'get'
 				,success:function(data) {
+					alert('쿠폰사용이 완료되었습니다. (보유 쿠폰 -1 차감)')
 					location.reload();
 				}
 				,error:function(data){
