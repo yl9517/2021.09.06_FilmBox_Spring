@@ -12,36 +12,32 @@
 <body>
 	
 <h2>Movie Post 작성</h2>
-<form method="post" action="postinsert" enctype="multipart/form-data" > 
-<ul>
+<form class="form" method="post" action="postinsert" enctype="multipart/form-data" > 
 	
-	<li>
-	<label >작성자</label>
-	<input type="text" id="member_id" name="member_id" value="${member_id }" readonly>
-	</li>
-	<li>
-	<label>영화</label>
-	<input type="text" id="movieNm" name="movieNm" value="${dto.movieNm }" readonly>
-	</li>
+	<div class=top_witer>
+		<div class="post_witer"> 작성자</div>
+		<input type="text" id="member_id" name="member_id" class="member_id" value="${member_id }" readonly>
+	</div>
+	<div class=mid_movie>
+		<div class="post_movie"> 영화</div>
+		<input type="text" id="movieNm" name="movieNm" class="movieNm" value="${dto.movieNm }" readonly>
+	</div>
 	
 	
-	<li>
-	<label>내용</label>
-	<textarea id="post_contents" name="post_content" rows="15" cols="100" required></textarea>
-	</li>
-	
-	<li>
-	<label></label>
-	<input type="file" id="image" name="image">
-	</li>
-	
-	<li>
-	<input type="submit" id="submit" value="등록">
-	<input type="reset" id="reset" value="취소">
-	</li>
-</ul>
+	<div class="bottom_content">
+		<div class="post_content">> 내용</div>
+		<textarea class="post_content" id="post_content" name="post_content" spellcheck="false" required></textarea>
+		<div>
+		<div class="addfile">이미지 추가</div>
+		<input type="file" id="image" name="image">
+ 		</div>
+	</div>
 
 	
+	<div class="write_btns">
+	<input type="submit" class="write_btn" value="확인">
+	<input type="reset" class="write_btn" value="취소">
+	</div>
 </form>
 </body>
 </html>
