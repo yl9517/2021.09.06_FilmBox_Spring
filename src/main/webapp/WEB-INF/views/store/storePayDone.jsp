@@ -18,7 +18,7 @@
 		</div>
 		<div class="point_add">
 			<p><img alt="point" src="/resources/img/reward.png">
-			<span> POINT <strong>30</strong>원 적립 </span></p>
+			<span> POINT <strong>${inpoint }</strong>원 적립 </span></p>
 		</div>
 		<a href="/mypage">마이페이지 바로가기</a>
 		<a href="/store">스토어 가기</a>
