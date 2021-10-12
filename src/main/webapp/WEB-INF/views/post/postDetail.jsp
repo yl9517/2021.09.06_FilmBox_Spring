@@ -36,7 +36,7 @@
 			</div>
 		</div>
 
-			<form class="form" method="post" action="subpostinsert">
+			<form class="form" method="post" action="/subpostinsert">
 
 				<div class=top-comment-add>
 					<div class="post_witer">댓글</div>
@@ -45,7 +45,7 @@
 					<c:when test="${member_id eq null}">
 					<div class="bottom_comment-content">
 						<textarea class="subcontent" id="subcontent"
-						name="subcontent" spellcheck="false"  readonly="readonly">로그인이 필요합니다.</textarea>
+						name="subcontent" spellcheck="false"  readonly="readonly">로그인이 필요한 서비스입니다.</textarea>
 					</div>
 					</c:when>
 					<c:otherwise>

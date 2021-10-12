@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.film.dto.MovieDTO;
 import com.film.dto.PostDTO;
+import com.film.dto.SubPostDTO;
 
 public interface PostService {
 
@@ -16,5 +17,7 @@ public interface PostService {
 	public List<PostDTO> getMoviePostList();
 
 	public PostDTO postdetail(int post_no);
+
+	public void subpostadd(SubPostDTO dto);
 	
 }

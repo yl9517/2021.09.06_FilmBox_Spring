@@ -139,9 +139,9 @@ public class PostContorller {
 	
 	@PostMapping("/subpostinsert")
 	public String subpostadd(SubPostDTO dto,Model model, HttpSession session) {
-		
+		System.out.println(dto.toString());
 		String member_id = (String) session.getAttribute("loginId");
-		
+		postservice.subpostadd(dto);
 		
 		return "redirect:/postdetail/"+dto.getPost_no();
 		

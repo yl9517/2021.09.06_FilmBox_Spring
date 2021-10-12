@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.film.dto.MovieDTO;
 import com.film.dto.PostDTO;
+import com.film.dto.SubPostDTO;
 @Mapper
 public interface PostMapper {
 
@@ -18,5 +19,7 @@ public interface PostMapper {
 	public List<PostDTO> getMoviePostList();
 
 	public PostDTO postdetail(int post_no);
+
+	public void subpostadd(SubPostDTO dto);
 
 }

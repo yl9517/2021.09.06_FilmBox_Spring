@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.film.dto.MovieDTO;
 import com.film.dto.PostDTO;
+import com.film.dto.SubPostDTO;
 import com.film.mapper.PostMapper;
 @Service(value="postservice")
 public class PostServiceImple implements PostService {
@@ -42,6 +43,12 @@ public class PostServiceImple implements PostService {
 	public PostDTO postdetail(int post_no) {
 		// TODO Auto-generated method stub
 		return postMapper.postdetail(post_no);
+	}
+
+	@Override
+	public void subpostadd(SubPostDTO dto) {
+		// TODO Auto-generated method stub
+		postMapper.subpostadd(dto);
 	}
 
 }
