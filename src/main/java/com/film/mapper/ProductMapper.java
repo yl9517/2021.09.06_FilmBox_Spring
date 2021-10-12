@@ -22,7 +22,7 @@ public interface ProductMapper {
 
 	public int deleteProduct(int product_no);
 
-	public int totalCount();
+	public int totalCount(HashMap<String, Object> smap);
 
 	
 }

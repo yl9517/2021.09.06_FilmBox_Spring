@@ -7,31 +7,57 @@
 }
 .pInsert_wrap{
 	margin: 0 auto;
-	padding: 5%;
+	padding: 3%;
+	padding-bottom: 5%;
 	min-height: 10%;
 	font-size: 18px;
 }
+
 /* 사이드바 */
 #panel-wrap{
 	padding: 20px;
 }
+#panel-wrap a{
+	color: #C94F44;
+	font-weight: bolder;
+}
+#panel-wrap a:hover{
+	color: #7F9871;
+}
+
+/* 제목 */
+#t_header{
+	color: #C94F44;
+	font-size: 25px;
+	text-align: center;
+	font-weight: bolder;
+}
+
+/* 상품종류 검색 */
+.search-tab{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	padding: 10px;
+	font-size: 12px;
+}
+
 /* 테이블 */
 #product_info{
 	width: 900px;
 	padding: 20px;
 }
-/* 테이블 제목 */
-#t_header{
-	color: #C94F44;
-	font-size: 20px;
-	text-align: center;
-	font-weight: bolder;
-}
+
 /* 테이블 */
 #p_table{
 	text-align: center;
 }
-
+#p_table a{
+	color: #1565c0;
+}
+#p_table a:hover{
+	color: #7F9871;
+}
 /* 페이징 */
 .paging-wrap{
 	font-size: 20px;

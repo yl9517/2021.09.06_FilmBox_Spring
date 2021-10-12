@@ -39,14 +39,21 @@
 				   from filmbox_store fs
 				   , (select @rownum := 0) N
 				   where 1=1
+					<if test='search.equals("coupon") or search.equals("food")'>
+						and product_category = #{search}
+					</if>
 				 ) e
 				   order by product_no )as A
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}
 </select>
 
-<select id="totalCount" resultType="int">
+<select id="totalCount" parameterType="hashmap" resultType="int">
 	select count(*)
 	from filmbox_store
+	where 1=1
+		<if test='search.equals("coupon") or search.equals("food")'>
+			and product_category = #{search}
+		</if>
 </select>
 
 

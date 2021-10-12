@@ -10,7 +10,7 @@ public interface ProductService {
 
 	public List<ProductDTO> getProductList();
 	
-	public List<ProductDTO> getProductListP(int startRow, int endRow);
+	public List<ProductDTO> getProductListP(String search, int startRow, int endRow);
 
 	public ProductDTO detailProduct(int product_no);
 
@@ -18,6 +18,6 @@ public interface ProductService {
 
 	public int deleteProduct(int product_no);
 
-	public int totalCount();
+	public int totalCount(String search);
 
 }

@@ -28,9 +28,10 @@ public class ProductServiceImple implements ProductService {
 	}
 	
 	@Override
-	public List<ProductDTO> getProductListP(int startRow, int endRow) 
+	public List<ProductDTO> getProductListP(String search, int startRow, int endRow) 
 	{
 		HashMap<String, Object> hmap = new HashMap<String, Object>();
+		hmap.put("search", search);
 		hmap.put("startRow", startRow);
 		hmap.put("endRow", endRow);
 		return productmapper.getProductListP(hmap);
@@ -55,9 +56,11 @@ public class ProductServiceImple implements ProductService {
 	}
 
 	@Override
-	public int totalCount() 
+	public int totalCount(String search) 
 	{
-		return productmapper.totalCount();
+		HashMap<String, Object> smap = new HashMap<String, Object>();
+		smap.put("search", search);
+		return productmapper.totalCount(smap);
 	}
 
 }
