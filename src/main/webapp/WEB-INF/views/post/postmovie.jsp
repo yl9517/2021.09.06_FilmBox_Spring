@@ -20,7 +20,7 @@
 				<ol class="post-lank">
 				<c:forEach var="item" items="${postlist }">
 					<li>
-						<a href="#" class="top5Btn" title="${item.movieNm } 무비포스트보기">
+						<a href="movieInfo/${item.movieCd}" class="top5Btn" title="${item.movieNm } 무비포스트보기">
 							<p class="lank">${item.post_no }</p>
 							<div class="post-count">
 								<p class="tit">POST</p>

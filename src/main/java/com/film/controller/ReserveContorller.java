@@ -41,32 +41,6 @@ public class ReserveContorller {
    @Autowired
    private UserService userservice;
    
-//   @GetMapping("/reservemovie/{movieCd}/{movieNm}")
-//    public String movieInfo(@PathVariable String movieCd,@PathVariable String movieNm, Model model, HttpSession session) {
-//       
-//
-//       MovieDTO dto = service.getMovie(movieCd);
-//       List<MovieDTO> mlist = reservice.getMovieList();
-//        //세션아이디 받기
-//       String member_id=(String)session.getAttribute("loginId");
-//       
-//       
-//       String result = null;
-//       if(member_id==null) {
-//          result = "reserve/logincondition";
-//       }else   {
-//          model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
-//           model.addAttribute("dto",dto);
-//           model.addAttribute("mlist",mlist);
-//
-//         model.addAttribute("page", "movie/movieRes.jsp");
-//          
-//          result = "view";
-//       }
-//       return result;
-////       return "movie/movieRes";
-//    }
-   
    @RequestMapping(value="/reservemovie" , method = {RequestMethod.GET, RequestMethod.POST})
    public String movieInfo(MovieDTO dto, Model model, HttpSession session) {
        
@@ -90,7 +64,6 @@ public class ReserveContorller {
           result = "view";
        }
        return result;
-//       return "movie/movieRes";
     }
    
    
@@ -130,7 +103,6 @@ public class ReserveContorller {
    public String kakaojsp(KakaopayDTO dto,@RequestParam int ousepoint,Model model, HttpSession session) {
 
       
-  //    System.out.println("사용포인트: "+ousepoint);
        String member_id=(String)session.getAttribute("loginId");
        String result = null;
        if(member_id==null) {

@@ -29,7 +29,7 @@
 	
 	<select id="getMoviePostList" resultType="com.film.dto.PostDTO">
 		SELECT @rownum:=@rownum+1 AS post_no, post.*
-		FROM (SELECT  fm.movieNm, COUNT(fm.movieNm) AS post_count,fm.image AS image
+		FROM (SELECT  fm.movieNm, COUNT(fm.movieNm) AS post_count,fm.image AS image, fm.movieCd
 		FROM filmbox_post fp 
 		INNER JOIN filmbox_movie fm ON fp.movieNm = fm.movieNm
 		GROUP BY 1 ORDER BY 2 DESC 
