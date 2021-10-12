@@ -32,7 +32,7 @@
  		</div>
  	</div>
  	<!-- right -->
- 		<form method="post" action="/productUpdateAction" class="col-xs-8" id="product_info">
+ 		<form method="post" action="/productUpdateAction" class="col-xs-8" id="product_info" enctype="multipart/form-data">
  			<table class="table table-striped">
  			<thead>
  				<tr><th colspan="2" class="text-center" id="t_header">상품 수정</th></tr>
@@ -93,8 +93,8 @@
  						<label>상품 이미지</label>
  					</td>
  					<td>
- 						<img src="${dto.product_img }" alt="img" width="150px" height="150px" class="img-thumbnail">
- 						<input type="file" id="product_img" name="product_img">
+ 						<%-- <img src="${dto.product_img }" alt="img" width="150px" height="150px" class="img-thumbnail"> --%>
+ 						<input type="file" id="productfile" name="productfile">
  					</td>
  				</tr>
 

@@ -42,6 +42,12 @@
 		FROM filmbox_post
 		where post_no=#{post_no}
 	</select>
+	
+	<insert id="subpostadd" parameterType="com.film.dto.SubPostDTO" >
+		insert into filmbox_postsub (post_no, subcontent, member_id)
+		values (#{post_no}, #{subcontent}, #{member_id})
+	
+	</insert>
 </mapper>
     
     

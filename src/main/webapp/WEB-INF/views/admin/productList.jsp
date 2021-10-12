@@ -32,7 +32,7 @@
 					</div>
 				</div>
 				<!-- right -->
-				<div id="product_info" class="col-xs-8">
+			<div id="product_info" class="col-xs-8">
 				<table class="table table-hover" id="p_table">
 					<thead>
 						<tr>
@@ -45,7 +45,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="item" items="${productList }">
+						<c:forEach var="item" items="${productlist }">
 						<tr>
 							<td><label>${item.product_no }</label></td>
 							<td><a href="productDetail/${item.product_no }">${item.product_name }</a></td>
@@ -63,10 +63,52 @@
 						
 
 					</tbody>
-				</table>
+					</table>
+				
+				
+				<!-- 페이징 -->
+
+				<div class="paging-wrap">
+					<c:if test="${plpage.prev }">
+						<span>
+							<a href="productList?currPage=${plpage.startBlock-1 }">
+								<c:out value="이전"/>
+							</a>
+						</span>
+					</c:if>
+	
+					<c:forEach var="index" begin="${plpage.startBlock }" end="${plpage.endBlock }">
+						<c:if test="${index==plpage.currPage }">
+							<span class="now_page">
+								<c:out value="${index }"/>
+							</span>
+						</c:if>
+						<c:if test="${index!=plpage.currPage }">
+							<span class="etc_page">
+								<a href="productList?currPage=${index }">
+									<c:out value="${index }"/>
+								</a>
+							</span>
+						</c:if>
+					</c:forEach>
+	
+					<c:if test="${plpage.next }">
+						<span>
+							<a href="productList?currPage=${plpage.endBlock+1 }">
+								<c:out value="다음"/>
+							</a>
+						</span>
+					</c:if>
 				</div>
+
+				</div>
+				
 			</div>
 		</div>
+		
+		
+		
+		
 	</div>
 	
 	<!-- 상품 삭제 modal -->

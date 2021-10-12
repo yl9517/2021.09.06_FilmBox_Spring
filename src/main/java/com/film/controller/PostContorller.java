@@ -30,6 +30,7 @@ import com.film.dto.PostDTO;
 import com.film.dto.ProductDTO;
 import com.film.dto.ReserveDTO;
 import com.film.dto.ScreenDTO;
+import com.film.dto.SubPostDTO;
 import com.film.dto.UserDTO;
 import com.film.service.MovieService;
 import com.film.service.PostService;
@@ -125,13 +126,26 @@ public class PostContorller {
 		return "redirect:/post";
 	}
 	@GetMapping("/postdetail/{post_no}")
-	public String postdetail(@PathVariable int post_no, Model model) {
+	public String postdetail(@PathVariable int post_no, Model model, HttpSession session) {
 		PostDTO dto = postservice.postdetail(post_no);
-		
+		String member_id = (String) session.getAttribute("loginId");
+
 		model.addAttribute("dto",dto);
+		model.addAttribute("member_id",member_id);
 		model.addAttribute("page","post/postDetail.jsp");
 		
 		return "view";
 	}
+	
+	@PostMapping("/subpostinsert")
+	public String subpostadd(SubPostDTO dto,Model model, HttpSession session) {
+		System.out.println(dto.toString());
+		String member_id = (String) session.getAttribute("loginId");
+		postservice.subpostadd(dto);
+		
+		return "redirect:/postdetail/"+dto.getPost_no();
+		
+	}
+	
 	
 }

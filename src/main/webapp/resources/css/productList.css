@@ -31,3 +31,31 @@
 #p_table{
 	text-align: center;
 }
+
+/* 페이징 */
+.paging-wrap{
+	font-size: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.paging-wrap span{
+	margin: 3px 4px;
+	padding: 3px 8px;
+}
+.now_page{
+	border-radius: 3px;
+	border: 1px solid #9795A3;
+}
+.etc_page a{
+	text-decoration: none;
+	color: #606060;
+}
+.etc_page a:hover{
+	text-decoration: none;
+	color: white;
+}
+.etc_page:hover{
+	background-color: #9795A3;
+	border-radius: 3px;
+}
