@@ -40,7 +40,39 @@
 			</tbody>
 		</table>
 	</div>
+<nav>
+<div id="paging-wrap">
+	<c:if test="${ppage.prev }">
+		<div>
+			<a href="mypointlist?currPage=${page.startBlock-1 }">
+				<c:out value="이전"/>
+			</a>
+		</div>
+	</c:if>
 	
+	<c:forEach var="index" begin="${ppage.startBlock }" end="${ppage.endBlock }">
+		<c:if test="${index==ppage.currPage }">
+				<div class="now_page"><c:out value="${index }"/></div>
+		</c:if>
+		<c:if test="${index!=ppage.currPage }">
+			<div class="etc_page">
+				<a href="mypointlist?currPage=${index }">
+					<c:out value="${index }"/>
+				</a>
+			</div>
+		</c:if>
+	</c:forEach>
+	
+	<c:if test="${ppage.next }">
+		<div>
+			<a href="mypointlist?currPage=${ppage.endBlock+1 }">
+				<c:out value="다음"/>
+			</a>
+		</div>
+	</c:if>
+</div>
+</nav>
+
 </div>
 
 </section>

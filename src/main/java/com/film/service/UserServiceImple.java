@@ -1,5 +1,6 @@
 package com.film.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,21 +127,32 @@ public class UserServiceImple implements UserService {
 	}
 
 	@Override
-	public List<PointDTO> getMyPoints(String member_id) {
-		// TODO Auto-generated method stub
-		return pointMapper.getMyPoints(member_id);
-	}
-
-	@Override
-	public List<MypageDTO> getRsvData(String member_id) {
-		// TODO Auto-generated method stub
+	public List<MypageDTO> getRsvData(String member_id) 
+	{
 		return mapper.getRsvData(member_id);
 	}
 
 	@Override
-	public String getPoster(String movieNm) {
-		// TODO Auto-generated method stub
+	public String getPoster(String movieNm) 
+	{
 		return mapper.getPoster(movieNm);
+	}
+
+	@Override
+	public int totalCount(String member_id) 
+	{
+		return mapper.totalCount(member_id);
+	}
+
+	@Override
+	public List<PointDTO> getMyPointList(String member_id, int startRow, int endRow) 
+	{
+		HashMap<String, Object> hmap = new HashMap<String, Object>();
+		hmap.put("member_id", member_id);
+		hmap.put("startRow", startRow);
+		hmap.put("endRow", endRow);
+		
+		return pointMapper.getMyPointList(hmap);
 	}
 
 

@@ -34,8 +34,8 @@ public class ReserveServiceImple implements ReserveService {
 		MovieDTO getMovie = mvMapper.getMovie(dto.getMovieCd());
 		
 		if(dto.getUsepoint() > 0) {
-			PointDTO usepoint = new PointDTO(dto.getMember_id(), -dto.getUsepoint(), "("+getMovie.getMovieNm()+") 예매 포인트사용");
-			pointMapper.changePoint(usepoint);	//포인트사용
+			PointDTO usepoint = new PointDTO(dto.getMember_id(), -dto.getUsepoint(), "("+getMovie.getMovieNm()+") 예매 포인트사용", dto.getRev_no());
+			pointMapper.changePointR(usepoint);	//포인트사용
 		}
 		 PointDTO pointdto = new PointDTO(dto.getMember_id(), (int) (dto.getPayMoney()*0.05), "("+getMovie.getMovieNm()+") 예매 포인트적립");//포인트 적립
 		 pointMapper.changePoint(pointdto); //포인트 적립
@@ -69,13 +69,20 @@ public class ReserveServiceImple implements ReserveService {
 	public Integer revCancel(int rev_no) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		if( reMapper.reserveCancel(rev_no) != null) {
+		if( reMapper.reserveCancel(rev_no) != null) 
+		{
 			result =  reMapper.reserveCancel(rev_no);	//update rev_condition 2
 			KakaopayDTO dto = reMapper.getRevData(rev_no);
 			
-			MovieDTO getMovie = mvMapper.getMovie(dto.getMovieCd());
-			PointDTO usepoint = new PointDTO(dto.getMember_id(), (int) -(dto.getPayMoney()*0.05), "("+getMovie.getMovieNm()+") 예매 취소 포인트회수");//예매포인트 회수
-			 pointMapper.changePoint(usepoint); //포인트 회수
+			MovieDTO getMovie = mvMapper.getMovie(dto.getMovieCd());	//영화 정보
+			
+			PointDTO pdto =pointMapper.getUsePointData(rev_no);
+			if(pdto.getRev_no()!= 0) {
+				PointDTO usepoint = new PointDTO(pdto.getMember_id(), -(pdto.getPoint()), "("+getMovie.getMovieNm()+") 예매취소 - 사용 포인트회수");
+				pointMapper.changePoint(usepoint);	//사용 포인트 회수
+			}
+			PointDTO pointdto = new PointDTO(dto.getMember_id(), (int) -(dto.getPayMoney()*0.05), "("+getMovie.getMovieNm()+") 예매취소 - 적립 포인트회수");//예매포인트 회수
+			 pointMapper.changePoint(pointdto); //적립 포인트 회수
 			
 			userMapper.updateMyPoint(dto.getMember_id()); //회원테이블 업뎃(포인트)
 		}

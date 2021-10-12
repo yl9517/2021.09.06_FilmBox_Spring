@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.film.dto.CouponDTO;
 import com.film.dto.MovieDTO;
 import com.film.dto.MypageDTO;
+import com.film.dto.NoticePageDTO;
 import com.film.dto.PointDTO;
 import com.film.dto.UserDTO;
 import com.film.service.CouponService;
@@ -127,13 +128,24 @@ public class UserContoller {
 	}
 	//마이페이지>내 포인트 내역
 	@GetMapping("/mypointlist")
-	public String mypointlist(HttpSession session, Model model) {
-
+	public String mypointlist(@RequestParam(required = false, defaultValue = "1") int currPage
+								, HttpSession session
+								, Model model) 
+	{
 		String member_id=(String)session.getAttribute("loginId");
-		List<PointDTO> pointList = service.getMyPoints(member_id);
+			
+		//전체 자료수 확인
+		int totalCount = service.totalCount(member_id);
+		int pageSize = 10;
+		int blockSize = 5;
+			
+		NoticePageDTO ppage = new NoticePageDTO(currPage, totalCount, pageSize, blockSize);
+		List<PointDTO> pointList = service.getMyPointList(member_id, ppage.getStartRow(), ppage.getEndRow());
+			
 		UserDTO dto=service.userDetail(member_id);
-		
+			
 		model.addAttribute("pointList", pointList);
+		model.addAttribute("ppage", ppage);
 		model.addAttribute("dto", dto);
 		model.addAttribute("page","user/mypointlist.jsp");
 

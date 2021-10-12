@@ -2,7 +2,7 @@
  * 
  */
 let plusMinus = document.getElementsByClassName("plus_minus");
-console.log(plusMinus);
+
 for(let i=0; i<plusMinus.length; i++){
 	
 	if(plusMinus[i].innerText.indexOf("-") == -1)

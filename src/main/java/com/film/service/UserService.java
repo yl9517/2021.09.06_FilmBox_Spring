@@ -35,9 +35,11 @@ public interface UserService {
 	
 	public List<MypageDTO> getRsvData(String member_id);
 
-	public List<PointDTO> getMyPoints(String member_id);
-
 	public String getPoster(String movieNm);
+
+	public int totalCount(String member_id);
+
+	public List<PointDTO> getMyPointList(String member_id, int startRow, int endRow);
 
 	
 

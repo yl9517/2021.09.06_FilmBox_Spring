@@ -38,5 +38,7 @@ public interface UserMapper {
 
 	public String getPoster(String movieNm);
 
+	public int totalCount(String member_id);
+
 	
 }

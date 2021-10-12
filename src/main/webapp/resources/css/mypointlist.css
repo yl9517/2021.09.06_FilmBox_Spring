@@ -49,3 +49,31 @@
 .coin{
 	margin: 3%;
 }
+/* 페이징 */
+#paging-wrap{
+	font-size: 23px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.now_page{
+	color: #7F9871;
+}
+.now_page:hover{
+	color: #7F9871;
+}
+.etc-page{
+	padding: 10px;
+}
+.etc_page a{
+	text-decoration: none;
+	color: #606060;
+}
+.etc_page a:link{
+	text-decoration: none;
+	color: #606060;
+}
+.etc_page a:hover{
+	background-color: #9795A3;
+	color: white;
+}
