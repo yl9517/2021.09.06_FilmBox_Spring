@@ -7,11 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources\css\mypointlist.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+ crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+ crossorigin="anonymous"></script>
 </head>
 <body>
 <section>
@@ -74,7 +77,48 @@
 	</c:if>
 </div>
 </nav>
-
+		<div class="notice">
+			<h5>포인트 적립 안내</h5>
+			<div class="notice-table-wrap">
+			<table class="table table-bordered table-sm">
+				<thead class="thead-light">
+					<tr>
+						<th>구분</th>
+						<th>내용</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>회원가입</td>
+						<td>일반 회원으로 회원가입시 3000 포인트 적립</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>예매</td>
+						<td>영화 예매시 결제 금액의 5% 포인트 적립</td>
+						<td>예매 취소시 적립 포인트 회수, 예매시 사용한 포인트 회수</td>
+					</tr>
+					<tr>
+						<td>관람평</td>
+						<td>관람평 작성시 500 포인트 적립</td>
+						<td>관람평 삭제시 500 포인트 회수</td>
+					</tr>
+					<tr>
+						<td>쿠폰</td>
+						<td>쿠폰 구매시 결제 금액의 5% 포인트 적립</td>
+					</tr>
+				</tbody>
+			</table>
+				
+				<ul class="notice_more">
+					<li class="notice_more_h">✻참고하세요✻</li>
+					<li>예매 취소는 영화 상영 시작 20분 전까지 가능합니다</li>
+					<li>동일 영화 관람평은 1개만 작성 가능합니다</li>
+				
+				</ul>
+			</div>
+		</div>
 </div>
 
 </section>

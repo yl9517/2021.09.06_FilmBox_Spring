@@ -1,9 +1,16 @@
 /**
  * 
  */
-//'500P 적립' 툴팁
-$('[data-toggle="tooltip"]').tooltip();
+/*유의사항*/
+$( function () {
+    $( '[data-toggle="popover"]' ).popover()
+  } );
 
+
+/*'500P 적립' 툴팁*/
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
 //더보기 누르기 전 스토리 숨기기
 let watched_movie = document.getElementsByClassName("movie_info");
@@ -62,8 +69,8 @@ function insertReview(movieNm, rev_condition)
 	//별 체크 초기화
 	$("input[type=radio]").removeAttr('checked');
 	//modal 창 보여주기
-	$('.confirm_modify').hide();
-	$('.confirm').show();
+	$('#confirm_modify').hide();
+	$('#confirm').show();
 	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
 	$('#review_write').show();
 
@@ -72,7 +79,7 @@ function insertReview(movieNm, rev_condition)
 /*등록버튼 눌렀을 때 insert*/
 function review_insert(movieCd, rev_no)
 {
-	$('.confirm').on('click', function(){
+	$('#confirm').on('click', function(){
 	
 		let review_content =  $('#review_content').val();
 		let review_starpoint =  $('#review_starpoint').val();
@@ -128,8 +135,8 @@ function r_modify_modal(movieCd, movieNm)
 			console.log(data);
 		}
 	});
-	$('.confirm').hide();
-	$('.confirm_modify').show();
+	$('#confirm').hide();
+	$('#confirm_modify').show();
 	$('#review_write').css('box-shadow','rgba(0,0,0,0.8) 0 0 0 9999px');
 	$('#review_write').show();
 	
@@ -139,7 +146,7 @@ function r_modify_modal(movieCd, movieNm)
 /* 수정버튼 눌렀을때 modify */
 function review_modify(movieCd){
 	
-	$('.confirm_modify').on('click', function(){
+	$('#confirm_modify').on('click', function(){
 		
 		let review_content =  $('#review_content').val();
 		let review_starpoint =  $('#review_starpoint').val();
@@ -212,10 +219,12 @@ function checkStar(review_content, review_starpoint) {
 }
 
 /* 리뷰창 닫기 */
-$('.reset').click(function() {
+$('[id^=reset]').click(function() {
 
 	$('#review_write').hide();
 	$('#review_write').css('box-shadow','');
-	$('.confirm_modify').off('click');
-	$('.confirm').off('click');
+	$('#confirm_modify').off('click');
+	$('#confirm').off('click');
+	$('.alarm').empty();
 });
+

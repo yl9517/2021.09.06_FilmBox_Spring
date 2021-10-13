@@ -21,12 +21,15 @@
 .story_h {
 	font-size: 25px;
 	font-weight: bolder;
-	padding-right : 10px;
+	padding-left: 20px;
+	padding-right: 15px;
 }
 
-.story p {
+.story p{
 	font-size: 15px;
 	padding: 0.5%;
+	color: white;
+	margin-right: 5px;
 }
 
 /* 내가 본 영화 리스트 */
@@ -95,7 +98,7 @@ to {
 }
 /* 내 댓글 */
 .content{
-	background-color: #f5f5dc;
+	background-color: #F1F1F1;
 	padding-left: 40px;
 	padding-right: 20px;
 	padding-top: 20px;
@@ -103,6 +106,7 @@ to {
 	width: 600px;
 	border: 1px solid white;
 	border-radius: 10px;
+	font-size: 18px;
 	
 	box-shadow: 0 8px 8px -8px grey;
 }
@@ -114,14 +118,14 @@ to {
 }
 /* 수정 , 삭제 */
 .content div {
-	font-size: 15px;
-	text-decoration: underline;
+	font-size: 16px;
+	font-weight: bolder;
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: flex-end;
 }
 .r_modify, .r_del {
-	color: #1976d2;
+	color: #7F9871;
 }
 .r_modify:hover, .r_del:hover {
 	color: #C94F44;
@@ -151,7 +155,7 @@ to {
 /* 리뷰 창 */
 #review_write {
     width: 700px;
-    height: 500px;
+    height: 480px;
     background-color: white;   
     position: fixed;
     top: 20%;
@@ -173,11 +177,14 @@ to {
     width: 20px;
     cursor: pointer;
 }
-.score h2{
- margin: 10px;
+.tit{
+ 	margin: 15px;
+ 	font-size: 25px;
+ 	font-weight: bolder;
+ 	word-break: normal;
 }
 .score{	
-    padding: 50px 20px 30px 20px;
+    padding: 20px;
 }
 
 .score fieldset{
@@ -207,7 +214,7 @@ to {
     text-shadow: 0 0 0 #AED598; /* 마우스 클릭 체크 */
     transition: all 0.2s;
 }
-.score h2+p{
+.score span+p{
 	width: 560px;
     position: relative;
     top: 10px;

@@ -8,22 +8,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources\css\myfilmstory.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- bootstrap -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+	crossorigin="anonymous"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+
 </head>
 <body>
 
 	<div class="story_wrap">
 		<div class="story">
 			<div class="story_h">나의 필름 스토리</div>
-			<p class="label label-default">${fn:length(myfilmlist)}건</p>
+			<p class="badge bg-danger" data-toggle="popover" data-placement="top"
+				title="유의사항" data-content="동일 영화 관람평은 1개만 작성 가능합니다">
+				${fn:length(myfilmlist)}건
+			</p>
 		</div>
+		
 		<div class="story_list_wrap">
 			<ul id="story_list">
 			<c:choose>
@@ -59,7 +69,7 @@
 														<c:otherwise>
 															<p class="r_modify" onclick="r_modify_modal('${item.movieCd}', '${item.movieNm }'); review_modify('${item.movieCd}');">수정</p>
 															<p class="bar">|</p>
-															<p class="r_del" onclick="r_del_modal('${item.movieCd}')">삭제</p>
+															<p class="r_del" onclick="r_del_modal('${item.movieCd}')"><span class="material-icons">clear</span></p>
 														</c:otherwise>
 													
 													</c:choose>
@@ -70,8 +80,8 @@
 									</c:when>
 									
 									<c:otherwise>
-										<button type="button" class="btn btn-default btn-sm"
-											data-toggle="tooltip" data-placement="right" title="500P 적립" style="font-size: 15px" 
+										<button type="button" class="btn btn-outline-dark"
+											data-toggle="tooltip" data-placement="bottom" title="500P 적립" style="font-size: 15px" 
 											onclick="insertReview('${item.movieNm }', '${item.rev_condition }'); review_insert('${item.movieCd}', '${item.rev_no}');"
 											>관람평 쓰기</button>
 									</c:otherwise>
@@ -99,7 +109,7 @@
 		
 		<div class="more" id="more_movie">
 			<div class="more_open" onclick="showMore()" >더보기</div>
-			<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+			<span class="material-icons">expand_more</span>
 		</div>
 	
 	
@@ -110,10 +120,10 @@
 		<input type="hidden" id="member_id" name="member_id" value="${sessionScope.loginId}">
 			<header class="window_top">
 				<h4>관람평 작성 </h4>
-				<img alt="close" class="reset" src="../resources/img/close.png">
+				<img alt="close" id="reset_x" src="../resources/img/close.png">
 			</header>
 			<div class="score">
-				<h2 class="tit" id="tit"></h2>
+				<span class="tit" id="tit"></span>
 				    <p><input type="text" id="review_starpoint" name="review_starpoint" value="0"> 점</p>
 				    <fieldset>
 				     	<input type="radio" name="rating" value="10" id="rate1"><label for="rate1">⭐</label>
@@ -131,9 +141,9 @@
 				<textarea id="review_content" name="review_content" rows="5" cols="50" placeholder="관람평을 남겨주세요. 스포 및 비방글은 무통보 삭제조치를 받을 수 있습니다."></textarea>
 				<br>
 				<p class="alarm"> 　</p>
-				<button type="button" class="reset" >취소</button>
-				<button type="button" class="confirm">등록</button>
-				<button type="button" class="confirm_modify">수정</button>
+				<button type="button" id="reset" class="btn btn-outline-secondary">취소</button>
+				<button type="button" id="confirm" class="btn btn-outline-danger">등록</button>
+				<button type="button" id="confirm_modify" class="btn btn-outline-danger">수정</button>
 			</div>
 		</div>
 		<!-- </form> -->
