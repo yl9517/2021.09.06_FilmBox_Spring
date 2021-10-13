@@ -12,7 +12,8 @@ public interface ProductMapper {
 
 	public int insertProduct(ProductDTO dto);
 	
-	public List<ProductDTO> getProductList();
+	public List<ProductDTO> getCouponList();
+	public List<ProductDTO> getFoodList();
 
 	public List<ProductDTO> getProductListP(HashMap<String, Object> hmap);
 

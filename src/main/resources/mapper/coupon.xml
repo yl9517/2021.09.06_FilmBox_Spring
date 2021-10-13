@@ -12,10 +12,9 @@
         						, product_no
         						, coupon_count
         						, coupon_price
-        						, coupon_lastdate
-        						, coupon_condition)
+        						, coupon_lastdate)
         	values( #{member_id}, #{product_no}, #{coupon_count},
-        			#{coupon_price}, DATE_ADD(NOW(), INTERVAL 7 DAY), 0 )          
+        			#{coupon_price}, DATE_ADD(NOW(), INTERVAL 7 DAY))          
 </insert>
 
 <!-- 내가 구매한 (사용 안한) 스토어 상품  -->
@@ -29,7 +28,6 @@
 		, coupon_count
 		, coupon_price
 		, coupon_lastdate
-		, coupon_condition
 	from filmbox_coupon as c inner join filmbox_store as s
 	  on c.product_no = s.product_no
 	where member_id = #{member_id} and coupon_count <![CDATA[>]]> 0

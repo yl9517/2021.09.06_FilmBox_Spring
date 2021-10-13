@@ -8,7 +8,8 @@ public interface ProductService {
 
 	public int insertProduct(ProductDTO dto);
 
-	public List<ProductDTO> getProductList();
+	public List<ProductDTO> getCouponList();
+	public List<ProductDTO> getFoodList();
 	
 	public List<ProductDTO> getProductListP(String search, int startRow, int endRow);
 

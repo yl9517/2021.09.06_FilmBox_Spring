@@ -28,35 +28,47 @@
 					<input id="toggle-event" type="checkbox" data-toggle="toggle" data-onstyle="danger" data-size="sm">
 				</div>
 			</c:if>
-			<ul id="productList">
-			<c:forEach var="item" items="${list }">
-				<li>
-					<a href="/store/${item.product_no }">
-						<div class="productimg">
-							<img alt="상품이미지" src="${item.product_img }">
-						</div>
-						<div class="productinfo">
-							<h3>${item.product_name}</h3>
-							<p> ${item.product_content } </p>
-							<div class="productprice"><b>${item.product_price }원</b></div>
-						</div>
-					</a>	
-				</li>
-			</c:forEach>
-
-				<!-- <li>
-					<a href="/store/1">
-						<div class="productimg">
-							<img alt="상품이미지" src="https://cdn.pixabay.com/photo/2019/06/12/07/12/popcorn-4268489_960_720.jpg">
-						</div>
-						<div class="productinfo">
-							<h3>버블버블 버블팝 콤보</h3>
-							<p> 팝콘(R) 2 </p>
-							<div class="productprice"><b>12,000원</b></div>
-						</div>
-					</a>	
-				</li> -->
-
+			
+		<div>
+			<ul class="tab_wrap">
+				<li class="act first_btn">FOOD</li>
+				<li class="second_btn">COUPON</li>
+			</ul> 
+		</div>	
+		
+		
+			<ul class="productList food">
+				<c:forEach var="item" items="${foodlist }">					
+					<li>
+						<a href="/store/${item.product_no }">
+							<div class="productimg">
+								<img alt="상품이미지" src="${item.product_img }">
+							</div>
+							<div class="productinfo">
+								<h3>${item.product_name}</h3>
+								<p> ${item.product_content } </p>
+								<div class="productprice"><b>${item.product_price }원</b></div>
+							</div>
+						</a>	
+					</li>
+				</c:forEach>
+			</ul>
+			
+			<ul class="productList coupon">
+				<c:forEach var="item" items="${couponlist }">					
+					<li>
+						<a href="/store/${item.product_no }">
+							<div class="productimg">
+								<img alt="상품이미지" src="${item.product_img }">
+							</div>
+							<div class="productinfo">
+								<h3>${item.product_name}</h3>
+								<p> ${item.product_content } </p>
+								<div class="productprice"><b>${item.product_price }원</b></div>
+							</div>
+						</a>	
+					</li>
+				</c:forEach>
 			</ul>
 			
 		</div>

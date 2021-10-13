@@ -31,11 +31,13 @@ public class StoreController {
 	@GetMapping("/store")
 	public String store(HttpSession session, Model model) {
 		
-		List<ProductDTO> list = proService.getProductList();
+		List<ProductDTO> couponlist = proService.getCouponList();
+		List<ProductDTO> foodlist = proService.getFoodList();
 		String member_id=(String)session.getAttribute("loginId");
 		
 		model.addAttribute("member_id", member_id);
-		model.addAttribute("list",list);
+		model.addAttribute("couponlist",couponlist);
+		model.addAttribute("foodlist",foodlist);
 		model.addAttribute("page","store/storeList.jsp");
 		
 		return "view";

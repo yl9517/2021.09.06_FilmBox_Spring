@@ -329,7 +329,6 @@ public class MovieServiceImple implements MovieService {
 		
     	String kmdb_URL = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&";
     	String kmdb_KEY = prop.getProperty("kmdbKey");
-    	
 		/*URL*/
 		StringBuilder urlBuilder = new StringBuilder(kmdb_URL);
 		/*Service Key*/

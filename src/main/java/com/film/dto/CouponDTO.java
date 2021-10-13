@@ -15,5 +15,4 @@ public class CouponDTO {
 	private int coupon_count;
 	private int coupon_price;
 	private String coupon_lastdate;
-	private int coupon_condition;
 }

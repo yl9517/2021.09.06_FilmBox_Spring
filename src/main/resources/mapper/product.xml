@@ -18,12 +18,21 @@
         			#{product_img}, #{product_category})
            
 </insert>
-<select id="getProductList" resultType="com.film.dto.ProductDTO">
+<select id="getCouponList" resultType="com.film.dto.ProductDTO">
 	select product_no, product_name
 			, product_content, product_price
 			, product_img, product_category
 	from filmbox_store
+	where product_category = 'coupon'
 </select>
+<select id="getFoodList" resultType="com.film.dto.ProductDTO">
+	select product_no, product_name
+			, product_content, product_price
+			, product_img, product_category
+	from filmbox_store
+	where product_category = 'food'
+</select>
+
 
 <select id="getProductListP" parameterType="hashmap" resultType="com.film.dto.ProductDTO">
 	select *

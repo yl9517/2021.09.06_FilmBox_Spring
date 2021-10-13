@@ -22,9 +22,12 @@ public class ProductServiceImple implements ProductService {
 	}
 	
 	@Override
-	public List<ProductDTO> getProductList() 
-	{
-		return productmapper.getProductList();
+	public List<ProductDTO> getCouponList() {	
+		return productmapper.getCouponList();
+	}
+	@Override
+	public List<ProductDTO> getFoodList() {	
+		return productmapper.getFoodList();
 	}
 	
 	@Override
