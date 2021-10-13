@@ -125,7 +125,7 @@ public class MovieServiceImple implements MovieService {
                 String movieNm = (String) boxOffice.get("movieNm");
                 String openDt = (String) boxOffice.get("openDt");
                 String audiAcc = (String) boxOffice.get("audiAcc");
-                String image = getkmdbData(movieNm,openDt,"image");
+                String image =(String)  getkmdbData(movieNm,openDt,"image");
                 System.out.println("kmdb 이미지"+image);
                 
                 MovieDTO dto = new MovieDTO(rank, movieCd, movieNm, openDt,audiAcc, image);
@@ -139,7 +139,7 @@ public class MovieServiceImple implements MovieService {
 
     }
 	
-	public static String getkmdbData(Object title,Object openDt, String kind) throws IOException {
+	public static Object getkmdbData(Object title,Object openDt, String kind) throws IOException {
 			prop.load(resource.getInputStream());
 		  
 	    	String kmdb_URL = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&";
@@ -182,21 +182,26 @@ public class MovieServiceImple implements MovieService {
 		   JSONArray boxOfficeResult = responseBody.getJSONArray("Data");
 		   JSONObject result = boxOfficeResult.getJSONObject(0).getJSONArray("Result").getJSONObject(0);
 		   
-		   String resultDate = "";
+		   Object resultDate = new Object();
 		   //이미지 뽑기
 		   if(kind.equals("image")) {
 			   String post = (String) result.get("posters");
 			   String[] posti = post.split("\\|");
 			   
 			   resultDate = posti[0];
-		   }else { 
+		   }else if(kind.equals("story")){ 
 			   //줄거리 뽑기
 			   JSONObject plot = result.getJSONObject("plots").getJSONArray("plot").getJSONObject(0);
 			   String plotText = (String) plot.get("plotText");
 			    
 			   resultDate = plotText;
+		   }else {
+			   //스틸컷
+			   String stlls = (String) result.get("stlls");
+			   String[] stll = stlls.split("\\|");
+			   
+			   resultDate = stll;
 		   }
-		   
 			return resultDate;
 	}
        
@@ -246,8 +251,11 @@ public class MovieServiceImple implements MovieService {
             map.put("showTm", movieInfo.get("showTm")); //상영시간
             map.put("openDt", movieInfo.get("openDt")); //개봉일
             
-            String plotText = getkmdbData(movieInfo.get("movieNm"), movieInfo.get("openDt"), "story"); //줄거리
+            String plotText =(String)  getkmdbData(movieInfo.get("movieNm"), movieInfo.get("openDt"), "story"); //줄거리
             map.put("plotText", plotText);
+            
+            String[] stll = (String[]) getkmdbData(movieInfo.get("movieNm"), movieInfo.get("openDt"), "stll"); //줄거리
+            map.put("stll", stll);
            
             JSONArray list1 = movieInfo.getJSONArray("genres"); //장르 -genreNm
             JSONArray list2 = movieInfo.getJSONArray("directors"); //감독 -peopleNm

@@ -72,12 +72,18 @@ function replaceAll(str) {
 				
 				let replace_text = replaceAll(data.plotText,".",". <br>")
 				$(".rgyPostIt").append(replace_text);
+				
+				let stlls = "";
+				
+				$.each(data.stll, function(index, st){
+					stlls = "<img class='stll' alt='stllcut' src="+st+">";
+					$(".stllcut").append(stlls);
+				});
 		}
 		,error:function(data){
 			console.log(data);
 		}
 	});
-
 
 /*리뷰목록, 리뷰 갯수*/
 let reviewCount = 0;
