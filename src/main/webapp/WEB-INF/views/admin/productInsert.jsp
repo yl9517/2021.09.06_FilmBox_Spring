@@ -79,7 +79,9 @@
  									<label>상품 이미지</label>
  								</td>
  								<td>
- 									<input type="file" id="productfile" name="productfile">
+ 									<img src="..\resources\img\add-image.png" id="img_section"
+ 										alt="이미지를 첨부해주세요" width="130px" height="130px" class="img-thumbnail">
+ 									<input type="file" id="productfile" name="productfile" onchange="imgPreview(event)">
  								</td>
  							</tr>
  						</tbody>
@@ -93,5 +95,6 @@
 			</div>
  		</div>
  </div>
+ <script type="text/javascript" src="..\resources\js\productInsert.js"></script>
 </body>
 </html>

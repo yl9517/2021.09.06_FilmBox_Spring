@@ -36,8 +36,8 @@
 			<div id="product_info" class="col-xs-8">
 				<div class="text-center" id="t_header">상품 목록</div>
 				<form method="get" action="/productList" class="search-tab">
-					<select name="search" class="form-control form-control" style="width:140px">
-						<option selected>-상품 종류-</option>
+					<select name="search" class="form-control form-control" style="width:155px">
+						<option selected>--상품 종류--</option>
 						<option value="coupon">쿠폰</option>
 						<option value="food">팝콘/음료</option>
 					</select>

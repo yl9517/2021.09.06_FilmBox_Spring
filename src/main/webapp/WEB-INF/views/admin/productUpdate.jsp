@@ -91,8 +91,9 @@
  								<label>상품 이미지</label>
  							</td>
  							<td>
- 								<%-- <img src="${dto.product_img }" alt="img" width="150px" height="150px" class="img-thumbnail"> --%>
- 								<input type="file" id="productfile" name="productfile">
+ 								<img src="${dto.product_img }" id="img_section"
+ 										alt="img" width="130px" height="130px" class="img-thumbnail">
+ 								<input type="file" id="productfile" name="productfile" onchange="imgPreview(event)">
  							</td>
  						</tr>
 
@@ -107,5 +108,6 @@
 			</div>
  		</div>
  </div>
+ <script type="text/javascript" src="..\resources\js\productUpdate.js"></script>
 </body>
 </html>
