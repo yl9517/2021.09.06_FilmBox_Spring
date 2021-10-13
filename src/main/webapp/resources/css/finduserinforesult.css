@@ -3,7 +3,6 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: 'ONE-Mobile-Regular', cursive!important;
 }
 
 
@@ -17,12 +16,14 @@ body{
 }
 
 .mid{
-	height : 100vh;
 	display : flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	color : whitesmoke;
+	margin: 0 auto;
+	padding: 15%;
+	min-height: 10%;
 }
 
 #result_id{

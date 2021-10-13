@@ -1,17 +1,10 @@
 @charset "UTF-8";
 
-@font-face {
-	font-family: 'ONE-Mobile-Regular';
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
 
 *{
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: 'ONE-Mobile-Regular', cursive!important;
 	-ms-user-select: none;
 	-moz-user-select: -moz-none; 
 	-webkit-user-select: none; 
@@ -24,7 +17,6 @@
 }
 
 body { 
-	min-height: 100vh;
   	background: -webkit-gradient(linear, left bottom, right top, from(#202126), to(#202126));
 	background: -webkit-linear-gradient(bottom left, #202126 0%, #202126 0%);
 	background: -moz-linear-gradient(bottom left, #202126 0%, #202126 0%); 
@@ -32,8 +24,14 @@ body {
 	background: linear-gradient(to top right, #202126 0%, #202126 0%);  
 }
 
-mid{
-
+.mid{
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	padding: 5%;
+	min-height: 10%;
 }
 
 .container{
@@ -50,13 +48,11 @@ mid{
 	-webkit-border-radius: 10px; 
 	-moz-border-radius: 10px; 
 	border-radius: 10px; 
-	/* -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); 
-	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); 
-	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); */
-	} 
+} 
 	
 input[type=password] { 
 	font-family:'Malgun gothic', dotum, sans-serif!important;
+	font-size : 15px!important;
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {

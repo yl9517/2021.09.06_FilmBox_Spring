@@ -21,33 +21,22 @@
 <!-- 4.4.0 -->
 </head>
 <style>
-	/* 아이디 사용 가능 */
-	#id_check1{
+	/* 아이디, 이메일 사용 가능 */
+	#id_check1, #email_check1{
 		color : blue;
 		display : none;
 		font-size : 12px;
 	}
-	/* 중복 아이디 존재 */
-	#id_check2{
+	/* 중복 아이디, 이메일 존재 */
+	#id_check2, #email_check2{
 		color : red;
 		display : none;
 		font-size : 12px;
 	}
 	
-	/* email 사용 가능 */
-	#email_check1{
-		color : blue;
-		display : none;
-		font-size : 12px;
-	}
-	/* 중복 email 존재 */
-	#email_check2{
-		color : red;
-		display : none;
-		font-size : 12px;
-	}
 </style>
 <body>
+<div class="mid">
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-8">
             <form name='nJoin' role="form" id="joinForm" method="post" autocomplete="off">
@@ -276,6 +265,7 @@
 
    </form> 
  </div> 
+</div>
 </div>
 </div>
 

@@ -1,21 +1,11 @@
 
-@font-face {
-	font-family: 'ONE-Mobile-Regular';
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-
 *{
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: 'ONE-Mobile-Regular', cursive!important;
 }
 
 body{
-	height : 100vh;
 	background-color: #202126!important;
 	-ms-user-select: none;
 	-moz-user-select: -moz-none; 
@@ -29,21 +19,14 @@ body{
 	flex-direction : column;
 	justify-content: center;
 	align-items: center;
+	margin: 0 auto;
+	padding: 15%;
+	min-height: 20%;
 }
 
 .form{
 	margin-top : 20px;
 	color : white;
-}
-
-.mid h2{
-	width : 100%;
-	text-align: center;
-	margin-bottom : 100px!important;
-	font-weight: 700!important;
-	background-color: #9795A3;
-	padding : 20px;
-	
 }
 
 h3{

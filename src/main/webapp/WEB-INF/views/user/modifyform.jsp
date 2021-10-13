@@ -30,8 +30,7 @@
 </style>
 <body>
 <div class="mid">
-	<h3>회원정보 수정</h3>
-	
+
 <form method="post" action="modifyresult">
 	<label for="member_id">아이디</label><br> 
     <input type="text" name="member_id" id="member_id" class="w3-input w3-border" value="${dto.member_id}" readonly>

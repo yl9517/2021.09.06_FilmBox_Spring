@@ -11,8 +11,6 @@
 </head>
 <body>
 <div class="mid">
-<h2>회원정보 수정</h2>
-<br>
 <h3>회원님의 개인정보 보호를 위해 비밀번호를 확인합니다.</h3>
 <br>
 <form method="post" action="myinfo" class="form">
