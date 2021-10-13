@@ -1,5 +1,6 @@
 package com.film.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,10 +52,21 @@ public class PostServiceImple implements PostService {
 		postMapper.subpostadd(dto);
 	}
 
+//	@Override
+//	public List<SubPostDTO> subdetail(int post_no) {
+//		// TODO Auto-generated method stub
+//
+//		return postMapper.subdetail(post_no);
+//	}
 	@Override
-	public List<SubPostDTO> subdetail(int post_no) {
+	public List<SubPostDTO> subdetail(int startrow, int endrow) {
 		// TODO Auto-generated method stub
-		return postMapper.subdetail(post_no);
+
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("startrow", startrow);
+		hm.put("endrow", endrow);
+		
+		return postMapper.subdetail(hm);
 	}
 
 	@Override
@@ -68,5 +80,7 @@ public class PostServiceImple implements PostService {
 		// TODO Auto-generated method stub
 		return postMapper.subcount(post_no);
 	}
+
+	
 
 }

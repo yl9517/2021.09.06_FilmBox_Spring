@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,7 @@ import com.film.dto.ProductDTO;
 import com.film.dto.ReserveDTO;
 import com.film.dto.ScreenDTO;
 import com.film.dto.SubPostDTO;
+import com.film.dto.SubPostPage;
 import com.film.dto.UserDTO;
 import com.film.service.MovieService;
 import com.film.service.PostService;
@@ -124,18 +126,25 @@ public class PostContorller {
 		postservice.insertPost(dto);
 		return "redirect:/post";
 	}
-	@GetMapping("/postdetail/{post_no}")
-	public String postdetail(@PathVariable int post_no, Model model, HttpSession session) {
-
-		List<SubPostDTO> sublist = postservice.subdetail(post_no); 
+	@RequestMapping("/postdetail/{post_no}")
+	public String postdetail(@RequestParam(required = false,defaultValue ="1")  int currPage,
+			@PathVariable int post_no, Model model, HttpSession session) {
 		int subcount= postservice.subcount(post_no);
 		PostDTO dto = postservice.postdetail(post_no);
 		String member_id = (String) session.getAttribute("loginId");
+		
+		int pagesize=5;
+		int blocksize=5;
+		
+		SubPostPage subpage = new SubPostPage(currPage, subcount,pagesize,blocksize);
 
+//		List<SubPostDTO> sublist = postservice.subdetail(post_no);
+		List<SubPostDTO> sublist = postservice.subdetail(subpage.getStartRow(),subpage.getEndRow());
 		model.addAttribute("dto",dto);
 		model.addAttribute("subcount",subcount);
 		model.addAttribute("member_id",member_id);
 		model.addAttribute("sublist",sublist);
+		model.addAttribute("subpage",subpage);
 		model.addAttribute("page","post/postDetail.jsp");
 		
 		return "view";

@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.film.mapper.PostMapper">
 
+
 	
 	<select id="getPostList" resultType="com.film.dto.PostDTO">
 		SELECT post_no, member_id, post_content, movieNm,image, post_date
@@ -49,12 +50,12 @@
 	
 	</insert>
 	
-	<select id="subdetail" resultType="com.film.dto.SubPostDTO" parameterType="int">
+	<!-- <select id="subdetail" resultType="com.film.dto.SubPostDTO" parameterType="int">
 		SELECT subno,post_no, subcontent,member_id,sub_date 
 		FROM filmbox_postsub
 		WHERE post_no = #{post_no}
 	
-	</select>
+	</select> -->
 	
 	<delete id="subDelete" parameterType="int">
 		delete from filmbox_postsub where subno=#{subno}
@@ -64,6 +65,31 @@
 	SELECT COUNT(*) FROM filmbox_postsub
 	WHERE post_no = #{post_no}
 	</select>
+	<select id="subdetail" parameterType="java.util.HashMap" resultType="com.film.dto.SubPostDTO">
+	SELECT s.* FROM (
+	SELECT @rownum:=@rownum+1 AS rnum, post.*
+		FROM (SELECT subno,post_no, subcontent,member_id,sub_date
+		FROM filmbox_postsub WHERE post_no=24) post
+		WHERE (@rownum:=0)=0 ) s
+	WHERE rnum BETWEEN #{startrow} AND #{endrow}
+	
+	</select>
+<!-- </select>
+	<select id="subdetail" parameterMap="hashmap" resultType="com.film.dto.SubPostDTO">
+	SELECT * 
+	FROM (
+       SELECT S.* ,                    
+             @rownum:=@rownum+1 rnum         
+       FROM ( SELECT subno,post_no, subcontent,member_id,sub_date
+       FROM filmbox_postsub                  
+	,( SELECT @ROWNUM := 0 ) R 
+	WHERE 1=1   ) S              
+                 ORDER BY subno ASC ) AS A 
+	WHERE  rnum BETWEEN #{startrow} AND #{endrow} 
+		
+</select> -->
+	
+	
 </mapper>
     
     

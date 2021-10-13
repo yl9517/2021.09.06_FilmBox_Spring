@@ -14,7 +14,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.film.dto.KakaopayDTO;
 import com.film.dto.ScreenDTO;
+import com.film.dto.SubPostDTO;
+import com.film.dto.SubPostPage;
+import com.film.mapper.PostMapper;
 import com.film.mapper.ReserveMapper;
+import com.film.service.PostService;
 import com.film.service.ReserveService;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -25,16 +29,15 @@ public class resreveTest {
 	@Autowired
 	private HikariDataSource ds;
 
-	@Resource(name = "reserveservice")
-	private ReserveService reservice;
 	@Autowired
-	private ReserveMapper mapper;
+	private PostService postservice;
+	@Autowired
+	private PostMapper mapper;
 	@Test
 	public void t1() {
-		KakaopayDTO dto = new KakaopayDTO();
-		dto.setSelectmovie("보이스");
-		KakaopayDTO mv= reservice.getmoviecd(dto);
-		System.out.println(mv.getMovieCd());
+		SubPostPage subpage = new SubPostPage(1, 6,5,5);
+		List<SubPostDTO> sublist = postservice.subdetail(subpage.getStartRow(),subpage.getEndRow());
+		System.out.println(sublist.toString());
 		
 	}
 	
