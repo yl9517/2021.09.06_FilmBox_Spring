@@ -122,16 +122,20 @@ public class PostContorller {
 		PostDTO dto = new PostDTO(member_id,post_content,movieNm,filename);
 		
 		postservice.insertPost(dto);
-//   	return "testfile";
 		return "redirect:/post";
 	}
 	@GetMapping("/postdetail/{post_no}")
 	public String postdetail(@PathVariable int post_no, Model model, HttpSession session) {
+
+		List<SubPostDTO> sublist = postservice.subdetail(post_no); 
+		int subcount= postservice.subcount(post_no);
 		PostDTO dto = postservice.postdetail(post_no);
 		String member_id = (String) session.getAttribute("loginId");
 
 		model.addAttribute("dto",dto);
+		model.addAttribute("subcount",subcount);
 		model.addAttribute("member_id",member_id);
+		model.addAttribute("sublist",sublist);
 		model.addAttribute("page","post/postDetail.jsp");
 		
 		return "view";
@@ -140,11 +144,15 @@ public class PostContorller {
 	@PostMapping("/subpostinsert")
 	public String subpostadd(SubPostDTO dto,Model model, HttpSession session) {
 		System.out.println(dto.toString());
-		String member_id = (String) session.getAttribute("loginId");
 		postservice.subpostadd(dto);
 		
 		return "redirect:/postdetail/"+dto.getPost_no();
 		
+	}
+	@GetMapping("/subDelete/{subno}/{post_no}")
+	public String subDelete(@PathVariable int subno,@PathVariable int post_no, Model model, HttpSession session){
+		postservice.subDelete(subno);
+		return "redirect:/postdetail/"+post_no;
 	}
 	
 	

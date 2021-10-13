@@ -22,4 +22,10 @@ public interface PostMapper {
 
 	public void subpostadd(SubPostDTO dto);
 
+	public List<SubPostDTO> subdetail(int post_no);
+
+	public void subDelete(int subno);
+
+	public int subcount(int post_no);
+
 }

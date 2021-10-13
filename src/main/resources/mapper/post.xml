@@ -44,10 +44,26 @@
 	</select>
 	
 	<insert id="subpostadd" parameterType="com.film.dto.SubPostDTO" >
-		insert into filmbox_postsub (post_no, subcontent, member_id)
-		values (#{post_no}, #{subcontent}, #{member_id})
+		insert into filmbox_postsub (post_no, subcontent, member_id, sub_date)
+		values (#{post_no}, #{subcontent}, #{member_id}, now())
 	
 	</insert>
+	
+	<select id="subdetail" resultType="com.film.dto.SubPostDTO" parameterType="int">
+		SELECT subno,post_no, subcontent,member_id,sub_date 
+		FROM filmbox_postsub
+		WHERE post_no = #{post_no}
+	
+	</select>
+	
+	<delete id="subDelete" parameterType="int">
+		delete from filmbox_postsub where subno=#{subno}
+	</delete>
+	
+	<select id="subcount" resultType="int" parameterType="int">
+	SELECT COUNT(*) FROM filmbox_postsub
+	WHERE post_no = #{post_no}
+	</select>
 </mapper>
     
     

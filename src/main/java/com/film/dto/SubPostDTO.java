@@ -12,9 +12,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class SubPostDTO {
-	private int sub_no;
+	private int subno;
 	private int post_no;
 	private String subcontent;
 	private String member_id;
-
+	private String sub_date;
 }

@@ -12,12 +12,15 @@
 * {
     box-sizing: border-box;
 }
-
+/* .layer-con {
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 20px 20px 0 20px;
+} */
 .post-detail {
     width: 100%;
     position: relative;
 }
-.post-detail .tit-area {
     overflow: hidden;
     position: relative;
     min-height: 50px;
@@ -91,20 +94,70 @@ img {
 }
 
 
+.form{
+	margin: 0 auto;
+	padding: 0 10%;
+	min-height: 10%;
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
+	width : 1100px;
+}
+.form .top-comment-add{
+    float: left;
+    position: relative;
+	
+}
 
+textarea{
+	padding : 15px;
+	width:800px; 
+	height:50px; 
+    resize:none;
+    margin-top : 10px;
+    font-size : 16px!important;
+    border-radius: 5px;
+    background-color : gainsboro;
+}
 
+ul.review {
+    padding: 0px 20px;
+    list-style: none;
+    margin-bottom: 0px;
+    width: 798px;
+    
+    align-items: center;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.review li {
+    margin: 25px 0;
+}
+.user_info {
+    margin: 10px 0;
+}
+.review .userName {
+    margin-right: 10px;
+    font-size: 16px;
+}
+.write_date {
+    float: right;
+    font-size: 13px;
+    position: relative;
+    top: 10px;
+    right: 20px;
+}
 
+.write_btn{
 
-
-
-
-
-
-
-
-
-
-
+    float: right;	
+}
+.subdelete{
+    float: right;	
+}
 
 
 

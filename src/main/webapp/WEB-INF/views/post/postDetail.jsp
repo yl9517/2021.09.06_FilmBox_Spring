@@ -8,14 +8,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/postDetail.css">
+<script>
+	function subDelete(subno,post_no)
+	{
+		location.href="/subDelete/"+subno+"/"+post_no;
+	}
+</script>
 </head>
 <body>
 <div class="layer-con">
-	<div class="post_detail"><%-- 
-		<div class="tit-area mb30">
-			<p class="tit">${dto.movieNm }</p>
-		</div>
-		 --%>
+	<div class="post_detail">
 		<div class="user-post-box mb40">
 			<div class="user-post-case">
 				<div class="post-top-area">
@@ -36,10 +38,11 @@
 			</div>
 		</div>
 
-			<form class="form" method="post" action="/subpostinsert">
+		<div class="form" id="commentList">
+			<form class="form_" method="post" action="/subpostinsert">
 
-				<div class=top-comment-add>
-					<div class="post_witer">댓글</div>
+				<div class="top-comment-add">
+					<div class="post_witer">댓글작성</div>
 				</div>
 				<c:choose>
 					<c:when test="${member_id eq null}">
@@ -63,13 +66,41 @@
 				
 			</form>
 
-			<div class="comment-list" id="commentList">
-		
+			<ul class="review">
+			<li>
+			<div class="subpost_list">댓글 (${subcount })</div>
+			</li>
+			<c:choose>
+				<c:when test="${subcount eq 0}">
+				<li class="review_li">
+					<span>첫번째 댓글의 주인공이 되어보세요!</span>
+				</li>
+				</c:when>
+				
+				<c:otherwise>
+			<c:forEach var="item" items="${sublist }">
+				<li class="review_li">
+					<div class="user_info">
+						<span class="userName">${item.member_id }</span>
+						<span class="write_date">${item.sub_date }</span>
+					</div>
+					<div>
+						<span>${item.subcontent }</span>
+					<c:if test="${member_id eq item.member_id}">
+						<input type="button" class="subdelete" id="subdelete" value="X" onclick="subDelete(${item.subno },${item.post_no })">
+					</c:if>
+				
+					</div>
+				</li>
+			</c:forEach>
+				
+				</c:otherwise>
+			</c:choose>
+			
+			</ul>
 		</div>
 	</div>
 </div>
-
-	
 	<script src="/resources/js/postDetail.js"></script>
 </body>
 </html>
