@@ -15,7 +15,7 @@
 			,now(), 0)
 		</foreach>
 	   ON DUPLICATE KEY UPDATE <!-- pk가 중복이면 update할 구문 (아래) -->
-	   rank = values(rank) , audiAcc = values(audiAcc), update_date = now()
+	   rank = values(rank) , audiAcc = values(audiAcc), update_date = now() , image = values(image)
 	 </insert>
 
 	<select id="getMovieList" resultType="com.film.dto.MovieDTO">

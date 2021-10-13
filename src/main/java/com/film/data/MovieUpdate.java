@@ -14,10 +14,11 @@ public class MovieUpdate {
 	@Resource(name = "movieservice")
 	private MovieService service;
 	
-//	@Scheduled(fixedRate = 10000) // 테스트
+//	@Scheduled(fixedRate = 20000) // 테스트
 
     @Scheduled(cron = "0 0 1 ? * MON") //매월 매주 월요일, 아무날짜나 오전 1시
 	public void updateList() throws IOException {
+		System.out.println("테스트");
 		service.updateList();
 	}
 }

@@ -56,6 +56,11 @@ public class MovieController {
 	@Resource(name="reserveservice")
 	private ReserveService revService;
 	
+	ClassPathResource resource= new ClassPathResource("moviekey.properties");
+	Properties prop = new Properties();
+	
+	
+	
     @GetMapping("/main")
     public String requestAPI(Model model) {
       
@@ -92,11 +97,9 @@ public class MovieController {
     	MovieDTO dto = service.getMovie(movieCd); //properties
     	ReviewDTO rdto = new ReviewDTO(member_id, movieCd);
     	ReviewDTO myreview = reviewService.getThisReview(rdto);
-    	
-		ClassPathResource resource= new ClassPathResource("moviekey.properties");
-		Properties prop = new Properties();
-		prop.load(resource.getInputStream());
-  
+    
+
+    	prop.load(resource.getInputStream());
     	model.addAttribute("key",prop.getProperty("movieKey"));
     	model.addAttribute("dto",dto);
     	model.addAttribute("myreview",myreview);

@@ -37,6 +37,9 @@ public class MovieServiceImple implements MovieService {
 	@Autowired
 	private MovieMapper mvMapper;
 
+	private static ClassPathResource resource= new ClassPathResource("moviekey.properties");
+	private static Properties prop = new Properties();
+	
 	
 	@Override
 	public List<MovieDTO> getMovieList() {
@@ -63,17 +66,15 @@ public class MovieServiceImple implements MovieService {
 	public List<MovieDTO> getSearchMovieList(String movieNm) {
 		return mvMapper.getSearchMovieList(movieNm);
 	}
+	
 	/* 영화 주간데이터 - 영화제목, 박스오피스, 누적관객, 이미지, 개봉일 */ 
 	public void updateList() throws IOException {
-		ClassPathResource resource= new ClassPathResource("moviekey.properties");
-		Properties prop = new Properties();
 		prop.load(resource.getInputStream());
   
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
     	String AUTH_KEY = prop.getProperty("movieKey");
         SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");  //날짜형식
-        
-        
+          
         //   - 일주일 전 영화데이터 가져오기 (가장 최근데이터임. 실제 이번주껀 아직 없음)
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
@@ -124,7 +125,8 @@ public class MovieServiceImple implements MovieService {
                 String movieNm = (String) boxOffice.get("movieNm");
                 String openDt = (String) boxOffice.get("openDt");
                 String audiAcc = (String) boxOffice.get("audiAcc");
-                String image = getImg(movieNm);
+                String image = getkmdbData(movieNm,openDt,"image");
+                System.out.println("kmdb 이미지"+image);
                 
                 MovieDTO dto = new MovieDTO(rank, movieCd, movieNm, openDt,audiAcc, image);
                 mvList.add(dto);
@@ -136,114 +138,72 @@ public class MovieServiceImple implements MovieService {
         mvMapper.updateList(mvList);
 
     }
-	public static String getImg(String title) throws IOException {
-		
-		ClassPathResource resource= new ClassPathResource("moviekey.properties");
-		Properties prop = new Properties();
-		prop.load(resource.getInputStream());
-		
-        String clientId = prop.getProperty("naverId"); 
-        String clientSecret = prop.getProperty("naverSecret");
-
-        String text = null;
-        try {
-            text = URLEncoder.encode(title, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("검색어 인코딩 실패",e);
-        }
-
-        String apiURL = "https://openapi.naver.com/v1/search/movie?query=" + text;    // json
-
-
-        Map<String, String> requestHeaders = new HashMap<>();
-        requestHeaders.put("X-Naver-Client-Id", clientId);
-        requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-        String responseBody = get(apiURL,requestHeaders);
-      
-        //추가
-        String image = "";
-        try {
-        	JSONParser parser = new JSONParser();
-			Object obj = parser.parse(responseBody);
-			
-			org.json.simple.JSONObject jsonObj = (org.json.simple.JSONObject) obj;
-			org.json.simple.JSONArray getArray = (org.json.simple.JSONArray) jsonObj.get("items");
-			
-			
-//		   for (int i = 0; i < getArray.size(); i++) {
-			if(getArray.size()>=1) {
-                org.json.simple.JSONObject getImg = (org.json.simple.JSONObject) getArray.get(0);
-
-                image = (String) getImg.get("image");
-			}else {
-                image = "https://www.flaticon.com/authors/freepik";  	
-			}
- //            }
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-       return image;
-       
-    }
-
-    private static String get(String apiUrl, Map<String, String> requestHeaders){
-        HttpURLConnection con = connect(apiUrl);
-        try {
-        	
-            con.setRequestMethod("GET");
-            for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
-                con.setRequestProperty(header.getKey(), header.getValue());
-            }
-            
-            int responseCode = con.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
-                return readBody(con.getInputStream());
-            } else { // 에러 발생
-                return readBody(con.getErrorStream());
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("API 요청과 응답 실패", e);
-        } finally {
-            con.disconnect();
-        }
-    }
-
-    private static HttpURLConnection connect(String apiUrl){
-        try {
-            URL url = new URL(apiUrl);
-            return (HttpURLConnection)url.openConnection();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException("API URL이 잘못되었습니다. : " + apiUrl, e);
-        } catch (IOException e) {
-            throw new RuntimeException("연결이 실패했습니다. : " + apiUrl, e);
-        }
-    }
-
-
-    private static String readBody(InputStream body){
-        InputStreamReader streamReader = new InputStreamReader(body);
-
-
-        try (BufferedReader lineReader = new BufferedReader(streamReader)) {
-            StringBuilder responseBody = new StringBuilder();
-
-            String line;
-            while ((line = lineReader.readLine()) != null) {
-                responseBody.append(line);
-            }
-
-            return responseBody.toString();
-        } catch (IOException e) {
-            throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
-        }
-    }
 	
+	public static String getkmdbData(Object title,Object openDt, String kind) throws IOException {
+			prop.load(resource.getInputStream());
+		  
+	    	String kmdb_URL = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&";
+	    	String kmdb_KEY = prop.getProperty("kmdbKey");
+			/*URL*/
+			StringBuilder urlBuilder = new StringBuilder(kmdb_URL);
+			/*Service Key*/
+			urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8")+"="+kmdb_KEY);
+			/*제목*/
+			urlBuilder.append("&" + URLEncoder.encode("title","UTF-8")	+ "=" + URLEncoder.encode((String)title, "UTF-8"));
+			/*개봉일*/
+			urlBuilder.append("&" + URLEncoder.encode("releaseDts","UTF-8")	+ "=" + URLEncoder.encode((String)openDt, "UTF-8"));
+			
+			URL url = new URL(urlBuilder.toString());
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-type", "application/json");
+			System.out.println("Response code: " + conn.getResponseCode());
+			BufferedReader rd;
+			
+			if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+				rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			} else {
+				rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			}
+			
+			StringBuilder sb = new StringBuilder();
+			String line;
+			while ((line = rd.readLine()) != null) {
+				sb.append(line); 
+			}
+			
+			rd.close();
+			conn.disconnect();
+			
+		    // JSON 객체로  변환
+		    JSONObject responseBody = new JSONObject(sb.toString());
+		    
+		   JSONArray boxOfficeResult = responseBody.getJSONArray("Data");
+		   JSONObject result = boxOfficeResult.getJSONObject(0).getJSONArray("Result").getJSONObject(0);
+		   
+		   String resultDate = "";
+		   //이미지 뽑기
+		   if(kind.equals("image")) {
+			   String post = (String) result.get("posters");
+			   String[] posti = post.split("\\|");
+			   
+			   resultDate = posti[0];
+		   }else { 
+			   //줄거리 뽑기
+			   JSONObject plot = result.getJSONObject("plots").getJSONArray("plot").getJSONObject(0);
+			   String plotText = (String) plot.get("plotText");
+			    
+			   resultDate = plotText;
+		   }
+		   
+			return resultDate;
+	}
+       
 	/* 영화 상세 - 영화영문명, 영화정보 */
 	@Override
 	public Map<String, Object> contentAPI(String movieCd) throws IOException {
-		ClassPathResource resource= new ClassPathResource("moviekey.properties");
-		Properties prop = new Properties();
+
 		prop.load(resource.getInputStream());
 		
     	String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
@@ -286,7 +246,7 @@ public class MovieServiceImple implements MovieService {
             map.put("showTm", movieInfo.get("showTm")); //상영시간
             map.put("openDt", movieInfo.get("openDt")); //개봉일
             
-            String plotText = findPlotText(movieInfo.get("movieNm"), movieInfo.get("openDt")); //줄거리
+            String plotText = getkmdbData(movieInfo.get("movieNm"), movieInfo.get("openDt"), "story"); //줄거리
             map.put("plotText", plotText);
            
             JSONArray list1 = movieInfo.getJSONArray("genres"); //장르 -genreNm
@@ -321,58 +281,7 @@ public class MovieServiceImple implements MovieService {
         return stringText.toString();
     	
     }
-    //영화줄거리 찾기
-	public String findPlotText(Object title,Object openDt)  throws IOException {
-		ClassPathResource resource= new ClassPathResource("moviekey.properties");
-		Properties prop = new Properties();
-		prop.load(resource.getInputStream());
-		
-    	String kmdb_URL = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&";
-    	String kmdb_KEY = prop.getProperty("kmdbKey");
-		/*URL*/
-		StringBuilder urlBuilder = new StringBuilder(kmdb_URL);
-		/*Service Key*/
-		urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8")+"="+kmdb_KEY);
-		/*제목*/
-		urlBuilder.append("&" + URLEncoder.encode("title","UTF-8")	+ "=" + URLEncoder.encode((String)title, "UTF-8"));
-		/*개봉일*/
-		urlBuilder.append("&" + URLEncoder.encode("releaseDts","UTF-8")	+ "=" + URLEncoder.encode((String)openDt, "UTF-8"));
-		
-		URL url = new URL(urlBuilder.toString());
-		
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("GET");
-		conn.setRequestProperty("Content-type", "application/json");
-		System.out.println("Response code: " + conn.getResponseCode());
-		BufferedReader rd;
-		
-		if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		} else {
-			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-		}
-		
-		StringBuilder sb = new StringBuilder();
-		String line;
-		while ((line = rd.readLine()) != null) {
-			sb.append(line); 
-		}
-		
-		rd.close();
-		conn.disconnect();
-		
-	    // JSON 객체로  변환
-	    JSONObject responseBody = new JSONObject(sb.toString());
-	    
-	    //줄거리 뽑아내기..
-	   JSONArray boxOfficeResult = responseBody.getJSONArray("Data");
-	   JSONObject result = boxOfficeResult.getJSONObject(0).getJSONArray("Result").getJSONObject(0);
-	   JSONObject plot = result.getJSONObject("plots").getJSONArray("plot").getJSONObject(0);
-	   String plotText = (String) plot.get("plotText");
-	    
-	    return plotText;
-	}
-    
+ 
     public String makeQueryString(Map<String, String> paramMap) {
         final StringBuilder sb = new StringBuilder();
  
