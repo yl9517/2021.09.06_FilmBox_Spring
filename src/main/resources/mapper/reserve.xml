@@ -76,7 +76,10 @@
 	</update>
 	
 	<select id="getMovieList" resultType="com.film.dto.MovieDTO">
-		SELECT movieNm, image  FROM filmbox_movie;
+		SELECT movieNm, image
+		FROM filmbox_movie
+		ORDER BY update_date DESC, rank * 1
+		LIMIT 10;
 		
 	</select>
 	

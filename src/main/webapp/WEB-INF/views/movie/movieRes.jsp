@@ -29,7 +29,7 @@
 		<div class="movielist_wrapper">
 		<c:forEach var="item" items="${mlist }">
 			
-			<input type="button"  name="movielists" class="movielist" 
+			<input type="button" title="${item.movieNm }" name="movielists" class="movielist" 
 			 onclick="mvclick('<c:out value="${item.image}"/>');" value ="<c:out value="${item.movieNm}"/>" id="mvlist"  >
 		</c:forEach>
 		</div>
