@@ -43,7 +43,7 @@
 						and product_category = #{search}
 					</if>
 				 ) e
-				   order by product_no )as A
+				   order by product_category )as A
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}
 </select>
 
