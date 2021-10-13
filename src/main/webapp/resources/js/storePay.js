@@ -39,11 +39,12 @@ $('#coupons').on('change',function() {
 	}
 });
 
-
 /* 결제 */
 $('.pay-button').click(function() {
 	let coupon_no = $('#coupons option:selected').attr('value2');
-	console.log('쿠폰번호1:'+coupon_no);
+	
+	let price = $('.price_final').text();
+	$('#coupon_price').val(price);
 		
 	/*카카오페이*/
 	let IMP = window.IMP;
@@ -53,7 +54,7 @@ $('.pay-button').click(function() {
         pay_method : 'card',
 		merchant_uid : 'merchant_' + new Date().getTime(),
 		name : product_name,
-		amount : before_price
+		amount : price
 	}, function(rsp) {
 		if ( rsp.success ) {
 			var msg = '결제가 완료되었습니다.';

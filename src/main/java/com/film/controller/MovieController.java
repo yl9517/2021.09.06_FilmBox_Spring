@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,7 @@ import org.apache.ibatis.annotations.Param;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,7 +79,7 @@ public class MovieController {
     
     //영화 상세 상단 dto 
     @GetMapping("/movieInfo/{movieCd}")
-    public String movieInfo(@PathVariable String movieCd,HttpSession session, Model model) {
+    public String movieInfo(@PathVariable String movieCd,HttpSession session, Model model) throws IOException {
     	//세션 로그인 담기
     	String member_id= "";
     	int rev_no = 0;
@@ -87,11 +89,15 @@ public class MovieController {
     	rev_no = revService.isRevNo(new ReviewDTO(member_id, movieCd));    	
     	
     	
-    	MovieDTO dto = service.getMovie(movieCd);
+    	MovieDTO dto = service.getMovie(movieCd); //properties
     	ReviewDTO rdto = new ReviewDTO(member_id, movieCd);
     	ReviewDTO myreview = reviewService.getThisReview(rdto);
+    	
+		ClassPathResource resource= new ClassPathResource("moviekey.properties");
+		Properties prop = new Properties();
+		prop.load(resource.getInputStream());
   
-    	model.addAttribute("key","03778b8e03b2f65d0d2c724260f2df8c");
+    	model.addAttribute("key",prop.getProperty("movieKey"));
     	model.addAttribute("dto",dto);
     	model.addAttribute("myreview",myreview);
     	model.addAttribute("rev_no",rev_no);
@@ -113,7 +119,7 @@ public class MovieController {
   
   //영화 상세 하단 ajax- java로 받기
     @GetMapping("/content")
-    public @ResponseBody Map<String, Object> contentAPI(@RequestParam String movieCd) {
+    public @ResponseBody Map<String, Object> contentAPI(@RequestParam String movieCd) throws IOException {
 
         Map<String, Object> map = service.contentAPI(movieCd);
         

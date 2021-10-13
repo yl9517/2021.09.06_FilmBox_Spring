@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 
+import com.film.dto.NoticePageDTO;
 import com.film.dto.ProductDTO;
 import com.film.service.ProductService;
 
@@ -52,10 +53,8 @@ public class AdminController {
 									  )throws IOException {
 
 		String uploadDir = request.getRealPath(""); //실제경로
-//		String uploadDir = request.getRealPath("resources/upload"); //실제경로
 		
 		String filename = "/resources/upload/"+file.getOriginalFilename();	//파일 이름
-//		String filename = file.getOriginalFilename();	//파일 이름
 		
 		String filePath = uploadDir+"\\"+filename;
 		file.transferTo(new File(filePath)); //파일 저장
@@ -63,20 +62,31 @@ public class AdminController {
 		ProductDTO dto = new ProductDTO(product_name, product_content, product_price, filename, product_category);
 		
 		int result = service.insertProduct(dto);
-//   	return "testfile";
 		return "redirect:/productList";
 	}
 
 	//관리자 상품목록
 	@GetMapping("/productList")
-	public String productList(Model model, HttpSession session) 
+	public String productList(@RequestParam(required = false, defaultValue = "1") int currPage
+								, @RequestParam(required = false, defaultValue = "") String search
+								, HttpSession session
+								, Model model) 
 	{
 		String member_id=(String)session.getAttribute("loginId");
 		if(!(member_id).equals("admin"))
 			return "redirect:main";
 		
-		List<ProductDTO> productList = service.getProductList();
-		model.addAttribute("productList", productList);
+		//전체 자료 확인
+		int totalCount = service.totalCount(search);
+		int pageSize = 10;
+		int blockSize = 5;
+		
+		NoticePageDTO plpage = new NoticePageDTO(currPage, totalCount, pageSize, blockSize);
+		List<ProductDTO> productlist = service.getProductListP(search, plpage.getStartRow(), plpage.getEndRow());
+		
+		model.addAttribute("productlist", productlist);
+		model.addAttribute("plpage", plpage);
+		model.addAttribute("search", search);
 		
 		model.addAttribute("page", "admin/productList.jsp");
 		return "view";
@@ -105,7 +115,8 @@ public class AdminController {
 	}
 	//관리자 상품수정
 	@PostMapping("/productUpdateAction")
-	public String productUpdateAction(@RequestParam String product_name
+	public String productUpdateAction(@RequestParam int product_no
+										,@RequestParam String product_name
 			  							,@RequestParam(required = false) String product_content
 			  							,@RequestParam int product_price
 			  							,@RequestParam String product_category
@@ -114,17 +125,14 @@ public class AdminController {
 			  							)throws IOException
 	{
 		String uploadDir = request.getRealPath(""); //실제경로
-//		String uploadDir = request.getRealPath("resources/upload"); //실제경로
-		
 		String filename = "/resources/upload/"+file.getOriginalFilename();	//파일 이름
-//		String filename = file.getOriginalFilename();	//파일 이름
-		
 		String filePath = uploadDir+"\\"+filename;
 		file.transferTo(new File(filePath)); //파일 저장
 
-		ProductDTO dto = new ProductDTO(product_name, product_content, product_price, filename, product_category);
+		ProductDTO dto = new ProductDTO(product_no, product_name, product_content, product_price, filename, product_category);
 		
 		int result = service.updateProduct(dto);
+
 		return "redirect:/productList";
 	}
 	

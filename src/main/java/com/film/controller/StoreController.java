@@ -63,8 +63,6 @@ public class StoreController {
 		
     	model.addAttribute("map",map);
 		model.addAttribute("dto",dto);
-		System.out.println("ㅇㅁㅈ"+dto.getProduct_img());
-		System.out.println("name"+dto.getProduct_name());
 		model.addAttribute("count",product_count);
 		model.addAttribute("page","store/storePay.jsp");
 		
@@ -79,6 +77,7 @@ public class StoreController {
 		
 		couponService.insertCoupon(dto);
 		
+		model.addAttribute("inpoint",(int)dto.getCoupon_price()*0.05);
 		model.addAttribute("page","store/storePayDone.jsp");
 		
 		return "view";

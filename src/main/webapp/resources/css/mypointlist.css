@@ -50,30 +50,29 @@
 	margin: 3%;
 }
 /* 페이징 */
-#paging-wrap{
-	font-size: 23px;
+.paging-wrap{
+	font-size: 20px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
+.paging-wrap span{
+	margin: 3px 4px;
+	padding: 3px 8px;
+}
 .now_page{
-	color: #7F9871;
-}
-.now_page:hover{
-	color: #7F9871;
-}
-.etc-page{
-	padding: 10px;
+	border-radius: 3px;
+	border: 1px solid #9795A3;
 }
 .etc_page a{
 	text-decoration: none;
 	color: #606060;
 }
-.etc_page a:link{
-	text-decoration: none;
-	color: #606060;
-}
 .etc_page a:hover{
-	background-color: #9795A3;
+	text-decoration: none;
 	color: white;
+}
+.etc_page:hover{
+	background-color: #9795A3;
+	border-radius: 3px;
 }

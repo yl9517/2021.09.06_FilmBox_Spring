@@ -1,5 +1,6 @@
 package com.film.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,21 @@ public class ProductServiceImple implements ProductService {
 	{
 		return productmapper.insertProduct(dto);
 	}
-
+	
 	@Override
 	public List<ProductDTO> getProductList() 
 	{
 		return productmapper.getProductList();
+	}
+	
+	@Override
+	public List<ProductDTO> getProductListP(String search, int startRow, int endRow) 
+	{
+		HashMap<String, Object> hmap = new HashMap<String, Object>();
+		hmap.put("search", search);
+		hmap.put("startRow", startRow);
+		hmap.put("endRow", endRow);
+		return productmapper.getProductListP(hmap);
 	}
 
 	@Override
@@ -44,6 +55,12 @@ public class ProductServiceImple implements ProductService {
 		return productmapper.deleteProduct(product_no);
 	}
 
-	
-	
+	@Override
+	public int totalCount(String search) 
+	{
+		HashMap<String, Object> smap = new HashMap<String, Object>();
+		smap.put("search", search);
+		return productmapper.totalCount(smap);
+	}
+
 }
