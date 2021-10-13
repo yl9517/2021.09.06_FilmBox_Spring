@@ -17,11 +17,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -62,10 +64,13 @@ public class MovieServiceImple implements MovieService {
 		return mvMapper.getSearchMovieList(movieNm);
 	}
 	/* 영화 주간데이터 - 영화제목, 박스오피스, 누적관객, 이미지, 개봉일 */ 
-	public void updateList() {
-		System.out.println("serviece에서 동작");
+	public void updateList() throws IOException {
+		ClassPathResource resource= new ClassPathResource("moviekey.properties");
+		Properties prop = new Properties();
+		prop.load(resource.getInputStream());
+  
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
-    	String AUTH_KEY = "03778b8e03b2f65d0d2c724260f2df8c";
+    	String AUTH_KEY = prop.getProperty("movieKey");
         SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");  //날짜형식
         
         
@@ -131,9 +136,14 @@ public class MovieServiceImple implements MovieService {
         mvMapper.updateList(mvList);
 
     }
-	public static String getImg(String title) {
-        String clientId = "HYX4a9ygamLFJItnu0gY"; 
-        String clientSecret = "vIJnIW_G5B";
+	public static String getImg(String title) throws IOException {
+		
+		ClassPathResource resource= new ClassPathResource("moviekey.properties");
+		Properties prop = new Properties();
+		prop.load(resource.getInputStream());
+		
+        String clientId = prop.getProperty("naverId"); 
+        String clientSecret = prop.getProperty("naverSecret");
 
         String text = null;
         try {
@@ -231,9 +241,13 @@ public class MovieServiceImple implements MovieService {
 	
 	/* 영화 상세 - 영화영문명, 영화정보 */
 	@Override
-	public Map<String, Object> contentAPI(String movieCd) {
+	public Map<String, Object> contentAPI(String movieCd) throws IOException {
+		ClassPathResource resource= new ClassPathResource("moviekey.properties");
+		Properties prop = new Properties();
+		prop.load(resource.getInputStream());
+		
     	String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
-    	String AUTH_KEY = "03778b8e03b2f65d0d2c724260f2df8c";
+    	String AUTH_KEY = prop.getProperty("movieKey");
         // 변수 설정
     	
         //   - 요청(Request) 인터페이스 Map
@@ -309,8 +323,13 @@ public class MovieServiceImple implements MovieService {
     }
     //영화줄거리 찾기
 	public String findPlotText(Object title,Object openDt)  throws IOException {
+		ClassPathResource resource= new ClassPathResource("moviekey.properties");
+		Properties prop = new Properties();
+		prop.load(resource.getInputStream());
+		
     	String kmdb_URL = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&";
-    	String kmdb_KEY = "S1D06L56GRZ75O59WO9M";
+    	String kmdb_KEY = prop.getProperty("kmdbKey");
+    	
 		/*URL*/
 		StringBuilder urlBuilder = new StringBuilder(kmdb_URL);
 		/*Service Key*/

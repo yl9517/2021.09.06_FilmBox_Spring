@@ -97,7 +97,7 @@ public class MovieController {
 		Properties prop = new Properties();
 		prop.load(resource.getInputStream());
   
-    	model.addAttribute("key",prop.getProperty("moviekey"));
+    	model.addAttribute("key",prop.getProperty("movieKey"));
     	model.addAttribute("dto",dto);
     	model.addAttribute("myreview",myreview);
     	model.addAttribute("rev_no",rev_no);
@@ -119,7 +119,7 @@ public class MovieController {
   
   //영화 상세 하단 ajax- java로 받기
     @GetMapping("/content")
-    public @ResponseBody Map<String, Object> contentAPI(@RequestParam String movieCd) {
+    public @ResponseBody Map<String, Object> contentAPI(@RequestParam String movieCd) throws IOException {
 
         Map<String, Object> map = service.contentAPI(movieCd);
         

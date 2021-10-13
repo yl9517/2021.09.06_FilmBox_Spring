@@ -1,5 +1,7 @@
 package com.film.data;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,7 +17,7 @@ public class MovieUpdate {
 //	@Scheduled(fixedRate = 10000) // 테스트
 
     @Scheduled(cron = "0 0 1 ? * MON") //매월 매주 월요일, 아무날짜나 오전 1시
-	public void updateList() {
+	public void updateList() throws IOException {
 		service.updateList();
 	}
 }
