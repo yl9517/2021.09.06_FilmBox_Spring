@@ -153,7 +153,6 @@ public class PostContorller {
 	
 	@PostMapping("/subpostinsert")
 	public String subpostadd(SubPostDTO dto,Model model, HttpSession session) {
-		System.out.println(dto.toString());
 		postservice.subpostadd(dto);
 		
 		return "redirect:/postdetail/"+dto.getPost_no();
