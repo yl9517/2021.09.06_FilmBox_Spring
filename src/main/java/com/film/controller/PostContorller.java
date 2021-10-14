@@ -145,6 +145,7 @@ public class PostContorller {
 		model.addAttribute("member_id",member_id);
 		model.addAttribute("sublist",sublist);
 		model.addAttribute("subpage",subpage);
+		model.addAttribute("post_no",post_no);
 		model.addAttribute("page","post/postDetail.jsp");
 		
 		return "view";

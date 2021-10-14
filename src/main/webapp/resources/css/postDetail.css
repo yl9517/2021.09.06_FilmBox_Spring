@@ -47,7 +47,7 @@
 }
 .user-post-box {
     width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
     position: relative;
 }
 .mb40 {
@@ -96,7 +96,7 @@ img {
 
 .form{
 	margin: 0 auto;
-	padding: 0 10%;
+	padding: 0 10% 10% 10%;
 	min-height: 10%;
 	display : flex;
 	flex-direction : column;
@@ -121,7 +121,7 @@ textarea{
     background-color : gainsboro;
 }
 
-ul.review {
+ul.postsub {
     padding: 0px 20px;
     list-style: none;
     margin-bottom: 0px;
@@ -133,13 +133,13 @@ dl, ol, ul {
     margin-top: 0;
     margin-bottom: 1rem;
 }
-.review li {
+.postsub li {
     margin: 25px 0;
 }
 .user_info {
     margin: 10px 0;
 }
-.review .userName {
+.postsub .userName {
     margin-right: 10px;
     font-size: 16px;
 }
@@ -159,6 +159,37 @@ dl, ol, ul {
     float: right;	
 }
 
+
+.paging{
+    position: relative;
+    align-items: center;	
+	color : whitesmoke;
+    padding:5% 0;
+}
+
+.curr{
+	color : #9795A3;
+	margin-left : 10px;
+    float: center;
+}
+
+.num{
+	margin-left : 10px;
+	color : #000000;
+}
+.num:hover {
+    color: #C94F44;
+}
+
+.prev{
+	margin-right : 10px;
+	color : #C94F44;
+}
+
+.next{
+	margin-left : 10px;
+	color : #C94F44;
+}
 
 
 

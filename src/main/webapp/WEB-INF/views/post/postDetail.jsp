@@ -66,20 +66,20 @@
 				
 			</form>
 
-			<ul class="review">
+			<ul class="postsub">
 			<li>
 			<div class="subpost_list">댓글 (${subcount })</div>
 			</li>
 			<c:choose>
 				<c:when test="${subcount eq 0}">
-				<li class="review_li">
+				<li class="postsub_li">
 					<span>첫번째 댓글의 주인공이 되어보세요!</span>
 				</li>
 				</c:when>
 				
 				<c:otherwise>
 			<c:forEach var="item" items="${sublist }">
-				<li class="review_li">
+				<li class="postsub_li">
 					<div class="user_info">
 						<span class="userName">${item.member_id }</span>
 						<span class="write_date">${item.sub_date }</span>
@@ -92,12 +92,38 @@
 				
 					</div>
 				</li>
+				
+
 			</c:forEach>
 				
 				</c:otherwise>
 			</c:choose>
 			
 			</ul>
+			<div class="paging">
+ 				<c:if test="${subpage.prev }">
+					<a href="/postdetail/${post_no }/?currPage=${subpage.startBlock-1 }" class="prev">
+					<c:out value="<<"></c:out></a>
+ 				</c:if>  
+	
+				<c:forEach var="index" begin="${subpage.startBlock }" end="${subpage.endBlock }">
+					<c:if test="${index==subpage.currPage }">
+						<span class="curr"><c:out value="${index }"></c:out></span>
+					</c:if>
+					
+					<c:if test="${index!=subpage.currPage }">
+						<a href="/postdetail/${post_no }/?currPage=${index }" class="num">
+						<c:out value="${index }"></c:out>
+						</a>
+					</c:if>
+				</c:forEach>
+	
+				<c:if test="${subpage.next }">
+					<a href="/postdetail/${post_no }/?currPage=${subpage.endBlock+1 }" class="next">
+						<c:out value=">>"></c:out>
+					</a>
+					</c:if>
+				</div>
 		</div>
 	</div>
 </div>
