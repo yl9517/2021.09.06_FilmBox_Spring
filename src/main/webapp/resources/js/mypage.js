@@ -39,7 +39,6 @@ function checkTime(p_time, p_date, p_rev_no)
 {
 	//날짜 format 맞추기
 	let date_ex_day = p_date.split("(");	//요일 자르기
-	console.log(date_ex_day);
 	
 	//년도/월/일
 	let show_date = date_ex_day[0].split(".");
@@ -59,8 +58,6 @@ function checkTime(p_time, p_date, p_rev_no)
 	let today = new Date();
 	let gap = movie_date.getTime()-today.getTime();
 	let min_gap = gap/1000/60;
-	console.log(min_gap);
-	console.log("예약번호: "+p_rev_no);
 	
 	if(min_gap<20)
 	{
@@ -75,7 +72,6 @@ function checkTime(p_time, p_date, p_rev_no)
 //예매 취소 modal
 function cancelModal(rev_no)
 {
-	console.log("예약번호"+rev_no);
 	$("#rsvCancelModal").modal('show');
 	
 		$('#confirm').click(function(){
@@ -113,7 +109,7 @@ function openPop(p_rev_no, p_image, p_movieNm, p_show_date, p_show_time, p_seats
    let popup 
       = window.open('/showQR'+'/'+rev_no+'/'+title+'/'+date+'/'+time+'/'+seats
                , '팝업'
-               ,'width=340px, height=340px'); 
+               ,'width=322px, height=322px'); 
 }
 
 //쿠폰qr 

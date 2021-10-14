@@ -8,15 +8,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources\css\mypage.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- bootstrap -->
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+	crossorigin="anonymous"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+	
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 </head>
 <body>
 	<section>
@@ -25,7 +33,7 @@
 			<div class="modify_quit">
 				<div id="login_type" style="display: none">${dto.login_type }</div>
 				<div onclick="accessCheck()" class="modify">회원정보 수정</div>
-				<div class="glyphicon glyphicon-option-vertical" aria-hidden="true"></div>
+				<span class="material-icons">more_vert</span>
 				<div class="quit" data-toggle="modal" data-target="#exampleModal">탈퇴</div>
 			</div>
 			
@@ -35,7 +43,7 @@
 				<div class="mypoint">
 					<p>MY POINT</p>
 					<p class="point">${dto.point }</p>
-					<button type="button" class="btn btn-default btn-sm"
+					<button type="button" class="btn btn-dark"
 						onclick="pointList()" style="font-size: 15px">내 포인트 내역</button>
 				</div>
 				<div class="story">
@@ -50,9 +58,9 @@
 		
 		<div class="rsv_wrap">
 			<div class="rsv_h">MY 예매내역
-			<div class="glyphicon glyphicon-question-sign"	aria-hidden="true" role="button"
-				data-toggle="popover" data-trigger="click" title="유의사항" id="alarm"
-				data-content="QR 인식은 휴대폰 기종에 따라 오류가 날 수 있습니다. 네이버 QR을 사용해주세요" ></div> 
+				<span class="material-icons" role="button"
+					data-toggle="popover" data-trigger="click" title="유의사항" id="alarm"
+					data-content="QR 스캔 화면은 휴대폰 기종에 따라 다르게 보일 수 있습니다. 네이버 QR을 사용해주세요">help</span>
 			</div>
 			<div class="rsv_list_wrap">
 				<ul>
@@ -81,12 +89,11 @@
 									</div>
 									
 									<div class="rsv_btn">
-									<span class="glyphicon glyphicon-qrcode" aria-hidden="true"
-										data-toggle3="tooltip" data-placement="left" title="Click!" id="qr"
-										onclick="openPop('${item.rev_no }','${item.image }', '${item.movieNm }', '${item.show_date }'
-                                    							, '${item.show_time }', '${item.seats }' )"></span>
+                                    	<span class="material-icons" data-toggle3="tooltip" data-placement="left" title="Click!" id="qr"
+											onclick="openPop('${item.rev_no }','${item.image }', '${item.movieNm }', '${item.show_date }'
+                                    							, '${item.show_time }', '${item.seats }' )">qr_code_2</span>
 										<br>
-										<button type="button" class="btn btn-default btn-sm" data-toggle="modal" 
+										<button type="button" class="btn btn-outline-danger" data-toggle="modal" 
 											data-toggle2="tooltip" data-placement="bottom" title="예매취소는 상영시작 20분 전까지 가능합니다!" 
 											onclick="checkTime('${item.show_time}', '${item.show_date }', '${item.rev_no }')"
 											style="font-size: 15px">예매 취소</button>
@@ -133,10 +140,9 @@
 	   							<li class="coupon back">
 									<c:choose>
 										<c:when test="${item.product_category eq 'food' }">
-											<span class="glyphicon glyphicon-qrcode" data-toggle4="tooltip" data-placement="right" title="Click!" 
+											<span class="material-icons" data-toggle4="tooltip" data-placement="top" title="Click!" 
 											onclick="openCouponPop('${item.coupon_no }','${item.product_no }','${item.product_category }', 
-																'${item.product_name }', '${item.product_content }' , '${item.coupon_lastdate }' )"></span>
-			                                    							
+																'${item.product_name }', '${item.product_content }' , '${item.coupon_lastdate }' )">qr_code_2</span>    							
 											<p> 사용방법 : QR코드 인식 </p>
 											<p> 유효기간 : 앞면표기일 </p>	
 											<p> 　</p>
@@ -159,7 +165,7 @@
 					<c:otherwise>
 							<div class="empty_coupon">
 								<img src="resources\img\popcorn.png" width="90px" height="90px">
-								<h4> 구매한 쿠폰이 없습니다</h4>
+								<div><strong>구매한 쿠폰이 없습니다</strong></div>
 								<a href="/store"> 스토어 구경하러가기</a>
 							</div>
 						<div class="clear"></div>
