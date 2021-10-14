@@ -103,8 +103,8 @@
 	text-decoration: none;
 	color: #C94F44;
 }
-
-.etc {
+/* 무비 포스트 */
+.m_post {
 	background-color: #b8ab9e;
 	text-align: center;
  	padding: 10px;
@@ -113,6 +113,16 @@
  	color: white;
  	width: 145px;
  	height: 127px;
+ 	font-size: 17px;
+}
+.m_post a{
+	font-size: 35px;
+	color: white;
+}
+.m_post a:hover{
+	font-size: 35px;
+	text-decoration: none;
+	color: #C94F44;
 }
 
 
@@ -186,7 +196,7 @@
 .rsv_info_wrap{
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
+	justify-content: flex-start; 
 	padding: 20px;
 }
 /* 예매 정보 */
@@ -194,6 +204,7 @@
 	display: inline-block;
 	padding: 0 100px 0 50px;
 	word-spacing: normal;
+	flex-basis: 80%;
 }
 
 /* 영화제목 */
@@ -207,7 +218,7 @@
 .rsv_btn{
 	display: flex;
 	flex-direction: column;
-	padding-left: 50px;
+	float: right;
 }
 #qr{
 	font-size: 100px;

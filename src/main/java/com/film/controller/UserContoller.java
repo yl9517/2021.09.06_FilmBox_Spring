@@ -34,8 +34,10 @@ import com.film.dto.MovieDTO;
 import com.film.dto.MypageDTO;
 import com.film.dto.NoticePageDTO;
 import com.film.dto.PointDTO;
+import com.film.dto.PostDTO;
 import com.film.dto.UserDTO;
 import com.film.service.CouponService;
+import com.film.service.PostService;
 import com.film.service.ProductService;
 import com.film.service.ReserveService;
 import com.film.service.UserService;
@@ -59,6 +61,9 @@ public class UserContoller {
 	
 	@Autowired
 	private CouponService couponservice;
+	
+	@Autowired
+	private PostService postservice;
 	
 	//회원가입 페이지
 	@RequestMapping("/join")
@@ -114,11 +119,14 @@ public class UserContoller {
 
 		String member_id=(String)session.getAttribute("loginId");
 		UserDTO dto=service.userDetail(member_id);
+		int postCount = postservice.getMyPostCount(member_id);
+		
 		List<MypageDTO> myRsvList = service.getRsvData(member_id);
 		List<MypageDTO> myfilmlist = service.getMyfilmData(member_id);
 		List<HashMap<String, Object>> myCouponList = couponservice.getMyCoupon(member_id);
 		
 		model.addAttribute("dto", dto);
+		model.addAttribute("postCount", postCount);
 		model.addAttribute("myRsvList", myRsvList);
 		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("myCouponList", myCouponList);
@@ -161,6 +169,20 @@ public class UserContoller {
 		
 		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("page","user/myfilmstory.jsp");
+		return "view";
+	}
+	
+	//마이페이지>무비 포스트
+	@GetMapping("/myMoviePost")
+	public String myMoviePost(HttpSession session, Model model)
+	{
+		String member_id=(String)session.getAttribute("loginId");
+		List<PostDTO> mypostlist = postservice.getMyPostList(member_id);
+		int postCount = postservice.getMyPostCount(member_id);
+		
+		model.addAttribute("postCount", postCount);
+		model.addAttribute("mypostlist", mypostlist);
+		model.addAttribute("page","user/myMoviePost.jsp");
 		return "view";
 	}
 	

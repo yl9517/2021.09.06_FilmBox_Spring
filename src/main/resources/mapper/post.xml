@@ -99,6 +99,18 @@
 		delete from filmbox_post where post_no=#{post_no}
 	</delete>
 	
+	<select id="getMyPostCount" resultType="int" parameterType="String">
+		select count(*)
+		from filmbox_post
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="getMyPostList" parameterType="String" resultType="com.film.dto.PostDTO">
+		SELECT post_no, member_id, post_content, movieNm,image, post_date
+		FROM filmbox_post
+		where member_id = #{member_id}
+	</select>
+	
 </mapper>
     
     

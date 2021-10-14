@@ -34,5 +34,9 @@ public interface PostMapper {
 	public void updatePost(PostDTO dto);
 
 	public void postDelete(int post_no);
+	
+	public int getMyPostCount(String member_id);
+
+	public List<PostDTO> getMyPostList(String member_id);
 
 }

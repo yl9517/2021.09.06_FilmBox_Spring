@@ -31,5 +31,7 @@ public interface PostService {
 
 	public void postDelete(int post_no);
 
-	
+	public int getMyPostCount(String member_id);
+
+	public List<PostDTO> getMyPostList(String member_id);
 }

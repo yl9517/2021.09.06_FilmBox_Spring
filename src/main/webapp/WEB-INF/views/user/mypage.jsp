@@ -21,10 +21,6 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
-	
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 </head>
 <body>
 	<section>
@@ -50,8 +46,9 @@
 					<p>나의 필름스토리</p>
 					<a href="myfilmstory">${fn:length(myfilmlist)}</a>
 				</div>
-				<div class="etc">
-					<p>무엇을 넣을까요</p>
+				<div class="m_post">
+					<p>무비 포스트</p>
+					<a href="myMoviePost">${postCount }</a>
 				</div>
 			</div>
 		</div>

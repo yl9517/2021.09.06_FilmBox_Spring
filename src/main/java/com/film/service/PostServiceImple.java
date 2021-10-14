@@ -93,6 +93,16 @@ public class PostServiceImple implements PostService {
 		postMapper.postDelete(post_no);
 	}
 
-	
+	@Override
+	public int getMyPostCount(String member_id)
+	{
+		return postMapper.getMyPostCount(member_id);
+	}
+
+	@Override
+	public List<PostDTO> getMyPostList(String member_id) 
+	{
+		return postMapper.getMyPostList(member_id);
+	}
 
 }

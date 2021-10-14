@@ -1,0 +1,187 @@
+@charset "UTF-8";
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.mpost_wrap {
+	margin: 0 auto;
+	padding: 5% 0;
+	min-height: 650px;
+	width: 1100px;
+}
+
+/* 무비 포스트 wrap */
+.mpost {
+	width: 1100px;
+	display: flex;
+	flex-direction: row;
+}
+/* 무비 포스트 제목 */
+.mpost_h {
+	font-size: 25px;
+	font-weight: bolder;
+	padding-left: 60px;
+	padding-right: 15px;
+}
+
+.mpost p{
+	font-size: 15px;
+	padding: 0.5%;
+	color: white;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+/* 무비 포스트 없을 때  */
+.empty_post{
+	font-size: 20px;
+	margin: 0 auto;
+	padding: 3% 0;
+	text-align: center;
+}
+.empty_post img {
+	margin: 10%;
+}
+#post_link{
+	color: #1976d2;
+}
+.post_info {
+	margin: 0 auto;
+	width: 1100px;
+	list-style-type: none;
+	padding: 30px;
+	display: flex;
+	flex-direction: row;
+	border-bottom: 3px double silver;
+}
+
+/* 무비 포스트 */
+.inner-wrap {
+    width: 1100px;
+    margin: 0 auto;
+}
+.mt30 {
+    margin-top: 30px!important;
+}
+.grid-item{
+	
+}
+
+.movie-post-list {
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.movie-post-list .grid-item {
+    position: relative;
+    float: left;
+    width: 230px;
+    margin: 0 0 40px 60px;
+    
+    box-shadow: 0 8px 8px -8px grey;
+}
+.movie-post-list .grid-item .wrap {
+    overflow: hidden;
+    display: block;
+    border-radius: 10px;
+}
+.movie-post-list .grid-item .wrap .img {
+    overflow: hidden;
+    width: 100%;
+    height: 171px;
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    border: 1px solid transparent;
+    border-radius: 10px 10px 0 0;
+    background-color: #f5f5f5;
+}
+
+.movie-post-list .grid-item .wrap .cont {
+    overflow: scroll;
+    height: 171px;
+    position: relative;
+    padding: 10px 20px;
+    border: 1px solid #ebebeb;
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+}
+.movie-post-list .grid-item .wrap .cont::-webkit-scrollbar {
+	display: none;
+	
+}
+
+.movie-post-list .grid-item .wrap .cont .tit {
+    padding: 0 0 15px 0;
+    line-height: 1.3;
+    color: #444;
+}
+.movie-post-list p {
+    margin: 0;
+    padding: 0;
+}
+.movie-post-list .grid-item .wrap .img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.movie-post-list a {
+    text-decoration: none;
+    color: #444;
+}
+
+.movie-post-list .grid-item .wrap .img img {
+    width: 100%;
+    height: auto;
+    min-height: 169px;
+}
+
+
+
+.movie-post-list .grid-item .wrap .cont .writer {
+    overflow: hidden;
+    padding: 0 0 15px 0;
+    font-size: .8667em;
+}
+.movie-post-list a {
+    text-decoration: none;
+    color: #444;
+}
+a:link {
+    color: #444;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+.movie-post-list .grid-item .wrap .cont .link {
+    display: block;
+}
+.movie-post-list a {
+    text-decoration: none;
+    color: #444;
+}
+a:link {
+    color: #444;
+    text-decoration: none;
+}
+.movie-post-list .grid-item .wrap .cont .txt {
+    padding: 0 0 15px 0;
+    line-height: 1.3;
+    font-size: .9333em;
+}
+.movie-post-list p {
+    margin: 0;
+    padding: 0;
+}
+.movie-post-list .grid-item .wrap .cont .time {
+    padding: 0;
+    line-height: 1.1;
+    font-size: .8667em;
+}
+.movie-post-list p {
+    margin: 0;
+    padding: 0;
+}
