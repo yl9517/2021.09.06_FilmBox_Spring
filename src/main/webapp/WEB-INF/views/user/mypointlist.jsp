@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources\css\mypointlist.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -48,7 +49,7 @@
 	<c:if test="${ppage.prev }">
 		<span>
 			<a href="mypointlist?currPage=${ppage.startBlock-1 }">
-				<c:out value="이전"/>
+				<span class="material-icons" id="prev">keyboard_double_arrow_left</span>
 			</a>
 		</span>
 	</c:if>
@@ -71,7 +72,7 @@
 	<c:if test="${ppage.next }">
 		<span>
 			<a href="mypointlist?currPage=${ppage.endBlock+1 }">
-				<c:out value="다음"/>
+				<span class="material-icons" id="next">keyboard_double_arrow_right</span>
 			</a>
 		</span>
 	</c:if>
