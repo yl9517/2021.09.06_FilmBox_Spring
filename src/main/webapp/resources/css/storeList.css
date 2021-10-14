@@ -19,6 +19,12 @@
 	text-decoration: none;
 	color: black;
 }
+#store_wrap h2{	
+	margin: 70px 0 20px;
+	font-size: 30px;
+    font-weight: bolder;
+	text-align: center;
+}
 
 /* 관리자 상품관리 토글 스위치 */
 .t-switch-h, .t-switch{

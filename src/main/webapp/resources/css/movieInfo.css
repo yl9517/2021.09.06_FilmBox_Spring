@@ -87,7 +87,47 @@
     background-size: 100% auto;
     opacity: 0.18;
    }
+/*팝오버*/
+#attendance{
+	z-index :2;
+	    position: relative;
+    bottom: 108px;
+    left: 80px;
+}
  
+/* 예매하기 버튼 */
+.moveForm input {
+  /* 생략 */
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: inline-block;
+background-color:#C94F44;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  color:white;
+     margin-top: 35px;
+    width: 250px;
+    border-radius: 30px;
+    height: 55px;
+    border: 3px solid #9A3F36;
+    font-size: 18px;
+}
+.moveForm input:hover,
+.moveForm input:active{
+  background-color:#9A3F36;
+    border: 3px solid #C94F44;
+    color: #DBDBDB;
+}
+.moveForm input:disabled {
+  opacity: 0.5;
+}
+
+ /* 예매불가*/
+.moveForm input.notreserve{
+	background: #f1f1f1;
+    color: black;
+    border: 3px solid #ccc;
+    cursor: auto;
+}
  /* 영화정보 / 관람평 */  
  .tab_wrap{
    margin: 30px auto;
@@ -398,33 +438,6 @@ input#review_starpoint{
     padding: 0px;
     margin: 0px;
     border: 0px;
-}
-
-/* 예매하기 버튼 */
-
-.moveForm input {
-  /* 생략 */
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  display: inline-block;
-background-color:#C94F44;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  color:white;
-     margin-top: 35px;
-    width: 250px;
-    border-radius: 30px;
-    height: 55px;
-    border: 3px solid #9A3F36;
-    font-size: 18px;
-}
-.moveForm input:hover,
-.moveForm input:active{
-  background-color:#9A3F36;
-    border: 3px solid #C94F44;
-    color: #DBDBDB;
-}
-.moveForm input:disabled {
-  opacity: 0.5;
 }
 
 /*유의사항*/
