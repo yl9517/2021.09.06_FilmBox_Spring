@@ -47,7 +47,7 @@
 	<div class="time">
 		<div class="time_table">시간</div>
 			<div class="time_wrapper">
-			<button class="reserve_button">
+				<button class="reserve_button">
 					<span class="movietime" id="movietime_1">12:00</span>
 				</button>
 				<button class="reserve_button">

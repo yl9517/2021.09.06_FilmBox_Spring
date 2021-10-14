@@ -39,13 +39,13 @@
 							<span>개봉일 ${item.openDt } </span> 
 							<span>별점 ${item.starpoint } </span>
 						</div>
-						<div class="reservation">
-							<form class="moveForm" action="/reservemovie" method="post">
+							<form class="moveForm" id="revform" action="/reservemovie" method="post">
 								<input type="hidden" name="movieNm" value="${item.movieNm}">
 								<input type="hidden" name="movieCd" value="${item.movieCd}">
-								<input type="submit" value="예매하기" class="button gblue">
+								 <input type="submit" value="예매하기" class="button gblue">
+		
 							</form>
-						</div>
+
 					</li>
 				</c:forEach>
 			</ul>
@@ -53,5 +53,6 @@
 			<div id="clear"></div>
 		</div>
 	</div>
+
 </body>
 </html>

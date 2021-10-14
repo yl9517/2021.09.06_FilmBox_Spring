@@ -4,7 +4,9 @@
     margin: 0;
     box-sizing: border-box;
  }
- 
+ body{
+ background-color: #202126;
+ }
  #seat_wrap{
  	width: 1100px;
  	margin: 90px auto;
@@ -12,7 +14,9 @@
  }
 /* content */
 #select_wrap{
-	width: 68%;
+	 border: 10px solid white;
+    width: 68%;
+    border-radius: 10px;
 }
 thiss {
 	display: none;
@@ -125,7 +129,9 @@ thiss {
 }
 
 .select-theater-place {
-    font-size: 12px;
+    position: relative;
+    top: 55px;
+    font-size: 14px;
 }
 
 .select-theater-place:not(:last-child) {
@@ -238,8 +244,8 @@ thiss {
     margin-left: 30px;
     border-radius: 20px;
     height: 587px;
-    top: 40px;
-    background-color: #D0DAF4;
+    top: 40px;   
+    background-color: #f1f1f1;
 }
 #check_wrap > div{
 	padding: 40px 30px;	
@@ -247,7 +253,7 @@ thiss {
 
 /*영화명-좌석*/
 .select-theater-date {
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px dotted #ccc;
     font-weight: bold;
 }
 
@@ -322,6 +328,8 @@ input#usePoint:focus{
 /*결제 form*/
 .seatForm{
 	display: flex;
+	    position: relative;
+    top: 6px;
 }    
 
 .finalBtn{

@@ -63,7 +63,7 @@
     margin: 5px 0;
  }
  .menu1_left li{
-    font-size: 23px;
+    font-size: 22px;
     margin-left: 40px;
     position: relative;
     top: 3px;
@@ -100,7 +100,7 @@
    position: relative;
 }
 .search__input {
-        width: 200px;
+        width: 180px;
        padding: 12px 40px 12px 20px;
 
         background-color: transparent;
@@ -110,7 +110,7 @@
         line-height: 18px;
         font-weight: bolder;   
        color: white;
-       margin-right: 30px;
+       margin-right: 15px;
         background-color: transparent;
         border-radius: 50px;
         border: 1px solid white;
@@ -121,7 +121,7 @@
  .search__container .searchSubmit{
     position: absolute;
     top: 13px;
-    right: 48px;
+    right: 35px;
     width: 18px;
     cursor: pointer;
         transition: all 250ms ease-in-out;
@@ -142,6 +142,6 @@
       background-position: 100% center;   
 }
 .search__input:hover +.searchSubmit{
-	right: 40px;
+	right: 25px;
     transition: all 250ms ease-in-out;
 }
