@@ -39,7 +39,7 @@
 					<li><a href="/movieList">영화</a></li>
 					<li><a href="/reservemovie">예매</a></li>
 					<li><a href="/store">스토어</a></li>
-					<li><a href="/post">커뮤</a></li>
+					<li><a href="/post">포스트</a></li>
 					<li><a href="/notice">공지사항</a></li>
 				</ul>
 			</div>
@@ -71,15 +71,16 @@
 		    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		  </ol>
 		  <div class="carousel-inner">
-			    <div class="carousel-item active">
-				      <img class="d-block w-100" src="https://caching2.lottecinema.co.kr/lotte_image/2021/Sake/0825/Sake_1920774.jpg" alt="First slide">
+		  	  	<div class="carousel-item active">
+				   <img class="d-block w-100" src="https://caching2.lottecinema.co.kr/lotte_image/2021/Dune/0917/Dune_1920774.jpg" alt="First slide">
 			 	</div>
 			   	<div class="carousel-item">
-			      <img class="d-block w-100" src="https://caching2.lottecinema.co.kr/lotte_image/2021/Spirit/Spirit_1920774.jpg" alt="Second slide">
+			      <img class="d-block w-100" src="https://caching2.lottecinema.co.kr/lotte_image/2021/Kind/1012/Kind_1920774.jpg" alt="Second slide">
 			    </div>
 			    <div class="carousel-item">
-			      <img class="d-block w-100" src="https://caching2.lottecinema.co.kr/lotte_image/2021/Miracle/0902/Miracle_1920774.jpg" alt="Second slide">
+			      <img class="d-block w-100" src="https://caching2.lottecinema.co.kr/lotte_image/2021/Dual/Dual_1920774.jpg" alt="Second slide">
 			    </div>
+			   
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>

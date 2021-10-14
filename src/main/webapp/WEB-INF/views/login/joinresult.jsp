@@ -11,10 +11,10 @@
 <body>
 <div class="mid">
 
-<span class="imgs">
-<img src="resources/img/wing.png" id="welcome1">
-<img src="resources/img/wing.png" id="welcome2">
-</span>
+<!-- <span class="imgs">
+ <img src="resources/img/wing.png" id="welcome1">
+<img src="resources/img/wing.png" id="welcome2"> 
+</span> -->
 <h2>'${member_name }'님 환영합니다.</h2>
    <h3>회원가입이 완료되어 3,000포인트가 적립되었습니다.</h3>
 <div class="as">

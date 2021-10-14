@@ -9,6 +9,7 @@ const screenTime = document.querySelector('.screenTime');
 const moveSeatForm = document.querySelector('.moveSeatForm');
 const moveSeatButton = document.querySelector('.moveSeatButton');
 const movieSelector= document.querySelectorAll('.movielist');
+const timeSelector= document.querySelectorAll('.movietime');
 let selectmovie = document.querySelector('.selectmovie');
 console.log(selectmovie);
 const mvlmage = document.createElement('img');
@@ -59,9 +60,11 @@ function addDate() {
         dayClickEvent(button);
         if(j>7){
         	button.disabled="disabled";
-        	$("#"+j).css({
-        		"color":"#7d7d7d"
-        	});
+        	$("#"+j).addClass("disdate");
+        	/*$("#"+j).css({
+        		"color":"#7d7d7d",
+        			"cursor":"auto"
+        	});*/
         }
         j++;
     }
@@ -72,9 +75,17 @@ function addDate() {
 function dayClickEvent(button) {
 	
     button.addEventListener('click', function() {
+    	$(this).siblings().not(".disdate").css({"background-color":"transparent",
+            					"font-weight": "normal",
+								"color": "white"});
         const movieDateWrapperActive = document.querySelectorAll(
             '.movie-date-wrapper-active'
         );
+        $(this).css({"background-color": "#f1f1f1",
+            "font-weight": "bolder",
+			"color": "black"});
+
+   	 
         movieDateWrapperActive.forEach(list => {
             list.classList.remove('movie-date-wrapper-active');
         });
@@ -120,12 +131,14 @@ function timeClickEvent(button2) {
 //선택한 날짜(년+월+일+요일+시간)
 movietime.forEach(list => {
     list.addEventListener('click', function() {
+
+    	 
         const reserveTimeActive = document.querySelectorAll('.reserve-time-active');
         reserveTimeActive.forEach(li => {
             li.classList.remove('reserve-time-active');
         });
         list.classList.add('reserve-time-active');
-        console.log(list.innerHTML);
+
         screenTime.value = list.innerHTML;
     });
 }); 
@@ -133,8 +146,11 @@ console.log(screenTime.value);
 
 //선택한 영화제목 가져오기
 movieSelector.forEach(mvlist => {
-	
+
     mvlist.addEventListener('click', function() {
+    	$(this).siblings().css({"background-color":"transparent",
+								"font-weight": "normal",
+								"color": "white"});
         const selMovie = document.querySelectorAll('.selMovie');
         selMovie.forEach(li => {
             li.classList.remove('selMovie');
@@ -145,7 +161,11 @@ movieSelector.forEach(mvlist => {
         selectmovie.value = mvlist.value;
         console.log(selectmovie);
         $(".choose_result_title").text("");
-		$(this).clone().appendTo(".choose_result_title");
+        $(this).clone().appendTo(".choose_result_title").css({"text-align":"center",
+        		"background-color":"transparent"});
+        $(this).css({"background-color": "#f1f1f1",
+        "font-weight": "bolder",
+        "color": "black"});
     });
     
 }); 
@@ -156,7 +176,6 @@ function mvclick(s) {
     var img = document.createElement('img')
     img.src=s;
     $(".choose_result_img").append(img);
-    console.log(img); 
 	
 }
 moveSeatButton.addEventListener('click', function() {console.log(reserveDay.value);
@@ -166,9 +185,23 @@ moveSeatButton.addEventListener('click', function() {console.log(reserveDay.valu
     	alert("날짜와 시간을 선택하세요")
     }
 });
-$("#movietime_1, #movietime_2, #movietime_3, #movietime_4").click(function(){
+/*
 
-	$(".choose_result_time").text("");
-	$(this).clone().appendTo(".choose_result_time");
+
+/*선택한 시간 가져오기*/
+timeSelector.forEach(timelist => {
+
+	timelist.addEventListener('click', function() {
+		$(this).parent().siblings().children().css({"background-color":"transparent",
+			"font-weight": "normal",
+			"color": "white"});
+	
+		$(".choose_result_time").text("");
+		$(this).clone().appendTo(".choose_result_time").css("background-color","transparent");
+	      $(this).css({"background-color": "#f1f1f1",
+	          "font-weight": "bolder",
+	          "color": "black"});
+
+	});
 });
 

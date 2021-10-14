@@ -93,7 +93,7 @@
  							<td>
  								<img src="${dto.product_img }" id="img_section"
  										alt="img" width="130px" height="130px" class="img-thumbnail">
- 								<input type="file" id="productfile" name="productfile" onchange="imgPreview(event)">
+ 								<input type="file" id="productfile" name="productfile" onchange="imgPreview(event)" required="required">
  							</td>
  						</tr>
 

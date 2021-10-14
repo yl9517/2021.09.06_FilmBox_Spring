@@ -122,7 +122,7 @@ public class UserContoller {
 		model.addAttribute("myRsvList", myRsvList);
 		model.addAttribute("myfilmlist", myfilmlist);
 		model.addAttribute("myCouponList", myCouponList);
-		model.addAttribute("page","mypage.jsp");
+		model.addAttribute("page","user/mypage.jsp");
 
 		return "view";
 	}

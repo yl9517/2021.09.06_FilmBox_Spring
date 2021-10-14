@@ -26,13 +26,17 @@
 		</div>
 
 		<div class="bottom_content">
+			<div class="notice_content_all">
 			<div class="notice_content_title">> 내용</div>
 			<textarea class="notice_content" id="notice_content" name="notice_content" readonly><c:out value="${detail.notice_content }"/></textarea>
+			</div>
 			
-			<div>
+			<div class="divimg_all">
 			<c:if test="${detail.notice_img!=null }">
-				<div class="addfile">> 첨부 파일</div>
+				<div class="addfile">> 첨부</div>
+				<div class="divimg">
 				<img alt="첨부" src="${detail.notice_img }" class="addimg">
+				</div>
 			</c:if>
 			</div>
 		</div>

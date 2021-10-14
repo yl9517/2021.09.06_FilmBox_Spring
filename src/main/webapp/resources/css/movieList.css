@@ -14,9 +14,8 @@
  }
 #movieList h2{
 	margin-bottom: 20px;
-	font-size: 25px;
+	font-size: 30px;
     font-weight: bolder;
-    text-align: left;
 }
 .nosearch{
 	margin-top: 50px;
@@ -53,7 +52,7 @@
  	clear: both;
  }
  /* 예매하기 버튼 */
- .reservation {
+/*  .reservation {
     margin: 0;
     border: 0;
     position: relative;
@@ -136,7 +135,7 @@
     -webkit-transform: rotateX(-90deg);
     -moz-transform: rotateX(-90deg);
 }
-
+ */
 /* 영화목록 없을때 */
 .empty_story{
 	text-align: center;
@@ -152,9 +151,13 @@
     color: #fff;
     line-height: 36px;
     border: 0;
-    background: #037b94;
+    background: #7F9871;
+    position: relative;
+    bottom: 20px;
 }
-
+.button.gblue:hover{
+	background-color: #5D7152;
+}
 a.button {
     text-decoration: none;
 }

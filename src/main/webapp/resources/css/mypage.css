@@ -14,9 +14,9 @@
  	margin: 0 auto;
  	padding : 20px;
  	width: 800px;
- 	height : 280px;
+ 	height : 300px;
  	border: 4px double beige;
- 	border-radius: 20px;
+ 	border-radius: 30px;
  	background-color: #7F9871;
  	color: #f5f5f5;
 
@@ -27,14 +27,14 @@
  	text-indent: 10px;
  	display: flex;
  	justify-content: flex-start;
- 	padding : 5px 20px;
+ 	padding : 0px 0px 10px 30px;
  	font-size: 30px;
  	font-weight: bold;
  }
 
  /* 회원정보수정&탈퇴 */
 .modify_quit {
- 	font-size: 15px;
+ 	font-size: 17px;
  	display: flex;
  	flex-direction: row;
  	justify-content: flex-end;
@@ -45,18 +45,21 @@
  }
 .modify, .quit {
 	color: #fff2e0;
+	cursor: pointer;
 }
 .modify:hover, .quit:hover {
 	color: #C94F44;
-	text-decoration: underline;
+	text-decoration: none;
+	font-weight: bolder;
+	cursor: pointer;
 }
+
 /* 내포인트내역, 나의 필름스토리, 나머지 */
 .point_story{
 	display: flex;
 	justify-content: space-around;
 	border-top: 3px double white;
-	padding: 20px 0px;
-	margin: 10px;
+	padding: 30px 0px;
 }
 
  /* my point */
@@ -67,9 +70,16 @@
  	font-size: 20px;
  	font-weight: bolder;
  }
+.mypoint p:first-child{
+	margin-bottom: 7px;
+}
 
  .point:hover{
 	color: #C94F44;
+ }
+ .point{
+ 	font-size: 30px;
+ 	margin-bottom: 7px;
  }
 
  /* 나의 필름 스토리 */
@@ -81,15 +91,16 @@
  	border-radius: 5px;
  	color: white;
  	width: 145px;
- 	height: 95px;
+ 	height: 127px;
  	font-size: 17px;
  }
 .story a{
-	font-size: 30px;
+	font-size: 35px;
 	color: white;
 }
 .story a:hover{
-	font-size: 30px;
+	font-size: 35px;
+	text-decoration: none;
 	color: #C94F44;
 }
 
@@ -100,8 +111,8 @@
  	font-weight: bolder;
  	border-radius: 5px;
  	color: white;
- 	width: 123px;
- 	height: 95px;
+ 	width: 145px;
+ 	height: 127px;
 }
 
 
@@ -130,6 +141,10 @@
 	padding: 50px 20px 20px 20px;
 	margin-top: 30px;
 }
+.rsv_h span{
+	font-size: 30px;
+	cursor: pointer;
+}
  
  /* 예매내역 */
  .rsv_list_wrap, .coupon_list_wrap{
@@ -155,7 +170,7 @@
 .empty_rsv img{
 	margin: 20px;
 }
-/* 예매번호 싸기 */
+/* 예매번호 wrap */
 .rsv_no_wrap {
 	padding-left: 20px;
 }
@@ -164,7 +179,7 @@
 .rsv_no{
 	color: orange;
 	font-weight: bolder;
-	font-size: 18px;
+	font-size: 25px;
 	padding-left: 10px;
 }
 /* 포스터, 예매정보 */
@@ -177,7 +192,7 @@
 /* 예매 정보 */
 .rsv_info{
 	display: inline-block;
-	padding: 0 40px;
+	padding: 0 100px 0 50px;
 	word-spacing: normal;
 }
 
@@ -192,11 +207,11 @@
 .rsv_btn{
 	display: flex;
 	flex-direction: column;
-	padding-left: 430px;
+	padding-left: 50px;
 }
 #qr{
-	font-size: 60px;
-	padding-left: 10px;
+	font-size: 100px;
+	cursor: pointer;
 }
 
 
@@ -214,6 +229,7 @@
     height: 250px;
     float: left;
     margin: 0px 40px;
+    font-size: 14px;
 }
 .clear{
 	clear: both;
@@ -227,6 +243,7 @@
     border-radius: 5px;
     position:relative;
     bottom: 10px;
+    margin: 0 0 10px;
 }
 .have_count{
 	float: right;
@@ -242,6 +259,7 @@
 .coupon_title + p{
 	position:relative;
     top: 20px;
+    margin: 0 0 10px;
 }
 
 .empty_coupon {
@@ -250,17 +268,25 @@
 .empty_coupon img{
 	margin: 20px;
 }
-.empty_coupon a{
+.empty_coupon a {
 	font-size: 18px;
     padding: 15px;
     display: block;
     border-bottom: 1px solid #ccc;
 }
-.coupon span.glyphicon.glyphicon-qrcode{
+.empty_coupon div{
+	font-size: 18px;
+}
+.coupon span.material-icons{
    	float:left;
-   	padding-right: 10px;
-    font-size: 70px;
+    font-size: 80px;
     cursor: pointer;
+    padding: 0px 10px 0px 0px;
+}
+.coupon.back p{
+	font-size: 14px;
+	margin: 0px 0px 8px;
+	padding: 0px;
 }
 
  /*쿠폰뒤집기*/

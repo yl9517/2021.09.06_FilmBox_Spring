@@ -23,12 +23,11 @@ body{
 
 .reserve_date{
 	padding : 20px 20px 20px 20px;
-	width : 1100px;
 	white-space:nowrap;
  	overflow-x: scroll;
 	font-size : 25px;
 	font-weight : 700;
-	color : #7F9871;
+	color : #C94F44;
 }
 
 /**/
@@ -45,12 +44,12 @@ body{
 
 
 .mid{
-	height : 700px;
+	height : 750px;
 	width : 1100px;
 	display : flex;
 	flex-direction : column;
 	font-size : 20px;
-	border : 1px solid grey;
+	border : 10px solid white;
 	border-radius: 10px;
 }
 
@@ -65,22 +64,28 @@ body{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-	margin : 10px 0 15px 15px;
-	background-color: transparent!important;
+	padding: 10px 7px;
+    margin-left: 5px;
+    border-radius: 50px;
+	background-color: transparent;
 	font-size: 16px;
 	color : whitesmoke;
 	border : none;
 	font-size : 18px;
 }
-
+/*날짜 disable*/
+.disdate{
+	color:#7d7d7d;
+     cursor:auto;
+}
 .reserve_button{
 	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-	margin : 10px 0 15px 0;
 	background-color: transparent!important;
 	font-size: 16px;
 	color : whitesmoke;
+
 	border : none;
 	font-size : 18px;
 }
@@ -97,7 +102,7 @@ body{
     -moz-appearance: none;
     appearance: none;
 	margin-bottom : 15px;
-	background-color: transparent!important;
+	background-color: transparent;
 	border : none;
 	size : 20px;
 	color : whitesmoke;
@@ -107,12 +112,15 @@ body{
 
 /**/
 .movielist{
-	font-size : 16px;
-	margin-bottom : 8px;
+	padding: 9px 0 9px 10px;
+    font-size: 18px;
+    text-align: left;
+    margin: 0px;
+        width: 260px;
 }
 
 .movie{
-	height : 490px;
+	height : 500px;
 	width : 350px;
 }
 
@@ -122,7 +130,7 @@ body{
 	align-items: center;
 	justify-content: center;
 	margin-top : 10px;
-	background-color: dimgray;
+	background-color: #C94F44;
 	border-radius : 10px;
 }
 
@@ -151,12 +159,17 @@ body{
 
 .time{
 	width : 200px;
-	height : 490px;
+	height : 500px;
  	margin-left : 50px; 
 }
 
 .movietime{
-	font-size : 16px;
+	font-size: 16px;
+    display: inline-block;
+    padding: 9px;
+    width: 180px;
+        margin: 3px;
+    text-align: center;
 }
 
 .time_wrapper{

@@ -13,11 +13,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
 <link rel="stylesheet"	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"	crossorigin="anonymous">
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
+
 <!-- bootstrap table 가져오기 -->
 <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+
+	
 </head>
 <body>
 <%-- <c:set var="loginId" value="${sessionScope.loginId}"></c:set> --%>
@@ -47,10 +57,13 @@
 					</p>
 				</div>
 				<div class="bottom">
-					<p class="subtitle">누적관객수</p>
-					<p class="sub">
+					<p class="subtitle">누적관객수	</p>
+					<p class="sub">	
 					   <fmt:formatNumber value="${dto.audiAcc }" pattern="#,###"/><span>명</span>
 					</p>
+						<span class="material-icons" role="button" data-placement="top"
+					data-toggle="popover" data-trigger="hover" id="attendance"
+						data-content="누적관객은 영화진흥 위원회 영화관 입장권 통합전산망제공 기준입니다.">help</span>
 				</div>
 			</div>
 			<div class="info_right">
@@ -75,8 +88,8 @@
 				</form>
 			</c:when>
 			<c:otherwise>
-				<div class="reserve">
-					<input type="button" value="예매불가">
+				<div class="moveForm">
+					<input type="button" value="예매불가" class="notreserve" disabled="disabled">
 				</div>
 			</c:otherwise>
 		</c:choose>
