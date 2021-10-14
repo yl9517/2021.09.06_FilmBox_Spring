@@ -15,7 +15,7 @@ body{
 
 .form{
 	margin: 0 auto!important;
-	padding: 10%!important;
+	padding: 5%!important;
 	min-height: 10%!important;
 	background-color: #202126!important;
 	display : flex;
@@ -26,15 +26,29 @@ body{
 }
 
 
-textarea{
+.notice_content_t, .notice_content{
 	padding : 15px!important;
-	width:800px; 
-	height:300px; 
+	width:900px; 
+	height:450px; 
     resize:none;
     margin-top : 10px!important;
     font-size : 16px!important;
     border-radius: 5px;
     background-color : gainsboro;
+}
+
+.notice_content_t::-webkit-scrollbar {
+    width: 12px;
+    background-color: none;
+  }
+  
+.notice_content_t::-webkit-scrollbar-thumb {
+    background-color: whitesmoke;
+    border-radius: 10px;
+ }
+
+.notice_content::-webkit-scrollbar {
+  display: none;
 }
 
 .notice_title_title, .notice_content_title{
@@ -45,8 +59,8 @@ textarea{
 }
 
 .notice_title{
-	width:800px;
-	height:30px;
+	width:900px;
+	height:40px;
 	margin : 10px 0 30px 0!important;
 	font-size : 16px!important;
 	padding : 15px!important;
@@ -89,9 +103,28 @@ textarea{
 	margin : 15px 0;
 }
 
-.addimg{
- 	width: 100px;
- 	height: 100px;
+.bottom_content{
+	display : flex;
+	flex-direction : column;
+	align-items: center;
+	justify-content: center;
+}
+
+.notice_content_all{
+	display : flex;
+	flex-direction : column;
+}
+
+.divimg_all{
+	display: flex;
+	flex-direction : column;
+	align-items: flex-start;
+	width : 900px;
+	margin-bottom : 20px;
+}
+
+ .addimg{
+ 	width : 100%;
  }
  
 #upload{

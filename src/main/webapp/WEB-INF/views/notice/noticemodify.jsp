@@ -20,16 +20,19 @@
 		</div>
 		
 		<div class="bottom_content">
+			<div class="notice_content_all">
 			<div class="notice_content_title">> 내용</div>
-			<textarea class="notice_content" id="notice_content" name="notice_content" spellcheck="false"><c:out value="${detail.notice_content }"/></textarea>
-		
-			<div>
+			<textarea class="notice_content_t" id="notice_content" name="notice_content" spellcheck="false"><c:out value="${detail.notice_content }"/></textarea>
+			</div>
+			
+			<div class="divimg_all">
 			<c:if test="${detail.notice_img!=null }">
-				<div class="addfile">> 첨부 파일</div>
+				<div class="addfile">> 첨부</div>
+				<div class="divimg">
 				<img alt="첨부" src="${detail.notice_img }" class="addimg">
+				</div>
 			</c:if>
 				<input type="file" id="upload" name="upload">
-<%-- 				<input type="hidden" name="upload" value="${detail.notice_img }"> --%>
 			</div>
 		</div>
 		
@@ -38,18 +41,6 @@
 	<input type="reset" class="write_btn" value="취소">
 	</div>
 </form>
-
-<!--  <script>
-  $("#upload").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $("#addfile img").attr("src", data.target.result).width(500);        
-    }
-    reader.readAsDataURL(this.files[0]);
-   }
-  });
- </script> -->
 
 </body>
 </html>

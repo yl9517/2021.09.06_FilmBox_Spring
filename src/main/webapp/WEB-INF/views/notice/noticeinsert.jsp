@@ -19,7 +19,7 @@
 			<div class="notice_content_title">> 내용</div>
 			<textarea class="notice_content" id="notice_content" name="notice_content" spellcheck="false" required></textarea>
 			<div>
-			<div class="addfile">> 파일 첨부</div>
+			<div class="addfile">> 첨부</div>
  			<input type="file" id="upload" name="upload">
  			</div>
 		</div>
