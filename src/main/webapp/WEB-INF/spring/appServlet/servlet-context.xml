@@ -45,8 +45,10 @@
 			<mapping path="/mypage"/>
 			<mapping path="/mypointlist"/>
 			<mapping path="/myfilmstory"/>
-			<!-- <mapping path="/myreservelist"/> -->
+			<mapping path="/myMoviePost"/>
+			<mapping path="/userquit"/>
 			<mapping path="/productInsert"/>
+			<mapping path="/productInsertAction"/>
 			<mapping path="/productList"/>
 			<mapping path="/reviewInsertAction"/>
 			<mapping path="/reviewModifyAction"/>

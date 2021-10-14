@@ -83,7 +83,7 @@
  							</td>
  							<td>
  								<textarea rows="3" cols="40" 
- 									id="product_content" name="product_content">${dto.product_content }</textarea>
+ 									id="product_content" name="product_content" required="required">${dto.product_content }</textarea>
  							</td>
  						</tr>
  						<tr>
