@@ -121,7 +121,7 @@ public class ReserveContorller {
 	}
 
 	@GetMapping("/success/{payMoney}/{movieCd}/{screenTime}/{reserveDate}/{ticketNumber}/{selectedSeat}/{usepoint}")
-	public String reserveSuccess(KakaopayDTO dto, HttpSession session) {
+	public String reserveSuccess(KakaopayDTO dto, HttpSession session,Model model) {
 		String member_id = (String) session.getAttribute("loginId");
 		dto.setMember_id(member_id);
 		reservice.reserveinsert(dto);
@@ -140,8 +140,11 @@ public class ReserveContorller {
 
 			reservice.screeninsert(sDTO);
 		}
-
-		return "redirect:/main";
+		model.addAttribute("inpoint",(int) dto.getPayMoney()*0.05);
+		model.addAttribute("resultpage","movie");
+		model.addAttribute("page","store/storePayDone.jsp");
+		
+		return "view";
 	}
 
 }
