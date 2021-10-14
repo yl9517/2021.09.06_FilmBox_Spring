@@ -73,6 +73,10 @@
 				</div>
 			</div>
 			</c:forEach>
+		
+		</div>
+		<div class="more" id="more_post">
+			<div class="more_open" onclick="showMore()" >더보기</div>
 		</div>
 		</div>
 		
@@ -86,6 +90,7 @@
 
 		}
 	</script>
+	<script type="text/javascript" src="resources\js\postmovie.js"></script>
 </body>
 </html>
 
