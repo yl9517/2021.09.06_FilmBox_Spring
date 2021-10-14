@@ -27,5 +27,9 @@ public interface PostService {
 
 	public int subcount(int post_no);
 
+	public void updatePost(PostDTO dto);
+
+	public void postDelete(int post_no);
+
 	
 }

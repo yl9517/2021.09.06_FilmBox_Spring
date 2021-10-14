@@ -28,4 +28,12 @@ public class PostDTO {
 		this.movieNm = movieNm;
 		this.image = image;
 	}
+	public PostDTO(String member_id, String post_content, String movieNm, String image,int post_no) {
+		super();
+		this.member_id = member_id;
+		this.post_content = post_content;
+		this.movieNm = movieNm;
+		this.image = image;
+		this.post_no = post_no;
+	}
 }

@@ -81,6 +81,18 @@ public class PostServiceImple implements PostService {
 		return postMapper.subcount(post_no);
 	}
 
+	@Override
+	public void updatePost(PostDTO dto) {
+		// TODO Auto-generated method stub
+		postMapper.updatePost(dto);
+	}
+
+	@Override
+	public void postDelete(int post_no) {
+		// TODO Auto-generated method stub
+		postMapper.postDelete(post_no);
+	}
+
 	
 
 }

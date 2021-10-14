@@ -31,4 +31,8 @@ public interface PostMapper {
 
 	public List<SubPostDTO> subdetail(HashMap<String, Object> hm);
 
+	public void updatePost(PostDTO dto);
+
+	public void postDelete(int post_no);
+
 }

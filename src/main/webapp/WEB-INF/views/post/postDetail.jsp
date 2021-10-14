@@ -13,6 +13,14 @@
 	{
 		location.href="/subDelete/"+subno+"/"+post_no;
 	}
+	function postmodify(post_no)
+	{
+		location.href="/postModify/"+post_no;
+	}
+	function postdelete(post_no)
+	{
+		location.href="/postDelete/"+post_no;
+	}
 </script>
 </head>
 <body>
@@ -24,13 +32,20 @@
 					<div class="user-info">
 						<p class="user-id">${dto.member_id }</p>
 						<p class="user-write-time">${dto.post_date }</p>
+					
 					</div>
+					<c:if test="${member_id eq dto.member_id}">
+					<div class="user-control">
+						<input type="button" class="postmodify" id="postmodify" value="수정" onclick="postmodify(${post_no })">
+						<input type="button" class="postdelete" id="postdelete" value="삭제" onclick="postdelete(${post_no })">
+					</div>
+					</c:if>
 				</div>
 				
 				<div class="post-cont-area">
 					<div class="section">
 						<div class="content">
-							<img src="${dto.image }" alt/>
+							<img src="${dto.image }" alt=""/>
 							<p>${dto.post_content }</p>
 						</div>
 					</div>

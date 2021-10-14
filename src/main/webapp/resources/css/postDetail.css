@@ -68,6 +68,13 @@
     position: relative;
     padding: 8px 0 0 84px;
 }
+.user-control {
+    float: right;
+    font-size: 13px;
+    position: relative;
+    top: 10px;
+    right: 20px;
+}
 .post-detail p {
     margin: 0;
     padding: 0;

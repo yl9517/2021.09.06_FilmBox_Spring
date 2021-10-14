@@ -164,6 +164,45 @@ public class PostContorller {
 		postservice.subDelete(subno);
 		return "redirect:/postdetail/"+post_no;
 	}
-	
-	
+	@GetMapping("/postModify/{post_no}")
+	public String postModify(@PathVariable int post_no, Model model, HttpSession session) {
+
+		PostDTO dto = postservice.postdetail(post_no);
+		// 세션아이디 받기
+		String member_id = (String) session.getAttribute("loginId");
+
+		model.addAttribute("member_id", member_id);
+		model.addAttribute("dto",dto);
+		model.addAttribute("page", "post/postmodify.jsp");
+
+		return "view";
+	}
+	@RequestMapping(value = "/postmodifyresult", method = {  RequestMethod.POST })
+	public String postmodifyresult (@RequestParam(value="member_id",required = false) String member_id
+				,@RequestParam(value="post_no",required = false) int post_no
+				,@RequestParam(value="post_content",required = false) String post_content
+				,@RequestParam(value="movieNm",required = false) String movieNm
+				,@RequestParam(value="image",required = false) MultipartFile file
+			  	, HttpServletRequest request, Model model) throws  IOException {
+
+		String uploadDir = request.getRealPath("");
+		
+		
+		String filename = "/resources/upload/"+file.getOriginalFilename();	
+		
+		String filePath = uploadDir+"\\"+filename;
+		
+		file.transferTo(new File(filePath));
+		
+		PostDTO dto = new PostDTO(member_id,post_content,movieNm,filename,post_no);
+		
+		postservice.updatePost(dto);
+		return "redirect:/post";
+	}
+
+	@GetMapping("/postDelete/{post_no}")
+	public String postDelete(@PathVariable int post_no, Model model, HttpSession session){
+		postservice.postDelete(post_no);
+		return "redirect:/post";
+	}
 }

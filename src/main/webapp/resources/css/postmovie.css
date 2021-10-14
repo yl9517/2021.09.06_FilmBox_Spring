@@ -85,10 +85,7 @@ li {
 .movie-box .post-lank li a:hover .post-count {
     left: -10000px;
 }
-a:link {
-    color: #444;
-    text-decoration: none;
-}
+
 .movie-box .post-lank li a .lank {
     position: absolute;
     top: 10px;
@@ -208,7 +205,7 @@ a.button:active, a.button:focus, a.button:hover, a.button:visited {
     color: #351f67;
     text-decoration: none;
     background-color: #f2f4f8;
-}
+}/* 
 a.button {
     text-decoration: none;
 }
@@ -219,7 +216,7 @@ a:active, a:focus, a:hover {
 a:link {
     color: #444;
     text-decoration: none;
-}
+} */
 .button {
     display: inline-block;
     height: 36px;
@@ -236,12 +233,12 @@ a:link {
     background-color: #fff;
     cursor: pointer;
 }
-
+/* 
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
     text-decoration: underline;
-}
+} */
 .inner-wrap {
     width: 1100px;
     margin: 0 auto;
@@ -330,10 +327,10 @@ a:-webkit-any-link {
     text-decoration: none;
     color: #444;
 }
-a:link {
+/* a:link {
     color: #444;
     text-decoration: none;
-}
+} */
 a {
     background-color: transparent;
 }
@@ -343,10 +340,6 @@ a {
 .movie-post-list a {
     text-decoration: none;
     color: #444;
-}
-a:link {
-    color: #444;
-    text-decoration: none;
 }
 .movie-post-list .grid-item .wrap .cont .txt {
     padding: 0 0 15px 0;

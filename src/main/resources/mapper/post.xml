@@ -14,7 +14,7 @@
 		SELECT DISTINCT(movieNm), image FROM filmbox_member fm
 		INNER JOIN filmbox_rev fr ON fm.member_id = fr.member_id
 		INNER JOIN filmbox_movie fv ON fr.movieCd= fv.movieCd
-		WHERE fm.member_id =#{member_id};
+		WHERE fm.member_id =#{member_id} AND fr.rev_condition=1 ;
 	</select>
 	
 	<insert id="insertPost" parameterType="com.film.dto.PostDTO">
@@ -88,7 +88,16 @@
 	WHERE  rnum BETWEEN #{startrow} AND #{endrow} 
 		
 </select> -->
-	
+	<update id="updatePost" parameterType="com.film.dto.PostDTO">
+		update filmbox_post set member_id = #{member_id}, 
+								post_content = #{post_content}, 
+								movieNm = #{movieNm}, 
+								image = #{image}
+								where post_no= #{post_no}
+	</update>
+	<delete id="postDelete" parameterType="int">
+		delete from filmbox_post where post_no=#{post_no}
+	</delete>
 	
 </mapper>
     
