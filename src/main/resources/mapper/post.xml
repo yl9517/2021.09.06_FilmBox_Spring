@@ -69,7 +69,7 @@
 	SELECT s.* FROM (
 	SELECT @rownum:=@rownum+1 AS rnum, post.*
 		FROM (SELECT subno,post_no, subcontent,member_id,sub_date
-		FROM filmbox_postsub WHERE post_no=24) post
+		FROM filmbox_postsub WHERE post_no=#{post_no}) post
 		WHERE (@rownum:=0)=0 ) s
 	WHERE rnum BETWEEN #{startrow} AND #{endrow}
 	

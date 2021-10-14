@@ -139,7 +139,7 @@ public class PostContorller {
 		SubPostPage subpage = new SubPostPage(currPage, subcount,pagesize,blocksize);
 
 //		List<SubPostDTO> sublist = postservice.subdetail(post_no);
-		List<SubPostDTO> sublist = postservice.subdetail(subpage.getStartRow(),subpage.getEndRow());
+		List<SubPostDTO> sublist = postservice.subdetail(post_no,subpage.getStartRow(),subpage.getEndRow());
 		model.addAttribute("dto",dto);
 		model.addAttribute("subcount",subcount);
 		model.addAttribute("member_id",member_id);

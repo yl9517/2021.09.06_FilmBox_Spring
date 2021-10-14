@@ -4,11 +4,11 @@
 
 
 let post_movie = document.getElementsByClassName("grid-item");
-let post_movie4 =3;
+let post_movie4 =7;
 
 for(let i=0; i<post_movie.length; i++)
 {
-	if(i>3)
+	if(i>7)
 	{
 		post_movie[i].style.display="none";
 	}
@@ -20,7 +20,7 @@ function showMore()
 	post_movie4 += 4;
 	for(let i=0; i<=post_movie4; i++)
 	{
-		if(i>3)
+		if(i>7)
 		{
 			post_movie[i].style.display="flex";
 		}

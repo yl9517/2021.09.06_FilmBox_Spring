@@ -59,10 +59,11 @@ public class PostServiceImple implements PostService {
 //		return postMapper.subdetail(post_no);
 //	}
 	@Override
-	public List<SubPostDTO> subdetail(int startrow, int endrow) {
+	public List<SubPostDTO> subdetail(int post_no, int startrow, int endrow) {
 		// TODO Auto-generated method stub
 
 		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("post_no", post_no);
 		hm.put("startrow", startrow);
 		hm.put("endrow", endrow);
 		
