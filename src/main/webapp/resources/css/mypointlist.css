@@ -61,6 +61,19 @@
 	margin: 3px 4px;
 	padding: 3px 8px;
 }
+#prev, #next{
+	font-size: 25px;
+	color: #C94F44;
+	margin: 0px;
+	padding: 0px;
+}
+#prev:hover, #next:hover{
+	font-size: 25px;
+	color: #7F9871;
+	margin: 0px;
+	padding: 0px;
+}
+
 .now_page{
 	border-radius: 3px;
 	border: 1px solid #9795A3;

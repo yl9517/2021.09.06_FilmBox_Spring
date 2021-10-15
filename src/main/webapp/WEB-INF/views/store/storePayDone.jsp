@@ -21,7 +21,14 @@
 			<span> POINT <strong>${inpoint }</strong>원 적립 </span></p>
 		</div>
 		<a href="/mypage">마이페이지 바로가기</a>
-		<a href="/store">스토어 가기</a>
+		<c:choose>
+		<c:when test="${resultpage eq 'movie'}">
+			<a href="/movieList">영화목록 가기</a>		
+		</c:when>
+		<c:otherwise>
+			<a href="/store">스토어 가기</a>
+		</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>
