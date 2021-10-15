@@ -74,7 +74,7 @@ function cancelModal(rev_no)
 {
 	$("#rsvCancelModal").modal('show');
 	
-		$('#confirm').click(function(){
+		$('#confirm').off('click').on('click', function(){
 			$.ajax({
 				url: "/rsvcancel",
 				type: 'post',
