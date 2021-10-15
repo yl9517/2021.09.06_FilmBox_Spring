@@ -190,8 +190,6 @@ public class LoginController {
 		//액세스 토큰 전달해서 사용자 정보 받아오기 hashmap으로
 		Map<String, Object> userData = api.getUserInfo(access_token);
 
-		System.out.println("login info : "+userData.toString());
-
 		UserDTO dto=new UserDTO();
 
 		String id = userData.get("id").toString();
@@ -226,7 +224,7 @@ public class LoginController {
 			
 			session.setAttribute("logintype", dto2.getLogin_type());
 			session.setAttribute("loginId", userData.get("id"));
-			System.out.println(dto2.getLogin_type());
+
 		}
 
 		return "redirect:main";
@@ -292,13 +290,11 @@ public class LoginController {
 			UserDTO dto = service.userDetail(member_id);
 			
 			//로그인 타입이 일반회원(R)일때 비밀번호 수정
-			System.out.println(dto.getLogin_type());
 			if(dto.getLogin_type() != "SNS") 
 			{
 				//임시비밀번호
 				String tempPwd = UUID.randomUUID().toString().replace("-", "");
 				tempPwd = tempPwd.substring(0, 10);
-				System.out.println(tempPwd);
 			
 				dto.setMember_id(member_id);
 				dto.setMember_pwd(tempPwd);

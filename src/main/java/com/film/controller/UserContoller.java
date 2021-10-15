@@ -190,7 +190,6 @@ public class UserContoller {
 	@RequestMapping("/rsvcancel")
 	public @ResponseBody int revcancel(@RequestParam int rev_no)
 	{
-		System.out.println(rev_no);
 		int result = 0;
 		result = revservice.revCancel(rev_no);
 		return result;
