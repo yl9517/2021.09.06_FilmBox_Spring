@@ -49,9 +49,6 @@ public class PostContorller {
 	private ReserveService reservice;
 
 	@Autowired
-	private UserService userservice;
-
-	@Autowired
 	private PostService postservice;
 
 	@RequestMapping(value = "/post", method = { RequestMethod.GET, RequestMethod.POST })
@@ -138,7 +135,6 @@ public class PostContorller {
 		
 		SubPostPage subpage = new SubPostPage(currPage, subcount,pagesize,blocksize);
 
-//		List<SubPostDTO> sublist = postservice.subdetail(post_no);
 		List<SubPostDTO> sublist = postservice.subdetail(post_no,subpage.getStartRow(),subpage.getEndRow());
 		model.addAttribute("dto",dto);
 		model.addAttribute("subcount",subcount);
@@ -167,7 +163,6 @@ public class PostContorller {
 	public String postModify(@PathVariable int post_no, Model model, HttpSession session) {
 
 		PostDTO dto = postservice.postdetail(post_no);
-		// 세션아이디 받기
 		String member_id = (String) session.getAttribute("loginId");
 
 		model.addAttribute("member_id", member_id);

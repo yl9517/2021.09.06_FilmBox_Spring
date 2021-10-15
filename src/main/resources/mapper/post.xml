@@ -9,6 +9,7 @@
 	<select id="getPostList" resultType="com.film.dto.PostDTO">
 		SELECT post_no, member_id, post_content, movieNm,image, post_date
 		FROM filmbox_post
+		ORDER BY post_no DESC;
 	</select>
 	<select id="getMyMovie" parameterType="string" resultType="com.film.dto.MovieDTO">
 		SELECT DISTINCT(movieNm), image FROM filmbox_member fm

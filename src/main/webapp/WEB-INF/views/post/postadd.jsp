@@ -28,16 +28,17 @@
 		<div class="post_content"> 내용</div>
 		<textarea class="post_content" id="post_content" name="post_content" spellcheck="false" required></textarea>
 		<div>
-		<div class="addfile">이미지 추가</div>
-		<input type="file" id="image" name="image">
+		<div class="addfile">이미지 추가 (이미지 필수 입니다.)</div>
+		<input type="file" id="image" name="image" required="required">
  		</div>
 	</div>
 
 	
 	<div class="write_btns">
-	<input type="submit" class="write_btn" value="확인">
-	<input type="reset" class="write_btn" value="취소">
+	<button class="write_btn" type="button">확인</button>
+	<!-- <input type="submit" class="write_btn" value="확인"> -->
 	</div>
 </form>
+	<script src="/resources/js/postadd.js"></script>
 </body>
 </html>
