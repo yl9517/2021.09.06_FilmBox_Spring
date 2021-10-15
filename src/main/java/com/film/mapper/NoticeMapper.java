@@ -11,6 +11,7 @@ import com.film.dto.NoticeDTO;
 public interface NoticeMapper {
 
 	public int noticeInsert(NoticeDTO dto);
+	public int noticeInsert2(NoticeDTO dto);
 	public List<NoticeDTO> noticeList(HashMap<String, Object> hm);
 	public NoticeDTO noticeDetail(int notice_no);
 	public void noticeModify(NoticeDTO dto);
@@ -18,5 +19,6 @@ public interface NoticeMapper {
 	public int totalCount();
 	public int updateReadno(int notice_no);
 	public void noticeModify2(NoticeDTO dto);
+
 
 }

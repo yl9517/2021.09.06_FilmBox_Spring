@@ -7,6 +7,7 @@ import com.film.dto.NoticeDTO;
 public interface NoticeService {
 
 	public void noticeInsert(NoticeDTO dto);
+	public void noticeInsert2(NoticeDTO dto);
 	public List<NoticeDTO> noticeList(int startRow, int endRow);
 	public int totalCount();
 	public NoticeDTO noticeDetail(int notice_no);
@@ -14,4 +15,5 @@ public interface NoticeService {
 	public void noticeDelete(NoticeDTO dto);
 	public int updateReadno(int notice_no);
 	public void noticeModify2(NoticeDTO dto);
+
 }

@@ -66,6 +66,12 @@ public class NoticeServiceImple implements NoticeService {
 		
 		mapper.noticeModify2(dto);
 	}
+
+	@Override
+	public void noticeInsert2(NoticeDTO dto) {
+		
+		int result=mapper.noticeInsert2(dto);
+	}
 	
 	
 

@@ -82,18 +82,20 @@ public class NoticeController {
 									  )throws IOException {
 
 		String uploadDir = request.getRealPath(""); //실제경로
-//		String uploadDir = request.getRealPath("resources/upload"); //실제경로
-		
 		String filename = "/resources/upload/"+file.getOriginalFilename();	//파일 이름
-//		String filename = file.getOriginalFilename();	//파일 이름
-		
-		String filePath = uploadDir+"\\"+filename;
-		file.transferTo(new File(filePath)); //파일 저장
 
-		NoticeDTO dto = new NoticeDTO(notice_title, notice_content, notice_readno, filename);
-		
-		service.noticeInsert(dto);
-//   	return "testfile";
+		if(file.getOriginalFilename().equals(""))
+		{
+			NoticeDTO dto=new NoticeDTO(notice_title, notice_content, notice_readno);
+			service.noticeInsert2(dto);
+			
+		}else {
+			String filePath = uploadDir+"\\"+filename;
+			file.transferTo(new File(filePath)); //파일 저장
+			NoticeDTO dto2 = new NoticeDTO(notice_title, notice_content, notice_readno, filename);
+			service.noticeInsert(dto2);
+		}
+			
 		return "redirect:/notice";
 	}
 	

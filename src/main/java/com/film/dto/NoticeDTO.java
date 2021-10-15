@@ -38,6 +38,15 @@ public class NoticeDTO {
 		this.notice_title = notice_title;
 		this.notice_content = notice_content;
 	}
+
+	public NoticeDTO(String notice_title, String notice_content, int notice_readno) {
+		super();
+		this.notice_title = notice_title;
+		this.notice_content = notice_content;
+		this.notice_readno = notice_readno;
+	}
+	
+	
 	
 	
 	

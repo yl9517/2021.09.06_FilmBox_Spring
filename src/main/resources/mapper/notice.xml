@@ -17,6 +17,15 @@
 		        , #{notice_img} )
 </insert>
 
+<insert id="noticeInsert2" parameterType="com.film.dto.NoticeDTO">
+	insert into filmbox_notice ( notice_title
+							, notice_content
+							, notice_readno )
+	       values ( #{notice_title}
+		        , #{notice_content}
+		        , #{notice_readno} )
+</insert>
+
 
 <select id="noticeList" parameterMap="hashmap" resultType="com.film.dto.NoticeDTO">
 	select *
