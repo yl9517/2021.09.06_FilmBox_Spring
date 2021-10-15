@@ -16,8 +16,8 @@ body{
 
 .form{
 	margin: 0 auto;
-	padding: 10%;
-	min-height: 10%;
+	    padding: 5% 0;
+    min-height: 650px;
 	background-color: #202126!important;
 	display : flex;
 	flex-direction : column;
@@ -49,8 +49,11 @@ th{
 }
 
 .notice_title1{
+	margin-bottom: 50px;
 	color : whitesmoke;
 	text-align: center;
+	font-size: 30px;
+    font-weight: bolder;
 }
 
 .notice_title:link, .notice_title:visited, .btnwrite:link, .btnwrite:visited

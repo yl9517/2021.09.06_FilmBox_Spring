@@ -23,10 +23,10 @@
 			<div id="console-event"></div>
 			<h2>스토어</h2>
 			<c:if test="${member_id == 'admin' }">
-				<p class="t-switch-h">상품 관리</p>
 				<div class="t-switch">
 					<input id="toggle-event" type="checkbox" data-toggle="toggle" data-onstyle="danger" data-size="sm">
 				</div>
+				<p class="t-switch-h">상품 관리</p>
 			</c:if>
 			
 		<div>

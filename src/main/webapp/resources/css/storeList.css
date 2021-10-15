@@ -31,6 +31,8 @@
 	display: flex;
 	justify-content: flex-end;
 	font-weight: bolder;
+	float:right;
+	padding: 0 10px;
 }
 /*카테고리*/
 .tab_wrap{
