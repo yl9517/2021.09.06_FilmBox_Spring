@@ -18,13 +18,10 @@ element.style {
     position: relative;
     height: 1275px;
 }
-#contents.location-fixed {
-    padding-top: 82px;
-}
-#contents {
+
+.contents {
     width: 100%;
-    margin: 0;
-    padding: 40px 0 0 0;
+    margin-bottom: 100px;
 }
 .location-fixed {
     padding-top: 42px;
@@ -142,7 +139,7 @@ img {
 h2.tit {
     padding: 0 0 26px 0;
     font-size: 1.8666em;
-    font-weight: 400;
+    font-weight: bolder;
     letter-spacing: -1px;
     line-height: 1.1;
     color: #222;
@@ -188,24 +185,24 @@ div {
     width: 123px;
     padding: 0;
 }
-.button.purple:hover {
-    color: #fff;
-    background-color: #C94F44;
-}
-a.button:active, a.button:focus, a.button:hover, a.button:visited {
-    color: #C94F44;
-}
-.button.purple {
-    color: #444;
+a.button.purple{
+	color:white;
     line-height: 36px;
     border: 0;
     background: #C94F44;
 }
+
+a.button:active, a.button:focus, a.button:hover, a.button:visited {
+    color: #C94F44;
+}
+
 .button:hover {
     color: #351f67;
     text-decoration: none;
     background-color: #f2f4f8;
-}/* 
+}
+
+/* 
 a.button {
     text-decoration: none;
 }

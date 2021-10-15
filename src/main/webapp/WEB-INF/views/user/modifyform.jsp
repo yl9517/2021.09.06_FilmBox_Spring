@@ -54,7 +54,7 @@
     
     <div class="btns">
      <input type="submit" id="usubmit" value="수정 완료">
-     <input type="reset" id="ureset" value="취소">
+     <input type="reset" id="ureset" value="초기화">
      </div>
 </form>
 </div>	

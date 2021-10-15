@@ -12,15 +12,18 @@ $('.tab_wrap').children().click(function() {
 $('.review_wrap').hide();
 $('.rgyPostIt').show();
 $('#content').show();
+$('#stlls').show();
 $('.first_btn').click(function() { //영화정보
 	$('.review_wrap').hide();
 	$('.rgyPostIt').show();
 	$('#content').show();
+	$('#stlls').show();
 });
 $('.second_btn').click(function() { //실관람평
 	$('.review_wrap').show();
 	$('.rgyPostIt').hide();
 	$('#content').hide();
+	$('#stlls').hide();
 });
 
 /* 줄거리 <br> 추가 */

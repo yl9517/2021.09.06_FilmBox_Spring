@@ -46,7 +46,7 @@
 				</c:forEach>
 				</ol>
 				<div class="add-post">
-				<a href="#" onClick="mypostadd('/mypost','${id}')" class="button purple">작성하기</a>
+				<a href="#" onClick="mypostadd('/mypost','${id}')" class="button purple" style="color:white;">작성하기</a>
 				</div>
 			</div>
 		</div>

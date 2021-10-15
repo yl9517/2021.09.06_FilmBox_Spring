@@ -106,11 +106,12 @@
 		<div class="rgyPostIt">
 		
 		</div>
-
+	<div id="stlls">
 		<h3 class="stll_title">스틸컷</h3>
 		<div class="stllcut">
 		
 		</div>
+	</div>
 		
 
 		<input type="hidden" id="rev_no" name="rev_no" value=""> <!-- 예약번호  없으면 댓글 작성창 못뜨게-->
