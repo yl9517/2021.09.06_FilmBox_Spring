@@ -71,10 +71,25 @@ textarea::-webkit-scrollbar-thumb {
        -moz-appearance: none;
             appearance: none;
      border : none;
-     background-color: #9795A3;
+     background-color: #C94F44;
      font-size : 18px;
      padding : 10px;
      color : whitesmoke;
+     cursor : pointer;
+     border-radius : 10px;
+     margin-right : 15px;
+     margin-top : 15px;
+}
+
+.write_btn_reset{
+	 -webkit-appearance: none;
+     -moz-appearance: none;
+            appearance: none;
+     border : none;
+     background-color: whitesmoke;
+     font-size : 18px;
+     padding : 10px;
+     color : black;
      cursor : pointer;
      border-radius : 10px;
      margin-right : 15px;

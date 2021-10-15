@@ -37,8 +37,8 @@
 		</div>
 		
 	<div class="write_btns">
-	<input type="submit" class="write_btn" value="확인">
-	<input type="reset" class="write_btn" value="취소">
+	<input type="submit" class="write_btn_del" value="확인">
+	<input type="button" onclick="history.back(-1)" class="write_btn_go" value="취소">
 	</div>
 </form>
 

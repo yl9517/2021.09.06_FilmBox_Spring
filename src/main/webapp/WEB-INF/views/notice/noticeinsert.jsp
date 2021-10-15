@@ -27,7 +27,7 @@
 	
 	<div class="write_btns">
 	<input type="submit" class="write_btn" value="확인">
-	<input type="reset" class="write_btn" value="취소">
+	<input type="reset" class="write_btn_reset" value="초기화">
 	</div>
 
 </form>

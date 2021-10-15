@@ -42,14 +42,14 @@
 		</div>
 		
 <c:if test="${member_id=='admin' }">
-	<div class="write_btns">
+	<div class="write_btns_modi">
 	<a href="/noticemodify?notice_no=${detail.notice_no }" class="write_btn">수정</a>
 	<a data-toggle="modal" data-target="#noticedelModal" class="write_btn_del">삭제</a>
 	<!--<a href="/noticedelete?notice_no=${detail.notice_no }" class="write_btn_del" -->
 	</div>
 </c:if>
-	<div class="write_btns">
-	<a href="/notice" class="write_btn">목록으로</a>
+	<div class="write_btns_go">
+	<a href="/notice" class="write_btn_go">목록으로</a>
 	</div>
 	
 </form>
