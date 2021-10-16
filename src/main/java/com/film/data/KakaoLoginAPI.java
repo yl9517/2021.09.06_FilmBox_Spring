@@ -50,7 +50,6 @@ public class KakaoLoginAPI {
 			bw.write(sb.toString());
 			bw.flush();
 			int responseCode = conn.getResponseCode();
-			System.out.println("response_code : "+responseCode);	//200(성공)
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -60,7 +59,6 @@ public class KakaoLoginAPI {
 			{
 				result+=line;
 			}
-			System.out.println("response body : "+result);
 			JSONParser parser = new JSONParser();
 			//Json 객체로 만들기
 			JSONObject jobject = (JSONObject) parser.parse(result);
@@ -89,7 +87,6 @@ public class KakaoLoginAPI {
 			conn.setRequestProperty("Authorization", "Bearer "+access_token);
 
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : "+responseCode);	//200
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -99,11 +96,10 @@ public class KakaoLoginAPI {
 			{
 				result+=line;
 			}
-			System.out.println("response body : "+result);
+
 			JSONParser parser = new JSONParser();
 			//Json 객체로 만들기
 			JSONObject jobject = (JSONObject) parser.parse(result);
-			System.out.println(jobject);
 			
 			String id="";
 			String nickname = "";
@@ -116,9 +112,6 @@ public class KakaoLoginAPI {
 			id= String.valueOf(jobject.get("id"));
 			nickname = (String) properties.get("nickname");
 			email = (String) kakao_account.get("email");
-			System.out.println(id);
-			System.out.println(properties);
-			System.out.println(kakao_account);
 			
 			userData.put("id", id);
 			userData.put("nickname", nickname);
@@ -140,7 +133,6 @@ public class KakaoLoginAPI {
 			conn.setRequestProperty("Authorization", "Bearer "+attribute);
 			
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : "+responseCode);	
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -150,7 +142,6 @@ public class KakaoLoginAPI {
 			{
 				result+=line;
 			}
-			System.out.println("response body : "+result);
 			
 		}catch(Exception e)
 		{
