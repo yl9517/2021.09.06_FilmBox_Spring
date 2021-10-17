@@ -61,7 +61,7 @@
 		        select distinct rev_no, show_time
 				from filmbox_screen
 				where
-				 show_date <![CDATA[<=]]> DATE(NOW())
+				 show_date <![CDATA[<=]]> DATE(NOW()) and rev_condition = 0
 		 )e
 		where e.show_time <![CDATA[<=]]> DATE_ADD(TIME(NOW()), INTERVAL 9 hour)
 		
