@@ -156,9 +156,21 @@ function mvclick(s) {
     $(".choose_result_img").append(img);
 	
 }
-moveSeatButton.addEventListener('click', function() {console.log(reserveDay.value);
+moveSeatButton.addEventListener('click', function() {
     if (!!reserveDay.value && !!screenTime.value) {
-        moveSeatForm.submit();
+    	let today = new Date();   
+    	let selectday = new Date(reserveDay.value+screenTime.value);
+    	
+    	if(selectday <= today ){
+
+        	console.log('오늘'+today);
+        	console.log(selectday);
+    		alert("이미 지난 시간은 예매 불가능합니다.");
+    		
+    	}else{
+    		moveSeatForm.submit();
+    	}
+
     } else {
     	alert("날짜와 시간을 선택하세요")
     }

@@ -125,7 +125,6 @@ public class MovieController {
     public @ResponseBody Map<String, Object> contentAPI(@RequestParam String movieCd) throws IOException {
 
         Map<String, Object> map = service.contentAPI(movieCd);
-        
         return map;
     }
  
