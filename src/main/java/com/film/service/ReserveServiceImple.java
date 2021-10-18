@@ -76,10 +76,12 @@ public class ReserveServiceImple implements ReserveService {
 			
 			MovieDTO getMovie = mvMapper.getMovie(dto.getMovieCd());	//영화 정보
 			
-			PointDTO pdto =pointMapper.getUsePointData(rev_no);
-			if(pdto.getRev_no()!= 0) {
-				PointDTO usepoint = new PointDTO(pdto.getMember_id(), -(pdto.getPoint()), "("+getMovie.getMovieNm()+") 예매취소 - 사용 포인트회수");
+			if(pointMapper.getUsePointData(rev_no)!= null) {
+				PointDTO pdto =pointMapper.getUsePointData(rev_no);
+				
+				PointDTO usepoint = new PointDTO(pdto.getMember_id(), -(pdto.getPoint()), "("+getMovie.getMovieNm()+") 예매취소 - 사용 포인트 페이백");
 				pointMapper.changePoint(usepoint);	//사용 포인트 회수
+				
 			}
 			PointDTO pointdto = new PointDTO(dto.getMember_id(), (int) -(dto.getPayMoney()*0.05), "("+getMovie.getMovieNm()+") 예매취소 - 적립 포인트회수");//예매포인트 회수
 			 pointMapper.changePoint(pointdto); //적립 포인트 회수
