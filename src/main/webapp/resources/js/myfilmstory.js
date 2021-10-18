@@ -85,7 +85,6 @@ function review_insert(movieCd, rev_no)
 		let review_starpoint =  $('#review_starpoint').val();
 		
 		let result = checkStar(review_content, review_starpoint);
-		console.log(result);
 		if(result == false)
 		{
 			alert("다시 입력해주세요");
