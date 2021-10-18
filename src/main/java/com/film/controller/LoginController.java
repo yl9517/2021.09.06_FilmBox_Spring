@@ -230,18 +230,6 @@ public class LoginController {
 		return "redirect:/";
 	}
 
-	//사용 보류
-//	@GetMapping("/kakaologout")
-//	public String klogout(HttpSession session)
-//	{
-//		KakaoLoginAPI api = new KakaoLoginAPI();
-//		api.kakaologout((String)session.getAttribute("access_token"));
-//		session.removeAttribute("access_token");
-//		session.removeAttribute("member_id");
-//		session.removeAttribute("sessionId");
-//
-//		return "redirect:index";
-//	}
 
 	//아이디 찾기
 	@GetMapping("/finduserid")

@@ -48,8 +48,6 @@ import com.mysql.cj.Session;
 @Controller
 public class UserContoller {
 
-	//private static final Logger logger = LoggerFactory.getLogger(UserContoller.class);
-
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	

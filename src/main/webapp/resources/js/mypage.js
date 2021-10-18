@@ -114,7 +114,7 @@ function openPop(p_rev_no, p_image, p_movieNm, p_show_date, p_show_time, p_seats
 
 //쿠폰qr 
 function openCouponPop(coupon_no,product_no, product_category, product_name, product_content, coupon_lastdate){
-console.log('z'+coupon_no);
+
  //팝업
    let couponPopup 
       = window.open('/showCouponQR/'+product_no+'/'+coupon_no+'/'+product_category+'/'+product_name+'/'+product_content+'/'+coupon_lastdate
