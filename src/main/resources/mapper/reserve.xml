@@ -61,7 +61,7 @@
 		        select distinct rev_no, show_time
 				from filmbox_screen
 				where
-				 show_date <![CDATA[<=]]> DATE(NOW()) and rev_condition = 0
+				 show_date <![CDATA[<=]]> DATE(NOW())
 		 )e
 		where e.show_time <![CDATA[<=]]> DATE_ADD(TIME(NOW()), INTERVAL 9 hour)
 		
@@ -69,7 +69,7 @@
 	<update id="updateCondition" parameterType="java.util.List">
 			update filmbox_rev
 			set rev_condition = 1
-			where rev_no in
+			where rev_condition = 0 and rev_no in
 		<foreach collection="list"  item="item" index="index" open="(" close=")" separator=",">
 			#{item.rev_no}
 		</foreach>
