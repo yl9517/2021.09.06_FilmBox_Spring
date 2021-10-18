@@ -55,7 +55,7 @@ public class LoginController {
 
 		if(session.getAttribute("loginId")!=null)
 		{
-			return "redirect:main";
+			return "redirect:/";
 		}else {
 			String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session); 
 			model.addAttribute("url", naverAuthUrl); 
@@ -144,7 +144,7 @@ public class LoginController {
         {
 
 			 session.setAttribute("loginId", getuser.getMember_id());
-			 url="redirect:main";
+			 url="redirect:/";
 		}else
 		{
 			url="redirect:login";
@@ -158,7 +158,7 @@ public class LoginController {
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(HttpSession session)throws IOException {  
 		session.invalidate(); 
-		return "redirect:main";
+		return "redirect:/";
 	} 
 
 	//-------------kakao---------------------
@@ -227,7 +227,7 @@ public class LoginController {
 
 		}
 
-		return "redirect:main";
+		return "redirect:/";
 	}
 
 	//사용 보류

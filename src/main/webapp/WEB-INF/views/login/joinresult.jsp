@@ -19,7 +19,7 @@
    <h3>회원가입이 완료되어 3,000포인트가 적립되었습니다.</h3>
 <div class="as">
 <a href="login">로그인</a>
-<a href="main">메인으로</a>
+<a href="/">메인으로</a>
 </div>
 
 </div>

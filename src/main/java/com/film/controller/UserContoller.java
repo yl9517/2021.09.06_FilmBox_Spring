@@ -267,7 +267,7 @@ public class UserContoller {
 		session.removeAttribute("loginId");
 		session.invalidate();
 
-		return "redirect:main";
+		return "redirect:/";
 	}
 	
 	
