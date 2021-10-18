@@ -126,7 +126,6 @@ public class MovieServiceImple implements MovieService {
                 String openDt = (String) boxOffice.get("openDt");
                 String audiAcc = (String) boxOffice.get("audiAcc");
                 String image =(String)  getkmdbData(movieNm,openDt,"image");
-                System.out.println("kmdb 이미지"+image);
                 
                 MovieDTO dto = new MovieDTO(rank, movieCd, movieNm, openDt,audiAcc, image);
                 mvList.add(dto);
@@ -158,7 +157,7 @@ public class MovieServiceImple implements MovieService {
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-type", "application/json");
-			System.out.println("Response code: " + conn.getResponseCode());
+
 			BufferedReader rd;
 			
 			if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {

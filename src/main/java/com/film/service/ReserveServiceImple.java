@@ -92,10 +92,6 @@ public class ReserveServiceImple implements ReserveService {
 	@Override
 	public void updateCondition() {
 		reMapper.updateCondition(reMapper.selectPast());	
-//		List<HashMap<String, Object>> map = reMapper.selectPast();
-//		System.out.println(map.get(0).get("rev_no"));
-//		System.out.println(map.get(1).get("rev_no"));
-//		System.out.println(map.get(2).get("rev_no"));
 	}
 
 	@Override

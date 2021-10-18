@@ -103,8 +103,7 @@ public class KakaoLoginAPI {
 			
 			String id="";
 			String nickname = "";
-			String email = "";
-			
+			String email = "";		
 			
 			JSONObject properties = (JSONObject) jobject.get("properties");
 			JSONObject kakao_account = (JSONObject) jobject.get("kakao_account");

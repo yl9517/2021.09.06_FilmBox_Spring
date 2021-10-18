@@ -20,7 +20,6 @@ public class ConditionUpdate {
 //	@Scheduled(fixedRate = 10000)
 	@Scheduled(cron = "10 0 10,12,14,18 * * ?") //아무요일 매월 매일 10,12..시 10초마다
 	public void updateList() {
-//		System.out.println("테스트");
 		service.updateCondition();
 	}
 	

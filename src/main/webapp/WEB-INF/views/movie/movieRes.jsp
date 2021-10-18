@@ -29,8 +29,17 @@
 		<div class="movielist_wrapper">
 		<c:forEach var="item" items="${mlist }">
 			
-			<input type="button" title="${item.movieNm }" name="movielists" class="movielist" 
-			 onclick="mvclick('<c:out value="${item.image}"/>');" value ="<c:out value="${item.movieNm}"/>" id="mvlist"  >
+			<c:choose>
+				<c:when test="${item.movieNm eq dto.movieNm}">
+					<input type="button" title="${item.movieNm }" name="movielists" class="movielist" 
+					 onclick="mvclick('<c:out value="${item.image}"/>');" value ="<c:out value="${item.movieNm}"/>" id="mvlist"
+					  style="background-color: #f1f1f1; font-weight: bolder; color:black;" >			
+				</c:when>
+				<c:otherwise>
+					<input type="button" title="${item.movieNm }" name="movielists" class="movielist" 
+					 onclick="mvclick('<c:out value="${item.image}"/>');" value ="<c:out value="${item.movieNm}"/>" id="mvlist"  >
+				</c:otherwise>
+			</c:choose>
 		</c:forEach>
 		</div>
 	</div>
