@@ -61,7 +61,7 @@ public class MovieController {
 	
 	
 	
-    @GetMapping("/main")
+    @GetMapping("/")
     public String requestAPI(Model model) {
       
     	List<MovieDTO> list =  service.getMovieList();
