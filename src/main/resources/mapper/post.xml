@@ -89,9 +89,10 @@
 	</select>
 	
 	<select id="getMyPostList" parameterType="String" resultType="com.film.dto.PostDTO">
-		SELECT post_no, member_id, post_content, movieNm,image, post_date
-		FROM filmbox_post
-		where member_id = #{member_id}
+		SELECT post_no, fm.member_name, post_content, movieNm,image, post_date
+		FROM filmbox_post fp
+		INNER JOIN filmbox_member fm ON fp.member_id=fm.member_id
+		where fp.member_id = #{member_id}
 	</select>
 	
 </mapper>
