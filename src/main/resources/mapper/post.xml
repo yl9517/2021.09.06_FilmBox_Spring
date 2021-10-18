@@ -5,7 +5,7 @@
 <mapper namespace="com.film.mapper.PostMapper">
 
 	<select id="getPostList" resultType="com.film.dto.PostDTO">
-		SELECT fp.post_no, fm.member_name, fp.post_content, fp.movieNm, fp.image, fp.post_date
+		SELECT fp.post_no,fp.member_id, fm.member_name, fp.post_content, fp.movieNm, fp.image, fp.post_date
 		FROM filmbox_post fp
 		INNER JOIN filmbox_member fm ON fp.member_id=fm.member_id
 		ORDER BY post_no DESC;
@@ -39,7 +39,7 @@
 	</select>
 	
 	<select id="postdetail" parameterType="com.film.dto.PostDTO" resultType="com.film.dto.PostDTO">
-		SELECT fp.post_no, fm.member_name, fp.post_content, fp.movieNm, fp.image, fp.post_date
+		SELECT fp.post_no, fm.member_name, fp.post_content,fp.member_id, fp.movieNm, fp.image, fp.post_date
 		FROM filmbox_post fp
 		INNER JOIN filmbox_member fm ON fp.member_id=fm.member_id
 		where post_no=#{post_no}
@@ -63,7 +63,7 @@
 	<select id="subdetail" parameterType="java.util.HashMap" resultType="com.film.dto.SubPostDTO">
 	SELECT s.* FROM (
 	SELECT @rownum:=@rownum+1 AS rnum, post.*
-		FROM (SELECT fp.subno, fp.post_no, fp.subcontent, fm.member_name, fp.sub_date
+		FROM (SELECT fp.subno, fp.post_no, fp.subcontent,fp.member_id, fm.member_name, fp.sub_date
 		FROM filmbox_postsub fp
 		INNER JOIN filmbox_member fm ON fp.member_id=fm.member_id 
 		WHERE post_no=#{post_no}) post
