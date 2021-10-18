@@ -33,7 +33,7 @@ public class AdminController {
 	{
 		String member_id=(String)session.getAttribute("loginId");
 		if(!(member_id).equals("admin"))
-			return "redirect:main";
+			return "redirect:/";
 		
 		model.addAttribute("page", "admin/productInsert.jsp");
 		return "view";
@@ -71,7 +71,7 @@ public class AdminController {
 	{
 		String member_id=(String)session.getAttribute("loginId");
 		if(!(member_id).equals("admin"))
-			return "redirect:main";
+			return "redirect:/";
 		
 		//전체 자료 확인
 		int totalCount = service.totalCount(search);
