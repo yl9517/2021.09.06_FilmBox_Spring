@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FilmBox</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="shortcut icon" href="/resources/favicon.ico">
 <link rel="icon" href="/resources/favicon.ico">

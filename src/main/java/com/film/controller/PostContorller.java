@@ -38,7 +38,6 @@ import com.film.service.MovieService;
 import com.film.service.PostService;
 import com.film.service.ReserveService;
 import com.film.service.UserService;
-import com.film.vo.PostVO;
 
 @Controller
 public class PostContorller {

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FilmBox</title>
 <link rel="shortcut icon" href="resources/favicon.ico">
 <link rel="icon" href="resources/favicon.ico">
 	<link rel="stylesheet" href="/resources/css/main.css">
