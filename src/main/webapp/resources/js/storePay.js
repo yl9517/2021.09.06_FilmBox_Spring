@@ -4,8 +4,6 @@ let after_price = $('.price_final').text(before_price);
 
 
 let product_name = $('.product_name').text();
-console.log(before_price);
-console.log(product_name);
 $('.reset-button').click(function() {
 	location.href="/store"
 });
@@ -17,11 +15,12 @@ let arr = [];
 $.each($('#coupons').find("option"), function(index,item){ 
   arr.push(item.value);
   if(before_price < item.value){
-	  $(this).attr("disabled",true);
+	  $(this).attr("disabled",true);  //disable
 	  $(this).css("color","#D7D7D7");
-	  discount++;
+	  discount++; //사용가능 쿠폰 갯수
   }
 });
+
 let size = $('#couponsize').val();
 $('.possibleCount').text((parseInt(size)-parseInt(discount))+'장');
 

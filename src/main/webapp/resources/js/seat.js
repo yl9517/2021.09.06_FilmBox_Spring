@@ -162,7 +162,6 @@ function selectListUiFunction(selectSeatListUlActive) {
     	}
     	
         if (allNumber > 16) {
-            console.log(li);
             li.classList.remove('select-seat-ul-active');
             toastr.error(
                 '<div style="color:white">지정한 인원수를 넘었습니다(최대 8명)</div>',

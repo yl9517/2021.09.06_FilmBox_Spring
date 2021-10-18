@@ -236,7 +236,7 @@ $(document).on("click","#reportBtn",function(){
 					$('.report').hide();
 				}
 				,error:function(data){
-					console.log('에러'+data);
+					console.log(data);
 				}
 			});
 

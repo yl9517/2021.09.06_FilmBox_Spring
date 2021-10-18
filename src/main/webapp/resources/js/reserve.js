@@ -11,7 +11,6 @@ const moveSeatButton = document.querySelector('.moveSeatButton');
 const movieSelector= document.querySelectorAll('.movielist');
 const timeSelector= document.querySelectorAll('.movietime');
 let selectmovie = document.querySelector('.selectmovie');
-console.log(selectmovie);
 const mvlmage = document.createElement('img');
 
 let clickdate=document.querySelector('.clickdate');
@@ -23,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let days = date.getDate();
-console.log(days);
+
 function addDate() {
     const weekOfDay = ['일', '월', '화', '수', '목', '금', '토'];
     year = date.getFullYear();
     month = date.getMonth()+1;
-    console.log(month);
+
     reserveDate.append(year + '/' + month);
     var j = date.getDay();
     for (i = date.getDate(); i <= lastDay.getDate(); i++) {
@@ -90,14 +89,14 @@ function dayClickEvent(button) {
             list.classList.remove('movie-date-wrapper-active');
         });
         button.classList.add('movie-date-wrapper-active');
-        console.log(button.childNodes[1].innerHTML);
+       // console.log(button.childNodes[1].innerHTML);
         reserveDay.value =
 	            year +'.' + month + '.' + 
 	       button.childNodes[0].innerHTML + '(' +
 	       button.childNodes[1].innerHTML + ')';
-        console.log(reserveDay.value);
+     //   console.log(reserveDay.value);
         clickdate = button.childNodes[0].innerHTML;
-        console.log(clickdate);
+     //   console.log(clickdate);
         
         $(".choose_result_date").text(reserveDay.value);
         
@@ -120,7 +119,6 @@ movietime.forEach(list => {
         screenTime.value = list.innerHTML;
     });
 }); 
-console.log(screenTime.value);
 
 //선택한 영화제목 가져오기
 movieSelector.forEach(mvlist => {
@@ -134,10 +132,9 @@ movieSelector.forEach(mvlist => {
             li.classList.remove('selMovie');
         });
         mvlist.classList.add('selMovie');
-        console.log(mvlist.innerHTML);
     	
         selectmovie.value = mvlist.value;
-        console.log(selectmovie);
+  
         $(".choose_result_title").text("");
         $(this).clone().appendTo(".choose_result_title").css({"text-align":"center",
         		"background-color":"transparent"});
@@ -162,9 +159,6 @@ moveSeatButton.addEventListener('click', function() {
     	let selectday = new Date(reserveDay.value+screenTime.value);
     	
     	if(selectday <= today ){
-
-        	console.log('오늘'+today);
-        	console.log(selectday);
     		alert("이미 지난 시간은 예매 불가능합니다.");
     		
     	}else{
