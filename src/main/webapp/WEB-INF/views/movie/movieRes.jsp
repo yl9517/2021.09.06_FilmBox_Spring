@@ -17,7 +17,6 @@
 <div class="first">
 <div class="mid">
 	<div class="date">
-<!-- 		<div class="reserve_day">날짜</div> -->
 		<div class="reserve_date"></div>
 	</div>
 	<br>
@@ -68,45 +67,7 @@
 				<button class="reserve_button">
 					<span class="movietime" id="movietime_4">18:00</span>
 				</button>
-			<%-- <c:choose>
 			
-			<c:when test="${day <= clickdate }">
-				<button class="reserve_button">
-				<c:if test="${time >= 12 }">
-					<span class="movietime" id="movietime_1">12:00</span>
-				</c:if>
-				</button>
-				<button class="reserve_button">
-				<c:if test="${time <= 14 }">
-					<span class="movietime" id="movietime_2">14:00</span>
-				</c:if>
-				</button>
-				<button class="reserve_button">
-				<c:if test="${time <= 16 }">
-					<span class="movietime" id="movietime_3">16:00</span>
-				</c:if>
-				</button>
-				<button class="reserve_button">
-				<c:if test="${time <= 18 }">
-					<span class="movietime" id="movietime_4">18:00</span>
-				</c:if>
-				</button>
-			</c:when>
-			<c:otherwise>
-				<button class="reserve_button">
-					<span class="movietime" id="movietime_1">12:00</span>
-				</button>
-				<button class="reserve_button">
-					<span class="movietime" id="movietime_2">14:00</span>
-				</button>
-				<button class="reserve_button">
-					<span class="movietime" id="movietime_3">16:00</span>
-				</button>
-				<button class="reserve_button">
-					<span class="movietime" id="movietime_4">18:00</span>
-				</button>
-			</c:otherwise>
-			</c:choose> --%>
 			</div>
 	</div>
 	

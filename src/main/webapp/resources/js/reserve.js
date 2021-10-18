@@ -105,28 +105,6 @@ function dayClickEvent(button) {
     });
    
 }
-/*$(".reserve_button").remove();
-var k=12;
-for(i=1; i<=4; i++){
-	const button2 = document.createElement('button');
-		const spantime = document.createElement('span');
-	button2.classList = 'reserve_button';
-	spantime.classList = 'movietime';
-	    
-		spantime.id='movietime_'+i;
-	   	spantime.innerHTML=k+':00';
-		button2.append(spantime);
-		timewrapper.append(button2);
-		k+=2;
-		timeClickEvent(button2);
-};
-movietime=document.querySelectorAll('.movietime');
-function timeClickEvent(button2) {
-	
-	button2.addEventListener('click', function() {
-		$(".choose_result_time").text(button2.innerHTML);
-	});
-}*/
 
 //선택한 날짜(년+월+일+요일+시간)
 movietime.forEach(list => {

@@ -58,10 +58,6 @@ let arrays = [];
 $('.thiss').each(function(index,item){
   arrays.push($(item).text());
 });
-/*
-for(let i=0; i<arrays.length; i++){
-    console.log(arrays[i]+" hi ");
-}*/
 
 /* 금액 초기화*/
 let firstprice = $('.ticket-price').text();
@@ -147,9 +143,6 @@ function selectListUiFunction(selectSeatListUlActive) {
             }
         }
 
-        // allNumber = normalNumber + teenNumber + oldNumber;
-        // allMoney = normalMoney + teenMoney + oldMoney;
-        //console.log(allNumber + '156확인');
         ticketPrice.innerHTML = allMoney;
         $(".last-price").text(allMoney);
         firstprice = $('.ticket-price').text();
@@ -263,30 +256,26 @@ seat.forEach(data => {
     }
 });
 
-//TODO 좌석 2개씩은 커플석으로 분리하기위해서 해당 class를 추가해줘야하는데 value가 2로끝나는얘들이랑 7로끝나는 얘들은 class를 추가해주기
 
 function inputClickEvent(input) {
     input.addEventListener('click', function(e) {
-        //중복방지 함수
+        
         selectedSeatsArray = selectedSeatsArray.filter(
             (element, index) => selectedSeatsArray.indexOf(element) != index
         );
 
-        //click class가 존재할때(제거해주는 toggle)
         if (input.classList.contains('clicked')) {
             input.classList.remove('clicked');
             clicked = document.querySelectorAll('.clicked');
 
-            //배열안의 값 제거
             selectedSeatsArray.splice(selectedSeatsArray.indexOf(e.target.value), 1);
             clicked.forEach(data => {
                 selectedSeatsArray.push(data.value);
             });
-            //class가 존재안할때 추가해주는 toggle
         } else {
             input.classList.add('clicked');
             clicked = document.querySelectorAll('.clicked');
-            //선택한 번호의 갯수를 넘기면 동작 못하게 하는 코드
+
             if (clicked.length > allNumber) {
                 input.classList.remove('clicked');
                 toastr.error(
@@ -303,27 +292,21 @@ function inputClickEvent(input) {
             });
         }
 
-        
-        //좌석번호의 innerHTML 설정
         selectedSeats.innerHTML = selectedSeatsArray;
         reserveNumber.innerHTML = selectedSeatsArray.length;
         remainSeat.innerHTML = seat.length - selectedSeatsArray.length
         -arrays.length;
         selectedSeat.value=selectedSeatsArray;
-        // if (selectedSeatsArray.length > 4) {
-        //     return;
-        // }
+
     });
 }
 
 
-//form 제출시 hidden설정하기
 reserveButton.addEventListener('click', function() {
 	movieNm.value = selectedMovie.innerHTML;
     reserveDate.value = theaterDate.innerHTML;
     screenTime.value = theaterTime.innerHTML;
     ticketNumber.value = reserveNumber.innerHTML;
-    /*selectedSeat.value = selectedSeats.innerHTML;*/
     selectedSeat=selectedSeatsArray;
     ousepoint.value=usepoint;
     
