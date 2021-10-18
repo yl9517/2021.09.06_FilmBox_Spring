@@ -17,4 +17,5 @@ public class SubPostDTO {
 	private String subcontent;
 	private String member_id;
 	private String sub_date;
+	private String member_name;
 }

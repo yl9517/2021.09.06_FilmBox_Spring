@@ -30,7 +30,7 @@
 			<div class="user-post-case">
 				<div class="post-top-area">
 					<div class="user-info">
-						<p class="user-id">${dto.member_id }</p>
+						<p class="user-id">${dto.member_name }</p>
 						<p class="user-write-time">${dto.post_date }</p>
 					
 					</div>
@@ -96,7 +96,7 @@
 			<c:forEach var="item" items="${sublist }">
 				<li class="postsub_li">
 					<div class="user_info">
-						<span class="userName">${item.member_id }</span>
+						<span class="userName">${item.member_name }</span>
 						<span class="write_date">${item.sub_date }</span>
 					</div>
 					<div>

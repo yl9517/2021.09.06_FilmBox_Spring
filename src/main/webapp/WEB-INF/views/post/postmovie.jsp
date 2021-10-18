@@ -61,7 +61,7 @@
 						
 					</div>
 					<div class="cont">
-						<div class="wrtter">${item.member_id}</div>
+						<div class="wrtter">${item.member_name}</div>
 						<a href="/postdetail/${item.post_no}">
 							<p class="tit">${item.movieNm }</p>
 						</a>

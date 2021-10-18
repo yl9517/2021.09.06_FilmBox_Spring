@@ -14,6 +14,7 @@ import lombok.ToString;
 public class PostDTO {
 	private int post_no;
 	private String member_id;
+	private String member_name;
 	private String post_content;
 	private String movieNm;
 	private String post_date;

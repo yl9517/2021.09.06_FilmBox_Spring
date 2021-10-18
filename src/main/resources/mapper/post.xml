@@ -4,11 +4,10 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.film.mapper.PostMapper">
 
-
-	
 	<select id="getPostList" resultType="com.film.dto.PostDTO">
-		SELECT post_no, member_id, post_content, movieNm,image, post_date
-		FROM filmbox_post
+		SELECT fp.post_no, fm.member_name, fp.post_content, fp.movieNm, fp.image, fp.post_date
+		FROM filmbox_post fp
+		INNER JOIN filmbox_member fm ON fp.member_id=fm.member_id
 		ORDER BY post_no DESC;
 	</select>
 	<select id="getMyMovie" parameterType="string" resultType="com.film.dto.MovieDTO">
@@ -40,8 +39,9 @@
 	</select>
 	
 	<select id="postdetail" parameterType="com.film.dto.PostDTO" resultType="com.film.dto.PostDTO">
-		SELECT post_no, member_id, post_content, movieNm,image, post_date
-		FROM filmbox_post
+		SELECT fp.post_no, fm.member_name, fp.post_content, fp.movieNm, fp.image, fp.post_date
+		FROM filmbox_post fp
+		INNER JOIN filmbox_member fm ON fp.member_id=fm.member_id
 		where post_no=#{post_no}
 	</select>
 	
@@ -51,12 +51,6 @@
 	
 	</insert>
 	
-	<!-- <select id="subdetail" resultType="com.film.dto.SubPostDTO" parameterType="int">
-		SELECT subno,post_no, subcontent,member_id,sub_date 
-		FROM filmbox_postsub
-		WHERE post_no = #{post_no}
-	
-	</select> -->
 	
 	<delete id="subDelete" parameterType="int">
 		delete from filmbox_postsub where subno=#{subno}
@@ -69,26 +63,14 @@
 	<select id="subdetail" parameterType="java.util.HashMap" resultType="com.film.dto.SubPostDTO">
 	SELECT s.* FROM (
 	SELECT @rownum:=@rownum+1 AS rnum, post.*
-		FROM (SELECT subno,post_no, subcontent,member_id,sub_date
-		FROM filmbox_postsub WHERE post_no=#{post_no}) post
+		FROM (SELECT fp.subno, fp.post_no, fp.subcontent, fm.member_name, fp.sub_date
+		FROM filmbox_postsub fp
+		INNER JOIN filmbox_member fm ON fp.member_id=fm.member_id 
+		WHERE post_no=#{post_no}) post
 		WHERE (@rownum:=0)=0 ) s
 	WHERE rnum BETWEEN #{startrow} AND #{endrow}
 	
 	</select>
-<!-- </select>
-	<select id="subdetail" parameterMap="hashmap" resultType="com.film.dto.SubPostDTO">
-	SELECT * 
-	FROM (
-       SELECT S.* ,                    
-             @rownum:=@rownum+1 rnum         
-       FROM ( SELECT subno,post_no, subcontent,member_id,sub_date
-       FROM filmbox_postsub                  
-	,( SELECT @ROWNUM := 0 ) R 
-	WHERE 1=1   ) S              
-                 ORDER BY subno ASC ) AS A 
-	WHERE  rnum BETWEEN #{startrow} AND #{endrow} 
-		
-</select> -->
 	<update id="updatePost" parameterType="com.film.dto.PostDTO">
 		update filmbox_post set member_id = #{member_id}, 
 								post_content = #{post_content}, 
