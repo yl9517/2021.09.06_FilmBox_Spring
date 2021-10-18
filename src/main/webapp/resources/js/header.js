@@ -10,5 +10,5 @@ $('.searchSubmit').click(function() {
 
 //로고 선택 시 
 $('.logo').click(function() {
-	location.href="/main";
+	location.href="/";
 });

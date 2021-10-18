@@ -26,7 +26,7 @@
 	
 	<div class="bottom_content">
 		<div class="post_content"> 내용</div>
-		<textarea class="post_content" id="post_content" name="post_content" spellcheck="false" required></textarea>
+		<textarea class="post_content" id="post_content" name="post_content" rows="10" cols="200" spellcheck="false" required></textarea>
 		<div>
 		<div class="addfile">이미지 추가 (이미지 필수 입니다.)</div>
 		<input type="file" id="image" name="image" required="required">
