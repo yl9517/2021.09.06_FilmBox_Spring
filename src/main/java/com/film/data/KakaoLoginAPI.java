@@ -122,30 +122,4 @@ public class KakaoLoginAPI {
 		return userData;
 	}
 
-	public void kakaologout(String attribute) {
-		// TODO Auto-generated method stub
-		String requestUrl = "https://kapi.kakao.com/v1/user/logout";
-		try {
-			URL url = new URL(requestUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Authorization", "Bearer "+attribute);
-			
-			int responseCode = conn.getResponseCode();
-			
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-			String line = "";
-			String result = "";
-			while((line = br.readLine())!=null)
-			{
-				result+=line;
-			}
-			
-		}catch(Exception e)
-		{
-			System.out.println(e);
-		}
-	}
-
 }
