@@ -54,25 +54,28 @@
 		where rev_no = #{rev_no}
 	</update>
 	
-	<!-- 날짜 지나면 rev_condition 1 -->
+	<!-- 오늘 상영하는 것 중, 시간 지나면 rev_condition 1 -->
 	<select id="selectPast" resultType="java.util.HashMap">
 	  select e.rev_no
 		from (   
 		        select distinct rev_no, show_time
 				from filmbox_screen
 				where
-				 show_date <![CDATA[<=]]> DATE(NOW())
+				 show_date <![CDATA[=]]> DATE(NOW())
 		 )e
 		where e.show_time <![CDATA[<=]]> DATE_ADD(TIME(NOW()), INTERVAL 9 hour)
 		
 	</select >
 	<update id="updateCondition" parameterType="java.util.List">
+		<if test="list!=null and list.size!=0">
 			update filmbox_rev
 			set rev_condition = 1
-			where rev_condition = 0 and rev_no in
-		<foreach collection="list"  item="item" index="index" open="(" close=")" separator=",">
-			#{item.rev_no}
-		</foreach>
+			where rev_condition = 0 
+				and rev_no in
+				<foreach collection="list"  item="item" index="index" open="(" close=")" separator=",">
+					#{item.rev_no}
+				</foreach>
+		</if>
 	</update>
 	
 	<select id="getMovieList" resultType="com.film.dto.MovieDTO">
