@@ -3,6 +3,7 @@ let member_id = $('#member_id').val();
 let rev_no = $('.rev_no').val();
 /*관객수 팝오버*/
 $('#attendance').popover();
+$('#rank_date').popover();
 
 /* 버튼 활성화 */
 $('.tab_wrap').children().click(function() {	

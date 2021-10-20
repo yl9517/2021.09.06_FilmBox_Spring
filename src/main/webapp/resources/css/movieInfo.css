@@ -34,7 +34,7 @@
 }
 .info_right{
 	position: relative; 
-    bottom: 395px;
+    bottom: 420px;
     left: 430px;	
 }
 .info_right img{
@@ -94,6 +94,12 @@
     bottom: 108px;
     left: 80px;
 }
+ #rank_date{
+	z-index :2;
+	position: relative;
+    right: 336px;
+    top: 9px;
+ }
  
 /* 예매하기 버튼 */
 .moveForm input {

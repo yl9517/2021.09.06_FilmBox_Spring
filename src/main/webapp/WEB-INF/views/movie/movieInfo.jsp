@@ -54,8 +54,11 @@
 					<p class="subtitle">박스오피스</p>
 					<p class="sub">
 						${dto.rank } <span>위</span>
-					</p>
+					</p>					
 				</div>
+				<span class="material-icons" role="button" data-placement="top"
+					data-toggle="popover" data-trigger="hover" id="rank_date"
+						data-content="${dto.update_date } 기준입니다. ">help</span>
 				<div class="bottom">
 					<p class="subtitle">누적관객수	</p>
 					<p class="sub">	

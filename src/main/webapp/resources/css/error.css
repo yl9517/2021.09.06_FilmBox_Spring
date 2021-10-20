@@ -1,0 +1,29 @@
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+ #error_wrap{
+ 	text-align: center;
+ 	width: 1100px;
+ 	margin: 50px auto;
+ 	padding: 50px 0;
+ 	min-height: 650px;
+ }
+ 
+ #error_wrap img{
+ 	width: 150px;
+ 	margin: 50px;
+ }
+ .error_explain{
+ 	margin: 30px 0; 	
+ }
+  .error_explain p{
+  	padding: 5px;
+  }
+ #error_wrap button{
+     width: 200px;
+    height: 50px;
+    margin: 0 10px;  
+    font-size: 16px;
+ }
