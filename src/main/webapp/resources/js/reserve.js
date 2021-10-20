@@ -137,7 +137,7 @@ movieSelector.forEach(mvlist => {
   
         $(".choose_result_title").text("");
         $(this).clone().appendTo(".choose_result_title").css({"text-align":"center",
-        		"background-color":"transparent"});
+        		"background-color":"transparent","font-weight": "normal", "color": "white"});
         $(this).css({"background-color": "#f1f1f1",
         "font-weight": "bolder",
         "color": "black"});
@@ -181,7 +181,8 @@ timeSelector.forEach(timelist => {
 			"color": "white"});
 	
 		$(".choose_result_time").text("");
-		$(this).clone().appendTo(".choose_result_time").css("background-color","transparent");
+		$(this).clone().appendTo(".choose_result_time").css({"background-color":"transparent", 
+			"font-weight": "normal",  "color": "white"});
 	      $(this).css({"background-color": "#f1f1f1",
 	          "font-weight": "bolder",
 	          "color": "black"});
