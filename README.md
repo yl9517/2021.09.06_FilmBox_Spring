@@ -8,5 +8,4 @@
 
 ----
 
-#### 시연 홈페이지 : http://13.124.225.86:8080/
 #### 시연 영상 : https://www.youtube.com/watch?v=Elmq4vW-WG0
